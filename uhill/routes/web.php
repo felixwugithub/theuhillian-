@@ -1,6 +1,10 @@
 <?php
 
+use App\Http\Controllers\ReviewController;
+use App\Models\Course;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\UserController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -14,5 +18,27 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('home', [
+        'courses' => Course::all()
+    ]);
 });
+
+Route::get('/course/{id}', function ($id){
+    return view('course', [
+        'course' => Course::find($id)
+    ]);
+});
+
+Route::get('/register', [UserController::class, 'create']);
+
+Route::get('/login', [UserController::class,'login']);
+
+Route::post('/users', [UserController::class, 'store']);
+
+Route::post('/logout', [UserController::class, 'logout']);
+
+Route::post('/users/authenticate', [UserController::class, 'authenticate']);
+
+Route::get('/course/{id}/review', [ReviewController::class, 'create']);
+
+Route::post('/course/{id}', [ReviewController::class, 'store']);
