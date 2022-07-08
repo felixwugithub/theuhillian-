@@ -31,6 +31,7 @@ class ReviewController extends Controller
         $data['course_id'] = $course['id'];
 
         auth()->user()->reviews()->create($data);
-        dd(request()->all());
+
+        return redirect('/course/');
     }
 }

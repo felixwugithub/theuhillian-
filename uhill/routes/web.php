@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\ReviewController;
 use App\Models\Course;
+use App\Models\Review;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
 
@@ -25,7 +26,8 @@ Route::get('/', function () {
 
 Route::get('/course/{id}', function ($id){
     return view('course', [
-        'course' => Course::find($id)
+        'course' => Course::find($id),
+        'reviews' => Review::find($id)
     ]);
 });
 

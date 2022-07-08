@@ -11,6 +11,12 @@
     <p>{{$message}}</p>
     @enderror
 
+    <label for="name">Username</label>
+    <input type="text" name="username" value="{{old('username')}}">
+    @error('username')
+    <p>{{$message}}</p>
+    @enderror
+
     <lable>Email</lable>
     <input type="email" name="email" value="{{old('email')}}">
     @error('email')
@@ -28,6 +34,13 @@
     @error('password_confirmation')
     <p>{{$message}}</p>
     @enderror
+
+{{--    <label>admin</label>--}}
+{{--    <input type="checkbox" name="admin">--}}
+{{--    @error('admin')--}}
+{{--    <p>{{$message}}</p>--}}
+{{--    @enderror--}}
+
 
     <button type="submit">Register</button>
 

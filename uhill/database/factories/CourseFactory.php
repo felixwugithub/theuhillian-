@@ -24,6 +24,7 @@ class CourseFactory extends Factory
             'rating' => fake()->biasedNumberBetween(0,10),
             'date_added'=> now(),
             'description'=> fake()->paragraph(5),
+            'admin' => false
         ];
     }
 }

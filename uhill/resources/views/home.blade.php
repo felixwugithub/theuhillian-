@@ -1,3 +1,6 @@
+@extends('layout')
+
+@section('content')
 
 @auth
 <h3>Welcome {{auth()->user()->name}}</h3>
@@ -30,6 +33,7 @@
     <p>{{$course['description']}}</p>
 
 @endforeach
+@endsection
 
 
 

@@ -9,7 +9,12 @@ class Course extends Model
 {
     use HasFactory;
 
-    public function comments(){
-        return $this->hasMany(Comment::class);
+    public function reviews(): \Illuminate\Database\Eloquent\Relations\HasMany
+    {
+        return $this->hasMany(Review::class);
     }
+    public function teacher(): \Illuminate\Database\Eloquent\Relations\BelongsTo
+    {
+        return $this->belongsTo(Teacher::class);
+}
 }
