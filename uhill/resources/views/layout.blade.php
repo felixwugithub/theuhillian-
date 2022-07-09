@@ -14,11 +14,9 @@
 
 @auth
     @if(auth()->user()->admin == 1)
-        <p>Add a course</p>
-        <p>Add a teacher</p>
+        <a href="/teacher/create">Create Teacher</a>
     @endif
 @endauth
-
 
 @yield('content')
 

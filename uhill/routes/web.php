@@ -3,6 +3,7 @@
 use App\Http\Controllers\ReviewController;
 use App\Models\Course;
 use App\Models\Review;
+use App\Models\Teacher;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
 
@@ -21,6 +22,12 @@ use App\Http\Controllers\UserController;
 Route::get('/', function () {
     return view('home', [
         'courses' => Course::all()
+    ]);
+});
+
+Route::get('/teacher/{id}', function ($id){
+    return view('teacher',[
+        'teacher' => Teacher::find($id)
     ]);
 });
 
@@ -44,3 +51,7 @@ Route::post('/users/authenticate', [UserController::class, 'authenticate']);
 Route::get('/course/{id}/review', [ReviewController::class, 'create']);
 
 Route::post('/course/{id}', [ReviewController::class, 'store']);
+
+Route::get('/teacher/create', [\App\Http\Controllers\TeacherController::class, 'create']);
+
+Route::post('/teacher/store', [\App\Http\Controllers\TeacherController::class, 'store']);

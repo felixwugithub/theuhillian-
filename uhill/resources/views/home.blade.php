@@ -33,6 +33,8 @@
     <p>{{$course['description']}}</p>
 
 @endforeach
+
+
 @endsection
 
 
