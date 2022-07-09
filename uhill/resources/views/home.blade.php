@@ -27,7 +27,7 @@
 
 @foreach($courses as $course)
 
-    
+
     <h2>
        <a href="/course/{{$course['id']}}"> {{$course['course_name']}}</a>
         <h3>rating: {{$course['rating']}} / 10</h3>

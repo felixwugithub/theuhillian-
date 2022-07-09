@@ -23,6 +23,7 @@ class ReviewController extends Controller
     public function store(Request $request, $id){
 
         $course = Course::find($id);
+
         $data = request()->validate([
             'title' => 'required',
             'rating' => 'required|integer|between:1,10',
@@ -32,6 +33,8 @@ class ReviewController extends Controller
 
         auth()->user()->reviews()->create($data);
 
-        return redirect('/course/');
+
+
+        return redirect('/course');
     }
 }
