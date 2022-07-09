@@ -4,7 +4,7 @@
 
 @auth
 <h3 >Welcome {{auth()->user()->name}}</h3>
-<p>hello</p>
+
 
 <form method="POST" action="/logout">
     @csrf
