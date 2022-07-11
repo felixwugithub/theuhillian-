@@ -16,10 +16,14 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-         $teacher = Teacher::factory()->create();
-         Course::factory(random_int(1,5))->create([
-             'teacher_id' => $teacher->id
-         ]);
+
+        for ($x = 0; $x <= 10; $x++) {
+            $teacher = Teacher::factory()->create();
+            Course::factory(random_int(1,5))->create([
+                'teacher_id' => $teacher->id
+            ]);
+        }
+
 
         // \App\Models\User::factory()->create([
         //     'name' => 'Test User',
