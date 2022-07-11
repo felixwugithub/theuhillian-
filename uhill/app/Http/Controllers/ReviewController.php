@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Course;
 
+use App\Models\Review;
 use Illuminate\Http\Request;
 
 class ReviewController extends Controller
@@ -20,21 +21,20 @@ class ReviewController extends Controller
         ]);
     }
 
-    public function store(Request $request, $id){
-
-        $course = Course::find($id);
-
+    public function store($id, Request $request){
         $data = request()->validate([
             'title' => 'required',
             'rating' => 'required|integer|between:1,10',
-            'content' => 'required'
+            'content' => 'required',
+            'course_id' => 'nullable'
         ]);
-        $data['course_id'] = $course['id'];
 
+        $data['course_id'] = $id;
         auth()->user()->reviews()->create($data);
 
-
-
-        return redirect('/course');
+        return view('course', [
+            'course' => Course::find($id),
+            'reviews' => Review::find($id)
+        ]);
     }
 }

@@ -2,6 +2,8 @@
 
 namespace Database\Seeders;
 
+use App\Models\Course;
+use App\Models\Teacher;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
@@ -14,8 +16,10 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-         \App\Models\User::factory(10)->create();
-         \App\Models\Course::factory(10)->create();
+         $teacher = Teacher::factory()->create();
+         Course::factory(random_int(1,5))->create([
+             'teacher_id' => $teacher->id
+         ]);
 
         // \App\Models\User::factory()->create([
         //     'name' => 'Test User',

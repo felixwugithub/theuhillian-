@@ -13,6 +13,7 @@ class Teacher extends Model
 
     public function courses(): \Illuminate\Database\Eloquent\Relations\HasMany
     {
-        return $this->hasMany(Review::class);
+        return $this->hasMany(Course::class);
     }
+
 }

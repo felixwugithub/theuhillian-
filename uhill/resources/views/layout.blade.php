@@ -11,6 +11,7 @@
 
 <h1>Rate My Uhill</h1>
 <a href="/">Home</a>
+<a href="/teachers">Teachers</a>
 
 @auth
     @if(auth()->user()->admin == 1)

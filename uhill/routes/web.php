@@ -25,10 +25,19 @@ Route::get('/', function () {
     ]);
 });
 
+Route::get('/teachers', function () {
+    return view('teachers', [
+        'teachers' => Teacher::all()
+    ]);
+});
+
+
 Route::get('/teacher/{id}', function ($id){
     return view('teacher',[
-        'teacher' => Teacher::find($id)
+        'teacher' => Teacher::find($id),
+        'courses' => Course::find($id)->where('teacher_id', $id)->get()
     ]);
+
 });
 
 Route::get('/course/{id}', function ($id){

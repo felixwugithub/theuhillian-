@@ -1,4 +1,8 @@
-<form action="/course/{$course['id']}" method="POST">
+
+
+<h2>You are reviewing {{$course['course_name']}}</h2>
+
+<form action="/course/{{$course['id']}}" method="POST">
     @csrf
     <h1>Add new review</h1>
 <label for="title">Review Title</label>

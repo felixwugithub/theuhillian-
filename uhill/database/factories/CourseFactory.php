@@ -19,12 +19,9 @@ class CourseFactory extends Factory
     {
         return [
             'course_name' => fake()->jobTitle(),
-            'course_id' => fake()->unique()->hexColor,
-            'teacher_name' => fake()->name,
             'rating' => fake()->biasedNumberBetween(0,10),
             'date_added'=> now(),
             'description'=> fake()->paragraph(5),
-
         ];
     }
 }
