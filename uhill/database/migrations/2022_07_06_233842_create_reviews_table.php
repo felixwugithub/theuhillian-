@@ -20,7 +20,9 @@ return new class extends Migration
             $table->index('user_id');
             $table->index('course_id');
             $table->string('title');
-            $table->integer('rating');
+            $table->integer('personality');
+            $table->integer('fairness');
+            $table->integer('easiness');
             $table->longText('content');
             $table->timestamps();
         });

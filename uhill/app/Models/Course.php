@@ -6,7 +6,9 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
 class Course extends Model
+
 {
+    protected $guarded = [];
     use HasFactory;
 
     public function reviews(): \Illuminate\Database\Eloquent\Relations\HasMany

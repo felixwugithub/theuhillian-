@@ -6,7 +6,7 @@
     <h3>Bio: {{$teacher['bio']}}</h3>
 
     @foreach($courses as $course)
-    <p>{{$course['course_name']}}</p>
+    <a href="../course/{{$course['id']}}">{{$course['course_name']}}</a>
     @endforeach
 
 @endsection

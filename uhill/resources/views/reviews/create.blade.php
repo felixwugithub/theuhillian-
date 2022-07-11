@@ -12,11 +12,27 @@
     <p>{{$message}}</p>
     @enderror
 
-    <label for="rating">Rating</label>
-    <input id="rating" type="number" name="rating"
-    value="{{old('rating')}}">
+    <label for="personality">Personality</label>
+    <input id="personality" type="number" name="personality"
+    value="{{old('personality')}}">
 
-    @error('rating')
+    @error('personality')
+    <p>{{$message}}</p>
+    @enderror
+
+    <label for="fairness">Fairness</label>
+    <input id="fairness" type="number" name="fairness"
+           value="{{old('fairness')}}">
+
+    @error('fairness')
+    <p>{{$message}}</p>
+    @enderror
+
+    <label for="easiness">Easiness</label>
+    <input id="easiness" type="number" name="easiness"
+           value="{{old('easiness')}}">
+
+    @error('easiness')
     <p>{{$message}}</p>
     @enderror
 

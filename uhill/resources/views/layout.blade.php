@@ -10,7 +10,7 @@
 <body>
 
 <h1>Rate My Uhill</h1>
-<a href="/">Home</a>
+<a href="/">All Courses</a>
 <a href="/teachers">Teachers</a>
 
 @auth

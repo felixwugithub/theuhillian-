@@ -17,7 +17,10 @@ return new class extends Migration
             $table->id();
             $table->string('course_name');
             $table->unsignedBigInteger('teacher_id');
-            $table->integer('rating');
+            $table->integer('personality');
+            $table->integer('fairness');
+            $table->integer('easiness');
+            $table->integer('overall')->default('1');
             $table->timestamp('date_added');
             $table->longText('description');
             $table->timestamp('created_at');

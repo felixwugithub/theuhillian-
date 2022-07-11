@@ -19,7 +19,9 @@ class CourseFactory extends Factory
     {
         return [
             'course_name' => fake()->jobTitle(),
-            'rating' => fake()->biasedNumberBetween(0,10),
+            'personality' => fake()->biasedNumberBetween(0,10),
+            'fairness' => fake()->biasedNumberBetween(0,10),
+            'easiness' => fake()->biasedNumberBetween(0,10),
             'date_added'=> now(),
             'description'=> fake()->paragraph(5),
         ];

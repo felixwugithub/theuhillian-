@@ -30,7 +30,7 @@
 
     <h2>
        <a href="/course/{{$course['id']}}"> {{$course['course_name']}}</a>
-        <h3>rating: {{$course['rating']}} / 10</h3>
+        <h3>rating: {{$course['overall']}} / 10</h3>
     </h2>
 
     <p>{{$course['description']}}</p>
