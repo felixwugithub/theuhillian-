@@ -15,9 +15,10 @@ return new class extends Migration
     {
         Schema::create('profiles', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
-            $table->text('description');
-            $table->string('url');
+            $table->integer('grade')->default(NULL);
+            $table->string('name')->default(NULL);
+            $table->text('description')->default(NULL);
+            $table->string('url')->default(NULL);
             $table->unsignedBigInteger('user_id');
             $table->timestamps();
             $table->index('user_id');

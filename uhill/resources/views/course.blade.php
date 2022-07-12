@@ -4,7 +4,7 @@
 
 <h1>{{$course['course_name']}}</h1>
 <h5>Overall rating: {{$course['overall']}} /10</h5>
-<h3>Teacher: {{$course['teacher_name']}}</h3>
+<a href="../teacher/{{$course->teacher['id']}}">Teacher: {{$course->teacher['name']}}</a>
 <p>Summary: {{$course['description']}}</p>
 
 
@@ -18,7 +18,7 @@
 @foreach($course->reviews as $review)
 
     <div style="background-color: aliceblue">
-    <p>{{$review->user['name']}}: </p>
+    <a href="../user/{{$review->user['id']}}">{{$review->user['username']}}: </a>
     <h5>Personality: {{$review['personality']}}/10</h5>
         <h5>Fairness: {{$review['fairness']}}/10</h5>
         <h5>Easiness: {{$review['easiness']}}/10</h5>
