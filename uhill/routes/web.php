@@ -21,9 +21,15 @@ use App\Http\Controllers\UserController;
 
 Route::get('/', function () {
     return view('home', [
-        'courses' => Course::all()
+        'courses' => Course::all(),
+        'sort_by' => 'id',
+        'order' => 0
     ]);
 });
+
+Route::post('/courses/', [\App\Http\Controllers\CourseController::class, 'sortBy']);
+
+Route::get('/courses/{sort_by}/{order}', [\App\Http\Controllers\CourseController::class, 'show']);
 
 Route::get('/teachers', function () {
     return view('teachers', [
@@ -46,6 +52,8 @@ Route::get('/course/{id}', function ($id){
         'reviews' => Review::find($id)
     ]);
 });
+
+
 
 Route::get('/register', [UserController::class, 'create']);
 
