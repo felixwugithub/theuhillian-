@@ -22,12 +22,12 @@ use App\Http\Controllers\UserController;
 Route::get('/', function () {
     return view('home', [
         'courses' => Course::all(),
-        'sort_by' => 'id',
-        'order' => 0
     ]);
 });
 
-Route::post('/courses/', [\App\Http\Controllers\CourseController::class, 'sortBy']);
+Route::post('/', [\App\Http\Controllers\CourseController::class, 'sortBy']);
+
+Route::post('/filter', [\App\Http\Controllers\CourseController::class, 'search'])->name('search');
 
 Route::get('/courses/{sort_by}/{order}', [\App\Http\Controllers\CourseController::class, 'show']);
 

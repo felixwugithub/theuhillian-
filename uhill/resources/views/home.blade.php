@@ -17,29 +17,30 @@
     <a href="/login">login</a>
 @endauth
 
+
+
 <h1>
     Courses at University Hill Secondary:
 </h1>
 
-<form action="/courses" method="post" \>
+<form action="/filter" method="post" \>
 
     @csrf
-    <button type="submit" value="Submit">sort by: </button>
+
+    Order By:
     <select name="sort_by" id="sort_by">
-        <option value=""></option>
-        <option value='overall'> Best Overall Rating </option>
-        <option value='personality'> Best Personality </option>
-        <option value='fairness'> Best Fairness </option>
-        <option value='easiness'> Best Easiness  </option>
+        <option value='overall' <?php if (isset($sort_by) && $sort_by=="overall") echo "selected";?>>Overall Rating</option>
+        <option value='personality' <?php if (isset($sort_by) && $sort_by=="personality") echo "selected";?>>Personality</option>
+        <option value='fairness' <?php if (isset($sort_by) && $sort_by=="fairness") echo "selected";?>>Fairness</option>
+        <option value='easiness' <?php if (isset($sort_by) && $sort_by=="easiness") echo "selected";?>>Easiness</option>
     </select>
     <select name="order" id="order">
-        <option value=  ></option>
-        <option value=1 > High-to-low</option>
-        <option value=0> Low-to-high</option>
-
+        <option value='desc' <?php if (isset($order) && $order=="desc") echo "selected";?>> High-to-low</option>
+        <option value='asc' <?php if (isset($order) && $order=="asc") echo "selected";?>> Low-to-high</option>
     </select>
-
-
+    Search Filter:
+    <input type="text" name="search" value="{{session('search')}}">
+    <button type="submit">Apply Filter</button>
 
 </form>
 
@@ -50,39 +51,14 @@
 @endif
 
 
-
-<p>currently sorting by: {{$sort_by}}, {{$order}}</p>
-
-
-@if($order == 1)
-@foreach ($courses->sortByDesc($sort_by) as $course)
-
-    <!-- REPEATED CODE 1A> </!-->
+@foreach ($courses as $course)
     <h2>
        <a href="/course/{{$course['id']}}"> {{$course['course_name']}}</a>
         <h3>rating: {{$course['overall']}} / 10</h3>
     </h2>
     <p>{{$course['description']}}</p>
 
-
 @endforeach
-
-@elseif($order == 0)
-    @foreach ($courses->sortBy($sort_by) as $course)
-
-        <!-- REPEATED CODE 1A> </!-->
-        <h2>
-            <a href="/course/{{$course['id']}}"> {{$course['course_name']}}</a>
-            <h3>rating: {{$course['overall']}} / 10</h3>
-        </h2>
-        <p>{{$course['description']}}</p>
-    @endforeach
-
-@endif
-
-
-
-
 @endsection
 
 
