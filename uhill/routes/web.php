@@ -21,7 +21,7 @@ use App\Http\Controllers\UserController;
 
 Route::get('/', function () {
     return view('home', [
-        'courses' => Course::all(),
+        'courses' => Course::all()
     ]);
 });
 
