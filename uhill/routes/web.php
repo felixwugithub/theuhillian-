@@ -25,8 +25,6 @@ Route::get('/', function () {
     ]);
 });
 
-Route::post('/', [\App\Http\Controllers\CourseController::class, 'sortBy']);
-
 Route::post('/filter', [\App\Http\Controllers\CourseController::class, 'search'])->name('search');
 
 Route::get('/courses/{sort_by}/{order}', [\App\Http\Controllers\CourseController::class, 'show']);
@@ -45,6 +43,10 @@ Route::get('/teacher/{id}', function ($id){
     ]);
 
 });
+
+Route::get('/profile/{id}', [\App\Http\Controllers\ProfileController::class, 'show']);
+Route::get('/profile/{id}/edit', [\App\Http\Controllers\ProfileController::class, 'edit']);
+Route::patch('/profile/{id}', [\App\Http\Controllers\ProfileController::class, 'update']);
 
 Route::get('/course/{id}', function ($id){
     return view('course', [

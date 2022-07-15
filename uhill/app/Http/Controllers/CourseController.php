@@ -39,11 +39,19 @@ class CourseController extends Controller
         }
 
         if($request->has('order') && $request->has('sort_by')) {
-
             if ($request['order'] == 'asc') {
                 $courses = $courses->sortBy($request['sort_by']);
             } elseif ($request['order'] == 'desc') {
                 $courses = $courses->sortByDesc($request['sort_by']);
+            }
+
+        }
+
+        if($request->has('sort_by') && $request['sort_by'] == 'numReviews'){
+            if ($request['order'] == 'asc') {
+                $courses = Course::withCount('reviews')->orderBy('reviews_count')->get();
+            } elseif ($request['order'] == 'desc') {
+                $courses = Course::withCount('reviews')->orderByDesc('reviews_count')->get();
             }
         }
 

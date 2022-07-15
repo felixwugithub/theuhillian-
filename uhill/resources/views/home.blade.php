@@ -4,19 +4,6 @@
 
 
 
-@auth
-<h3 >Welcome {{auth()->user()->name}}</h3>
-
-<form method="POST" action="/logout">
-    @csrf
-    <button type="submit">Logout</button>
-</form>
-
-@else
-    <a href="/register">register</a>
-    <a href="/login">login</a>
-@endauth
-
 
 
 <h1>
@@ -33,6 +20,8 @@
         <option value='personality' <?php if (isset($sort_by) && $sort_by=="personality") echo "selected";?>>Personality</option>
         <option value='fairness' <?php if (isset($sort_by) && $sort_by=="fairness") echo "selected";?>>Fairness</option>
         <option value='easiness' <?php if (isset($sort_by) && $sort_by=="easiness") echo "selected";?>>Easiness</option>
+        <option value='numReviews' <?php if (isset($sort_by) && $sort_by=="numReviews") echo "selected";?>>Number of Reviews</option>
+
     </select>
     <select name="order" id="order">
         <option value='desc' <?php if (isset($order) && $order=="desc") echo "selected";?>> High-to-low</option>

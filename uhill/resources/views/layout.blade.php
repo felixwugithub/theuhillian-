@@ -13,6 +13,25 @@
 <a href="/">All Courses</a>
 <a href="/teachers">Teachers</a>
 
+
+@auth
+    <h3 >Welcome {{auth()->user()->name}}</h3>
+
+    <form method="POST" action="/logout">
+        @csrf
+        <button type="submit">Logout</button>
+    </form>
+
+@else
+    <a href="/register">register</a>
+    <a href="/login">login</a>
+@endauth
+
+
+@auth
+<a href="/profile/{{auth()->user()->id}}">My Profile</a>
+@endauth
+
 @auth
     @if(auth()->user()->admin == 1)
         <a href="/teacher/create">Create Teacher</a>

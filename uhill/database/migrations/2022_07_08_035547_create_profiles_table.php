@@ -15,7 +15,7 @@ return new class extends Migration
     {
         Schema::create('profiles', function (Blueprint $table) {
             $table->id();
-            $table->integer('grade')->default(NULL);
+            $table->integer('grade')->default(0);
             $table->string('name')->default(NULL);
             $table->text('description')->default(NULL);
             $table->string('url')->default(NULL);
