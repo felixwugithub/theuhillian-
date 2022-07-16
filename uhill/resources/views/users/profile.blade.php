@@ -14,11 +14,14 @@
 
 <p>{{$description}}</p>
 
-<a href="{{$url}}"> $url </a>
+<p>{{$grade}}</p>
+
+<a href="{{$url}}">{{$url}}</a>
+
 
 @auth
 
-    @if(auth()->user('id') == $id)
+    @if(auth()->user()->id == $id)
 
 <a href="/profile/{{auth()->user()->id}}/edit"> Edit Profile</a>
 

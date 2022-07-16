@@ -30,8 +30,17 @@ class UserController extends Controller
 //            $formFields['admin'] = 0;
 //        }
 
+
+
         $user = User::create($formFields);
         auth()->login($user);
+
+        auth()->user()->profile()->create([
+            'name' => $user['name'],
+            'description' => 'Bio is Empty',
+            'url' => 'www.example.com',
+            'grade' => 0
+        ]);
 
         return redirect('/')->with('message', 'User created and logged in.');
 

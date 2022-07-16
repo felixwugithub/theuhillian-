@@ -18,17 +18,13 @@ class ProfileController extends Controller
             'username' => $user['username'],
             'date_joined' => $user['created_at'],
             'description' => $profile['description'],
-            'url' => $profile['url']
-
+            'url' => $profile['url'],
+            'grade' => $profile['grade']
             ]);
     }
 
    public function edit($id){
         $user = User::find($id);
-        return view('users.editProfile', [
-            'user' => $user,
-            'id' => $user
-            ]);
    }
 
     public function update($id){
