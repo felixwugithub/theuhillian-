@@ -10,11 +10,13 @@
 
 
 </head>
-<body>
+<body class="bg-red-100">
 
-<h1>Rate My Uhill</h1>
+<div>
+<h1 class="text-2xl">Rate My Uhill</h1>
 <a href="/">All Courses</a>
 <a href="/teachers">Teachers</a>
+</div>
 
 @auth
     <a href="/profile/{{auth()->user()->id}}">My Profile</a>
@@ -27,7 +29,7 @@
 
     <form method="POST" action="/logout">
         @csrf
-        <button type="submit">Logout</button>
+        <button class="bg-blue-200 text-white font-bold py-2 px-4 rounded hover:bg-blue-400" type="submit">Logout</button>
     </form>
 
 @else
