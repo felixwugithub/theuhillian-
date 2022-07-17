@@ -21,6 +21,7 @@ return new class extends Migration
             $table->integer('fairness');
             $table->integer('easiness');
             $table->integer('overall')->default('1');
+            $table->integer('review_count')->default('0');
             $table->timestamp('date_added');
             $table->longText('description');
             $table->timestamp('created_at');

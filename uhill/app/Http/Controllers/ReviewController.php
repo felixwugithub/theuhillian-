@@ -36,19 +36,24 @@ class ReviewController extends Controller
         $data['course_id'] = $id;
 
         auth()->user()->reviews()->create($data);
-
         $course =  Course::find($id);
         $personalityAvg = $course->reviews->avg('personality');
         $fairnessAvg = $course->reviews->avg('fairness');
         $easinessAvg = $course->reviews->avg('easiness');
         $overallAvg = ($personalityAvg + $easinessAvg + $fairnessAvg)/3;
 
-        Course::find($id)->update([
+        $course->update([
             'overall' => $overallAvg,
             'personality' => $personalityAvg,
             'easiness' => $easinessAvg,
             'fairness' => $fairnessAvg
         ],
+        );
+
+        $course->update(
+            [
+                'review_count' => count($course->reviews)
+            ]
         );
 
         return view('course', [

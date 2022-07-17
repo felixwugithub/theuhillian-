@@ -13,9 +13,13 @@
 <a href="/">All Courses</a>
 <a href="/teachers">Teachers</a>
 
+@auth
+    <a href="/profile/{{auth()->user()->id}}">My Profile</a>
+@endauth
+
 
 @auth
-    <h3 >Welcome {{auth()->user()->name}}</h3>
+    <h3 >Welcome {{auth()->user()->username}}</h3>
 
     <form method="POST" action="/logout">
         @csrf
@@ -27,10 +31,6 @@
     <a href="/login">login</a>
 @endauth
 
-
-@auth
-<a href="/profile/{{auth()->user()->id}}">My Profile</a>
-@endauth
 
 @auth
     @if(auth()->user()->admin == 1)

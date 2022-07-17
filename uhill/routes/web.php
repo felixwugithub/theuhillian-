@@ -46,12 +46,13 @@ Route::get('/teacher/{id}', function ($id){
 
 Route::get('/profile/{id}', [\App\Http\Controllers\ProfileController::class, 'show']);
 Route::get('/profile/{id}/edit', [\App\Http\Controllers\ProfileController::class, 'edit']);
-Route::patch('/profile/{id}', [\App\Http\Controllers\ProfileController::class, 'update']);
+Route::patch('/profile/{id}', [\App\Http\Controllers\ProfileController::class, 'update'])->name('profile');
 
 Route::get('/course/{id}', function ($id){
     return view('course', [
         'course' => Course::find($id),
-        'reviews' => Review::find($id)
+        'reviews' => Review::find($id),
+
     ]);
 });
 

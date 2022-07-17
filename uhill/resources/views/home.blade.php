@@ -20,7 +20,7 @@
         <option value='personality' <?php if (isset($sort_by) && $sort_by=="personality") echo "selected";?>>Personality</option>
         <option value='fairness' <?php if (isset($sort_by) && $sort_by=="fairness") echo "selected";?>>Fairness</option>
         <option value='easiness' <?php if (isset($sort_by) && $sort_by=="easiness") echo "selected";?>>Easiness</option>
-        <option value='numReviews' <?php if (isset($sort_by) && $sort_by=="numReviews") echo "selected";?>>Number of Reviews</option>
+        <option value='review_count' <?php if (isset($sort_by) && $sort_by=="review_count") echo "selected";?>>Number of Reviews</option>
 
     </select>
     <select name="order" id="order">

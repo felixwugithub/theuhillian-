@@ -5,12 +5,6 @@
 <form method="POST" action="/users">
     @csrf
 
-    <label for="name">Name</label>
-    <input type="text" name="name" value="{{old('name')}}">
-    @error('name')
-    <p>{{$message}}</p>
-    @enderror
-
     <label for="name">Username</label>
     <input type="text" name="username" value="{{old('username')}}">
     @error('username')

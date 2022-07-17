@@ -15,7 +15,6 @@ class UserController extends Controller
 
     public function store(Request $request){
         $formFields = $request->validate([
-            'name' => ['required', 'min:3'],
             'username' => 'required|string|regex:/\w*$/|max:255|unique:users,username',
             'email' =>'required|email|max:255|regex:/(.*)@learn.vsb.bc\.ca/i|unique:users',
             'password' =>['required', 'confirmed', 'min:6'],
@@ -36,9 +35,9 @@ class UserController extends Controller
         auth()->login($user);
 
         auth()->user()->profile()->create([
-            'name' => $user['name'],
-            'description' => 'Bio is Empty',
-            'url' => 'www.example.com',
+            'name' => 'No Name',
+            'description' => 'No Description',
+            'url' => 'https://example.com',
             'grade' => 0
         ]);
 

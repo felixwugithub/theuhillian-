@@ -16,9 +16,9 @@ return new class extends Migration
         Schema::create('profiles', function (Blueprint $table) {
             $table->id();
             $table->integer('grade')->default(0);
-            $table->string('name')->default(NULL);
-            $table->text('description')->default(NULL);
-            $table->string('url')->default(NULL);
+            $table->string('name')->default(NULL)->nullable();
+            $table->text('description')->default(NULL)->nullable();
+            $table->string('url')->default(NULL)->nullable();
             $table->unsignedBigInteger('user_id');
             $table->timestamps();
             $table->index('user_id');

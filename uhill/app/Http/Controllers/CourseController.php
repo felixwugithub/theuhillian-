@@ -31,6 +31,8 @@ class CourseController extends Controller
             'search' => $request['search']
         ]);
 
+        $courses = Course::all();
+
         if($request->has('search')) {
             $search = $request['search'];
             $courses = Course::query()->where('course_name', 'LIKE', "%{$search}%")
@@ -47,13 +49,18 @@ class CourseController extends Controller
 
         }
 
-        if($request->has('sort_by') && $request['sort_by'] == 'numReviews'){
+
+        if($request->has('sort_by') && $request['sort_by'] == 'review_count'){
             if ($request['order'] == 'asc') {
-                $courses = Course::withCount('reviews')->orderBy('reviews_count')->get();
+                $courses = $courses->sortBy($request['sort_by']);
+
             } elseif ($request['order'] == 'desc') {
-                $courses = Course::withCount('reviews')->orderByDesc('reviews_count')->get();
+                $courses = $courses->sortByDesc($request['sort_by']);
             }
         }
+
+
+
 
         return view('home', [
             'filtered' => true,
