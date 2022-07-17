@@ -1,4 +1,6 @@
+@extends('layout')
 
+@section('content')
 <h1>
     Login
 </h1>
@@ -18,3 +20,5 @@
     @enderror
     <button type="submit">Login</button>
 </form>
+
+@endsection

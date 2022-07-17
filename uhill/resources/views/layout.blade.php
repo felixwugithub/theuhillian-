@@ -7,6 +7,8 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Rate My Uhill</title>
     @vite('resources/css/app.css')
+
+
 </head>
 <body>
 
@@ -18,9 +20,10 @@
     <a href="/profile/{{auth()->user()->id}}">My Profile</a>
 @endauth
 
+<p>Test Paragraph</p>
 
 @auth
-    <h3 >Welcome {{auth()->user()->username}}</h3>
+    <h3>Welcome {{auth()->user()->username}}</h3>
 
     <form method="POST" action="/logout">
         @csrf

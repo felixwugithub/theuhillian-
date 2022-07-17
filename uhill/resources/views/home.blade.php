@@ -6,7 +6,7 @@
 
 
 
-<h1 class="text-3xl font-italic underline">
+<h1>
     Courses at University Hill Secondary:
 </h1>
 

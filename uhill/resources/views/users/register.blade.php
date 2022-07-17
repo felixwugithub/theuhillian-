@@ -1,3 +1,7 @@
+@extends('layout')
+
+@section('content')
+
 <h1>
     Register.
 </h1>
@@ -39,3 +43,5 @@
     <button type="submit">Register</button>
 
 </form>
+
+@endsection
