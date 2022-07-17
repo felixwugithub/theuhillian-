@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Course;
 use Illuminate\Http\Request;
+use Illuminate\Pagination\LengthAwarePaginator;
 use Illuminate\Support\Facades\Session;
 
 
@@ -27,28 +28,26 @@ class CourseController extends Controller
 
     public function search(Request $request){
 
+        $paginatePage = true;
+
         session([
             'search' => $request['search']
         ]);
 
-        $courses = Course::all();
 
         if($request->has('search')) {
             $search = $request['search'];
-            $courses = Course::query()->where('course_name', 'LIKE', "%{$search}%")
-                ->orWhere('description', 'LIKE', "%{$search}%")
-                ->get();
+            $paginated_courses = Course::query()->where('course_name', 'LIKE', "%{$search}%")
+                ->orWhere('description', 'LIKE', "%{$search}%")->paginate(20);
         }
 
         if($request->has('order') && $request->has('sort_by')) {
             if ($request['order'] == 'asc') {
-                $courses = $courses->sortBy($request['sort_by']);
+                $courses = $paginated_courses->sortBy($request['sort_by']);
             } elseif ($request['order'] == 'desc') {
-                $courses = $courses->sortByDesc($request['sort_by']);
+                $courses = $paginated_courses->sortByDesc($request['sort_by']);
             }
-
         }
-
 
         if($request->has('sort_by') && $request['sort_by'] == 'review_count'){
             if ($request['order'] == 'asc') {
@@ -59,14 +58,15 @@ class CourseController extends Controller
             }
         }
 
-
+        $courses = new LengthAwarePaginator($courses, $paginated_courses->total(), $paginated_courses->perPage());
 
 
         return view('home', [
             'filtered' => true,
             'courses' => $courses,
             'sort_by' => $request['sort_by'],
-            'order' => $request['order']
+            'order' => $request['order'],
+            'paginatePage' => $paginatePage
         ]);
 
     }

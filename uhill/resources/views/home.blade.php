@@ -6,7 +6,7 @@
 
 
 
-<h1>
+<h1 class="text-3xl font-italic underline">
     Courses at University Hill Secondary:
 </h1>
 
@@ -48,6 +48,10 @@
     <p>{{$course['description']}}</p>
 
 @endforeach
+
+@if($paginatePage)
+    {{$courses->links()}}
+@endif
 @endsection
 
 

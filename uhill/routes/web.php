@@ -4,6 +4,7 @@ use App\Http\Controllers\ReviewController;
 use App\Models\Course;
 use App\Models\Review;
 use App\Models\Teacher;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
 
@@ -21,11 +22,12 @@ use App\Http\Controllers\UserController;
 
 Route::get('/', function () {
     return view('home', [
-        'courses' => Course::all()
+        'courses' => Course::paginate(10),
+        'paginatePage' => true
     ]);
 });
 
-Route::post('/filter', [\App\Http\Controllers\CourseController::class, 'search'])->name('search');
+Route::any('/filter', [\App\Http\Controllers\CourseController::class, 'search'])->name('search');
 
 Route::get('/courses/{sort_by}/{order}', [\App\Http\Controllers\CourseController::class, 'show']);
 
