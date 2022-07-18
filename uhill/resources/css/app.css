@@ -2,3 +2,14 @@
 @tailwind components;
 @tailwind utilities;
 
+.font-slim {
+    font-family: 'Josefin Sans', sans-serif;
+}
+
+.font-sf {
+    font-family: 'Public Sans', sans-serif;
+}
+
+.font-sansMid{
+    font-family: 'Work Sans', sans-serif;
+}
