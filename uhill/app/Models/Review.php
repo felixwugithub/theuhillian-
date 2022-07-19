@@ -20,4 +20,13 @@ class Review extends Model
     {
         return $this->belongsTo(Course::class);
     }
+
+    public function reviewHelpfuls(): \Illuminate\Database\Eloquent\Relations\HasMany
+    {
+        return $this->hasMany(ReviewHelpful::class);
+    }
+
+    public function reviewHelpfuledBy(User $user){
+        return $this->reviewHelpfuls->contains('user_id', $user->id);
+    }
 }

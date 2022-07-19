@@ -26,6 +26,20 @@
     <h4>{{$review['title']}}</h4>
     <p>{{$review['content']}}</p>
     </div>
+<p>Liked by {{$review->reviewHelpfuls()->count()}}</p>
+    @if(!$review->reviewHelpfuledBy(auth()->user()))
+    <form action="{{route('course', $review->id)}}" method="post" class="mr-1">
+        @csrf
+        <button type="submit" class="text-blue-500">Helpful</button>
+    </form>
+    @else
+    <form action="{{route('course', $review->id)}}" method="post" class="mr-1">
+        @csrf
+        @method('DELETE')
+        <button type="submit" class="text-blue-500">Unhelpful</button>
+
+    </form>
+    @endif
 
 @endforeach
 

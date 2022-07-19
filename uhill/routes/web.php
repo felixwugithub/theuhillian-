@@ -22,7 +22,7 @@ use App\Http\Controllers\UserController;
 
 Route::get('/', function () {
     return view('home', [
-        'courses' => Course::paginate(10),
+        'courses' => Course::paginate(12),
         'paginatePage' => true
     ]);
 });
@@ -73,6 +73,9 @@ Route::post('/users/authenticate', [UserController::class, 'authenticate']);
 Route::get('/course/{id}/review', [ReviewController::class, 'create']);
 
 Route::post('/course/{id}', [ReviewController::class, 'store']);
+
+Route::post('/course/reviewHelpful/{review}', [\App\Http\Controllers\ReviewHelpfulController::class, 'store'])->name('course');
+Route::delete('/course/reviewHelpful/{review}', [\App\Http\Controllers\ReviewHelpfulController::class, 'destroy'])->name('course');
 
 Route::get('/teacher/create', [\App\Http\Controllers\TeacherController::class, 'create']);
 

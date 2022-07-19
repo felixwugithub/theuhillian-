@@ -14,9 +14,8 @@
 </div>
 
 
-<div class="flex font-sansMid text-xs items-center justify-center mx-auto pt-8">
+<div class="flex font-sansMid text-xs items-center justify-center mx-auto pt-8 mb-8">
     <form action="/filter" method="post" \>
-
      @csrf
 
         Order By:
@@ -45,27 +44,33 @@
     <p class="flex font-sansMid text-xs items-center justify-center mx-auto pt-8">No Info</p>
 @endif
 
-
+<div class="flex flex-wrap justify-center">
 @foreach ($courses as $course)
 
-    <div class="rounded bg-pink-100 p-2 m-2">
-
-    <div class="flex justify-left mx-10 pt-10 items-end">
+    <div class="rounded bg-pink-100 m-4 max-w-sm">
+    <div class="justify-left mx-10 pt-5 items-end">
          <a class="font-sf text-2xl" href="/course/{{$course['id']}}"> {{$course['course_name']}}</a>
         <h3 class="font-sans mx-auto text-lg">rating: {{$course['overall']}} / 10</h3>
     </div>
 
-    <div class="flex justify-left mx-10">
-
+    <div class="justify-left mx-10 pb-5">
     <p>{{$course['description']}}</p>
     </div>
 
     </div>
 @endforeach
+</div>
+
+
+
+    <div class="flex font-sansMid items-center justify-center mx-auto mb-10">
+
 
     @if($paginatePage)
-        {{$courses->links()}}
+        {{$courses->links('pagination')}}
     @endif
+
+    </div>
 
 
 @endsection

@@ -15,19 +15,27 @@
 </head>
 <body>
 
-<nav class="relative container mx-auto p-4">
-<div class="flex justify-evenly items-end">
+<nav class="relative container mx-auto px-2 py-5 bg-pink-100">
+<div class="max-w-screen-xl mx-auto px-5 flex items-center justify-between">
 
-    <div class="h-10 w-10">
-        <img src="images/uhillLogoBnW.jpeg" alt="Logo">
+    <div class="flex-nowrap">
+
+        <div class="float-left">
+        <img src="/images/uhillLogoBnW.jpeg" class="h-10 w-10 inline-flex" alt="Logo">
+        </div>
+
+        <div class="float-right">
+            <h1 class="font-sansMid text-4xl">Rate My Uhill</h1>
+        </div>
     </div>
 
-    <div class="hidden md:flex justify-center">
+
+    <div class="relative hidden lg:flex lg:items-center grid place-items-center mr-16 pr-2">
         <a href="/" class="hover:text-hotPink text-lg text-notRealBlack font-slim px-8">Courses</a>
         <a href="/teachers" class="hover:text-hotPink text-notRealBlack text-lg font-slim px-8">Teachers</a>
     </div>
 
-    <div class="hidden md:flex items-center">
+    <div class="hidden md:flex items-center ml-16">
 
     @auth
 

@@ -38,7 +38,7 @@ class CourseController extends Controller
         if($request->has('search')) {
             $search = $request['search'];
             $paginated_courses = Course::query()->where('course_name', 'LIKE', "%{$search}%")
-                ->orWhere('description', 'LIKE', "%{$search}%")->paginate(20);
+                ->orWhere('description', 'LIKE', "%{$search}%")->paginate(12);
         }
 
         if($request->has('order') && $request->has('sort_by')) {
