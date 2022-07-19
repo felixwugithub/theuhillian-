@@ -15,7 +15,7 @@
 </head>
 <body>
 
-<nav class="relative container mx-auto px-2 py-5 bg-pink-100">
+<nav class="relative container mx-auto px-2 py-5 bg-pink-100 sticky top-0">
 <div class="max-w-screen-xl mx-auto px-5 flex items-center justify-between">
 
     <div class="flex-nowrap">
