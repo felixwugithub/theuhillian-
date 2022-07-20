@@ -29,51 +29,58 @@ class CourseController extends Controller
 
     public function search(Request $request){
 
-        $paginatePage = true;
+        $no_results = false;
 
         session([
             'search' => $request['search']
         ]);
 
-//
-//$courses = Course::all();
-//        if($request->has('search') && $request['grade']!=13) {
-//            $search = $request['search'];
-//            $paginated_courses = Course::query()->where('course_name', 'LIKE', "%{$search}%")
-//                ->where('grade', $request['grade'])
-//                ->orWhere('grade', 13);
-//        }else{
-//            $search = $request['search'];
-//            $paginated_courses = Course::query()->where('course_name', 'LIKE', "%{$search}%")->paginate(12);
-//        }
-//
-//        if($request->has('order') && $request->has('sort_by')) {
-//            if ($request['order'] == 'asc') {
-//                $courses = $paginated_courses->sortBy($request['sort_by']);
-//            } elseif ($request['order'] == 'desc') {
-//                $courses = $paginated_courses->sortByDesc($request['sort_by']);
-//            }
-//        }
-//
-//        if($request->has('sort_by') && $request['sort_by'] == 'review_count'){
-//            if ($request['order'] == 'asc') {
-//                $courses = $courses->sortBy($request['sort_by']);
-//
-//            } elseif ($request['order'] == 'desc') {
-//                $courses = $courses->sortByDesc($request['sort_by']);
-//            }
-//        }
+        $search = $request['search'];
+        $grade = $request['grade'];
+        $order = $request['order'];
+        $sort_by = $request['sort_by'];
 
-   //     $courses = new LengthAwarePaginator($courses, $paginated_courses->total(), 12);
+        if($grade != 13){
+        $courses = Course::query()
+            ->where('course_name', 'LIKE', "%".$search."%")
+            ->where('grade', $grade)
+        ->get();}else{
+            $courses = Course::query()->where('course_name', 'LIKE', '%'.$search.'%')
+            ->get();
+        }
+
+
+if (!$courses->isEmpty()) {
+
+    if ($order == 'asc') {
+        $courses = $courses->toQuery()->orderBy($sort_by)->paginate(12);
+    } else {
+        $courses = $courses->toQuery()->orderByDesc($sort_by)->paginate(12);
+    }
+
+    $courses->appends([
+        'search' => $search,
+        'grade' => $grade,
+        'sort_by' => $sort_by,
+        'order' => $order
+    ]);
+
+}else{
+    $courses = Course::query()->paginate(12);
+    $no_results = true;
+}
+
+
+
+
 
         return view('home', [
-            'filtered' => true,
             'courses' => $courses,
-            'grade' => $request['grade'],
-            'sort_by' => $request['sort_by'],
-            'order' => $request['order'],
-            'paginatePage' => $paginatePage
+            'grade' => $grade,
+            'sort_by' => $sort_by,
+            'order' => $order,
+            'paginatePage' => true,
+            'no_results' => $no_results
         ]);
-
     }
 }

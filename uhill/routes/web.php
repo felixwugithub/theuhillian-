@@ -23,11 +23,12 @@ use App\Http\Controllers\UserController;
 Route::get('/', function () {
     return view('home', [
         'courses' => Course::paginate(12),
-        'paginatePage' => true
+        'paginatePage' => true,
+        'no_results' => false
     ]);
 });
 
-Route::any('/', [\App\Http\Controllers\CourseController::class, 'search'])->name('search');
+Route::any('/filter', [\App\Http\Controllers\CourseController::class, 'search'])->name('search');
 
 Route::get('/courses/{sort_by}/{order}', [\App\Http\Controllers\CourseController::class, 'show']);
 
