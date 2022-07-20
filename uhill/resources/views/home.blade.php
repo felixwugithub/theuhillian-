@@ -54,7 +54,7 @@
     </div>
 
     <div class="justify-left mx-10 pb-5">
-    <p>{{$course['description']}}</p>
+    <p>{{substr($course['description'],0,75)}}...</p>
     </div>
 
     </div>

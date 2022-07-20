@@ -13,3 +13,34 @@
 .font-sansMid{
     font-family: 'Work Sans', sans-serif;
 }
+
+.input1 {
+    height: 22px;
+    min-height: 22px;
+    color: rgb(231, 93, 93);
+    position: relative;
+    box-sizing: border-box;
+    border-color: #ff849a;
+    background-image: initial;
+    background-position-x: initial;
+    background-position-y: initial;
+    background-size: initial;
+    background-repeat-x: initial;
+    background-repeat-y: initial;
+    background-attachment: initial;
+    background-origin: initial;
+    background-clip: initial;
+
+    padding-left: 10px;
+    padding-top: 0px;
+    width: 100%;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 24px;
+    font-family: Clarkson, "Helvetica Neue", Helvetica, Arial, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    margin-top: 0px;
+
+
+}
