@@ -20,7 +20,7 @@
 
 
         <label for="sort_by"> Sort By: </label>
-        <select name="sort_by" id="sort_by">
+        <select name="sort_by" id="sort_by" class="bg-pink-100">
         <option value='overall' <?php if (isset($sort_by) && $sort_by=="overall") echo "selected";?>>Overall Rating</option>
         <option value='personality' <?php if (isset($sort_by) && $sort_by=="personality") echo "selected";?>>Personality</option>
         <option value='fairness' <?php if (isset($sort_by) && $sort_by=="fairness") echo "selected";?>>Fairness</option>
@@ -29,14 +29,14 @@
         </select>
 
         <label for="order"> Order by: </label>
-         <select name="order" id="order">
+         <select name="order" id="order" class="bg-pink-100">
         <option value='desc' <?php if (isset($order) && $order=="desc") echo "selected";?>> High-to-low</option>
         <option value='asc' <?php if (isset($order) && $order=="asc") echo "selected";?>> Low-to-high</option>
         </select>
 
 
         <label for="grade">in Grade: </label>
-        <select name="grade" id="grade">
+        <select name="grade" id="grade" class="bg-pink-100">
             <option value=13 <?php if (isset($grade) && $grade==13) echo "selected";?>> Any </option>
             <option value=8 <?php if (isset($grade) && $grade==8) echo "selected";?>> 8 </option>
             <option value=9 <?php if (isset($grade) && $grade==9) echo "selected";?>> 9 </option>
