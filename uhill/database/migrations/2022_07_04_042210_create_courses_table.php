@@ -17,6 +17,7 @@ return new class extends Migration
             $table->id();
             $table->string('course_name');
             $table->unsignedBigInteger('teacher_id');
+            $table->integer('grade')->default('13');
             $table->integer('personality');
             $table->integer('fairness');
             $table->integer('easiness');

@@ -27,7 +27,7 @@ Route::get('/', function () {
     ]);
 });
 
-Route::any('/filter', [\App\Http\Controllers\CourseController::class, 'search'])->name('search');
+Route::any('/', [\App\Http\Controllers\CourseController::class, 'search'])->name('search');
 
 Route::get('/courses/{sort_by}/{order}', [\App\Http\Controllers\CourseController::class, 'show']);
 

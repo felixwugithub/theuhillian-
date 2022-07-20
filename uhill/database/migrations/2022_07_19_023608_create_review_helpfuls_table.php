@@ -15,8 +15,8 @@ return new class extends Migration
     {
         Schema::create('reviewHelpfuls', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('user_id')->constrained()->onDelete('cascade');
-            $table->foreignId('review_id')->constrained()->onDelete('cascade');
+            $table->unsignedBigInteger('user_id');
+            $table->unsignedBigInteger('review_id');
             $table->timestamps();
         });
     }
@@ -28,6 +28,11 @@ return new class extends Migration
      */
     public function down()
     {
+        Schema::disableForeignKeyConstraints();
         Schema::dropIfExists('reviewHelpfuls');
+        Schema::dropIfExists('reviews');
+        Schema::dropIfExists('users');
+        Schema::enableForeignKeyConstraints();
+
     }
 };

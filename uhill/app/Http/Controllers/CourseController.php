@@ -26,6 +26,7 @@ class CourseController extends Controller
         ]);
     }
 
+
     public function search(Request $request){
 
         $paginatePage = true;
@@ -34,36 +35,41 @@ class CourseController extends Controller
             'search' => $request['search']
         ]);
 
+//
+//$courses = Course::all();
+//        if($request->has('search') && $request['grade']!=13) {
+//            $search = $request['search'];
+//            $paginated_courses = Course::query()->where('course_name', 'LIKE', "%{$search}%")
+//                ->where('grade', $request['grade'])
+//                ->orWhere('grade', 13);
+//        }else{
+//            $search = $request['search'];
+//            $paginated_courses = Course::query()->where('course_name', 'LIKE', "%{$search}%")->paginate(12);
+//        }
+//
+//        if($request->has('order') && $request->has('sort_by')) {
+//            if ($request['order'] == 'asc') {
+//                $courses = $paginated_courses->sortBy($request['sort_by']);
+//            } elseif ($request['order'] == 'desc') {
+//                $courses = $paginated_courses->sortByDesc($request['sort_by']);
+//            }
+//        }
+//
+//        if($request->has('sort_by') && $request['sort_by'] == 'review_count'){
+//            if ($request['order'] == 'asc') {
+//                $courses = $courses->sortBy($request['sort_by']);
+//
+//            } elseif ($request['order'] == 'desc') {
+//                $courses = $courses->sortByDesc($request['sort_by']);
+//            }
+//        }
 
-        if($request->has('search')) {
-            $search = $request['search'];
-            $paginated_courses = Course::query()->where('course_name', 'LIKE', "%{$search}%")
-                ->orWhere('description', 'LIKE', "%{$search}%")->paginate(12);
-        }
-
-        if($request->has('order') && $request->has('sort_by')) {
-            if ($request['order'] == 'asc') {
-                $courses = $paginated_courses->sortBy($request['sort_by']);
-            } elseif ($request['order'] == 'desc') {
-                $courses = $paginated_courses->sortByDesc($request['sort_by']);
-            }
-        }
-
-        if($request->has('sort_by') && $request['sort_by'] == 'review_count'){
-            if ($request['order'] == 'asc') {
-                $courses = $courses->sortBy($request['sort_by']);
-
-            } elseif ($request['order'] == 'desc') {
-                $courses = $courses->sortByDesc($request['sort_by']);
-            }
-        }
-
-        $courses = new LengthAwarePaginator($courses, $paginated_courses->total(), $paginated_courses->perPage());
-
+   //     $courses = new LengthAwarePaginator($courses, $paginated_courses->total(), 12);
 
         return view('home', [
             'filtered' => true,
             'courses' => $courses,
+            'grade' => $request['grade'],
             'sort_by' => $request['sort_by'],
             'order' => $request['order'],
             'paginatePage' => $paginatePage
