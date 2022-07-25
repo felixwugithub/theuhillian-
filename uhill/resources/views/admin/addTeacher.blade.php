@@ -1,7 +1,6 @@
 @auth
     @if(auth()->user()->admin == 1)
-
-        <form action="/teacher/store" method="POST">
+        <form action="/admin/teacher/store" method="POST">
             @csrf
             <h1>Add new teacher</h1>
             <label for="name">Name</label>
@@ -18,13 +17,27 @@
             @error('bio')
             <p>{{$message}}</p>
             @enderror
-            <button>Add Teacher</button>
-        </form>
 
+            <label for="assignCourse">Give Existing Course</label>
+            <select name="assignCourse" id="AssignCourse">
+                @foreach($courses as $course)
+                    <option value="{{$course['id']}}">{{$course['course_name']}}</option>
+                @endforeach
+            </select>
+
+
+
+
+            <button>Add Teacher</button>
+
+
+
+        </form>
 
     @else
         <p>You are not admin</p>
     @endif
+
 @endauth
 
 

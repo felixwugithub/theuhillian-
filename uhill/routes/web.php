@@ -38,11 +38,16 @@ Route::get('/teachers', function () {
     ]);
 });
 
+Route::get('/admin/teacher/create', [\App\Http\Controllers\TeacherController::class, 'create']);
+
+Route::post('/admin/teacher/store', [\App\Http\Controllers\TeacherController::class, 'store']);
+
 
 Route::get('/teacher/{id}', function ($id){
     return view('teacher',[
         'teacher' => Teacher::find($id),
-        'courses' => Course::find($id)->where('teacher_id', $id)->get()
+        'teacherCourses' => Course::find($id)->where('teacher_id', $id)->get(),
+
     ]);
 
 });
@@ -78,6 +83,3 @@ Route::post('/course/{id}', [ReviewController::class, 'store']);
 Route::post('/course/reviewHelpful/{review}', [\App\Http\Controllers\ReviewHelpfulController::class, 'store'])->name('course');
 Route::delete('/course/reviewHelpful/{review}', [\App\Http\Controllers\ReviewHelpfulController::class, 'destroy'])->name('course');
 
-Route::get('/teacher/create', [\App\Http\Controllers\TeacherController::class, 'create']);
-
-Route::post('/teacher/store', [\App\Http\Controllers\TeacherController::class, 'store']);

@@ -2,13 +2,16 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Course;
 use App\Models\Teacher;
 use Illuminate\Http\Request;
 
 class TeacherController extends Controller
 {
     public function create(){
-        return view('admin.addTeacher');
+        return view('admin.addTeacher')->with([
+            'courses' => Course::all()
+        ]);
     }
 
     public function store(Request $request){
@@ -18,8 +21,16 @@ class TeacherController extends Controller
         ]);
 
         $teacher = Teacher::create($formFields);
+
+        if(isset($request['assignCourse'])){
+            $id = $request['assignCourse'];
+            $course = Course::find($id);
+            $teacher->courses()->save($course);
+
+
+
         $teacherID = $teacher['id'];
-        return redirect('/teacher/{{$teacherID}}');
+        return redirect('/teacher/'.$teacherID);}
     }
 
 }
