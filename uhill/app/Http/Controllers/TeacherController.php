@@ -25,12 +25,23 @@ class TeacherController extends Controller
         if(isset($request['assignCourse'])){
             $id = $request['assignCourse'];
             $course = Course::find($id);
-            $teacher->courses()->save($course);
-
-
+            $courseClone = $course->replicate();
+            $teacher->courses()->save($courseClone);
 
         $teacherID = $teacher['id'];
         return redirect('/teacher/'.$teacherID);}
+    }
+
+    public function addCourse(Request $request, int $id){
+
+        $teacher = Teacher::find($id);
+        if(isset($request['assignCourse'])){
+            $id = $request['assignCourse'];
+            $course = Course::find($id);
+            $courseClone = $course->replicate();
+            $teacherID = $teacher['id'];
+            $teacher->courses()->save($courseClone);
+            return redirect('/teacher/'.$teacherID);}
     }
 
 }

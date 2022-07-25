@@ -15,8 +15,8 @@ return new class extends Migration
     {
         Schema::create('reviewHelpfuls', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('user_id');
-            $table->unsignedBigInteger('review_id');
+            $table->foreignId('user_id')->constrained()->cascadeOnDelete();
+            $table->foreignId('review_id')->constrained()->cascadeOnDelete();
             $table->timestamps();
         });
     }
