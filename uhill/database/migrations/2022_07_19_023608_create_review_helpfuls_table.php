@@ -13,7 +13,7 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('reviewHelpfuls', function (Blueprint $table) {
+        Schema::create('review_helpfuls', function (Blueprint $table) {
             $table->id();
             $table->foreignId('user_id')->constrained()->cascadeOnDelete();
             $table->foreignId('review_id')->constrained()->cascadeOnDelete();
@@ -29,7 +29,7 @@ return new class extends Migration
     public function down()
     {
         Schema::disableForeignKeyConstraints();
-        Schema::dropIfExists('reviewHelpfuls');
+        Schema::dropIfExists('review helpfuls');
         Schema::dropIfExists('reviews');
         Schema::dropIfExists('users');
         Schema::enableForeignKeyConstraints();

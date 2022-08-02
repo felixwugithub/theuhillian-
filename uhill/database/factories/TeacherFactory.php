@@ -18,8 +18,8 @@ class TeacherFactory extends Factory
     public function definition()
     {
         return [
-            'first_name' => fake()->unique()->firstName,
-            'last_name' => fake()->unique()->lastName,
+            'name' => fake()->unique()->firstName,
+            'subject' => fake()->city,
             'bio' =>fake()->paragraph(3)
         ];
     }

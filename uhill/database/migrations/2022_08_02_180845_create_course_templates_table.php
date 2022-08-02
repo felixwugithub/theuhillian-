@@ -13,15 +13,14 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('profiles', function (Blueprint $table) {
+        Schema::create('course_templates', function (Blueprint $table) {
+
             $table->id();
-            $table->integer('grade')->default(0);
-            $table->string('name')->default(NULL)->nullable();
-            $table->text('description')->default(NULL)->nullable();
-            $table->string('url')->default(NULL)->nullable();
-            $table->foreignId('user_id')->constrained()->cascadeOnDelete();
+            $table->string('course_name');
+            $table->integer('grade')->default('13');
+            $table->longText('description');
             $table->timestamps();
-            $table->index('user_id');
+
         });
     }
 
@@ -32,6 +31,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('profiles');
+        Schema::dropIfExists('course_templates');
     }
 };

@@ -39,17 +39,21 @@ Route::get('/teachers', function () {
 });
 
 Route::get('/admin/teacher/create', [\App\Http\Controllers\TeacherController::class, 'create']);
+Route::get('/admin/course/create', [\App\Http\Controllers\Course_Template_Controller::class, 'create']);
+
 
 Route::post('/admin/teacher/store', [\App\Http\Controllers\TeacherController::class, 'store']);
+Route::any('/teacher/{id}/assigncourse', [\App\Http\Controllers\TeacherController::class, 'assignCourse']);
+Route::post('/teacher/{id}/store', [\App\Http\Controllers\TeacherController::class, 'storeCourse']);
+
+
+Route::post('/admin/course/store', [\App\Http\Controllers\Course_Template_Controller::class, 'store']);
 
 
 Route::get('/teacher/{id}', function ($id){
     return view('teacher',[
         'teacher' => Teacher::find($id),
-        'teacherCourses' => Course::find($id)->where('teacher_id', $id)->get(),
-
     ]);
-
 });
 
 Route::get('/profile/{id}', [\App\Http\Controllers\ProfileController::class, 'show']);
@@ -63,7 +67,6 @@ Route::get('/course/{id}', function ($id){
 
     ]);
 });
-
 
 
 Route::get('/register', [UserController::class, 'create']);

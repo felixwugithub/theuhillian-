@@ -16,11 +16,11 @@ return new class extends Migration
         Schema::create('courses', function (Blueprint $table) {
             $table->id();
             $table->string('course_name');
-            $table->unsignedBigInteger('teacher_id');
+            $table->foreignId('teacher_id')->constrained()->cascadeOnDelete();
             $table->integer('grade')->default('13');
-            $table->integer('personality');
-            $table->integer('fairness');
-            $table->integer('easiness');
+            $table->integer('personality')->default('5');
+            $table->integer('fairness')->default('5');
+            $table->integer('easiness')->default('5');
             $table->integer('overall')->default('1');
             $table->integer('review_count')->default('0');
             $table->timestamp('date_added');

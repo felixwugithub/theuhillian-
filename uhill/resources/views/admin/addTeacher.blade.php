@@ -1,5 +1,6 @@
 @auth
     @if(auth()->user()->admin == 1)
+
         <form action="/admin/teacher/store" method="POST">
             @csrf
             <h1>Add new teacher</h1>
@@ -18,15 +19,13 @@
             <p>{{$message}}</p>
             @enderror
 
-            <label for="assignCourse">Give Existing Course</label>
-            <select name="assignCourse" id="AssignCourse">
-                @foreach($courses as $course)
-                    <option value="{{$course['id']}}">{{$course['course_name']}}</option>
-                @endforeach
-            </select>
+            <label for="subject">Subject</label>
+            <input id="subjct" type="text" name="subject"
+                   value="{{old('subject')}}">
 
-
-
+            @error('subject')
+            <p>{{$message}}</p>
+            @enderror
 
             <button>Add Teacher</button>
 

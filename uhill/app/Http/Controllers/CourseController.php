@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Course;
+use App\Models\Teacher;
 use Illuminate\Http\Request;
 use Illuminate\Pagination\LengthAwarePaginator;
 use Illuminate\Support\Facades\Session;
@@ -70,10 +71,6 @@ if (!$courses->isEmpty()) {
     $no_results = true;
 }
 
-
-
-
-
         return view('home', [
             'courses' => $courses,
             'grade' => $grade,
@@ -83,4 +80,11 @@ if (!$courses->isEmpty()) {
             'no_results' => $no_results
         ]);
     }
+
+
+
+
+
+
+
 }
