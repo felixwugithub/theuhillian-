@@ -14,7 +14,6 @@
             <button>Add Course to Teacher</button>
         </form>
 
-        <p>{{$teacherID}}</p>
     @else
         <p>You are not admin</p>
     @endif

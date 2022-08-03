@@ -2,6 +2,14 @@
 
 @section('content')
 
+
+    @if(isset($message))
+
+        <h3 class="text-lg">{{$message}}</h3>
+
+    @endif
+
+
 <h1>{{$course['course_name']}}</h1>
 <h5>Overall rating: {{$course['overall']}} /10</h5>
 <a href="../teacher/{{$course->teacher['id']}}">Teacher: {{$course->teacher['name']}}</a>

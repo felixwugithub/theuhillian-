@@ -64,7 +64,10 @@
     <div class="rounded bg-pink-100 m-4 max-w-sm">
     <div class="justify-left mx-10 pt-5 items-end">
          <a class="font-sf text-2xl" href="/course/{{$course['id']}}"> {{$course['course_name']}}</a>
+        <h2>{{$course->teacher->name}}</h2>
+        <br>
         <h3 class="font-sans mx-auto text-lg">rating: {{$course['overall']}} / 10</h3>
+
     </div>
     <div class="justify-left mx-10 pb-5">
     <p>{{substr($course['description'],0,75)}}...</p>

@@ -1,5 +1,7 @@
 
+import Vue from 'vue';
 
+import App from './vue/app';
 
 /**
  * First we will load all of this project's JavaScript dependencies which
@@ -32,5 +34,8 @@ Vue.component('example-component', require('./components/ExampleComponent.vue').
 
 const app = new Vue({
     el: '#app',
+    components: { App }
 });
+
+
 

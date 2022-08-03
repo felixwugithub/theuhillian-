@@ -40,7 +40,7 @@ class TeacherController extends Controller
     public function storeCourse(Request $request, int $id)
     {
         $teacher = Teacher::find($id);
-        $courseTemplate = CourseTemplate::find($request['id']);
+        $courseTemplate = CourseTemplate::find($request['assignCourse']);
 
         $course_name = $courseTemplate['course_name'];
         $grade = $courseTemplate['grade'];

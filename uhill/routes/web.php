@@ -64,7 +64,6 @@ Route::get('/course/{id}', function ($id){
     return view('course', [
         'course' => Course::find($id),
         'reviews' => Review::find($id),
-
     ]);
 });
 

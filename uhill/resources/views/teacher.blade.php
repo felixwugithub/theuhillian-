@@ -12,7 +12,7 @@
 @auth
     @if(auth()->user()->admin == 1)
 
-        <a href="/teacher/{{$teacher['id']}}/assigncourse"> {{$teacher['id']}} </a>
+        <a class="text-pink-400" href="/teacher/{{$teacher['id']}}/assigncourse"> Assign a course </a>
 
     @endif
 
