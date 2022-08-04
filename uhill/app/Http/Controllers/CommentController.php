@@ -16,12 +16,16 @@ class CommentController extends Controller
             'comment' => 'required'
         ]);
 
+        $comment = new Comment();
+        $comment->content = $data['comment'];
+        auth()->user()->comments()->save($comment);
+        $course = Course::find($id);
+        $course->comments()->save($comment);
 
+        
         return Redirect::route('courseListing', $id)->with([
             'showComments' => true
         ]);
-
-
     }
 
 
