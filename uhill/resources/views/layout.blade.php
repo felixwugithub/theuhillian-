@@ -69,7 +69,6 @@
     @if(auth()->user()->admin == 1)
         <a href="/admin/teacher/create">Create Teacher</a>
         <a href="/admin/course/create">Create Course</a>
-
     @endif
 @endauth
 
