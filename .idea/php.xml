@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="PhpIncludePathManager">
+    <include_path>
+      <path value="$PROJECT_DIR$/uhill/vendor/theseer/tokenizer" />
+      <path value="$PROJECT_DIR$/uhill/vendor/nunomaduro/collision" />
+      <path value="$PROJECT_DIR$/uhill/vendor/vlucas/phpdotenv" />
+      <path value="$PROJECT_DIR$/uhill/vendor/facade/ignition-contracts" />
+      <path value="$PROJECT_DIR$/uhill/vendor/phar-io/version" />
+      <path value="$PROJECT_DIR$/uhill/vendor/phar-io/manifest" />
+      <path value="$PROJECT_DIR$/uhill/vendor/doctrine/lexer" />
+      <path value="$PROJECT_DIR$/uhill/vendor/doctrine/instantiator" />
+      <path value="$PROJECT_DIR$/uhill/vendor/doctrine/inflector" />
+      <path value="$PROJECT_DIR$/uhill/vendor/league/config" />
+      <path value="$PROJECT_DIR$/uhill/vendor/league/commonmark" />
+      <path value="$PROJECT_DIR$/uhill/vendor/league/mime-type-detection" />
+      <path value="$PROJECT_DIR$/uhill/vendor/league/flysystem" />
+      <path value="$PROJECT_DIR$/uhill/vendor/spatie/backtrace" />
+      <path value="$PROJECT_DIR$/uhill/vendor/spatie/ignition" />
+      <path value="$PROJECT_DIR$/uhill/vendor/spatie/laravel-ignition" />
+      <path value="$PROJECT_DIR$/uhill/vendor/spatie/flare-client-php" />
+      <path value="$PROJECT_DIR$/uhill/vendor/tijsverkoyen/css-to-inline-styles" />
+      <path value="$PROJECT_DIR$/uhill/vendor/dflydev/dot-access-data" />
+      <path value="$PROJECT_DIR$/uhill/vendor/symfony/polyfill-mbstring" />
+      <path value="$PROJECT_DIR$/uhill/vendor/symfony/deprecation-contracts" />
+      <path value="$PROJECT_DIR$/uhill/vendor/symfony/finder" />
+      <path value="$PROJECT_DIR$/uhill/vendor/dragonmantank/cron-expression" />
+      <path value="$PROJECT_DIR$/uhill/vendor/symfony/routing" />
+      <path value="$PROJECT_DIR$/uhill/vendor/symfony/polyfill-intl-grapheme" />
+      <path value="$PROJECT_DIR$/uhill/vendor/symfony/css-selector" />
+      <path value="$PROJECT_DIR$/uhill/vendor/symfony/polyfill-intl-normalizer" />
+      <path value="$PROJECT_DIR$/uhill/vendor/composer" />
+      <path value="$PROJECT_DIR$/uhill/vendor/symfony/polyfill-php80" />
+      <path value="$PROJECT_DIR$/uhill/vendor/symfony/mailer" />
+      <path value="$PROJECT_DIR$/uhill/vendor/symfony/mime" />
+      <path value="$PROJECT_DIR$/uhill/vendor/egulias/email-validator" />
+      <path value="$PROJECT_DIR$/uhill/vendor/symfony/polyfill-ctype" />
+      <path value="$PROJECT_DIR$/uhill/vendor/symfony/error-handler" />
+      <path value="$PROJECT_DIR$/uhill/vendor/symfony/polyfill-php72" />
+      <path value="$PROJECT_DIR$/uhill/vendor/symfony/event-dispatcher-contracts" />
+      <path value="$PROJECT_DIR$/uhill/vendor/symfony/polyfill-intl-idn" />
+      <path value="$PROJECT_DIR$/uhill/vendor/symfony/console" />
+      <path value="$PROJECT_DIR$/uhill/vendor/symfony/event-dispatcher" />
+      <path value="$PROJECT_DIR$/uhill/vendor/symfony/var-dumper" />
+      <path value="$PROJECT_DIR$/uhill/vendor/symfony/http-foundation" />
+      <path value="$PROJECT_DIR$/uhill/vendor/symfony/polyfill-php81" />
+      <path value="$PROJECT_DIR$/uhill/vendor/symfony/http-kernel" />
+      <path value="$PROJECT_DIR$/uhill/vendor/phpdocumentor/reflection-docblock" />
+      <path value="$PROJECT_DIR$/uhill/vendor/symfony/translation-contracts" />
+      <path value="$PROJECT_DIR$/uhill/vendor/phpdocumentor/type-resolver" />
+      <path value="$PROJECT_DIR$/uhill/vendor/symfony/service-contracts" />
+      <path value="$PROJECT_DIR$/uhill/vendor/phpdocumentor/reflection-common" />
+      <path value="$PROJECT_DIR$/uhill/vendor/symfony/string" />
+      <path value="$PROJECT_DIR$/uhill/vendor/symfony/translation" />
+      <path value="$PROJECT_DIR$/uhill/vendor/symfony/process" />
+      <path value="$PROJECT_DIR$/uhill/vendor/psr/simple-cache" />
+      <path value="$PROJECT_DIR$/uhill/vendor/psr/http-factory" />
+      <path value="$PROJECT_DIR$/uhill/vendor/psr/container" />
+      <path value="$PROJECT_DIR$/uhill/vendor/psr/http-client" />
+      <path value="$PROJECT_DIR$/uhill/vendor/psr/http-message" />
+      <path value="$PROJECT_DIR$/uhill/vendor/monolog/monolog" />
+      <path value="$PROJECT_DIR$/uhill/vendor/psr/event-dispatcher" />
+      <path value="$PROJECT_DIR$/uhill/vendor/psr/log" />
+      <path value="$PROJECT_DIR$/uhill/vendor/phpspec/prophecy" />
+      <path value="$PROJECT_DIR$/uhill/vendor/fakerphp/faker" />
+      <path value="$PROJECT_DIR$/uhill/vendor/fruitcake/php-cors" />
+      <path value="$PROJECT_DIR$/uhill/vendor/ramsey/collection" />
+      <path value="$PROJECT_DIR$/uhill/vendor/phpoption/phpoption" />
+      <path value="$PROJECT_DIR$/uhill/vendor/ramsey/uuid" />
+      <path value="$PROJECT_DIR$/uhill/vendor/webmozart/assert" />
+      <path value="$PROJECT_DIR$/uhill/vendor/ralouphie/getallheaders" />
+      <path value="$PROJECT_DIR$/uhill/vendor/guzzlehttp/promises" />
+      <path value="$PROJECT_DIR$/uhill/vendor/guzzlehttp/psr7" />
+      <path value="$PROJECT_DIR$/uhill/vendor/guzzlehttp/guzzle" />
+      <path value="$PROJECT_DIR$/uhill/vendor/sebastian/type" />
+      <path value="$PROJECT_DIR$/uhill/vendor/sebastian/diff" />
+      <path value="$PROJECT_DIR$/uhill/vendor/sebastian/lines-of-code" />
+      <path value="$PROJECT_DIR$/uhill/vendor/sebastian/object-enumerator" />
+      <path value="$PROJECT_DIR$/uhill/vendor/sebastian/comparator" />
+      <path value="$PROJECT_DIR$/uhill/vendor/sebastian/code-unit" />
+      <path value="$PROJECT_DIR$/uhill/vendor/sebastian/exporter" />
+      <path value="$PROJECT_DIR$/uhill/vendor/sebastian/cli-parser" />
+      <path value="$PROJECT_DIR$/uhill/vendor/sebastian/version" />
+      <path value="$PROJECT_DIR$/uhill/vendor/sebastian/complexity" />
+      <path value="$PROJECT_DIR$/uhill/vendor/sebastian/recursion-context" />
+      <path value="$PROJECT_DIR$/uhill/vendor/sebastian/resource-operations" />
+      <path value="$PROJECT_DIR$/uhill/vendor/sebastian/environment" />
+      <path value="$PROJECT_DIR$/uhill/vendor/filp/whoops" />
+      <path value="$PROJECT_DIR$/uhill/vendor/sebastian/global-state" />
+      <path value="$PROJECT_DIR$/uhill/vendor/sebastian/code-unit-reverse-lookup" />
+      <path value="$PROJECT_DIR$/uhill/vendor/brick/math" />
+      <path value="$PROJECT_DIR$/uhill/vendor/sebastian/object-reflector" />
+      <path value="$PROJECT_DIR$/uhill/vendor/laravel/sail" />
+      <path value="$PROJECT_DIR$/uhill/vendor/laravel/sanctum" />
+      <path value="$PROJECT_DIR$/uhill/vendor/laravel/tinker" />
+      <path value="$PROJECT_DIR$/uhill/vendor/laravel/serializable-closure" />
+      <path value="$PROJECT_DIR$/uhill/vendor/laravel/framework" />
+      <path value="$PROJECT_DIR$/uhill/vendor/psy/psysh" />
+      <path value="$PROJECT_DIR$/uhill/vendor/nette/schema" />
+      <path value="$PROJECT_DIR$/uhill/vendor/nette/utils" />
+      <path value="$PROJECT_DIR$/uhill/vendor/hamcrest/hamcrest-php" />
+      <path value="$PROJECT_DIR$/uhill/vendor/graham-campbell/result-type" />
+      <path value="$PROJECT_DIR$/uhill/vendor/mockery/mockery" />
+      <path value="$PROJECT_DIR$/uhill/vendor/voku/portable-ascii" />
+      <path value="$PROJECT_DIR$/uhill/vendor/nesbot/carbon" />
+      <path value="$PROJECT_DIR$/uhill/vendor/phpunit/php-timer" />
+      <path value="$PROJECT_DIR$/uhill/vendor/phpunit/php-file-iterator" />
+      <path value="$PROJECT_DIR$/uhill/vendor/phpunit/php-invoker" />
+      <path value="$PROJECT_DIR$/uhill/vendor/myclabs/deep-copy" />
+      <path value="$PROJECT_DIR$/uhill/vendor/phpunit/php-text-template" />
+      <path value="$PROJECT_DIR$/uhill/vendor/phpunit/phpunit" />
+      <path value="$PROJECT_DIR$/uhill/vendor/phpunit/php-code-coverage" />
+      <path value="$PROJECT_DIR$/uhill/vendor/nikic/php-parser" />
+    </include_path>
+  </component>
+  <component name="PhpProjectSharedConfiguration" php_language_level="8.0">
+    <option name="suggestChangeDefaultLanguageLevel" value="false" />
+  </component>
+  <component name="PhpUnit">
+    <phpunit_settings>
+      <PhpUnitSettings custom_loader_path="$PROJECT_DIR$/uhill/vendor/autoload.php" />
+    </phpunit_settings>
+  </component>
+</project>
