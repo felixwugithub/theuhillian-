@@ -22,7 +22,7 @@ class CommentController extends Controller
         $course = Course::find($id);
         $course->comments()->save($comment);
 
-        
+
         return Redirect::route('courseListing', $id)->with([
             'showComments' => true
         ]);
