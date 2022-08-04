@@ -3,10 +3,6 @@
 @section('content')
 
 
-
-
-
-
     <div class="flex font-sf items-center justify-center mx-auto pt-8">
     <h1 class="mt-4 text-notRealBlack text-xl md:text-4xl tracking-tight">
     Courses at University Hill Secondary
@@ -48,7 +44,8 @@
 
         <label for="search"> Search for: </label>
         <input class="bg-pink-100" type="text" id="search" name="search" value="{{session('search')}}">
-        <button type="submit" class="bg-hotPink text-white font-slim rounded hover:bg-pink-500">Filter</button>
+
+        <button type="submit" class="bg-hotPink text-white font-slim rounded hover:bg-pink-500"> Filter</button>
 
     </form>
 
@@ -60,6 +57,7 @@
 @endif
 
 <div class="flex flex-wrap justify-center">
+
 @foreach ($courses as $course)
     <div class="rounded bg-pink-100 m-4 max-w-sm">
     <div class="justify-left mx-10 pt-5 items-end">

@@ -17,7 +17,7 @@
         @foreach(\App\Models\Teacher::all()->sortBy('name') as $teacher)
 
             <div class="m-1 b-1 bg-pink-100 justify-content-center text-center">
-            <h2 >
+            <h2>
                 <a href="/teacher/{{$teacher['id']}}"> {{$teacher['name']}}</a>
             </h2>
 
