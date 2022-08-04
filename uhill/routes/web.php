@@ -65,8 +65,9 @@ Route::get('/course/{id}', function ($id){
         'course' => Course::find($id),
         'reviews' => Review::find($id),
     ]);
-});
+})->name('courseListing');
 
+Route::any('/course/{id}/courseComment', [\App\Http\Controllers\CommentController::class, 'store'])->name('courseComment');
 
 Route::get('/register', [UserController::class, 'create']);
 

@@ -54,10 +54,12 @@ class User extends Authenticatable
         return $this->hasMany(Review::class);
     }
 
-    public function profile(){
+    public function profile(): \Illuminate\Database\Eloquent\Relations\HasOne
+    {
         return $this->hasOne(Profile::class);
     }
-    public function reviewHelpfuls(){
+    public function reviewHelpfuls(): \Illuminate\Database\Eloquent\Relations\HasMany
+    {
         return $this->hasMany(ReviewHelpful::class);
     }
 }

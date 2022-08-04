@@ -38,7 +38,10 @@ class ReviewController extends Controller
             ]);
 
             $data['course_id'] = $id;
+
             auth()->user()->reviews()->create($data);
+
+
             $course =  Course::find($id);
 
             $personalityAvg = $course->reviews->avg('personality');

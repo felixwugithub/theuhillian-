@@ -15,6 +15,11 @@ class Course extends Model
     {
         return $this->hasMany(Review::class);
     }
+
+    public function comments(): \Illuminate\Database\Eloquent\Relations\HasMany
+    {
+        return $this->hasMany(Comment::class);
+    }
     public function teacher(): \Illuminate\Database\Eloquent\Relations\BelongsTo
     {
         return $this->belongsTo(Teacher::class);
