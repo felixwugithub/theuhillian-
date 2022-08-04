@@ -72,13 +72,18 @@
             <form action="{{route('courseComment', $course['id'])}}" method="post">
                 @method('HEAD')
                 @csrf
-                <label for="comment">comment:</label>
-                <input type="text" name="comment">
+                <label for="content">comment:</label>
+                <input type="text" name="content">
+                @error('content')
+                <p>{{$message}}</p>
+                @enderror
                 <button type="submit" class="text-blue-500">Submit</button>
             </form>
         </div>
 
-
+        @foreach($course->comments->sortByDesc('created_at') as $comment)
+            <p>{{$comment->user->username}}:{{$comment['content']}}</p>
+        @endforeach
 
 
     </div>
