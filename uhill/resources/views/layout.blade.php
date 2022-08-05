@@ -6,7 +6,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@200;300&family=Public+Sans:wght@800&family=Work+Sans&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Pathway+Gothic+One&display=swap" rel="stylesheet">
-
+    <link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@300&display=swap" rel="stylesheet">
 
     <meta charset="UTF-8">
     <meta name="viewport"
@@ -16,7 +16,7 @@
     <title>Rate My Uhill</title>
     @vite('resources/css/app.css')
 
-    
+
 
 </head>
 <body>
@@ -27,12 +27,14 @@
     <div class="flex-nowrap">
 
         <div class="float-left">
-        <img src="/images/uhillLogoBnW.jpeg" class="h-10 w-10 inline-flex" alt="Logo">
+            <a href="/"><img src="/images/uhillLogoBnW.jpeg" class="h-10 w-10 inline-flex" alt="Logo">
+            <div class="float-right">
+                <h1 class="font-comfortaa hover:text-hotPink text-4xl">Rate My Uhill</h1>
+            </div>
+            </a>
         </div>
 
-        <div class="float-right">
-            <h1 class="font-sansMid text-4xl">Rate My Uhill</h1>
-        </div>
+
     </div>
 
 

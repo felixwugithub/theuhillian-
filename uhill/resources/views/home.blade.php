@@ -6,13 +6,11 @@
     <div class="flex font-sf items-center justify-center mx-auto pt-8">
     <h1 class="mt-4 text-notRealBlack text-xl md:text-3xl tracking-tight">
     Courses at University Hill Secondary
-        <p>Bruh</p>
-
     </h1>
 </div>
 
 
-<div class="flex font-sansMid text-xs items-center justify-center mx-auto pt-8 mb-8">
+<div class="flex font-slim text-sm items-center justify-center mx-auto pt-8 mb-8">
     <form action="/filter" method="post" \>
      @csrf
 
@@ -27,7 +25,7 @@
         </select>
 
         <label for="order"> Order by: </label>
-         <select name="order" id="order" class="bg-pink-100">
+        <select name="order" id="order" class="bg-pink-100">
         <option value='desc' <?php if (isset($order) && $order=="desc") echo "selected";?>> High-to-low</option>
         <option value='asc' <?php if (isset($order) && $order=="asc") echo "selected";?>> Low-to-high</option>
         </select>
