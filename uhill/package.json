@@ -68,6 +68,7 @@
         "fast-json-stable-stringify": "^2.1.0",
         "fastq": "^1.13.0",
         "fill-range": "^7.0.1",
+        "flowbite": "^1.5.1",
         "follow-redirects": "^1.15.1",
         "fraction.js": "^4.2.0",
         "fsevents": "^2.3.2",

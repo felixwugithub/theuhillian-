@@ -7,6 +7,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@200;300&family=Public+Sans:wght@800&family=Work+Sans&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Pathway+Gothic+One&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@300&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://unpkg.com/flowbite@1.5.1/dist/flowbite.min.css" />
 
     <meta charset="UTF-8">
     <meta name="viewport"
@@ -15,9 +16,7 @@
 
     <title>Rate My Uhill</title>
     @vite('resources/css/app.css')
-
-
-
+    <script src="dist/flowbite.js"></script>
 </head>
 <body>
 
@@ -77,5 +76,8 @@
 
 @yield('content')
 
+
+<script src="dist/flowbite.js"></script>
+<script src="https://unpkg.com/flowbite@1.5.1/dist/flowbite.js"></script>
 </body>
 </html>
