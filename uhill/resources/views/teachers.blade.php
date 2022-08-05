@@ -29,6 +29,8 @@
 
     <div id="rating" class="tabcontent">
 
+        <h1 class="text-4xl">University Hill Teacher Rankings</h1>
+
 
         @foreach(\App\Models\Teacher::all()->sortBy('overall') as $teacher)
 
