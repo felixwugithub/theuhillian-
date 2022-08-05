@@ -28,7 +28,7 @@
         <div class="float-left">
             <a href="/"><img src="/images/uhillLogoBnW.jpeg" class="h-10 w-10 inline-flex" alt="Logo">
             <div class="float-right">
-                <h1 class="font-comfortaa hover:text-hotPink text-4xl">Rate My Uhill</h1>
+                <h1 class="font-comfortaa hover:text-hotPink text-4xl invisible md:visible">Rate My Uhill</h1>
             </div>
             </a>
         </div>
@@ -37,12 +37,12 @@
     </div>
 
 
-    <div class="relative hidden lg:flex lg:items-center grid place-items-center mr-16 pr-2">
-        <a href="/" class="hover:text-hotPink text-lg text-notRealBlack font-slim px-8">Courses</a>
-        <a href="/teachers" class="hover:text-hotPink text-notRealBlack text-lg font-slim px-8">Teachers</a>
+    <div class="relative lg:flex lg:items-center grid place-items-center md:mr-16 md:pr-2">
+        <a href="/" class="hover:text-hotPink text-lg text-notRealBlack font-slim md:px-8">Courses</a>
+        <a href="/teachers" class="hover:text-hotPink text-notRealBlack text-lg font-slim md:px-8">Teachers</a>
     </div>
 
-    <div class="hidden md:flex items-center ml-16">
+    <div class=" md:flex items-center ml-16">
 
     @auth
 

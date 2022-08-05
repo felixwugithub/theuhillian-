@@ -22,7 +22,9 @@ module.exports = {
               defaultPurple: '#bcaac2',
               defaultMidBlue: '#9CB4CC',
               defaultDarkerBlue: '#748Da6',
-              notRealBlack: '#2f0000'
+              notRealBlack: '#2f0000',
+              felixSalmon: '#fcdfdc'
+
           }
     },
 
