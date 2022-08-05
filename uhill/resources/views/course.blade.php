@@ -2,12 +2,21 @@
 
 @section('content')
 
+    @if(session()->get('scroll') !== null)
 
-
+        <body onload="myFunction()">
+        <script>
+            function myFunction() {
+                alert("Bruh");
+            }
+        </script>
+    @endif
 
     @if(isset($message))
         <h3 class="text-lg">{{$message}}</h3>
     @endif
+
+    <h1 class="text-9xl">{{session()->get('scroll')}}</h1>
 
         <h1>{{$course['course_name']}}</h1>
         <h5>Overall rating: {{$course['overall']}} /10</h5>
@@ -23,6 +32,7 @@
     <!-- Tab links -->
     @if(session()->get('showComments') !== null)
         <body onload="show('comments')"></body>
+
     @else
     <body onload="show('reviews')"></body>
     @endif
@@ -93,6 +103,8 @@
             </form>
         </div>
 
+
+
         @foreach($course->comments->sortByDesc('created_at') as $comment)
         <div class="bg-pink-100 rounded-pill m-1 b-1">
             <p class="text-sm">{{$comment->user->username}}:</p>
@@ -121,7 +133,7 @@
     <script src="/js/parts.js"> </script>
 
 
-
+    </body>
 @endsection
 
 
