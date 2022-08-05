@@ -23,3 +23,8 @@ function show(section) {
 function showForm(form){
     document.getElementById(form).style.display = "block";
 }
+
+
+function scrollWin() {
+    window.scrollTo(300, 500);
+}

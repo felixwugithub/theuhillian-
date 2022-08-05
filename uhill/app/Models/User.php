@@ -48,12 +48,10 @@ class User extends Authenticatable
     {
         return $this->hasMany(Comment::class);
     }
-
     public function reviews(): \Illuminate\Database\Eloquent\Relations\HasMany
     {
         return $this->hasMany(Review::class);
     }
-
     public function profile(): \Illuminate\Database\Eloquent\Relations\HasOne
     {
         return $this->hasOne(Profile::class);
@@ -62,4 +60,9 @@ class User extends Authenticatable
     {
         return $this->hasMany(ReviewHelpful::class);
     }
+    public function commentLikes(): \Illuminate\Database\Eloquent\Relations\HasMany
+    {
+        return $this->hasMany(CommentLike::class);
+    }
+
 }

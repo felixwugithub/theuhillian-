@@ -16,6 +16,7 @@
     <title>Rate My Uhill</title>
     @vite('resources/css/app.css')
 
+    
 
 </head>
 <body>

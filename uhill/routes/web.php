@@ -67,6 +67,9 @@ Route::get('/course/{id}', function ($id){
 })->name('courseListing');
 
 Route::any('/course/{id}/courseComment', [\App\Http\Controllers\CommentController::class, 'store'])->name('courseComment');
+Route::any('courseCommentLike/{id}', [\App\Http\Controllers\CommentLikeController::class, 'store'])->name('courseCommentLike');
+Route::any('courseCommentUnlike/{id}', [\App\Http\Controllers\CommentLikeController::class, 'destroy'])->name('courseCommentUnlike');
+
 
 Route::get('/register', [UserController::class, 'create']);
 

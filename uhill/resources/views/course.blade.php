@@ -3,10 +3,10 @@
 @section('content')
 
 
+
+
     @if(isset($message))
-
         <h3 class="text-lg">{{$message}}</h3>
-
     @endif
 
         <h1>{{$course['course_name']}}</h1>
@@ -47,7 +47,7 @@
 
          <p>Liked by {{$review->reviewHelpfuls()->count()}}</p>
 
-
+            @auth
             @if(!$review->reviewHelpfuledBy(auth()->user()))
                 <form action="{{route('course', $review->id)}}" method="post" class="mr-1">@csrf
                     <button type="submit" class="text-blue-500">Helpful</button>
@@ -60,35 +60,64 @@
                      <button type="submit" class="text-blue-500">Unhelpful</button>
                  </form>
             @endif
+            @endauth
+
     @endforeach
 
     </div>
 
 
     <div id="comments" class="tabcontent">
-        <button  onclick="showForm('commentForm')"> Leave a comment </button>
-        <div id="commentForm" class="hiddenForm" style="display: none">
-            <p> Leave your comment:</p>
+        <div class="bg-blue-100 mx-3 w-1/6 text-center">
+        <button class="" onclick="showForm('commentForm')"> Leave a comment </button>
+        </div>
+        <div id="commentForm" class="hiddenForm bg-blue-100 w-1/6 text-center mx-3" style="display: none">
             <form action="{{route('courseComment', $course['id'])}}" method="post">
                 @method('HEAD')
                 @csrf
-                <label for="content">comment:</label>
-                <input type="text" name="content">
-                @error('content')
-                <p>{{$message}}</p>
-                @enderror
-                <button type="submit" class="text-blue-500">Submit</button>
+
+                @if (Auth::check())
+                    <label for="content">comment:</label>
+                    <input class='bg-pink-100' type="text" name="content">
+                    @error('content')
+                    <p>{{$message}}</p>
+                    @enderror
+                    <button type="submit" class="text-blue-500">Submit</button>
+                @else
+                    <h1>YOU MUST BE LOGGED IN TO COMMENt</h1>
+                @endif
+
             </form>
         </div>
 
         @foreach($course->comments->sortByDesc('created_at') as $comment)
-            <p>{{$comment->user->username}}:{{$comment['content']}}</p>
+        <div class="bg-pink-100 rounded-pill m-1 b-1">
+            <p class="text-sm">{{$comment->user->username}}:</p>
+            <p class="text-xl" >{{$comment['content']}}</p>
+            <p class="text-sm">{{$comment->created_at}}</p>
+        </div>
+
+        @if(!$comment->commentLikedBy(auth()->user()))
+            <form action="{{route('courseCommentLike', $comment->id)}}">
+                <button type="submit" >like</button>
+            </form>
+
+            @else
+
+                <form action="{{route('courseCommentUnlike', $comment->id, )}}">
+                    <button type="submit" >Unlike</button>
+                </form>
+
+            @endif
+            <p>Liked by {{$comment->commentLikes()->count()}}</p>
         @endforeach
 
 
     </div>
 
     <script src="/js/parts.js"> </script>
+
+
 
 @endsection
 
