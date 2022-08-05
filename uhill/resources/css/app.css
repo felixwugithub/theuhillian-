@@ -21,6 +21,13 @@
     font-family: 'Pathway Gothic One', sans-serif;
 }
 
+.no-border {
+    border: none;
+    margin: 0;
+    padding-bottom: 3px;
+    padding-top: 5px;
+}
+
 .input1 {
     height: 22px;
     min-height: 22px;
