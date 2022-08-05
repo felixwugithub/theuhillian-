@@ -6,7 +6,8 @@
     <div class="flex font-sf items-center justify-center mx-auto pt-8">
     <h1 class="mt-4 text-notRealBlack text-xl md:text-3xl tracking-tight">
     Courses at University Hill Secondary
-        
+        <p>Bruh</p>
+
     </h1>
 </div>
 
