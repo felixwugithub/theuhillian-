@@ -35,6 +35,9 @@
     <div id="reviews" class="tabcontent">
         <a class="bg-pink-300" href="/course/{{$course['id']}}/review"> Give review </a>
 
+
+
+        <p>jj</p>
     @foreach($course->reviews as $review)
         <div style="background-color: aliceblue">
              <a href="../profile/{{$review->user['id']}}">{{$review->user['username']}}: </a>
