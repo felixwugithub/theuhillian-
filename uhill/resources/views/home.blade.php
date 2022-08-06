@@ -43,7 +43,7 @@
 
 
         <label for="search"> Search for: </label>
-        <input class="bg-felixSalmon no-border text-sm focus:ring-hotPink" type="text" id="search" name="search" value="{{session('search')}}">
+        <input class="bg-felixSalmon no-border rounded text-sm focus:ring-hotPink" type="text" id="search" name="search" value="{{session('search')}}">
 
         <button type="submit" class="bg-hotPink text-xs text-white font-slim rounded hover:bg-pink-500 px-0.5 pt-0.5"> Filter</button>
 
@@ -63,7 +63,7 @@
 @foreach ($courses as $course)
     <div class="rounded bg-felixSalmon m-4 max-w-sm">
     <div class="justify-left mx-10 pt-5 items-end">
-         <a class="font-sf text-2xl" href="/course/{{$course['id']}}"> {{$course['course_name']}}</a>
+        <center><a class="font-sf text-2xl"  href="/course/{{$course['id']}}"> {{$course['course_name']}}</a></center>
         <h2>{{$course->teacher->name}}</h2>
         <br>
         <h3 class="font-sans mx-auto text-lg">rating: {{$course['overall']}} / 10</h3>

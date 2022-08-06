@@ -2,6 +2,7 @@
 @tailwind components;
 @tailwind utilities;
 
+
 .font-slim {
     font-family: 'Josefin Sans', sans-serif;
 }
@@ -134,6 +135,11 @@
 .tabcontent {
     animation: fadeEffect 1s; /* Fading effect takes 1 second */
 }
+
+.test {
+    border: 5px solid #ff849a;
+}
+
 
 /* Go from zero to full opacity */
 @keyframes fadeEffect {
