@@ -18,7 +18,7 @@ class CommentLikeController extends Controller
                 'comment_id' => $id,
             ]);
             return Redirect::route('courseListing', $comment->course->id)->with([
-                'showComments' => true,
+                'returnScrollComment' => true,
             ]);
     }
 
@@ -27,8 +27,7 @@ class CommentLikeController extends Controller
         $comment = Comment::find($id);
         auth()->user()->commentLikes()->where('comment_id', $comment->id)->delete();
         return Redirect::route('courseListing', $comment->course->id)->with([
-            'showComments' => true,
-            'scroll' => 1000
+            'returnScrollComment' => true,
         ]);
 
     }

@@ -24,7 +24,7 @@ class CommentController extends Controller
 
 
         return Redirect::route('courseListing', $id)->with([
-            'showComments' => true,
+            'returnScrollComment' => true,
         ]);
 
     }

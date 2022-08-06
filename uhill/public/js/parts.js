@@ -25,6 +25,9 @@ function showForm(form){
 }
 
 
-function scrollWin() {
-    window.scrollTo(300, 500);
+function returnScrollComment(x, section){
+    alert("ok");
+    show(section);
+    window.scrollTo(300, 300);
+
 }

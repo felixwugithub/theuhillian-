@@ -2,15 +2,6 @@
 
 @section('content')
 
-    @if(session()->get('scroll') !== null)
-
-        <body onload="myFunction()">
-        <script>
-            function myFunction() {
-                alert("Bruh");
-            }
-        </script>
-    @endif
 
     @if(isset($message))
         <h3 class="text-lg">{{$message}}</h3>
@@ -30,9 +21,8 @@
 
 
     <!-- Tab links -->
-    @if(session()->get('showComments') !== null)
-        <body onload="show('comments')"></body>
-
+    @if(session()->get('returnScrollComment') !== null)
+        <body class="overflow-auto" onload="returnScrollComment(900,'comments')"></body>
     @else
     <body onload="show('reviews')"></body>
     @endif
