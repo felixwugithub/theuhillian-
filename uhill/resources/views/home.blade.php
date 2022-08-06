@@ -4,7 +4,7 @@
 
 
     <div class="flex font-sf items-center justify-center mx-auto pt-8">
-    <h1 class="mt-4 text-notRealBlack text-6xl md:text-4xl tracking-tight">
+    <h1 class=" mt:2 md:mt-4 text-notRealBlack text-6xl md:text-4xl tracking-tight">
     Courses at University Hill Secondary
     </h1>
 </div>

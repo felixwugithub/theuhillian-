@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Review;
 use http\Env\Response;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Redirect;
 
 class ReviewHelpfulController extends Controller
 {
@@ -14,7 +15,7 @@ class ReviewHelpfulController extends Controller
         $this->middleware(['auth']);
     }
 
-    public function store(Review $review, Request $request){
+    public function store(Review $review, Request $request, string $reviewIndex){
         if($review->reviewHelpfuledBy($request->user())){
             return \response(null, 409);
         }
@@ -25,14 +26,18 @@ class ReviewHelpfulController extends Controller
             ]
         );
 
-        return back();
+        return Redirect::route('courseListing', $review->course->id)->with([
+            'reviewIndex' => $reviewIndex
+        ]);
     }
 
-    public function destroy(Review $review, Request $request){
+    public function destroy(Review $review, Request $request, string $reviewIndex){
 
         $request->user()->reviewHelpfuls()->where('review_id', $review->id)->delete();
 
-        return back();
+        return Redirect::route('courseListing', $review->course->id)->with([
+            'reviewIndex' => $reviewIndex
+        ]);
 
     }
 }
