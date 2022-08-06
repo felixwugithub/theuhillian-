@@ -67,8 +67,8 @@ Route::get('/course/{id}', function ($id){
 })->name('courseListing');
 
 Route::any('/course/{id}/courseComment', [\App\Http\Controllers\CommentController::class, 'store'])->name('courseComment');
-Route::any('courseCommentLike/{id}', [\App\Http\Controllers\CommentLikeController::class, 'store'])->name('courseCommentLike');
-Route::any('courseCommentUnlike/{id}', [\App\Http\Controllers\CommentLikeController::class, 'destroy'])->name('courseCommentUnlike');
+Route::any('courseCommentLike/{id}/{commentIndex}', [\App\Http\Controllers\CommentLikeController::class, 'store'])->name('courseCommentLike');
+Route::any('courseCommentUnlike/{id}/{commentIndex}', [\App\Http\Controllers\CommentLikeController::class, 'destroy'])->name('courseCommentUnlike');
 
 
 Route::get('/register', [UserController::class, 'create']);
@@ -85,6 +85,6 @@ Route::get('/course/{id}/review', [ReviewController::class, 'create']);
 
 Route::post('/course/{id}', [ReviewController::class, 'store']);
 
-Route::post('/course/reviewHelpful/{review}', [\App\Http\Controllers\ReviewHelpfulController::class, 'store'])->name('course');
-Route::delete('/course/reviewHelpful/{review}', [\App\Http\Controllers\ReviewHelpfulController::class, 'destroy'])->name('course');
+Route::post('/course/reviewHelpful/{review}/{reviewIndex}', [\App\Http\Controllers\ReviewHelpfulController::class, 'store'])->name('reviewHelpful');
+Route::delete('/course/reviewHelpful/{review}/{reviewIndex}', [\App\Http\Controllers\ReviewHelpfulController::class, 'destroy'])->name('reviewHelpful');
 

@@ -11,7 +11,7 @@ use Illuminate\Support\Facades\Redirect;
 
 class CommentLikeController extends Controller
 {
-    public function store(int $id){
+    public function store(int $id, string $commentIndex){
             $comment = Comment::find($id);
             $comment->commentLikes()->create([
                 'user_id' => Auth::id(),
@@ -19,15 +19,17 @@ class CommentLikeController extends Controller
             ]);
             return Redirect::route('courseListing', $comment->course->id)->with([
                 'returnScrollComment' => true,
+                'scroll' => $commentIndex
             ]);
     }
 
-    public function destroy(int $id){
+    public function destroy(int $id, string $commentIndex){
 
         $comment = Comment::find($id);
         auth()->user()->commentLikes()->where('comment_id', $comment->id)->delete();
         return Redirect::route('courseListing', $comment->course->id)->with([
             'returnScrollComment' => true,
+            'scroll' => $commentIndex
         ]);
 
     }

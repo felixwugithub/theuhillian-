@@ -33,16 +33,17 @@ function returnScrollComment(x, section){
     window.scrollTo(0, document.body.scrollHeight);
 }
 
+function getOffset(el) {
+    const rect = el.getBoundingClientRect();
+    return {
+        left: rect.left + window.scrollX,
+        top: rect.top + window.scrollY
+    };
+}
 
-function scrollToBottomWithSection(section){
-    show(section);
-    setTimeout(function () {
-            alert(section);
-    },1500);
 
+function scrollToBottomWithSection(sectionIndex){
     setTimeout(function(){
-        window.scrollTo(0, 1500);
-    },5000)
-    
-
+        window.scrollTo(0, getOffset(sectionIndex).top-150);
+    },0);
 }

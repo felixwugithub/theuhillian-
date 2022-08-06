@@ -2,20 +2,28 @@
 
 @section('content')
 
-
     <!-- Tab links -->
     @if(session()->get('returnScrollComment') !== null)
-        <body class="overflow-auto" onload="scrollToBottomWithSection('comments')">
-        @else
-            <body onload="show('reviews')">
+        <body onload="show('comments')">
+        <div class="bg-pink-500 text-white text-center"><button onclick="scrollToBottomWithSection({{ session()->get("scroll") }})"> Operation Successful. Click to Go </button></div>
+
+        @elseif(session()->get('commented') !== null)
+            <div class="bg-yellow-500 text-white text-center"><p>Commenting was Successful</p></div>
+            <body onload="show('comments')">
+
+            @elseif(session()->get('reviewIndex') !== null)
+
+                <body onload="show('reviews')">
+
+                <div class="bg-pink-500 text-white text-center"><button onclick="scrollToBottomWithSection({{ session()->get("reviewIndex") }})"> Operation Successful. Click to Go. </button></div>
+                @else
+                <body onload="show('reviews')">
             @endif
 
     <div id="content">
     @if(isset($message))
-        <h3 class="text-lg">{{$message}}</h3>
+        <div class="bg-red-500 text-white text-center"><h3 class="text-lg">{{$message}}</h3></div>
     @endif
-
-    <h1 class="text-9xl">{{session()->get('scroll')}}</h1>
 
         <h1>{{$course['course_name']}}</h1>
         <h5>Overall rating: {{$course['overall']}} /10</h5>
@@ -42,26 +50,25 @@
 
 
 
-        <p>jj</p>
     @foreach($course->reviews as $review)
-        <div style="background-color: aliceblue">
+        <div class="bg-blue-50 m-5 b-5 border-4 border-green-500" id="review{{$loop->index}}">
              <a href="../profile/{{$review->user['id']}}">{{$review->user['username']}}: </a>
             <h5>Personality: {{$review['personality']}}/10</h5>
             <h5>Fairness: {{$review['fairness']}}/10</h5>
             <h5>Easiness: {{$review['easiness']}}/10</h5>
             <h4>{{$review['title']}}</h4>
             <p>{{$review['content']}}</p>
-        </div>
+
 
          <p>Liked by {{$review->reviewHelpfuls()->count()}}</p>
 
             @auth
             @if(!$review->reviewHelpfuledBy(auth()->user()))
-                <form action="{{route('course', $review->id)}}" method="post" class="mr-1">@csrf
+                <form action="{{route('reviewHelpful', ['review' => $review->id, 'reviewIndex' => 'review'.$loop->index ] ) }}" method="post" class="mr-1">@csrf
                     <button type="submit" class="text-blue-500">Helpful</button>
                 </form>
             @else
-                <form action="{{route('course', $review->id)}}" method="post" class="mr-1">
+                <form action="{{route('reviewHelpful', ['review' => $review->id, 'reviewIndex' => 'review'.$loop->index ])}}" method="post" class="mr-1">
                     @csrf
 
                     @method('DELETE')
@@ -69,6 +76,7 @@
                  </form>
             @endif
             @endauth
+        </div>
 
     @endforeach
 
@@ -101,25 +109,37 @@
 
 
         @foreach($course->comments->sortByDesc('created_at') as $comment)
-        <div class="bg-pink-100 rounded-pill m-1 b-1">
-            <p class="text-sm">{{$comment->user->username}}:</p>
+
+            @if($comment->user == auth()->user())
+        <div class="bg-yellow-50 border-4 border-red-100 rounded-pill m-1 b-1" id="comment{{$loop->index}}">
+            @else
+
+                <div class="bg-pink-100 rounded-pill m-1 b-1" id="comment{{$loop->index}}">
+                    @endif
+
+                    <a href="/profile/{{$comment->user->id}}"><p class="text-sm">{{$comment->user->username}}:</p></a>
             <p class="text-xl" >{{$comment['content']}}</p>
             <p class="text-sm">{{$comment->created_at}}</p>
-        </div>
 
-        @if(!$comment->commentLikedBy(auth()->user()))
-            <form action="{{route('courseCommentLike', $comment->id)}}">
-                <button type="submit" >like</button>
-            </form>
+
+            @if(!$comment->commentLikedBy(auth()->user()))
+                <form action="{{route('courseCommentLike', ['id' => $comment->id, 'commentIndex' => 'comment'.$loop->index ] ) }}">
+                    <button type="submit" >like</button>
+                </form>
 
             @else
 
-                <form action="{{route('courseCommentUnlike', $comment->id, )}}">
+                <form action="{{route('courseCommentUnlike', ['id' => $comment->id, 'commentIndex' => 'comment'.$loop->index ] ) }}">
                     <button type="submit" >Unlike</button>
+
                 </form>
 
             @endif
             <p>Liked by {{$comment->commentLikes()->count()}}</p>
+
+
+        </div>
+
         @endforeach
 
 
