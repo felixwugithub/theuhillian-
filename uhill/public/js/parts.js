@@ -18,6 +18,9 @@ function show(section) {
     // Show the current tab, and add an "active" class to the button that opened the tab
     document.getElementById(section).style.display = "block";
     evt.currentTarget.className += " active";
+
+
+
 }
 
 function showForm(form){
@@ -26,8 +29,20 @@ function showForm(form){
 
 
 function returnScrollComment(x, section){
-    alert("ok");
+
+    window.scrollTo(0, document.body.scrollHeight);
+}
+
+
+function scrollToBottomWithSection(section){
     show(section);
-    window.scrollTo(300, 300);
+    setTimeout(function () {
+            alert(section);
+    },1500);
+
+    setTimeout(function(){
+        window.scrollTo(0, 1500);
+    },5000)
+    
 
 }

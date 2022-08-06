@@ -3,6 +3,14 @@
 @section('content')
 
 
+    <!-- Tab links -->
+    @if(session()->get('returnScrollComment') !== null)
+        <body class="overflow-auto" onload="scrollToBottomWithSection('comments')">
+        @else
+            <body onload="show('reviews')">
+            @endif
+
+    <div id="content">
     @if(isset($message))
         <h3 class="text-lg">{{$message}}</h3>
     @endif
@@ -20,12 +28,9 @@
         <h5>Easiness: {{$course['easiness']}}/10 </h5>
 
 
-    <!-- Tab links -->
-    @if(session()->get('returnScrollComment') !== null)
-        <body class="overflow-auto" onload="returnScrollComment(900,'comments')"></body>
-    @else
-    <body onload="show('reviews')"></body>
-    @endif
+
+
+
 
     <div class="tab">
         <button  onclick="show('reviews')"> Reviews </button>
@@ -123,6 +128,8 @@
     <script src="/js/parts.js"> </script>
 
 
+
+    </div>
     </body>
 @endsection
 

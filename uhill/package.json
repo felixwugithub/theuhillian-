@@ -85,6 +85,7 @@
         "is-glob": "^4.0.3",
         "is-number": "^7.0.0",
         "jest-worker": "^27.5.1",
+        "jquery": "^3.6.0",
         "json-parse-even-better-errors": "^2.3.1",
         "json-schema-traverse": "^0.4.1",
         "lilconfig": "^2.0.6",

@@ -111,7 +111,6 @@
     outline: none;
     cursor: pointer;
     padding: 14px 16px;
-    transition: 0.3s;
 }
 
 /* Change background color of buttons on hover */
@@ -132,9 +131,7 @@
     border-top: none;
 }
 
-.tabcontent {
-    animation: fadeEffect 1s; /* Fading effect takes 1 second */
-}
+
 
 .test {
     border: 5px solid #ff849a;
