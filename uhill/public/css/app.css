@@ -27,6 +27,7 @@
 */
 
 html {
+    position: absolute; left: 0; top: 0; right: 0; bottom: 0; overflow: auto;
   line-height: 1.5; /* 1 */
   -webkit-text-size-adjust: 100%; /* 2 */
   -moz-tab-size: 4; /* 3 */
@@ -43,6 +44,9 @@ html {
 body {
   margin: 0; /* 1 */
   line-height: inherit; /* 2 */
+    height: 100%;
+    overflow: visible;
+
 }
 
 /*
