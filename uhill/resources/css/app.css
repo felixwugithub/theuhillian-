@@ -2,7 +2,14 @@
 @tailwind components;
 @tailwind utilities;
 
-
+.font-quicksand-slim{
+    font-family: 'Quicksand', sans-serif;
+    font-weight: 400;
+}
+.font-quicksand-regular{
+    font-family: 'Quicksand',sans-serif;
+    font-weight:500;
+}
 .font-slim {
     font-family: 'Josefin Sans', sans-serif;
 }
@@ -131,19 +138,60 @@
     border-top: none;
 }
 
+.special {
+    padding-top: 3px;
+    padding-bottom: 1px;
+}
 
+.courses{
+    background-color: white;
+    border-width: 10px;
+    border-color: #fcdfdc;
+    border-style: solid;
+}
 
 .test {
     border: 5px solid #ff849a;
 }
 
+.highlight-container, .highlight {
+    position: relative;
+}
 
+.highlight-container {
+    display: inline-block;
+}
+.highlight-container:before {
+    content: " ";
+    display: block;
+    height: 90%;
+    width: 100%;
+    margin-left: -5px;
+    margin-right: -3px;
+    position: absolute;
+    background: #fcdfdc;
+    transform: rotate(2deg);
+    top: 0px;
+    left: +2px;
+    border-radius: 20% 25% 20% 24%;
+    padding: 10px 3px 3px 10px;
+}
+/*
+.highlight {
+    display: inline;
+    padding: 3px;
+    background: #fcdfdc;
+
+}
+*/
 /* Go from zero to full opacity */
 @keyframes fadeEffect {
     from {opacity: 0;}
     to {opacity: 1;}
 }
-
+.box-shadow{
+    box-shadow: 0 3px 5px rgb(0 0 0/0.08);
+}
 
 .gray {
     color: gray;
