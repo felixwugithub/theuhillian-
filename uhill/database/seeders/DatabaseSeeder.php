@@ -2,7 +2,9 @@
 
 namespace Database\Seeders;
 
+use App\Models\Comment;
 use App\Models\Course;
+use App\Models\Review;
 use App\Models\Teacher;
 use App\Models\User;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
@@ -18,18 +20,32 @@ class DatabaseSeeder extends Seeder
     public function run()
     {
 
-        for ($x = 0; $x <= 10; $x++) {
+        for ($x = 0; $x <= 35; $x++) {
             $teacher = Teacher::factory()->create();
-            Course::factory(random_int(1,5))->create([
-                'teacher_id' => $teacher->id
-            ]);
+
+            for ($y = 0; $y <= 5; $y++){
+                $course = Course::factory()->create([
+                    'teacher_id' => $teacher->id
+                ]);
+
+                for ($y = 0; $y <= 5; $y++){
+                    $user = User::factory()->create();
+                    $review = Review::factory()->create([
+                        'course_id' => $course->id,
+                        'user_id' => $user->id
+                    ]);
+                    Comment::factory(random_int(0,5))->create([
+                        'course_id' => $course->id,
+                        'user_id' => $user->id
+                    ]);
+                }
+            }
+
+
+
         }
 
 
 
-        // \App\Models\User::factory()->create([
-        //     'name' => 'Test User',
-        //     'email' => 'test@example.com',
-        // ]);
     }
 }

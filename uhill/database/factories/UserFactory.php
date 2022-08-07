@@ -18,7 +18,6 @@ class UserFactory extends Factory
     public function definition()
     {
         return [
-            'name' => fake()->name(),
             'username' =>fake()->unique()->userName,
             'email' => preg_replace('/@example\..*/', '@learn.vsb.bc.ca', fake()->unique()->safeEmail),
             'email_verified_at' => now(),

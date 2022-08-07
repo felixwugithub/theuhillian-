@@ -3,6 +3,7 @@
 @section('content')
 
 
+
     <div class="flex font-sf items-center justify-center mx-auto ">
     <h1 class="md:mt-4 ml-7 text-notRealBlack text-5xl md:text-5xl tracking-tight">
     Courses at University Hill Secondary
@@ -73,6 +74,7 @@
 
 
 
+
 @foreach ($courses as $course)
     <div class="rounded bg-felixSalmon m-4 max-w-sm">
     <div class="justify-left mx-10 pt-5 items-end">
@@ -80,12 +82,21 @@
         <h2>{{$course->teacher->name}}</h2>
         <br>
         <h3 class="font-sans mx-auto text-lg">rating: {{$course['overall']}} / 10</h3>
-        <p>Personality rating: {{$course['personality']}} / 10 </p>
+
+        @if($sort_by !== 'overall' && $sort_by !== 'review_count')
+        <p class="text-red-500">{{$sort_by}}: {{$course[$sort_by]}} / 10</p>
+            @elseif($sort_by == 'review_count')
+            <p class="text-red-500">Number of reviews: {{$course[$sort_by]}}</p>
+        @endif
+
 
     </div>
     <div class="justify-left mx-10 pb-5">
+
     <p>{{substr($course['description'],0,75)}}...</p>
+
         <br>
+
 
         @if($course['grade'] != 13)
             <p>Grade: {{$course['grade']}}</p>

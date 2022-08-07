@@ -47,3 +47,4 @@ function scrollToBottomWithSection(sectionIndex){
         window.scrollTo(0, getOffset(sectionIndex).top-150);
     },0);
 }
+
