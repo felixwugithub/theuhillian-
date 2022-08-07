@@ -189,6 +189,9 @@
     from {opacity: 0;}
     to {opacity: 1;}
 }
+
+
+
 .box-shadow{
     box-shadow: 0 3px 5px rgb(0 0 0/0.08);
 }
@@ -199,3 +202,62 @@
 .orange {
     color: orange;
 }
+
+
+.bg-subject-science{
+    position: relative;
+    display: flex;
+}
+
+.bg-subject-science::before{
+    content: "";
+    background-image: url("/public/images/subject-images/science.jpg");
+    opacity: 0.3;
+    position: absolute;
+    top: 0px;
+    right: 0px;
+    bottom: 0px;
+    left: 0px;
+    background-size: cover;
+}
+
+
+.bg-subject-english{
+    position: relative;
+    display: flex;
+}
+
+.bg-subject-english::before{
+    content: "";
+    background-image: url("/public/images/subject-images/english.jpg");
+    background-size: cover;
+    position: absolute;
+    top: 0px;
+    right: 0px;
+    bottom: 0px;
+    left: 0px;
+    opacity: 0.3;
+}
+
+
+.bg-subject-math{
+    position: relative;
+    display: flex;
+}
+
+.bg-subject-math::before{
+    content: "";
+    background-image: url("/public/images/subject-images/math.jpg");
+    background-size: cover;
+    position: absolute;
+    top: 0px;
+    right: 0px;
+    bottom: 0px;
+    left: 0px;
+    opacity: 0.3;
+}
+
+
+
+
+

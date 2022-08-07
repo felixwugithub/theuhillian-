@@ -19,6 +19,7 @@ return new class extends Migration
             $table->string('course_name');
             $table->integer('grade')->default('13');
             $table->longText('description');
+            $table->string('subject');
             $table->timestamps();
 
         });

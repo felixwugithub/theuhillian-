@@ -45,12 +45,14 @@ class TeacherController extends Controller
         $course_name = $courseTemplate['course_name'];
         $grade = $courseTemplate['grade'];
         $description = $courseTemplate['description'];
+        $subject = $courseTemplate['subject'];
 
         $teacher->courses()->create([
             'teacher_id' => $teacher['id'],
             'course_name' => $course_name,
             'grade' => $grade,
             'description' => $description,
+            'subject' => $subject,
             'date_added' => Carbon::now(),
 
         ]);

@@ -76,38 +76,42 @@
 
 
 @foreach ($courses as $course)
-    <div class="rounded bg-felixSalmon m-4 max-w-sm box-shadow">
-    <div class="justify-left mx-10 pt-5 items-end">
-        <center><a class="font-sf text-2xl"  href="/course/{{$course['id']}}"> {{$course['course_name']}}</a></center>
-        <br>
-        <h2 class="font-quicksand-slim"> <span class="highlight-container"><span class="highlight font-quicksand-regular mr-1">Teacher: </span></span>{{$course->teacher->name}}</h2>
 
-        <h3 class="font-sans mx-auto font-quicksand-slim"><span class="highlight-container"><span class="highlight font-quicksand-regular mr-1">Rating: </span></span>{{$course['overall']}} / 10</h3>
+    <div class="rounded bg-felixSalmon m-4 max-w-sm box-shadow relative h-64 w-75 container bg-subject-{{$course['subject']}}">
+        <div>
+            <div class="justify-left mx-10 pt-5 items-end top-0 justify-content-center">
+                <center><a class="font-sf text-2xl"  href="/course/{{$course['id']}}"> {{$course['course_name']}}</a></center>
+                <br>
+
+                @if(isset($sort_by))
+                @if($sort_by !== 'overall' && $sort_by !== 'review_count')
+                <p class="text-red-500">{{$sort_by}}: {{$course[$sort_by]}} / 10</p>
+                    @elseif($sort_by == 'review_count')
+                    <p class="text-red-500">Number of reviews: {{$course[$sort_by]}}</p>
+                @endif
+                @endif
+
+            </div>
+
+            <div class="justify-left mx-10 pb-5 font-quicksand-slim absolute bottom-0">
+
+                <h2 class="font-quicksand-slim"> Teacher: {{$course->teacher->name}}</h2>
+
+                <h3 class="font-sans mx-auto font-quicksand-slim">Rating: {{$course['overall']}} / 10</h3>
 
 
-        @if(isset($sort_by))
-        @if($sort_by !== 'overall' && $sort_by !== 'review_count')
-        <p class="text-red-500">{{$sort_by}}: {{$course[$sort_by]}} / 10</p>
-            @elseif($sort_by == 'review_count')
-            <p class="text-red-500">Number of reviews: {{$course[$sort_by]}}</p>
-        @endif
-        @endif
+                <p>{{substr($course['description'],0,64)}}...</p>
 
-    </div>
-    <div class="justify-left mx-10 pb-5 font-quicksand-slim">
-
-    <p>{{substr($course['description'],0,75)}}...</p>
-
-        <br>
+                <br>
 
 
-        @if($course['grade'] != 13)
-            <p>Grade: {{$course['grade']}}</p>
-        @else
-            <p> All Grades</p>
-        @endif
-    </div>
-
+                @if($course['grade'] != 13)
+                    <p>Grade: {{$course['grade']}}</p>
+                @else
+                    <p> All Grades</p>
+                @endif
+            </div>
+        </div>
     </div>
 @endforeach
 
