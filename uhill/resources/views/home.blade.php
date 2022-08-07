@@ -27,7 +27,7 @@
         </div>
 
 
-        <div class="pt-2 justify-start">
+        <div class="pt-2 justify-start ml-2">
         <label for="order"> Order by: </label>
              <select name="order" id="order" class="bg-felixSalmon rounded no-border text-sm focus:ring-hotPink">
                  <option value='desc' <?php if (isset($order) && $order=="desc") echo "selected";?>> High to Low</option>
@@ -36,7 +36,7 @@
 
         </div>
 
-        <div class="pt-2 justify-start">
+        <div class="pt-2 justify-start ml-2">
           <label for="grade" class="text-sm"> Grade: </label>
              <select name="grade" id="grade" class="bg-felixSalmon rounded no-border text-sm focus:ring-hotPink">
                  <option value=13 <?php if (isset($grade) && $grade==13) echo "selected";?>> Any </option>
@@ -48,15 +48,15 @@
              </select>
         </div>
 
-        <div class="pt-2 justify-start">
+        <div class="pt-2 justify-start ml-2">
 
         <label for="search"> Search for: </label>
         <input class="bg-felixSalmon no-border rounded text-sm focus:ring-hotPink" type="text" id="search" name="search" value="{{session('search')}}">
 
         </div>
 
-            <div class="pt-2 text-center justify-start">
-        <button type="submit" class="bg-hotPink text-xs text-white font-slim rounded hover:bg-pink-500 px-2 py-1.5"> Filter</button>
+            <div class="pt-2 text-center justify-start ml-2">
+        <button type="submit" class="bg-hotPink text-xs text-white font-slim rounded hover:bg-pink-500 px-1 special"> Filter</button>
             </div>
 
         </div>
@@ -76,12 +76,13 @@
 
 
 @foreach ($courses as $course)
-    <div class="rounded bg-felixSalmon m-4 max-w-sm">
+    <div class="rounded bg-felixSalmon m-4 max-w-sm box-shadow">
     <div class="justify-left mx-10 pt-5 items-end">
         <center><a class="font-sf text-2xl"  href="/course/{{$course['id']}}"> {{$course['course_name']}}</a></center>
-        <h2>{{$course->teacher->name}}</h2>
         <br>
-        <h3 class="font-sans mx-auto text-lg">rating: {{$course['overall']}} / 10</h3>
+        <h2 class="font-quicksand-slim"> <span class="highlight-container"><span class="highlight font-quicksand-regular mr-1">Teacher: </span></span>{{$course->teacher->name}}</h2>
+
+        <h3 class="font-sans mx-auto font-quicksand-slim"><span class="highlight-container"><span class="highlight font-quicksand-regular mr-1">Rating: </span></span>{{$course['overall']}} / 10</h3>
 
 
         @if(isset($sort_by))
@@ -93,7 +94,7 @@
         @endif
 
     </div>
-    <div class="justify-left mx-10 pb-5">
+    <div class="justify-left mx-10 pb-5 font-quicksand-slim">
 
     <p>{{substr($course['description'],0,75)}}...</p>
 
