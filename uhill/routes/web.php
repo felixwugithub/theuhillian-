@@ -61,9 +61,16 @@ Route::get('/profile/{id}/edit', [\App\Http\Controllers\ProfileController::class
 Route::patch('/profile/{id}', [\App\Http\Controllers\ProfileController::class, 'update'])->name('profile');
 
 Route::get('/course/{id}', function ($id){
+
+    if(\Illuminate\Support\Facades\Auth::check()){
     return view('course', [
         'course' => Course::find($id),
-    ]);
+    ]);}
+    else{
+        return view('unauthorized',[
+            'authMessage' => 'Course reviews and comments are only accessible by authorized users.'
+        ]);
+    }
 })->name('courseListing');
 
 Route::any('/course/{id}/courseComment', [\App\Http\Controllers\CommentController::class, 'store'])->name('courseComment');

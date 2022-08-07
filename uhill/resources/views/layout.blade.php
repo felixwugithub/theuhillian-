@@ -9,6 +9,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@300&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://unpkg.com/flowbite@1.5.1/dist/flowbite.min.css" />
 
+
     <meta charset="UTF-8">
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
@@ -22,15 +23,16 @@
 </head>
 <body class="overflow-visible" id="content">
 
-<nav class="relative container mx-auto md:px-2 md:py-5 sticky top-0 bg-white h-50 md:h-4">
-<div class="max-w-screen-xl mx-auto px-5 flex items-center justify-between">
+<nav class="relative container md:px-2 md:py-5 md:sticky top-0 bg-white h-auto">
+
+<div class=" max-w-screen-xl mx-auto px-5 flex items-center md:justify-between my-0">
 
     <div class="flex-nowrap">
 
-        <div class="float-left">
+        <div class="float-left pt-8 md:pt-0">
             <a href="/"><img src="/images/uhillLogoBnW.jpeg" class="h-10 w-10 inline-flex mt-10 md:mt-0" alt="Logo">
             <div class="float-right">
-                <h1 class="font-comfortaa hover:text-hotPink text-4xl invisible md:visible">Rate My Uhill</h1>
+                <h1 class="font-comfortaa hover:text-hotPink text-4xl md:ml-2 mt-1 invisible md:visible">The Uhillian</h1>
             </div>
             </a>
         </div>
@@ -39,12 +41,12 @@
     </div>
 
 
-    <div class="relative lg:flex lg:items-center grid place-items-center md:mr-16 md:pr-2">
+    <div class="relative lg:flex lg:items-center grid place-items-center">
         <a href="/" class="hover:text-hotPink text-lg text-notRealBlack font-slim md:px-8">Courses</a>
         <a href="/teachers" class="hover:text-hotPink text-notRealBlack text-lg font-slim md:px-8">Teachers</a>
     </div>
 
-    <div class=" md:flex items-center md:ml-16 ">
+    <div class=" md:flex items-center ml-8 pl-8 ">
     @auth
 
             <a class="font-slim pr-5 hover:text-hotPink" href="/profile/{{auth()->user()->id}}">Welcome, {{auth()->user()->username}}!</a>
@@ -54,7 +56,7 @@
         </form>
     @else
         <a href="/register" class="font-slim hover:text-hotPink px-5">register</a>
-        <a href="/login" class="font-slim hover:text-hotPink px-5 ">login</a>
+        <a href="/login" class="font-slim hover:text-hotPink px-5">login</a>
     @endauth
     </div>
 

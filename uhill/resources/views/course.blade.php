@@ -2,10 +2,11 @@
 
 @section('content')
 
+
     <!-- Tab links -->
     @if(session()->get('returnScrollComment') !== null)
         <body onload="show('comments')">
-        <div class="bg-pink-500 text-white text-center"><button onclick="scrollToBottomWithSection({{ session()->get("scroll") }})"> Operation Successful. Click to Go </button></div>
+        <div class="bg-pink-500 text-white text-center"><button onclick="scrollToBottomWithSection({{ session()->get("scroll") }})"> Operation Successful. Click to go back. </button></div>
 
         @elseif(session()->get('commented') !== null)
             <div class="bg-yellow-500 text-white text-center"><p>Commenting was Successful</p></div>
@@ -15,7 +16,7 @@
 
                 <body onload="show('reviews')">
 
-                <div class="bg-pink-500 text-white text-center"><button onclick="scrollToBottomWithSection({{ session()->get("reviewIndex") }})"> Operation Successful. Click to Go. </button></div>
+                <div class="bg-pink-500 text-white text-center"><button onclick="scrollToBottomWithSection({{ session()->get("reviewIndex") }})"> Operation Successful. Click to go back. </button></div>
                 @else
                 <body onload="show('reviews')">
             @endif
