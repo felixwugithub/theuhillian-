@@ -4,6 +4,7 @@ namespace Database\Seeders;
 
 use App\Models\Comment;
 use App\Models\Course;
+use App\Models\Profile;
 use App\Models\Review;
 use App\Models\Teacher;
 use App\Models\User;
@@ -30,7 +31,12 @@ class DatabaseSeeder extends Seeder
 
                 for ($y = 0; $y <= 5; $y++){
                     $user = User::factory()->create();
-                    $review = Review::factory()->create([
+
+                    Profile::factory()->create([
+                        'user_id' => $user->id
+                    ]);
+
+                    Review::factory()->create([
                         'course_id' => $course->id,
                         'user_id' => $user->id
                     ]);
