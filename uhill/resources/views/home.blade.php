@@ -83,12 +83,14 @@
         <br>
         <h3 class="font-sans mx-auto text-lg">rating: {{$course['overall']}} / 10</h3>
 
+
+        @if(isset($sort_by))
         @if($sort_by !== 'overall' && $sort_by !== 'review_count')
         <p class="text-red-500">{{$sort_by}}: {{$course[$sort_by]}} / 10</p>
             @elseif($sort_by == 'review_count')
             <p class="text-red-500">Number of reviews: {{$course[$sort_by]}}</p>
         @endif
-
+        @endif
 
     </div>
     <div class="justify-left mx-10 pb-5">
