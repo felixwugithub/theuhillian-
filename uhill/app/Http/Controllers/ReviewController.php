@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Course;
 
 use App\Models\Review;
+use App\Models\Teacher;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Redirect;
 
@@ -27,7 +28,7 @@ class ReviewController extends Controller
         $userId = auth()->id();
 
         if (! Review::where('user_id', $userId)->where('course_id', $id)->exists()) {
-
+            $course = Course::find($id);
             $data = request()->validate([
                 'title' => 'required',
                 'personality' => 'required|integer|between:1,10',
@@ -42,16 +43,15 @@ class ReviewController extends Controller
             auth()->user()->reviews()->create($data);
 
             $this->updateCourseRatings($id);
+            $this->calculateTeacherRatings($course->teacher);
 
             return view('course', [
                 'course' => Course::find($id),
-                'reviews' => Review::find($id)
             ]);
 
         } else {
             return view('course', [
                 'course' => Course::find($id),
-                'reviews' => Review::find($id),
                 'message' => 'only 1 review allowed.'
             ]);
 
@@ -80,6 +80,23 @@ class ReviewController extends Controller
                 'review_count' => count($course->reviews)
             ]
         );
+    }
+
+    public function calculateTeacherRatings($teacher)
+    {
+
+            $personalityAvg = $teacher->courses->avg('personality');
+            $fairnessAvg = $teacher->courses->avg('fairness');
+            $easinessAvg = $teacher->courses->avg('easiness');
+            $overallAvg = $teacher->courses->avg('overall');
+
+            $teacher->update([
+                'overall' => $overallAvg,
+                'personality' => $personalityAvg,
+                'easiness' => $easinessAvg,
+                'fairness' => $fairnessAvg
+            ]);
+
     }
 
 
