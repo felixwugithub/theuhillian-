@@ -34,6 +34,14 @@
            <p>{{$message}}</p>
            @enderror
 
+           <label for="subject">subject (all lower case plz)</label>
+           <input id="subject" type="text" name="subject"
+                  value="{{old('subject')}}">
+
+           @error('subject')
+           <p>{{$message}}</p>
+           @enderror
+
 
            <button>Add Course</button>
        </form>

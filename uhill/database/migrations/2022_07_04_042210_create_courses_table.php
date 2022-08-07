@@ -17,6 +17,7 @@ return new class extends Migration
             $table->id();
             $table->string('course_name');
             $table->foreignId('teacher_id')->constrained()->cascadeOnDelete();
+            $table->string('subject');
             $table->integer('grade')->default('13');
             $table->integer('personality')->default('5');
             $table->integer('fairness')->default('5');
