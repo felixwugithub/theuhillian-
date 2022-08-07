@@ -4,6 +4,7 @@ namespace App\Console;
 
 use App\Http\Controllers\CourseController;
 use App\Models\Course;
+use App\Models\Teacher;
 use Illuminate\Console\Scheduling\Schedule;
 use Illuminate\Foundation\Console\Kernel as ConsoleKernel;
 
@@ -20,6 +21,11 @@ class Kernel extends ConsoleKernel
         $schedule->call(function (){
             $this->calculateRatings();
         })->daily();
+
+        $schedule->call(function (){
+            $this->calculateTeacherRatings();
+        })->daily();
+
     }
 
     /**
@@ -54,6 +60,25 @@ class Kernel extends ConsoleKernel
                     'review_count' => count($course->reviews)
                 ]
             );
+        }
+    }
+
+    private function calculateTeacherRatings()
+    {
+        foreach (Teacher::all() as $teacher){
+
+            $personalityAvg = $teacher->courses->avg('personality');
+            $fairnessAvg = $teacher->courses->avg('fairness');
+            $easinessAvg = $teacher->courses->avg('easiness');
+            $overallAvg = $teacher->courses->avg('overall');
+
+            $teacher->update([
+                'overall' => $overallAvg,
+                'personality' => $personalityAvg,
+                'easiness' => $easinessAvg,
+                'fairness' => $fairnessAvg
+            ]);
+
         }
     }
 }

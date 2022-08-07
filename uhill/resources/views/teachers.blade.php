@@ -32,7 +32,7 @@
         <h1 class="text-4xl">University Hill Teacher Rankings</h1>
 
 
-        @foreach(\App\Models\Teacher::all()->sortBy('overall') as $teacher)
+        @foreach(\App\Models\Teacher::all()->sortByDesc('overall') as $teacher)
 
             <div class="m-1 b-1 bg-pink-100 justify-content-center text-center">
             <h2>
