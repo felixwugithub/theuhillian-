@@ -105,6 +105,8 @@
 
                 <h3 class="font-sans mx-auto font-quicksand-slim">Rating: {{$course['overall']}} / 10</h3>
 
+                
+
 
                 <p>{{substr($course['description'],0,64)}}...</p>
 
