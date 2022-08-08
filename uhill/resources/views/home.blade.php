@@ -74,13 +74,17 @@
 @foreach ($courses as $course)
 
 
-    <div class="rounded m-4 max-w-sm box-shadow relative h-56 w-75 container bg-subject-{{$course['subject']}} bg-gradient-to-r from-felixSalmon via-felixSalmon to-hotPink100 ">
+    <div class="rounded m-4 max-w-sm box-shadow relative h-64 w-75 container bg-subject-{{$course['subject']}} bg-gradient-to-r from-felixSalmon via-hotPink100 to-hotPink100 ">
         <div>
-            <div class="text-notRealBlack py-3 mb-1 items-start top-0 flex container justify-center text-center bg-gradient-to-r from-hotPink-100 via-felixSalmon to-felixSalmon">
+            <div class="text-notRealBlack py-3 items-start top-0 flex container justify-center text-center bg-gradient-to-r from-hotPink-100 via-felixSalmon to-felixSalmon">
                 <div class="container w-75 justify-center text-center">
                 <center><a class="font-sf text-xl justify-center text-center"  href="/course/{{$course['id']}}"> {{substr($course['course_name'], 0, 33)}}</a></center>
                 </div>
 
+            </div>
+
+            <div class="h-5 justify-center w-75 bg-gradient-to-r from-pinkWhite via-hotPink to-pinkWhite">
+                <img class="h-4 w-20 justify-center mx-auto object-center" src="/images/star-ratings/{{$course['overall']}}.png" alt="Stars">
             </div>
 
             <div class="justify-content-evenly font-quicksand-slim absolute bottom-0 container w-75 p-5">
@@ -89,7 +93,11 @@
 
                 <h2 class="font-quicksand-slim"> Teacher: {{$course->teacher->name}}</h2>
 
-                <h3 class="font-sans mx-auto font-quicksand-slim">Rating: {{$course['overall']}} / 10</h3>
+                <div class="container w-75 flex items-center">
+                <h3 class="font-sans font-quicksand-slim flex float-left">Rating: {{$course['overall']}} / 10</h3>
+
+                </div>
+
                 @if(isset($sort_by))
                     @if($sort_by !== 'overall' && $sort_by !== 'review_count')
                         <p class="text-red-500">{{$sort_by}}: {{$course[$sort_by]}} / 10</p>
