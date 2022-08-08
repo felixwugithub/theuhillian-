@@ -24,7 +24,9 @@ class CourseFactory extends Factory
             'fairness' => fake()->NumberBetween(0,10),
             'easiness' => fake()->NumberBetween(0,10),
             'overall' => fake()->numberBetween(0, 10),
-            'subject' =>fake()->word,
+            'subject' =>fake()->randomElement([
+                'english', 'math', 'science', 'art', 'biology', 'chemistry', 'theatre', 'computer', 'language'
+            ]),
             'date_added'=> now(),
             'description'=> fake()->paragraph(5),
         ];

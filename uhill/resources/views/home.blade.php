@@ -77,11 +77,17 @@
 
 @foreach ($courses as $course)
 
-    <div class="rounded bg-felixSalmon m-4 max-w-sm box-shadow relative h-64 w-75 container bg-subject-{{$course['subject']}}">
+
+
+    <div class="rounded m-4 max-w-sm box-shadow relative h-72 w-75 container bg-subject-{{$course['subject']}} bg-gradient-to-r from-felixSalmon via-felixSalmon to-hotPink100 ">
         <div>
-            <div class="justify-left mx-10 pt-5 items-end top-0 justify-content-center">
-                <center><a class="font-sf text-2xl"  href="/course/{{$course['id']}}"> {{$course['course_name']}}</a></center>
-                <br>
+            <div class="text-notRealBlack mx-5 text-left left-0 justify-content-around pt-5 items-center top-0 flex-row flex relative container">
+                <div class="container w-64">
+                <center><a class="font-sf text-2xl mr-14 text-left"  href="/course/{{$course['id']}}"> {{$course['course_name']}}</a></center>
+                </div>
+                <img class="h-10 w-10 flex absolute right-5 mr-5" src="/images/subject-images/{{$course['subject']}}.png" alt="">
+
+
 
                 @if(isset($sort_by))
                 @if($sort_by !== 'overall' && $sort_by !== 'review_count')
@@ -113,6 +119,8 @@
             </div>
         </div>
     </div>
+
+
 @endforeach
 
 
