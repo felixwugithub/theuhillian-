@@ -18,7 +18,7 @@ module.exports = {
     extend: {
           colors:{
               hotPink:'#ff8282',
-              hotPink100:'#f5a0a0',
+              hotPink100:'#f8adad',
               defaultPink: '#e0a7c4',
               defaultPurple: '#bcaac2',
               defaultMidBlue: '#9CB4CC',

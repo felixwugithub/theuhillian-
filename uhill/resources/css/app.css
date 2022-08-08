@@ -37,12 +37,12 @@
 }
 
 .input1 {
-    height: 22px;
-    min-height: 22px;
+    height: 30px;
+    min-height: 30px;
     color: rgb(231, 93, 93);
     position: relative;
     box-sizing: border-box;
-    border-color: #ff849a;
+    border-color: #e1bdbd;
     background-image: initial;
     background-position-x: initial;
     background-position-y: initial;
@@ -53,13 +53,13 @@
     background-origin: initial;
     background-clip: initial;
 
-    padding-left: 10px;
-    padding-top: 0px;
+    padding-left: 17px;
+    padding-top: 8px;
     width: 100%;
     font-style: normal;
     font-weight: 400;
     font-size: 16px;
-    line-height: 24px;
+    line-height: 0px;
     font-family: Clarkson, "Helvetica Neue", Helvetica, Arial, sans-serif;
     -webkit-font-smoothing: antialiased;
     margin-top: 0px;

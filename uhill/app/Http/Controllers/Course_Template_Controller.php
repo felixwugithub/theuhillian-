@@ -21,7 +21,7 @@ class Course_Template_Controller extends Controller
             'course_name' => ['required', 'min:3'],
             'subject' => ['required', 'min:2'],
             'description' => ['string'],
-            'grade' => 'required|integer|between:1,10'
+            'grade' => 'required|integer|between:8,13'
         ]);
 
         CourseTemplate::create($formFields);

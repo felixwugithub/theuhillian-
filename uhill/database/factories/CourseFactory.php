@@ -18,7 +18,7 @@ class CourseFactory extends Factory
     public function definition()
     {
         return [
-            'course_name' => fake()->jobTitle(),
+            'course_name' => substr(fake()->jobTitle(),0, 32) ,
             'grade' => fake()->numberBetween(8,13),
             'personality' => fake()->NumberBetween(0,10),
             'fairness' => fake()->NumberBetween(0,10),

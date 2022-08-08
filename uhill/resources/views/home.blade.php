@@ -70,42 +70,33 @@
     <p class="flex font-sansMid text-xs items-center justify-center mx-auto pt-8">No Results. Check out these courses.</p>
 @endif
 
-<div class="flex flex-wrap justify-center">
-
-
-
-
+<div class="flex flex-wrap align-content-center flex justify-center">
 @foreach ($courses as $course)
 
 
-
-    <div class="rounded m-4 max-w-sm box-shadow relative h-72 w-75 container bg-subject-{{$course['subject']}} bg-gradient-to-r from-felixSalmon via-felixSalmon to-hotPink100 ">
+    <div class="rounded m-4 max-w-sm box-shadow relative h-56 w-75 container bg-subject-{{$course['subject']}} bg-gradient-to-r from-felixSalmon via-felixSalmon to-hotPink100 ">
         <div>
-            <div class="text-notRealBlack mx-5 text-left left-0 justify-content-around pt-5 items-center top-0 flex-row flex relative container">
-                <div class="container w-64">
-                <center><a class="font-sf text-2xl mr-14 text-left"  href="/course/{{$course['id']}}"> {{$course['course_name']}}</a></center>
+            <div class="text-notRealBlack py-3 mb-1 items-start top-0 flex container justify-center text-center bg-gradient-to-r from-hotPink-100 via-felixSalmon to-felixSalmon">
+                <div class="container w-75 justify-center text-center">
+                <center><a class="font-sf text-xl justify-center text-center"  href="/course/{{$course['id']}}"> {{substr($course['course_name'], 0, 33)}}</a></center>
                 </div>
-                <img class="h-10 w-10 flex absolute right-5 mr-5" src="/images/subject-images/{{$course['subject']}}.png" alt="">
-
-
-
-                @if(isset($sort_by))
-                @if($sort_by !== 'overall' && $sort_by !== 'review_count')
-                <p class="text-red-500">{{$sort_by}}: {{$course[$sort_by]}} / 10</p>
-                    @elseif($sort_by == 'review_count')
-                    <p class="text-red-500">Number of reviews: {{$course[$sort_by]}}</p>
-                @endif
-                @endif
 
             </div>
 
-            <div class="justify-left mx-10 pb-5 font-quicksand-slim absolute bottom-0">
+            <div class="justify-content-evenly font-quicksand-slim absolute bottom-0 container w-75 p-5">
+                <img class="h-8 w-8 flex absolute bottom-5 right-5" src="/images/subject-images/{{$course['subject']}}.png" alt="">
+
 
                 <h2 class="font-quicksand-slim"> Teacher: {{$course->teacher->name}}</h2>
 
                 <h3 class="font-sans mx-auto font-quicksand-slim">Rating: {{$course['overall']}} / 10</h3>
-
-                
+                @if(isset($sort_by))
+                    @if($sort_by !== 'overall' && $sort_by !== 'review_count')
+                        <p class="text-red-500">{{$sort_by}}: {{$course[$sort_by]}} / 10</p>
+                    @elseif($sort_by == 'review_count')
+                        <p class="text-red-500">Number of reviews: {{$course[$sort_by]}}</p>
+                    @endif
+                @endif
 
 
                 <p>{{substr($course['description'],0,64)}}...</p>
