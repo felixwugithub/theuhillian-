@@ -26,7 +26,7 @@
     <p class="text-xs text-hotPink">{{$message}}</p>
     @enderror
 
-    <lable for="password_confirmation" class="block mt-5 font-slim">Password Confirmation</lable>
+    <lable for="password_confirmation font-slim" class="block mt-5 font-slim">Password Confirmation</lable>
     <input class="mt-5 input1 rounded-full" type="password" name="password_confirmation">
     @error('password_confirmation')
     <p class="text-xs text-hotPink">{{$message}}</p>
