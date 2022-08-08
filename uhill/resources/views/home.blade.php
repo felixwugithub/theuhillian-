@@ -74,9 +74,9 @@
 @foreach ($courses as $course)
 
 
-    <div class="rounded m-4 max-w-sm box-shadow relative h-64 w-75 container bg-subject-{{$course['subject']}} bg-gradient-to-r from-felixSalmon via-hotPink100 to-hotPink100 ">
+    <div class="rounded m-4 max-w-sm box-shadow relative h-64 w-75 container bg-subject-{{$course['subject']}} bg-gradient-to-br from-felixSalmon via-felixSalmon to-hotPink100 ">
         <div>
-            <div class="text-notRealBlack py-3 items-start top-0 flex container justify-center text-center bg-gradient-to-r from-hotPink-100 via-felixSalmon to-felixSalmon">
+            <div class="text-notRealBlack py-3 items-start top-0 flex container justify-center text-center bg-gradient-to-tl from-hotPink-100 via-felixSalmon to-felixSalmon">
                 <div class="container w-75 justify-center text-center">
                 <center><a class="font-sf text-xl justify-center text-center"  href="/course/{{$course['id']}}"> {{substr($course['course_name'], 0, 33)}}</a></center>
                 </div>

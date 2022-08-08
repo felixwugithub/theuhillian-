@@ -56,12 +56,12 @@
     </div>
 
 
-    <div class="relative lg:flex lg:items-center grid place-items-center">
+    <div class="relative lg:flex lg:items-center grid place-items-center float">
         <a href="/" class="hover:text-hotPink text-lg text-notRealBlack font-slim md:px-8">Courses</a>
         <a href="/teachers" class="hover:text-hotPink text-notRealBlack text-lg font-slim md:px-8">Teachers</a>
     </div>
 
-    <div class=" md:flex items-center ml-8 pl-8 ">
+    <div class=" md:flex items-center float-end right-0">
     @auth
 
             <a class="font-slim pr-5 hover:text-hotPink" href="/profile/{{auth()->user()->id}}">Welcome, {{auth()->user()->username}}!</a>
