@@ -17,7 +17,7 @@
     @error('password')
     <p class="text-xs text-hotPink">{{$message}}</p>
          @enderror
-            <button class="block bg-hotPink text-white font-slim rounded hover:bg-pink-500 mt-5" type="submit">Login</button>
+            <button class="block bg-hotPink text-white font-slim rounded hover:bg-pink-500 mt-5 p-0.5" type="submit">Login</button>
         </form>
     </div>
     </div>
