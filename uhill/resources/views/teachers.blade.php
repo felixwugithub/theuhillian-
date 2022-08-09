@@ -6,9 +6,11 @@
 
     <body onload="sortBy('rating')">
     <!-- Tab links -->
-    <div class="tab">
+    <div class="justify-center">
+    <div class="tab justify-center font-slim">
         <button class="tablinks" onclick="sortBy('rating')"> Ranked by Rating </button>
         <button class="tablinks" onclick="sortBy('alphabetical')"> Alphabetical </button>
+    </div>
     </div>
 
     <!-- Tab content -->

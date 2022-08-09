@@ -34,9 +34,28 @@
            <p>{{$message}}</p>
            @enderror
 
-           <label for="subject">subject (all lower case plz)</label>
-           <input id="subject" type="text" name="subject"
-                  value="{{old('subject')}}">
+           <label for="subject">subject: </label>
+           <select name="subject" id="subject">
+               <option value="all">ALL</option>
+               <option value="art">Visual Arts 2D/3D/Yearbook</option>
+               <option value="biology">Biology</option>
+               <option value="career">Career</option>
+               <option value="chemistry">Chemistry</option>
+               <option value="community">Community</option>
+               <option value="computers">Computers</option>
+               <option value="economics">Economics/Busyness/Finance</option>
+               <option value="engineering">Engineering</option>
+               <option value="english">English</option>
+               <option value="foods">Foods</option>
+               <option value="languages">Second Languages</option>
+               <option value="math">Math</option>
+               <option value="PE">PE/Active Living</option>
+               <option value="physics">Physics</option>
+               <option value="science">Science (Grade 10 and under)</option>
+               <option value="skills">Skills</option>
+               <option value="statistics">Statistics</option>
+               <option value="theatre">Theatre</option>
+           </select>
 
            @error('subject')
            <p>{{$message}}</p>

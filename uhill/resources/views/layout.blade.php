@@ -19,7 +19,7 @@
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
 
-    <title>Rate My Uhill</title>
+    <title>The Uhillian</title>
     @vite('resources/css/app.css')
     <script src="dist/flowbite.js"></script>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
@@ -38,44 +38,41 @@
 
 <body class="overflow-visible" id="content">
 
-<nav class="relative container md:px-2 md:py-5 md:sticky top-0 bg-white h-auto">
+<nav class="relative container md:px-2 md:py-5 md:sticky bg-white h-36 md:h-auto">
 
-<div class=" max-w-screen-xl mx-auto px-5 flex items-center md:justify-between my-0">
+    <div class=" max-w-screen-xl mx-auto pl-5 flex items-center md:justify-between my-0">
 
-    <div class="flex-nowrap">
-
-        <div class="float-left pt-8 md:pt-0">
-            <a href="/"><img src="/images/uhillLogoBnW.jpeg" class="h-10 w-10 inline-flex mt-10 md:mt-0" alt="Logo">
-            <div class="float-right">
-                <h1 class="font-comfortaa hover:text-hotPink text-4xl md:ml-2 mt-1 invisible md:visible">The Uhillian</h1>
+        <div class="flex-nowrap">
+            <div class="float-left pt-10 md:pt-0">
+                <a href="/"><img src="/images/uhillLogoBnW.jpeg" class="h-10 w-10 inline-flex mt-10 md:mt-0" alt="Logo">
+                <div class="float-right">
+                    <h1 class="font-comfortaa hover:text-hotPink text-4xl md:ml-2 mt-1 invisible md:visible">The Uhillian</h1>
+                </div>
+                </a>
             </div>
-            </a>
         </div>
 
 
+        <div class="relative lg:flex lg:items-center grid place-items-center float pr-14 md:pr-auto">
+            <a href="/" class="hover:text-hotPink text-lg text-notRealBlack font-slim md:px-8">Courses</a>
+            <a href="/teachers" class="hover:text-hotPink text-notRealBlack text-lg font-slim md:px-8">Teachers</a>
+        </div>
+
+        <div class=" md:flex items-center float-end right-0">
+        @auth
+
+                <a class="font-slim pr-5 hover:text-hotPink" href="/profile/{{auth()->user()->id}}">Welcome, {{auth()->user()->username}}!</a>
+            <form method="POST" action="/logout" class="pb-1">
+                @csrf
+                <button class="bg-hotPink text-white font-slim rounded hover:bg-pink-500" type="submit">Logout</button>
+            </form>
+        @else
+            <a href="/register" class="font-slim hover:text-hotPink px-5">register</a>
+            <a href="/login" class="font-slim hover:text-hotPink px-5">login</a>
+        @endauth
+        </div>
+
     </div>
-
-
-    <div class="relative lg:flex lg:items-center grid place-items-center float">
-        <a href="/" class="hover:text-hotPink text-lg text-notRealBlack font-slim md:px-8">Courses</a>
-        <a href="/teachers" class="hover:text-hotPink text-notRealBlack text-lg font-slim md:px-8">Teachers</a>
-    </div>
-
-    <div class=" md:flex items-center float-end right-0">
-    @auth
-
-            <a class="font-slim pr-5 hover:text-hotPink" href="/profile/{{auth()->user()->id}}">Welcome, {{auth()->user()->username}}!</a>
-        <form method="POST" action="/logout" class="pb-1">
-            @csrf
-            <button class="bg-hotPink text-white font-slim rounded hover:bg-pink-500" type="submit">Logout</button>
-        </form>
-    @else
-        <a href="/register" class="font-slim hover:text-hotPink px-5">register</a>
-        <a href="/login" class="font-slim hover:text-hotPink px-5">login</a>
-    @endauth
-    </div>
-
-</div>
 </nav>
 
 
@@ -83,6 +80,7 @@
 
 
 </div>
+
 
 
 @auth

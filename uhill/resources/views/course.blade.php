@@ -5,22 +5,20 @@
 
     <!-- Tab links -->
     @if(session()->get('returnScrollComment') !== null)
-        <body onload="show('comments')">
-
-
+        <body onload="showFormScroll('comments')">
         <div class="bg-pink-500 text-white text-center"><button onclick="scrollToBottomWithSection({{ session()->get("scroll") }})"> Operation successful. Click to go back to the comment. </button></div>
 
         @elseif(session()->get('commented') !== null)
             <div class="bg-yellow-500 text-white text-center"><p>Commenting was Successful</p></div>
-            <body onload="show('comments')">
+            <body onload="showForm('comments')">
 
             @elseif(session()->get('reviewIndex') !== null)
 
-                <body onload="show('reviews')">
+                <body onload="showForm('reviews')">
 
                 <div class="bg-pink-500 text-white text-center"><button onclick="scrollToBottomWithSection({{ session()->get("reviewIndex") }})"> Operation successful. Click to go back to the review. </button></div>
                 @else
-                <body onload="show('reviews')">
+                <body onload="showForm('reviews')">
             @endif
 
     <div id="content">
@@ -41,18 +39,13 @@
 
 
 
-
-
     <div class="tab">
-        <button  onclick="show('reviews')"> Reviews </button>
-        <button  onclick="show('comments')"> Comments </button>
+        <button class="tablinks" onclick="show(event, 'reviews')"> Reviews </button>
+        <button class="tablinks" onclick="show(event, 'comments')"> Comments </button>
     </div>
 
     <div id="reviews" class="tabcontent">
         <a class="bg-pink-300" href="/course/{{$course['id']}}/review"> Give review </a>
-
-
-
     @foreach($course->reviews as $review)
         <div class="bg-blue-50 m-5 b-5 border-4 border-green-500" id="review{{$loop->index}}">
              <a href="../profile/{{$review->user['id']}}">{{$review->user['username']}}: </a>
@@ -153,7 +146,7 @@
 
 
     </div>
-    </body>
+
 @endsection
 
 
