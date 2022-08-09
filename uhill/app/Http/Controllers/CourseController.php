@@ -40,6 +40,7 @@ class CourseController extends Controller
         $grade = $request['grade'];
         $order = $request['order'];
         $sort_by = $request['sort_by'];
+        $subject = $request['subject'];
 
         if($grade != 13){
         $courses = Course::query()
@@ -50,36 +51,41 @@ class CourseController extends Controller
             ->get();
         }
 
+        if($subject != "all"){
+            $courses = $courses->where('subject', $subject);
+        }
 
-if (!$courses->isEmpty()) {
+        if (!$courses->isEmpty()) {
+            if ($order == 'asc') {
+                $courses = $courses->toQuery()->orderBy($sort_by)->paginate(12);
+            } else {
+                $courses = $courses->toQuery()->orderByDesc($sort_by)->paginate(12);
+            }
 
-    if ($order == 'asc') {
-        $courses = $courses->toQuery()->orderBy($sort_by)->paginate(12);
-    } else {
-        $courses = $courses->toQuery()->orderByDesc($sort_by)->paginate(12);
-    }
 
-    $courses->appends([
-        'search' => $search,
-        'grade' => $grade,
-        'sort_by' => $sort_by,
-        'order' => $order
-    ]);
+            $courses->appends([
+                'search' => $search,
+                'grade' => $grade,
+                'sort_by' => $sort_by,
+                'order' => $order,
+                'subject' => $subject
+            ]);
 
-}else{
-    $courses = Course::query()->paginate(12);
-    $no_results = true;
-}
+        }else{
+            $courses = Course::query()->paginate(12);
+            $no_results = true;
+        }
 
-        return view('home', [
-            'courses' => $courses,
-            'grade' => $grade,
-            'sort_by' => $sort_by,
-            'order' => $order,
-            'paginatePage' => true,
-            'no_results' => $no_results
-        ]);
-    }
+                return view('home', [
+                    'courses' => $courses,
+                    'grade' => $grade,
+                    'sort_by' => $sort_by,
+                    'order' => $order,
+                    'paginatePage' => true,
+                    'no_results' => $no_results,
+                    'subject' => $subject
+                ]);
+            }
 
 
 

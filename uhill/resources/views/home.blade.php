@@ -15,9 +15,9 @@
     <form action="/filter" method="post" \>
         <div class="md:flex font-slim text-sm items-center justify-content-start justify-start mx-auto md:pt-8 md:mb-8 pt-2 px-6 left">
      @csrf
-        <div class="pt-2 justify-start">
+        <div class="pt-2 justify-start ml-2">
              <label for="sort_by"> Sort By: </label>
-            <select name="sort_by" id="sort_by" class="bg-felixSalmon  rounded no-border text-sm focus:ring-hotPink">
+            <select name="sort_by" id="sort_by" class="bg-felixSalmon  rounded no-border text-sm focus:ring-hotPink absolute right-3 md:relative md:right-0">
                  <option value='overall' <?php if (isset($sort_by) && $sort_by=="overall") echo "selected";?>>Overall Rating</option>
                  <option value='personality' <?php if (isset($sort_by) && $sort_by=="personality") echo "selected";?>>Personality</option>
                  <option value='fairness' <?php if (isset($sort_by) && $sort_by=="fairness") echo "selected";?>>Fairness</option>
@@ -26,19 +26,19 @@
             </select>
         </div>
 
-
+            <br>
         <div class="pt-2 justify-start ml-2">
         <label for="order"> Order by: </label>
-             <select name="order" id="order" class="bg-felixSalmon rounded no-border text-sm focus:ring-hotPink">
+             <select name="order" id="order" class="bg-felixSalmon rounded no-border text-sm focus:ring-hotPink absolute right-3 md:relative md:right-0">
                  <option value='desc' <?php if (isset($order) && $order=="desc") echo "selected";?>> High to Low</option>
                  <option value='asc' <?php if (isset($order) && $order=="asc") echo "selected";?>> Low to High</option>
              </select>
 
         </div>
-
+            <br>
         <div class="pt-2 justify-start ml-2">
           <label for="grade" class="text-sm"> Grade: </label>
-             <select name="grade" id="grade" class="bg-felixSalmon rounded no-border text-sm focus:ring-hotPink">
+             <select name="grade" id="grade" class="bg-felixSalmon rounded no-border text-sm focus:ring-hotPink absolute right-3 md:relative md:right-0">
                  <option value=13 <?php if (isset($grade) && $grade==13) echo "selected";?>> Any </option>
                  <option value=8 <?php if (isset($grade) && $grade==8) echo "selected";?>> 8 </option>
                  <option value=9 <?php if (isset($grade) && $grade==9) echo "selected";?>> 9 </option>
@@ -47,14 +47,39 @@
                  <option value=12 <?php if (isset($grade) && $grade==12) echo "selected";?>> 12</option>
              </select>
         </div>
-
+            <br>
+            <div class="pt-2 justify-start ml-2">
+                <label for="subject" class="text-sm"> Subject: </label>
+                <select name="subject" id="subject" class="bg-felixSalmon rounded no-border text-sm focus:ring-hotPink absolute right-3 md:relative md:right-0">
+                    <option value="all" <?php if (isset($subject) && $subject=="all") echo "selected";?> >All</option>
+                    <option value="art" <?php if (isset($subject) && $subject=="art") echo "selected";?> >Visual Arts 2D/3D/Yearbook</option>
+                    <option value="biology" <?php if (isset($subject) && $subject=="biology") echo "selected";?>>Biology</option>
+                    <option value="career" <?php if (isset($subject) && $subject=="career") echo "selected";?>>Career</option>
+                    <option value="chemistry" <?php if (isset($subject) && $subject=="chemistry") echo "selected";?>> Chemistry</option>
+                    <option value="community" <?php if (isset($subject) && $subject=="community") echo "selected";?>>Community</option>
+                    <option value="computers" <?php if (isset($subject) && $subject=="computers") echo "selected";?>>Computers</option>
+                    <option value="economics" <?php if (isset($subject) && $subject=="economics") echo "selected";?>>Economics/Business/Finance</option>
+                    <option value="engineering" <?php if (isset($subject) && $subject=="engineering") echo "selected";?>>Engineering</option>
+                    <option value="english" <?php if (isset($subject) && $subject=="english") echo "selected";?>>English</option>
+                    <option value="foods" <?php if (isset($subject) && $subject=="foods") echo "selected";?>>Foods</option>
+                    <option value="languages" <?php if (isset($subject) && $subject=="languages") echo "selected";?>>Second Languages</option>
+                    <option value="math" <?php if (isset($subject) && $subject=="math") echo "selected";?>>Math</option>
+                    <option value="PE" <?php if (isset($subject) && $subject=="PE") echo "selected";?>>PE/Active Living</option>
+                    <option value="physics" <?php if (isset($subject) && $subject=="physics") echo "selected";?>>Physics</option>
+                    <option value="science" <?php if (isset($subject) && $subject=="science") echo "selected";?>>Science (Grade 10 and under)</option>
+                    <option value="skills" <?php if (isset($subject) && $subject=="skills") echo "selected";?>>Skills</option>
+                    <option value="statistics" <?php if (isset($subject) && $subject=="statistics") echo "selected";?>>Statistics</option>
+                    <option value="theatre" <?php if (isset($subject) && $subject=="theatre") echo "selected";?>>Theatre</option>
+                </select>
+            </div>
+            <br>
         <div class="pt-2 justify-start ml-2">
 
         <label for="search"> Search for: </label>
-        <input class="bg-felixSalmon no-border rounded text-sm focus:ring-hotPink" type="text" id="search" name="search" value="{{session('search')}}">
+        <input placeholder="leave blank for all" class="placeholder-pink-400 bg-felixSalmon no-border rounded text-sm focus:ring-hotPink absolute right-3 md:relative md:right-0" type="text" id="search" name="search" value="{{session('search')}}">
 
         </div>
-
+            <br>
             <div class="pt-2 text-center justify-start ml-2">
         <button type="submit" class="bg-hotPink text-xs text-white font-slim rounded hover:bg-pink-500 px-1 special"> Filter</button>
             </div>
