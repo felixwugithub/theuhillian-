@@ -20,11 +20,11 @@ class Kernel extends ConsoleKernel
     {
         $schedule->call(function (){
             $this->calculateRatings();
-        })->daily();
+        })->everyMinute();
 
         $schedule->call(function (){
             $this->calculateTeacherRatings();
-        })->daily();
+        })->everyMinute();
 
     }
 

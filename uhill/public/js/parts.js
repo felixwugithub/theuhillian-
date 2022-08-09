@@ -43,7 +43,12 @@ function getOffset(el) {
 
 function scrollToBottomWithSection(sectionIndex){
     setTimeout(function(){
-        window.scrollTo(0, getOffset(sectionIndex).top-150);
+        window.scrollTo(0, getOffset(sectionIndex).top);
     },0);
 }
 
+
+function showFormAndScroll(section, sectionIndex){
+    showForm(section);
+    scrollToBottomWithSection(sectionIndex);
+}

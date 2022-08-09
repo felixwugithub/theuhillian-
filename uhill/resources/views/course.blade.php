@@ -5,7 +5,7 @@
 
     <!-- Tab links -->
     @if(session()->get('returnScrollComment') !== null)
-        <body onload="showFormScroll('comments')">
+        <body onload="showFormAndScroll('comments', {{ session()->get("scroll") }})">
         <div class="bg-pink-500 text-white text-center"><button onclick="scrollToBottomWithSection({{ session()->get("scroll") }})"> Operation successful. Click to go back to the comment. </button></div>
 
         @elseif(session()->get('commented') !== null)
@@ -14,8 +14,7 @@
 
             @elseif(session()->get('reviewIndex') !== null)
 
-                <body onload="showForm('reviews')">
-
+                <body onload="showFormAndScroll('reviews', {{ session()->get("reviewIndex") }})">
                 <div class="bg-pink-500 text-white text-center"><button onclick="scrollToBottomWithSection({{ session()->get("reviewIndex") }})"> Operation successful. Click to go back to the review. </button></div>
                 @else
                 <body onload="showForm('reviews')">
@@ -79,22 +78,23 @@
     </div>
 
 
-    <div id="comments" class="tabcontent">
-        <div class="bg-blue-100 mx-3 w-1/6 text-center">
-        <button class="" onclick="showForm('commentForm')"> Leave a comment </button>
+    <div id="comments" class="tabcontent bg-felixSalmon justify-center justify-content-center">
+        <div class="bg-blue-100 mx-3 w-full flex justify-center mx-auto">
+        <button class="items-center text-center" onclick="showForm('commentForm')"> Comment </button>
         </div>
-        <div id="commentForm" class="hiddenForm bg-blue-100 w-1/6 text-center mx-3" style="display: none">
+        <div id="commentForm" class="hiddenForm bg-blue-100 w-full  text-center mx-auto" style="display: none">
             <form action="{{route('courseComment', $course['id'])}}" method="post">
                 @method('HEAD')
                 @csrf
 
                 @if (Auth::check())
-                    <label for="content">comment:</label>
-                    <input class='bg-pink-100' type="text" name="content">
+                    <input class='bg-white/30 w-full' type="text" name="content">
                     @error('content')
                     <p>{{$message}}</p>
                     @enderror
+                <div>
                     <button type="submit" class="text-blue-500">Submit</button>
+                </div>
                 @else
                     <h1>YOU MUST BE LOGGED IN TO COMMENt</h1>
                 @endif
@@ -107,10 +107,10 @@
         @foreach($course->comments->sortByDesc('created_at') as $comment)
 
             @if($comment->user == auth()->user())
-        <div class="bg-yellow-50 border-4 border-red-100 rounded-pill m-1 b-1" id="comment{{$loop->index}}">
+        <div class="bg-yellow-50 border-4 border-red-100 rounded-pill rounded-5 b-1 p-5 m-5" id="comment{{$loop->index}}">
             @else
 
-                <div class="bg-pink-100 rounded-pill m-1 b-1" id="comment{{$loop->index}}">
+                <div class="bg-white rounded-pill m-5 b-5 p-5" id="comment{{$loop->index}}">
                     @endif
 
                     <a href="/profile/{{$comment->user->id}}"><p class="text-sm">{{$comment->user->username}}:</p></a>
