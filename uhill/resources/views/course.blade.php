@@ -46,24 +46,95 @@
     <div id="reviews" class="tabcontent">
         <a class="bg-pink-300" href="/course/{{$course['id']}}/review"> Give review </a>
     @foreach($course->reviews as $review)
-        <div class="bg-blue-50 m-5 b-5 border-4 border-green-500" id="review{{$loop->index}}">
+        <div class="bg-blue-50 m-5 b-5 border-4 border-green-500" id="review{{$review->id}}">
+
+            <div id="reviewBlock{{$review->id}}">
+
              <a href="../profile/{{$review->user['id']}}">{{$review->user['username']}}: </a>
             <h5>Personality: {{$review['personality']}}/10</h5>
             <h5>Fairness: {{$review['fairness']}}/10</h5>
             <h5>Easiness: {{$review['easiness']}}/10</h5>
             <h4>{{$review['title']}}</h4>
             <p>{{$review['content']}}</p>
+            </div>
+
+            @if($review['created_at'] != $review['updated_at'])
+
+                <p>edited at {{$review['updated_at']}}</p>
+
+            @endif
+
+            @auth
+                @if($review->user->id == auth()->id())
+                    <button class="items-center text-center" onclick="showFormAndHide('reviewEditForm', 'reviewBlock{{$review->id}}')"> Edit </button>
+                    <form action="{{route('reviewDelete', ['review_id' => $review->id])}}">
+                        <button type="submit">Delete</button>
+                    </form>
+
+                <div class="hidden" id="reviewEditForm">
+                    <form action="{{route('reviewUpdate', ['review_id' => $review->id])}}">
+                        @csrf
+                        @method('PATCH')
+                        <div>
+                            <label for="title">Review Title</label>
+                            <input id="title" type="text" name="title"
+                                   value="{{old('title')}}">
+                            @error('title')
+                            <p>{{$message}}</p>
+                            @enderror
+
+                            <label for="personality">Personality</label>
+                            <input id="personality" type="number" name="personality"
+                                   value="{{old('personality')}}">
+
+                            @error('personality')
+                            <p>{{$message}}</p>
+                            @enderror
+
+                            <label for="fairness">Fairness</label>
+                            <input id="fairness" type="number" name="fairness"
+                                   value="{{old('fairness')}}">
+
+                            @error('fairness')
+                            <p>{{$message}}</p>
+                            @enderror
+
+                            <label for="easiness">Easiness</label>
+                            <input id="easiness" type="number" name="easiness"
+                                   value="{{old('easiness')}}">
+
+                            @error('easiness')
+                            <p>{{$message}}</p>
+                            @enderror
+
+                            <label for="content">Detailed review</label>
+                            <input id="content" type="text" name="content"
+                                   value="{{old('content')}}">
+
+                            @error('content')
+                            <p>{{$message}}</p>
+                            @enderror
+                            <button type="submit">Add Review</button>
+                        </div>
+
+                    </form>
+                </div>
+
+
+
+                @endif
+
+            @endauth
 
 
          <p>Liked by {{$review->reviewHelpfuls()->count()}}</p>
-
             @auth
             @if(!$review->reviewHelpfuledBy(auth()->user()))
-                <form action="{{route('reviewHelpful', ['review' => $review->id, 'reviewIndex' => 'review'.$loop->index ] ) }}" method="post" class="mr-1">@csrf
+                <form action="{{route('reviewHelpful', ['review' => $review->id, 'reviewIndex' => 'review'.$review->id ] ) }}" method="post" class="mr-1">@csrf
                     <button type="submit" class="text-blue-500">Helpful</button>
                 </form>
             @else
-                <form action="{{route('reviewHelpful', ['review' => $review->id, 'reviewIndex' => 'review'.$loop->index ])}}" method="post" class="mr-1">
+                <form action="{{route('reviewHelpful', ['review' => $review->id, 'reviewIndex' => 'review'.$review->id ])}}" method="post" class="mr-1">
                     @csrf
 
                     @method('DELETE')
@@ -102,15 +173,13 @@
             </form>
         </div>
 
-
-
         @foreach($course->comments->sortByDesc('created_at') as $comment)
 
             @if($comment->user == auth()->user())
-        <div class="bg-yellow-50 border-4 border-red-100 rounded-pill rounded-5 b-1 p-5 m-5" id="comment{{$loop->index}}">
+        <div class="bg-yellow-50 border-4 border-red-100 rounded-pill rounded-5 b-1 p-5 m-5" id="comment{{$comment->id}}">
             @else
 
-                <div class="bg-white rounded-pill m-5 b-5 p-5" id="comment{{$loop->index}}">
+                <div class="bg-white rounded-pill m-5 b-5 p-5" id="comment{{$comment->id}}">
                     @endif
 
                     <a href="/profile/{{$comment->user->id}}"><p class="text-sm">{{$comment->user->username}}:</p></a>
@@ -119,13 +188,13 @@
 
 
             @if(!$comment->commentLikedBy(auth()->user()))
-                <form action="{{route('courseCommentLike', ['id' => $comment->id, 'commentIndex' => 'comment'.$loop->index ] ) }}">
+                <form action="{{route('courseCommentLike', ['id' => $comment->id, 'commentIndex' => 'comment'.$comment->id ] ) }}">
                     <button type="submit" >like</button>
                 </form>
 
             @else
 
-                <form action="{{route('courseCommentUnlike', ['id' => $comment->id, 'commentIndex' => 'comment'.$loop->index ] ) }}">
+                <form action="{{route('courseCommentUnlike', ['id' => $comment->id, 'commentIndex' => 'comment'.$comment->id] ) }}">
                     <button type="submit" >Unlike</button>
 
                 </form>
@@ -142,8 +211,6 @@
     </div>
 
     <script src="/js/parts.js"> </script>
-
-
 
     </div>
 

@@ -73,6 +73,9 @@ Route::get('/course/{id}', function ($id){
     }
 })->name('courseListing');
 
+Route::any('/reviewEdit/{review_id}', [ReviewController::class, 'update'])->name('reviewUpdate');
+Route::any('/reviewDelete/{review_id}', [ReviewController::class, 'destroy'])->name('reviewDelete');
+
 Route::any('/course/{id}/courseComment', [\App\Http\Controllers\CommentController::class, 'store'])->name('courseComment');
 Route::any('courseCommentLike/{id}/{commentIndex}', [\App\Http\Controllers\CommentLikeController::class, 'store'])->name('courseCommentLike');
 Route::any('courseCommentUnlike/{id}/{commentIndex}', [\App\Http\Controllers\CommentLikeController::class, 'destroy'])->name('courseCommentUnlike');

@@ -19,6 +19,10 @@ function show(evt, section) {
 function showForm(form){
     document.getElementById(form).style.display = "block";
 }
+function showFormAndHide(form, hide){
+    document.getElementById(form).style.display = "block";
+    document.getElementById(hide).style.display = "none";
+}
 
 function showFormScroll(form){
     showForm(form);

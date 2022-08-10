@@ -6,7 +6,9 @@ use App\Models\Course;
 
 use App\Models\Review;
 use App\Models\Teacher;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Redirect;
 
 class ReviewController extends Controller
@@ -40,13 +42,14 @@ class ReviewController extends Controller
 
             $data['course_id'] = $id;
 
-            auth()->user()->reviews()->create($data);
+            $review = auth()->user()->reviews()->create($data);
+
 
             $this->updateCourseRatings($id);
             $this->calculateTeacherRatings($course->teacher);
 
-            return view('course', [
-                'course' => Course::find($id),
+            return Redirect::route('courseListing', $review->course->id)->with([
+                'reviewIndex' => 'review'.$review->id
             ]);
 
         } else {
@@ -59,6 +62,63 @@ class ReviewController extends Controller
 
 
     }
+
+    public function destroy($id){
+
+        $review = Review::find($id);
+
+
+        if(Auth::id() == $review->user->id){
+
+            $review->delete();
+
+        $this->updateCourseRatings($review->course->id);
+        $this->calculateTeacherRatings($review->course->teacher);
+
+        return Redirect::route('courseListing', $review->course->id);}
+        else{
+            return ("Nice try.");
+        }
+
+    }
+
+
+    public function update($review_id, Request $request){
+
+        $review = Review::find($review_id);
+
+        if(Auth::id() == $review->user->id){
+        $data = $request->validate(
+            [
+                'title' => 'required',
+                'personality' => 'required|integer|between:1,10',
+                'fairness' => 'required|integer|between:1,10',
+                'easiness' => 'required|integer|between:1,10',
+                'content' => 'required',
+                'course_id' => 'nullable',
+                'updated_at' => 'nullable'
+            ]
+        );
+
+        $data['course_id'] = $review->course->id;
+        $data['updated_at'] = Carbon::now();
+
+        $review->update($data);
+
+        $this->updateCourseRatings($review->course->id);
+        $this->calculateTeacherRatings($review->course->teacher);
+
+        return Redirect::route('courseListing', $review->course->id)->with([
+            'reviewIndex' => 'review'.$review->id
+        ]);}
+        else{
+            return "Nice try.";
+        }
+
+    }
+
+
+
 
     public function updateCourseRatings(int $id){
         $course =  Course::find($id);

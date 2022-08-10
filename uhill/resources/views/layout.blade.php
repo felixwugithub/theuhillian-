@@ -38,15 +38,15 @@
 
 <body class="overflow-visible" id="content">
 
-<nav class="relative container md:px-2 md:py-5 md:sticky bg-white h-36 md:h-auto">
+<nav class="relative container md:px-2 md:py-5 md:sticky top-5 md:top-0 bg-white overflow-hidden h-20 md:h-auto z-50">
 
     <div class=" max-w-screen-xl mx-auto pl-5 flex items-center md:justify-between my-0">
 
         <div class="flex-nowrap">
-            <div class="float-left pt-10 md:pt-0">
-                <a href="/"><img src="/images/uhillLogoBnW.jpeg" class="h-10 w-10 inline-flex mt-10 md:mt-0" alt="Logo">
+            <div class="float-left md:pt-0 items-center ">
+                <a href="/"><img src="/images/uhillLogoBnW.jpeg" class="h-10 w-10 inline-flex md:mt-0 " alt="Logo">
                 <div class="float-right">
-                    <h1 class="font-comfortaa hover:text-hotPink text-4xl md:ml-2 mt-1 invisible md:visible">The Uhillian</h1>
+                    <h1 class="font-comfortaa hover:text-hotPink text-4xl md:ml-2 mt-1 hidden md:block">The Uhillian</h1>
                 </div>
                 </a>
             </div>
