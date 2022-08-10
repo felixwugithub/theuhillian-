@@ -4,16 +4,16 @@
 
 
 
-    <div class="flex font-sf items-center justify-center mx-auto ">
-    <h1 class="md:mt-4 ml-7 text-notRealBlack text-5xl md:text-5xl tracking-tight">
+    <div class="flex font-sf items-center justify-center mx-auto pt-5">
+    <h1 class="md:mt-4 pb-5 ml-7 text-notRealBlack text-5xl md:text-5xl tracking-tight">
     Courses at University Hill Secondary
     </h1>
 </div>
 
 
-<div class="md:flex font-slim text-lg justify-content-start md:justify-center md:mx-auto md:pt-8 md:mb-8">
+<div class="md:flex font-slim text-lg  md:justify-center md:mx-auto md:pt-8 md:mb-8">
     <form action="/filter" method="post" \>
-        <div class="md:flex font-slim text-sm items-center justify-content-start justify-start mx-auto md:pt-8 md:mb-8 pt-2 px-6 left">
+        <div class="md:flex font-slim text-sm items-center  mx-auto md:pt-8 md:mb-8 pt-2 px-6 left">
      @csrf
         <div class="pt-2 justify-start ml-2">
              <label for="sort_by"> Sort By: </label>
