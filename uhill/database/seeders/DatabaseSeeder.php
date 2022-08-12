@@ -22,14 +22,14 @@ class DatabaseSeeder extends Seeder
     public function run()
     {
 
-       $user =  User::factory()->create([
+       $user1 = User::factory()->create([
             'email' => 'admin@learn.vsb.bc.ca',
             'password' => bcrypt("123456"),
             'admin' => 1
         ]);
 
-       $user->profile->create([
-           ''
+       Profile::factory()->create([
+           'user_id' => $user1->id
        ]);
 
         for ($x = 0; $x <= 35; $x++) {

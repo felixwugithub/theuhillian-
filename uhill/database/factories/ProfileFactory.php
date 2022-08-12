@@ -18,6 +18,7 @@ class ProfileFactory extends Factory
     public function definition()
     {
         return [
+            'name' => fake()->name,
             'grade' =>fake()->numberBetween(8,12),
             'url' => fake()->url,
             'description' => fake()->paragraph(3),
