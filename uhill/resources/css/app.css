@@ -40,6 +40,10 @@
     padding-top: 5px;
 }
 
+.fix{
+    height: 18px;
+}
+
 .input1 {
     height: 30px;
     min-height: 30px;
@@ -70,7 +74,10 @@
 
 
 }
-
+.gradient-courses{
+    background: rgb(252,223,220);
+    background: linear-gradient(135deg, rgba(252,223,220,1) 0%, rgba(252,223,220,1) 35%, rgba(252,223,220,1) 70%, rgba(248,173,173,1) 140%);
+}
 /* Style the tab */
 .tab {
     justify-content: center;

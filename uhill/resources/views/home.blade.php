@@ -5,7 +5,7 @@
 
 
     <div class="flex font-sf items-center justify-center mx-auto pt-5">
-    <h1 class="md:mt-4 pb-5 ml-7 text-notRealBlack text-5xl md:text-5xl tracking-tight">
+    <h1 class="md:mt-4 pb-5 ml-7 text-black text-5xl md:text-5xl tracking-tight">
     Courses at University Hill Secondary
     </h1>
 </div>
@@ -99,40 +99,36 @@
 @foreach ($courses as $course)
 
 
-    <div class="rounded m-4 max-w-sm box-shadow relative h-64 w-75 container bg-subject-{{$course['subject']}} bg-gradient-to-br from-felixSalmon via-felixSalmon to-hotPink100 ">
+    <div class="rounded m-4 max-w-sm box-shadow relative h-64 w-75 container bg-subject-{{$course['subject']}} gradient-courses">
         <div>
-            <div class="text-notRealBlack py-3 items-start top-0 flex container justify-center text-center bg-gradient-to-tl from-hotPink-100 via-felixSalmon to-felixSalmon">
+            <div class="py-3 items-start top-0 flex container justify-center text-center bg-gradient-to-tl from-hotPink-100 via-felixSalmon to-felixSalmon">
                 <div class="container w-75 justify-center text-center">
                 <center><a class="font-sf text-xl justify-center text-center"  href="/course/{{$course['id']}}"> {{substr($course['course_name'], 0, 33)}}</a></center>
                 </div>
-
             </div>
 
-            <div class="h-5 justify-center w-75 bg-gradient-to-r from-pinkWhite via-hotPink to-pinkWhite">
-                <img class="h-4 w-20 justify-center mx-auto object-center" src="/images/star-ratings/{{$course['overall']}}.png" alt="Stars">
+            <div class="h-5 justify-center w-75 bg-gradient-to-r from-pinkWhite via-hotPink100 to-pinkWhite ml-10 mr-10">
+                <img class="fix w-35 justify-center mx-auto object-center" src="/images/star-ratings/{{$course['overall']}}.png" alt="Stars">
             </div>
 
-            <div class="justify-content-evenly font-quicksand-slim absolute bottom-0 container w-75 p-5">
-                <img class="h-8 w-8 flex absolute bottom-5 right-5" src="/images/subject-images/{{$course['subject']}}.png" alt="">
+            <div class="justify-content-evenly font-quicksand-slim absolute bottom-5 container w-75 p-10 ">
+                <img class="h-8 w-8 flex absolute bottom-5 right-5 " src="/images/subject-images/{{$course['subject']}}.png" alt="">
 
 
-                <h2 class="font-quicksand-slim"> Teacher: {{$course->teacher->name}}</h2>
+                <h2 class="font-quicksand-slim text-center "> {{$course->teacher->name}}</h2>
 
-                <div class="container w-75 flex items-center">
-                <h3 class="font-sans font-quicksand-slim flex float-left">Rating: {{$course['overall']}} / 10</h3>
 
-                </div>
 
                 @if(isset($sort_by))
                     @if($sort_by !== 'overall' && $sort_by !== 'review_count')
-                        <p class="text-red-500">{{$sort_by}}: {{$course[$sort_by]}} / 10</p>
+                        <p class="text-red-500 ">{{$sort_by}}: {{$course[$sort_by]}} / 10</p>
                     @elseif($sort_by == 'review_count')
-                        <p class="text-red-500">Number of reviews: {{$course[$sort_by]}}</p>
+                        <p class="text-red-500 ">Number of reviews: {{$course[$sort_by]}}</p>
                     @endif
                 @endif
 
 
-                <p>{{substr($course['description'],0,64)}}...</p>
+                <p class="font-slim">{{substr($course['description'],0,64)}}...</p>
 
                 <br>
 
