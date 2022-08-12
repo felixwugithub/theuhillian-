@@ -16,8 +16,11 @@ class ClubController extends Controller
 
     public function display($club_name): \Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View|\Illuminate\Contracts\Foundation\Application
     {
+
+        $club = Club::query()->where('name', str_replace('_', ' ', $club_name))->first();
+
         return view('club',[
-            'club' => Club::query()->where('name', str_replace('_', ' ', $club_name))
+            'club' => $club
         ]);
     }
 }

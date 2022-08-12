@@ -28,8 +28,11 @@ Route::get('/', function () {
     ]);
 });
 
+
 Route::get('/clubs', [\App\Http\Controllers\ClubController::class, 'show'])->name('clubs');
 Route::any('/club/{club_name}', [\App\Http\Controllers\ClubController::class, 'display'])->name('club');
+Route::any('/joinclub/{id}', [\App\Http\Controllers\ClubMemberController::class, 'join'])->name('joinClub');
+Route::any('/quitclub/{id}', [\App\Http\Controllers\ClubMemberController::class, 'quit'])->name('quitClub');
 
 
 
