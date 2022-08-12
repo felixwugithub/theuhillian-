@@ -99,7 +99,7 @@
 @foreach ($courses as $course)
 
 
-    <div class="rounded m-4 max-w-sm box-shadow relative h-64 w-75 container bg-subject-{{$course['subject']}} gradient-courses">
+    <div class="rounded m-4 max-w-sm box-shadow relative h-56 w-75 container bg-subject-{{$course['subject']}} gradient-courses">
         <div>
             <div class="py-3 items-start top-0 flex container justify-center text-center bg-gradient-to-tl from-hotPink-100 via-felixSalmon to-felixSalmon">
                 <div class="container w-75 justify-center text-center">
@@ -111,13 +111,11 @@
                 <img class="fix w-35 justify-center mx-auto object-center" src="/images/star-ratings/{{$course['overall']}}.png" alt="Stars">
             </div>
 
-            <div class="justify-content-evenly font-quicksand-slim absolute bottom-5 container w-75 p-10 ">
-                <img class="h-8 w-8 flex absolute bottom-5 right-5 " src="/images/subject-images/{{$course['subject']}}.png" alt="">
+            <div class="justify-content-evenly font-quicksand-slim absolute container w-75 px-10 pt-2">
+                <img class="h-8 w-8 flex absolute bottom-0 right-5" src="/images/subject-images/{{$course['subject']}}.png" alt="">
 
 
                 <h2 class="font-quicksand-slim text-center "> {{$course->teacher->name}}</h2>
-
-
 
                 @if(isset($sort_by))
                     @if($sort_by !== 'overall' && $sort_by !== 'review_count')
