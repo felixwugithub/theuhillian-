@@ -26,7 +26,7 @@
     @endif
 
         <h1>{{$course['course_name']}}</h1>
-        <h5>Overall rating: {{$course['overall']}} /10</h5>
+        <h5>Overall rating: {{floor($course['overall']+0.5)}} /10</h5>
         <a href="../teacher/{{$course->teacher['id']}}">Teacher: {{$course->teacher['name']}}</a>
         <p>Summary: {{$course['description']}}</p>
 
@@ -35,6 +35,14 @@
         <h5>Fairness: {{$course['fairness']}}/10 </h5>
         <h5>Easiness: {{$course['easiness']}}/10 </h5>
 
+
+        <div>
+            @if(!$course->courseJoined(auth()->user()))
+            <a href="{{route('joinCourse', ['id' => $course->id])}}"> Join this course </a>
+            @else
+                <a href="{{route('quitCourse', ['id' => $course->id])}}"> Quit this course </a>
+            @endif
+        </div>
 
 
 

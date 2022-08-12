@@ -63,6 +63,8 @@
         <div class=" md:flex items-center float-end right-0">
         @auth
 
+
+                <a class="font-slim pr-5 hover:text-hotPink" href="/dashboard">Dashboard</a>
                 <a class="font-slim pr-5 hover:text-hotPink" href="/profile/{{auth()->user()->id}}">Welcome, {{auth()->user()->username}}!</a>
             <form method="POST" action="/logout" class="pb-1">
                 @csrf

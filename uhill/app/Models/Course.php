@@ -11,6 +11,13 @@ class Course extends Model
     protected $guarded = [];
     use HasFactory;
 
+    public function course_members(): \Illuminate\Database\Eloquent\Relations\HasMany
+    {
+        return $this->hasMany(CourseMember::class);
+    }
+
+
+
     public function reviews(): \Illuminate\Database\Eloquent\Relations\HasMany
     {
         return $this->hasMany(Review::class);
@@ -23,6 +30,10 @@ class Course extends Model
     public function teacher(): \Illuminate\Database\Eloquent\Relations\BelongsTo
     {
         return $this->belongsTo(Teacher::class);
+    }
+
+    public function courseJoined(User $user){
+        return $this->course_members->contains('user_id', $user->id);
     }
 
     public function updateAllRatings(){

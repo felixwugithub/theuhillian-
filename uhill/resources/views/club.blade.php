@@ -2,8 +2,9 @@
 
 @section('content')
 
-{{$club->name}}
+{{$club->get('name')}}
 
+<form action=""></form>
 @endsection
 
 

@@ -18,7 +18,7 @@
         @foreach ($clubs as $club)
             <div class="w-full md:w-1/4 bg-blue-50 h-96 m-5 rounded-full justify-center pt-10 container text-center">
                 <div class="w-48 justify-center mx-auto">
-                  <a href="{{route('club', ['id' => $club->id])}}" class="text-center mx-auto">{{$club->name}}</a>
+                  <a href="{{route('club', ['club_name' => str_replace(' ', '_',$club->name)])}}" class="text-center mx-auto">{{$club->name}}</a>
                 </div>
             </div>
         @endforeach
