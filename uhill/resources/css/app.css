@@ -12,7 +12,18 @@
 }
 .font-slim {
     font-family: 'Josefin Sans', sans-serif;
+    font-weight:300;
 }
+
+.font-ooga {
+    font-family: 'Josefin Sans', sans-serif;
+    font-weight:325;
+}
+.font-abcdef{
+    font-family: 'Josefin Sans', sans-serif;
+    font-weight:350;
+}
+
 .font-comfortaa{
     font-family: 'Comfortaa', cursive;
 }
