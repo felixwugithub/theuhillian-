@@ -23,8 +23,6 @@
             </div>
         @endforeach
 
-
-
     </div>
 
 @endsection

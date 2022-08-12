@@ -2,9 +2,18 @@
 
 @section('content')
 
-{{$club->get('name')}}
+    {{$club['name']}}
 
-<form action=""></form>
+    <div>
+        @if(!$club->clubJoined(auth()->user()))
+            <a href="{{route('joinClub', ['id' => $club->id])}}"> Join this club </a>
+        @else
+            <a href="{{route('quitClub', ['id' => $club->id])}}"> Quit this club </a>
+        @endif
+    </div>
+
+
+
 @endsection
 
 

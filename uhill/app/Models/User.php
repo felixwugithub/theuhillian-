@@ -70,4 +70,8 @@ class User extends Authenticatable
         return $this->hasMany(CourseMember::class);
     }
 
+    public function club_members(): \Illuminate\Database\Eloquent\Relations\HasMany
+    {
+        return $this->hasMany(ClubMember::class);
+    }
 }
