@@ -55,7 +55,7 @@
 
         <div class="relative lg:flex lg:items-center grid place-items-center float pr-14 md:pr-auto">
 
-            <a href="/clubs" class="hover:text-hotPink  text-lg font-slim md:px-8">Clubs</a>
+            <a href="/clubs" class="hover:text-blue-400  text-lg font-slim md:px-8">Clubs</a>
             <a href="/" class="hover:text-hotPink text-lg  font-slim md:px-8">Courses</a>
             <a href="/teachers" class="hover:text-hotPink  text-lg font-slim md:px-8">Teachers</a>
         </div>
