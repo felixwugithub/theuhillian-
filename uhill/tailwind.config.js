@@ -24,8 +24,16 @@ module.exports = {
               defaultPurple: '#bcaac2',
               defaultMidBlue: '#9CB4CC',
               defaultDarkerBlue: '#748Da6',
-              notRealBlack: '#592525',
-              felixSalmon: '#fcdfdc'
+              notRealBlack: '#482525',
+              felixSalmon: '#fcdfdc',
+
+              rawBanana:'#e0d4aa',
+              ripeBanana:'#fff0ca',
+              babyBanana:'#f8f7a9',
+              rottenBanana:'#d3b626',
+              deadBanana: 'rgba(255,234,189,0.42)',
+              notReallyBlack: '#2e2f0b'
+
 
           }
     },

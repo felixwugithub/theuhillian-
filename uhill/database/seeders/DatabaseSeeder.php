@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\Club;
 use App\Models\Comment;
 use App\Models\Course;
 use App\Models\Profile;
@@ -22,6 +23,8 @@ class DatabaseSeeder extends Seeder
     {
 
         for ($x = 0; $x <= 35; $x++) {
+
+            Club::factory()->create();
             $teacher = Teacher::factory()->create();
 
             for ($y = 0; $y <= 5; $y++){
