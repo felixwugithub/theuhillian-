@@ -65,4 +65,9 @@ class User extends Authenticatable
         return $this->hasMany(CommentLike::class);
     }
 
+    public function course_members(): \Illuminate\Database\Eloquent\Relations\HasMany
+    {
+        return $this->hasMany(CourseMember::class);
+    }
+
 }

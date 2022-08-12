@@ -2,9 +2,14 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Course;
+use App\Models\CourseMember;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Validation\Rule;
+use mysql_xdevapi\Collection;
+use PhpParser\Node\Expr\Cast\Object_;
 use Symfony\Component\HttpKernel\Event\RequestEvent;
 
 class UserController extends Controller
@@ -73,5 +78,15 @@ class UserController extends Controller
         $request->session()->regenerateToken();
 
         return redirect('/')->with('message', 'You have been logged out.');
+    }
+
+    public function dashboard()
+    {
+        $user = auth()->user();
+        $courses =  $user->course_members->pluck('course_id');
+        return view('dashboard',[
+            'courses' => Course::findMany($courses)
+        ]);
+
     }
 }

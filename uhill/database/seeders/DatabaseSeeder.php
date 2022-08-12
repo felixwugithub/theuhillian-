@@ -22,7 +22,15 @@ class DatabaseSeeder extends Seeder
     public function run()
     {
 
+        User::factory()->create([
+            'email' => 'admin@learn.vsb.bc.ca',
+            'password' => bcrypt("123456"),
+            'admin' => 1
+        ]);
+
         for ($x = 0; $x <= 35; $x++) {
+
+
 
             Club::factory()->create();
             $teacher = Teacher::factory()->create();

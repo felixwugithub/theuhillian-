@@ -13,13 +13,15 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('review_helpfuls', function (Blueprint $table) {
+        Schema::create('course_members', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('course_id')->constrained()->cascadeOnDelete();
             $table->foreignId('user_id')->constrained()->cascadeOnDelete();
-            $table->foreignId('review_id')->constrained()->cascadeOnDelete();
-            $table->index('user_id');
-            $table->index('review_id');
             $table->timestamps();
+
+            $table->index('course_id');
+            $table->index('user_id');
+
         });
     }
 
@@ -30,11 +32,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::disableForeignKeyConstraints();
-        Schema::dropIfExists('review helpfuls');
-        Schema::dropIfExists('reviews');
-        Schema::dropIfExists('users');
-        Schema::enableForeignKeyConstraints();
-
+        Schema::dropIfExists('course_members');
     }
 };

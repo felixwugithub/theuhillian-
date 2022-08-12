@@ -14,10 +14,10 @@ class ClubController extends Controller
         ]);
     }
 
-    public function display($id): \Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View|\Illuminate\Contracts\Foundation\Application
+    public function display($club_name): \Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View|\Illuminate\Contracts\Foundation\Application
     {
         return view('club',[
-            'club' => Club::find($id)
+            'club' => Club::query()->where('name', str_replace('_', ' ', $club_name))
         ]);
     }
 }

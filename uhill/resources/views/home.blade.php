@@ -108,7 +108,7 @@
             </div>
 
             <div class="h-5 justify-center w-75 bg-gradient-to-r from-pinkWhite via-hotPink100 to-pinkWhite ml-10 mr-10">
-                <img class="fix w-35 justify-center mx-auto object-center" src="/images/star-ratings/{{$course['overall']}}.png" alt="Stars">
+                <img class="fix w-35 justify-center mx-auto object-center" src="/images/star-ratings/{{floor($course['overall'] + 0.5)}}.png" alt="Stars">
             </div>
 
             <div class="justify-content-evenly font-quicksand-slim absolute container w-75 px-10 pt-2">

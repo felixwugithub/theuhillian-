@@ -29,7 +29,8 @@ Route::get('/', function () {
 });
 
 Route::get('/clubs', [\App\Http\Controllers\ClubController::class, 'show'])->name('clubs');
-Route::any('/club/{id}', [\App\Http\Controllers\ClubController::class, 'display'])->name('club');
+Route::any('/club/{club_name}', [\App\Http\Controllers\ClubController::class, 'display'])->name('club');
+
 
 
 
@@ -102,4 +103,12 @@ Route::post('/course/{id}', [ReviewController::class, 'store']);
 
 Route::post('/course/reviewHelpful/{review}/{reviewIndex}', [\App\Http\Controllers\ReviewHelpfulController::class, 'store'])->name('reviewHelpful');
 Route::delete('/course/reviewHelpful/{review}/{reviewIndex}', [\App\Http\Controllers\ReviewHelpfulController::class, 'destroy'])->name('reviewHelpful');
+
+Route::any('/course/{id}/join', [\App\Http\Controllers\CourseMemberController::class, 'join'])->name('joinCourse');
+Route::any('/course/{id}/quit', [\App\Http\Controllers\CourseMemberController::class, 'quit'])->name('quitCourse');
+
+
+Route::any('/dashboard', [UserController::class, 'dashboard'])->name('dashboard');
+
+
 
