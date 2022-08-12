@@ -26,21 +26,11 @@
 </head>
 
 
-
-
-
-
-
-
-
-
-
-
 <body class="overflow-visible" id="content">
 
-<nav class="relative container md:px-2 md:py-5 md:sticky top-5 md:top-0 bg-white overflow-hidden h-20 md:h-auto z-50">
+<nav class="relative max-w-screen-xl w-full container md:px-2 md:py-5 md:sticky top-5 md:top-0 bg-white overflow-hidden h-20 md:h-auto z-50">
 
-    <div class=" max-w-screen-xl mx-auto pl-5 flex items-center md:justify-between my-0">
+    <div class="max-w-screen-xl w-full mx-auto pl-5 flex items-center md:justify-between my-0">
 
         <div class="flex-nowrap">
             <div class="float-left md:pt-0 items-center ">
@@ -62,8 +52,6 @@
 
         <div class=" md:flex items-center float-end right-0">
         @auth
-
-
                 <a class="font-slim pr-5 hover:text-hotPink" href="/dashboard">Dashboard</a>
                 <a class="font-slim pr-5 hover:text-hotPink" href="/profile/{{auth()->user()->id}}">Welcome, {{auth()->user()->username}}!</a>
             <form method="POST" action="/logout" class="pb-1">
