@@ -28,19 +28,15 @@ Route::get('/', function () {
     ]);
 });
 
+Route::get('/magazine', [\App\Http\Controllers\ArticleController::class,'show']);
 
 Route::get('/clubs', [\App\Http\Controllers\ClubController::class, 'show'])->name('clubs');
 Route::any('/club/{club_name}', [\App\Http\Controllers\ClubController::class, 'display'])->name('club');
 Route::any('/joinclub/{id}', [\App\Http\Controllers\ClubMemberController::class, 'join'])->name('joinClub');
 Route::any('/quitclub/{id}', [\App\Http\Controllers\ClubMemberController::class, 'quit'])->name('quitClub');
 
-
-
-
 Route::any('/filter', [\App\Http\Controllers\CourseController::class, 'search'])->name('search');
-
 Route::get('/courses/{sort_by}/{order}', [\App\Http\Controllers\CourseController::class, 'show']);
-
 Route::get('/teachers', function () {
     return view('teachers', [
         'teachers' => Teacher::all()
