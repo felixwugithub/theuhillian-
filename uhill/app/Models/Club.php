@@ -7,6 +7,9 @@ use Illuminate\Database\Eloquent\Model;
 
 class Club extends Model
 {
+
+    protected $guarded = [];
+
     use HasFactory;
 
     public function club_members(): \Illuminate\Database\Eloquent\Relations\HasMany

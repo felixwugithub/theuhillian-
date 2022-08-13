@@ -27,8 +27,8 @@ module.exports = {
               notRealBlack: '#482525',
               felixSalmon: '#fcdfdc',
 
-              rawBanana:'#e0d4aa',
-              ripeBanana:'#fff0ca',
+              rawBanana:'#d9d2be',
+              ripeBanana:'#fcf5e4',
               babyBanana:'#f8f7a9',
               rottenBanana:'#d3b626',
               deadBanana: 'rgba(255,234,189,0.42)',

@@ -1,6 +1,7 @@
 @extends('layout')
+
 @section('content')
-    <div class="container w-full bg-rawBanana p-3">
+
     <!--
 
          You can access the following variables/functions/classes by surrounding them with double curly brackets,
@@ -31,56 +32,9 @@
 
     -->
 
-        <form action="/upload/article" enctype="multipart/form-data">
-            @csrf
-            @method('POST')
-            <label for="title">Title</label>
-            <input id="title" type="text" name="title"
-                   value="{{old('title')}}">
-            @error('title')
-            <p>{{$message}}</p>
-            @enderror
 
-            <label for="author">Author</label>
-            <input id="author" type="text" name="author"
-                   value="{{old('author')}}">
-
-            @error('author')
-            <p>{{$message}}</p>
-            @enderror
-
-            <label for="content">Content</label>
-            <input id="content" type="text" name="content"
-                   value="{{old('content')}}">
-
-            @error('content')
-            <p>{{$message}}</p>
-            @enderror
-
-            <label for="pdf">PDF</label>
-            <input type="file" name="pdf" id="pdf">
-            @error('pdf')
-            <p>{{$message}}</p>
-            @enderror
+    {{$article->title}}
 
 
-            <button>Add Article</button>
-        </form>
 
-    @foreach($articles as $article)
-
-            <a href="{{route('article', ['title' => str_replace(' ', '_', $article->title)])}}">
-    <div class="p-5 b-5 m-5 container w-auto bg-ripeBanana">
-        <p>
-            {{$article->content}}
-        </p>
-    </div>
-            </a>
-    @endforeach
-
-        <div class="w-full md:w-1/2 justify-center items-center text-center">
-    {{$articles->links()}}
-        </div>
-
-    </div>
 @endsection
