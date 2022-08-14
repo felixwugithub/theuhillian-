@@ -31,7 +31,7 @@
 
     -->
 
-        <form action="/upload/article" enctype="multipart/form-data">
+        <form action="{{route('articlePDFUpload')}}" enctype="multipart/form-data" method="post">
             @csrf
             @method('POST')
             <label for="title">Title</label>

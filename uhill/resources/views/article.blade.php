@@ -31,10 +31,19 @@
         note: when using a variable that is nullable, check that it is set before using it.
 
     -->
+    <div class="container max-w-screen-xl w-11/12 h-[188rem] bg-rawBanana">
+        <h1 class="text-6xl font-sf">
+        {{$article->title}}
+        </h1>
 
+        <p>
+            {{$article->content}}
+        </p>
 
-    {{$article->title}}
+        @if(isset($article->articlepdf))
 
+    <iframe class="w-full h-full overflow-hidden" src="/storage/articlePDFs/{{$article->articlepdf->pdf}}">Bruh</iframe>
+            @endif
 
-
+    </div>
 @endsection

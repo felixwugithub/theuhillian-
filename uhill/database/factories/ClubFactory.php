@@ -17,7 +17,7 @@ class ClubFactory extends Factory
     public function definition()
     {
         return [
-            'name' => fake()->jobTitle,
+            'name' => fake()->unique()->jobTitle,
             'description' => fake()->paragraph,
             'room_number' => fake()->numberBetween(100,999),
             'overall' => 0,

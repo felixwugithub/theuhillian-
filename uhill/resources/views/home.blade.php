@@ -117,13 +117,16 @@
 
                 <h2 class="font-quicksand-slim text-center "> {{$course->teacher->name}}</h2>
 
+
+                <div class="absolute bottom-0 justify-center items-center text-center pl-24">
                 @if(isset($sort_by))
                     @if($sort_by !== 'overall' && $sort_by !== 'review_count')
-                        <p class="text-red-500 ">{{$sort_by}}: {{$course[$sort_by]}} / 10</p>
+                        <p class="text-hotPink ">{{$sort_by}}: {{floor($course[$sort_by] + 0.5)}} / 10</p>
                     @elseif($sort_by == 'review_count')
-                        <p class="text-red-500 ">Number of reviews: {{$course[$sort_by]}}</p>
+                        <p class="text-hotPink ">Number of reviews: {{floor($course[$sort_by] + 0.5)}}</p>
                     @endif
                 @endif
+                </div>
 
 
                 <p class="font-slim">{{substr($course['description'],0,64)}}...</p>

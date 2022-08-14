@@ -12,8 +12,14 @@ class ArticleController extends Controller
 {
     public function show(): \Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View|\Illuminate\Contracts\Foundation\Application
     {
+
+
+        $articles = Article::query()
+            ->orderBy('id', 'DESC')
+            ->paginate(10);
+
         return view('magazine',[
-            'articles' => Article::paginate(4)
+            'articles' => $articles
         ]);
     }
 
@@ -43,7 +49,6 @@ class ArticleController extends Controller
             'author' => $formfields['author'],
             'created_at' => Carbon::now(),
             'updated_at' => Carbon::now()
-
         ]);
 
         $article->save();

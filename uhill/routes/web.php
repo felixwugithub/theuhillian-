@@ -21,6 +21,7 @@ use App\Http\Controllers\UserController;
 */
 
 Route::get('/', function () {
+
     return view('home', [
         'courses' => Course::paginate(12),
         'paginatePage' => true,
@@ -30,7 +31,7 @@ Route::get('/', function () {
 
 Route::get('/magazine', [\App\Http\Controllers\ArticleController::class,'show']);
 Route::get('/magazine/article/{title}', [\App\Http\Controllers\ArticleController::class,'display'])->name('article');
-Route::any('/upload/article',[\App\Http\Controllers\ArticleController::class, 'store']);
+Route::any('/upload/article',[\App\Http\Controllers\ArticleController::class, 'store'])->name('articlePDFUpload');
 
 Route::get('/clubs', [\App\Http\Controllers\ClubController::class, 'show'])->name('clubs');
 Route::any('/club/{club_name}', [\App\Http\Controllers\ClubController::class, 'display'])->name('club');
