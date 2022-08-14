@@ -18,7 +18,7 @@ class ArticleFactory extends Factory
     {
         return [
             'author' => fake()->name,
-            'title' => fake()->text,
+            'title' => fake()->unique()->text,
             'content' => fake()->paragraphs(5, true)
         ];
     }
