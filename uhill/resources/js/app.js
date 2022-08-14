@@ -10,6 +10,7 @@ import App from './vue/app';
  */
 
 require('./bootstrap');
+import './libs/trix';
 
 window.Vue = require('vue').default;
 

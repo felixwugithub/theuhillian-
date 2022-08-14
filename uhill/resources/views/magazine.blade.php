@@ -34,6 +34,9 @@
         <form action="{{route('articlePDFUpload')}}" enctype="multipart/form-data" method="post">
             @csrf
             @method('POST')
+
+
+
             <label for="title">Title</label>
             <input id="title" type="text" name="title"
                    value="{{old('title')}}">
@@ -56,6 +59,10 @@
             @error('content')
             <p>{{$message}}</p>
             @enderror
+
+            <input id="x" name="content">
+            <trix-editor input="x"></trix-editor>
+
 
             <label for="pdf">PDF</label>
             <input type="file" name="pdf" id="pdf">
