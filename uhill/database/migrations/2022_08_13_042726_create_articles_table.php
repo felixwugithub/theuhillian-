@@ -20,7 +20,6 @@ return new class extends Migration
             $table->foreignId('club_id')->nullable()->constrained()->cascadeOnDelete();
             $table->string('author');
             $table->string('title');
-            $table->longText('content');
 
         });
     }

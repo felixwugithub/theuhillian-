@@ -32,6 +32,7 @@ Route::get('/', function () {
 Route::get('/magazine', [\App\Http\Controllers\ArticleController::class,'show']);
 Route::get('/magazine/article/{title}', [\App\Http\Controllers\ArticleController::class,'display'])->name('article');
 Route::any('/upload/article',[\App\Http\Controllers\ArticleController::class, 'store'])->name('articlePDFUpload');
+Route::get('/magazine/editor', [\App\Http\Controllers\ArticleController::class, 'create'])->name('articleEditor');
 
 Route::get('/clubs', [\App\Http\Controllers\ClubController::class, 'show'])->name('clubs');
 Route::any('/club/{club_name}', [\App\Http\Controllers\ClubController::class, 'display'])->name('club');

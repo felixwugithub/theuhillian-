@@ -7,6 +7,8 @@ use App\Models\ArticlePDF;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
+use Te7aHoudini\LaravelTrix\LaravelTrix;
 
 class ArticleController extends Controller
 {
@@ -21,6 +23,10 @@ class ArticleController extends Controller
         return view('magazine',[
             'articles' => $articles
         ]);
+    }
+
+    public function create(){
+        return view('magazine.editor');
     }
 
     public function display($title): \Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View|\Illuminate\Contracts\Foundation\Application
@@ -38,20 +44,21 @@ class ArticleController extends Controller
         $formfields = $this->validate($request, [
             'title' => 'required',
             'author' => 'required',
-            'content' => 'required',
+            'content' => 'nullable',
             'pdf.*' => 'mimes:pdf|max:100000|nullable',
 
         ]);
 
         $article = Article::create([
             'title' => $formfields['title'],
-            'content' => $formfields['content'],
             'author' => $formfields['author'],
             'created_at' => Carbon::now(),
-            'updated_at' => Carbon::now()
+            'updated_at' => Carbon::now(),
+            'content' => $request['content']
         ]);
 
         $article->save();
+
 
 
         if($request->hasFile('pdf')){
@@ -64,8 +71,6 @@ class ArticleController extends Controller
                 'article_id' => $article->id,
                 'pdf' => $name
             ]);
-        }else{
-            return "no file";
         }
 
         return redirect('/magazine');

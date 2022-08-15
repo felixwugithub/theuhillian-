@@ -36,14 +36,15 @@
         {{$article->title}}
         </h1>
 
-        <p>
-            {{$article->content}}
-        </p>
+        {{$article->trixRichText}}
 
-        @if(isset($article->articlepdf))
+        <br>
 
-    <iframe class="w-full h-full overflow-hidden" src="/storage/articlePDFs/{{$article->articlepdf->pdf}}">Bruh</iframe>
-            @endif
+
+{{--        @if(isset($article->articlepdf))--}}
+
+{{--    <iframe class="w-full h-full overflow-hidden" src="/storage/articlePDFs/{{$article->articlepdf->pdf}}">Bruh</iframe>--}}
+{{--            @endif--}}
 
     </div>
 @endsection

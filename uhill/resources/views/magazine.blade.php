@@ -31,55 +31,14 @@
 
     -->
 
-        <form action="{{route('articlePDFUpload')}}" enctype="multipart/form-data" method="post">
-            @csrf
-            @method('POST')
 
-
-
-            <label for="title">Title</label>
-            <input id="title" type="text" name="title"
-                   value="{{old('title')}}">
-            @error('title')
-            <p>{{$message}}</p>
-            @enderror
-
-            <label for="author">Author</label>
-            <input id="author" type="text" name="author"
-                   value="{{old('author')}}">
-
-            @error('author')
-            <p>{{$message}}</p>
-            @enderror
-
-            <label for="content">Content</label>
-            <input id="content" type="text" name="content"
-                   value="{{old('content')}}">
-
-            @error('content')
-            <p>{{$message}}</p>
-            @enderror
-
-            <input id="x" name="content">
-            <trix-editor input="x"></trix-editor>
-
-
-            <label for="pdf">PDF</label>
-            <input type="file" name="pdf" id="pdf">
-            @error('pdf')
-            <p>{{$message}}</p>
-            @enderror
-
-
-            <button>Add Article</button>
-        </form>
 
     @foreach($articles as $article)
 
             <a href="{{route('article', ['title' => str_replace(' ', '_', $article->title)])}}">
     <div class="p-5 b-5 m-5 container w-auto bg-ripeBanana">
         <p>
-            {{$article->content}}
+            {{$article->title}}
         </p>
     </div>
             </a>
