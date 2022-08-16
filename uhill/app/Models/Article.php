@@ -10,13 +10,7 @@ use Tonysm\RichTextLaravel\Models\Traits\HasRichText;
 class Article extends Model
 {
     protected $guarded = [];
-    use HasFactory;
-    use HasRichText;
-
-    protected $richTextFields = [
-        'content'
-    ];
-
+ 
 
     /**
      * @return \Illuminate\Database\Eloquent\Relations\HasOne
