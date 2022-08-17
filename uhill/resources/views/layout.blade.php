@@ -84,8 +84,12 @@
 
 @auth
     @if(auth()->user()->admin == 1)
-        <a href="/admin/teacher/create">Create Teacher</a>
+
+        <div class="bg-blue-50 justify-content-around">
+        <a href="/admin/teacher/create">||Create Teacher||</a>
         <a href="/admin/course/create">Create Course</a>
+        <a href="/admin/club/create">||Create a Club||</a>
+        </div>
     @endif
 @endauth
 

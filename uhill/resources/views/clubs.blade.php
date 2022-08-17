@@ -44,6 +44,19 @@
         </h1>
     </div>
 
+    <form action="/filterclubs" method="post" enctype="multipart/form-data">
+        <div class="md:flex font-slim text-sm items-center  mx-auto md:pt-8 md:mb-8 pt-2 px-6 left">
+       @csrf
+            @method('POST')
+                <label for="search"> Search for: </label>
+                <input placeholder="leave blank for all" class="placeholder-blue-400 bg-blue-50 no-border rounded text-sm focus:ring-blue-600 absolute right-3 md:relative md:right-0" type="text" id="search" name="search" value="{{$clubSearch}}">
+            </div>
+            <br>
+            <div class="pt-2 text-center justify-start ml-2">
+                <button type="submit" class="bg-blue-300 text-xs text-white font-slim rounded hover:bg-blue-800 px-1 special">Filter</button>
+            </div>
+
+    </form>
 
     <div class="flex-wrap align-content-center flex justify-center w-full h-full container p-10">
         @foreach ($clubs as $club)
