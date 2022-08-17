@@ -36,6 +36,8 @@
             <input id="x" type="hidden" name="content">
             <trix-editor class="trix-editor" input="x"></trix-editor>
 
+
+
             @error('content')
             <p>{{$message}}</p>
             @enderror
@@ -52,6 +54,7 @@
         <br>
 
         <button>Add Article</button>
+
     </form>
 
     </div>

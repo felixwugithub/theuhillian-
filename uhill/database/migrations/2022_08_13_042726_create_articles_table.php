@@ -19,7 +19,7 @@ return new class extends Migration
             $table->foreignId('user_id')->nullable()->constrained()->cascadeOnDelete();
             $table->foreignId('club_id')->nullable()->constrained()->cascadeOnDelete();
             $table->string('author');
-            $table->string('title');
+            $table->string('title')->unique();
 
         });
     }

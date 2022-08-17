@@ -197,8 +197,8 @@
 }
 
 .trix-editor h1 {
-    font-size: 1.25rem !important;
-    line-height: 1.25rem !important;
+    font-size: 1.5rem !important;
+    line-height: 1.35rem !important;
     @apply leading-5 font-semibold mb-4;
 }
 
@@ -207,7 +207,7 @@
 }
 
 .trix-editor a:visited {
-    color: green;
+    color: #ff8282;
 }
 
 .trix-editor ul {
@@ -225,16 +225,19 @@
     width: 100%;
     vertical-align: top;
     font-family: monospace;
-    font-size: 1.5em;
+    color: #e1bdbd;
+    font-size: 1.2em;
     padding: 0.5em;
     white-space: pre;
-    background-color: #eee;
+    background-color: #271d3a;
     overflow-x: auto;
 }
 
+
+
 .trix-editor blockquote {
-    border: 0 solid #ccc;
-    border-left-width: 0px;
+    border: 0 solid #ffb8b8;
+    font-family: 'Josefin Sans', sans-serif;
     border-left-width: 0.3em;
     margin-left: 0.3em;
     padding-left: 0.6em;

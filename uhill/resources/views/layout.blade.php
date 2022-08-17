@@ -25,8 +25,6 @@
     @vite('resources/css/app.css')
 
 
-
-
     <script src="dist/flowbite.js"></script>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script type="text/javascript" src="/js/trix.js"></script>
@@ -96,5 +94,6 @@
 
 <script src="dist/flowbite.js"></script>
 <script src="https://unpkg.com/flowbite@1.5.1/dist/flowbite.js"></script>
+
 </body>
 </html>
