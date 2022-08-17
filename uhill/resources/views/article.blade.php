@@ -37,13 +37,15 @@
         </h1>
         <br>
 
+        <div class="m-10">
         <div class="trix-editor">
-      {!! $article->content !!}
+            {!! $content !!}
         </div>
-{{--        @if(isset($article->articlepdf))--}}
+        </div>
 
-{{--    <iframe class="w-full h-full overflow-hidden" src="/storage/articlePDFs/{{$article->articlepdf->pdf}}">Bruh</iframe>--}}
-{{--            @endif--}}
+        @if(isset($article->articlepdf))
+             <iframe class="w-full h-full overflow-hidden" id="articlePDF" src="/storage/articlePDFs/{{$article->articlepdf->pdf}}">Bruh</iframe>
+        @endif
 
     </div>
 @endsection

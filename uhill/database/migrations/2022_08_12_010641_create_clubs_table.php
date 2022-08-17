@@ -22,7 +22,7 @@ return new class extends Migration
             $table->string('president')->nullable(true);
             $table->string('vice_president')->nullable(true);
             $table->string('meeting_times')->nullable(true);
-            $table->double('overall');
+            $table->double('overall')->nullable(true);
             $table->timestamps();
         });
     }

@@ -35,6 +35,9 @@ Route::any('/upload/article',[\App\Http\Controllers\ArticleController::class, 's
 Route::get('/magazine/editor', [\App\Http\Controllers\ArticleController::class, 'create'])->name('articleEditor');
 
 Route::get('/clubs', [\App\Http\Controllers\ClubController::class, 'show'])->name('clubs');
+
+Route::post('/filterclubs',[\App\Http\Controllers\ClubController::class, 'filter'])->name('filterClubs');
+
 Route::any('/club/{club_name}', [\App\Http\Controllers\ClubController::class, 'display'])->name('club');
 Route::any('/joinclub/{id}', [\App\Http\Controllers\ClubMemberController::class, 'join'])->name('joinClub');
 Route::any('/quitclub/{id}', [\App\Http\Controllers\ClubMemberController::class, 'quit'])->name('quitClub');
@@ -49,6 +52,8 @@ Route::get('/teachers', function () {
 
 Route::get('/admin/teacher/create', [\App\Http\Controllers\TeacherController::class, 'create']);
 Route::get('/admin/course/create', [\App\Http\Controllers\Course_Template_Controller::class, 'create']);
+Route::get('/admin/club/create', [\App\Http\Controllers\ClubController::class, 'create']);
+
 
 
 Route::post('/admin/teacher/store', [\App\Http\Controllers\TeacherController::class, 'store']);
@@ -57,6 +62,7 @@ Route::post('/teacher/{id}/store', [\App\Http\Controllers\TeacherController::cla
 
 
 Route::post('/admin/course/store', [\App\Http\Controllers\Course_Template_Controller::class, 'store']);
+Route::post('/admin/club/store', [\App\Http\Controllers\ClubController::class, 'store']);
 
 
 Route::get('/teacher/{id}', function ($id){

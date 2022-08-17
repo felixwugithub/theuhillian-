@@ -8,6 +8,7 @@ use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
+use Stevebauman\Purify\Facades\Purify;
 use Te7aHoudini\LaravelTrix\LaravelTrix;
 use Tonysm\RichTextLaravel\Models\Traits\HasRichText;
 
@@ -22,7 +23,8 @@ class ArticleController extends Controller
             ->paginate(10);
 
         return view('magazine',[
-            'articles' => $articles
+            'articles' => $articles,
+
         ]);
     }
 
@@ -36,7 +38,8 @@ class ArticleController extends Controller
         $article = Article::query()->where('title', str_replace('_', ' ', $title))->first();
 
         return view('article',[
-            'article' => $article
+            'article' => $article,
+            'content' => Purify::clean($article->content)
         ]);
     }
 
@@ -55,7 +58,7 @@ class ArticleController extends Controller
             'author' => $formfields['author'],
             'created_at' => Carbon::now(),
             'updated_at' => Carbon::now(),
-            'content' => $request['content']
+            'content' => Purify::clean($request['content'])
         ]);
 
 
@@ -74,6 +77,7 @@ class ArticleController extends Controller
                 'pdf' => $name
             ]);
         }
+
 
         return redirect('/magazine');
 

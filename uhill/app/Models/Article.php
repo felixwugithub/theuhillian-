@@ -5,6 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
+use Stevebauman\Purify\Casts\PurifyHtmlOnGet;
 use Tonysm\RichTextLaravel\Models\RichText;
 use Tonysm\RichTextLaravel\Models\Traits\HasRichText;
 

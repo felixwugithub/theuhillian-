@@ -25,8 +25,6 @@
     @vite('resources/css/app.css')
 
 
-
-
     <script src="dist/flowbite.js"></script>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script type="text/javascript" src="/js/trix.js"></script>
@@ -86,8 +84,12 @@
 
 @auth
     @if(auth()->user()->admin == 1)
-        <a href="/admin/teacher/create">Create Teacher</a>
+
+        <div class="bg-blue-50 justify-content-around">
+        <a href="/admin/teacher/create">||Create Teacher||</a>
         <a href="/admin/course/create">Create Course</a>
+        <a href="/admin/club/create">||Create a Club||</a>
+        </div>
     @endif
 @endauth
 
@@ -96,5 +98,6 @@
 
 <script src="dist/flowbite.js"></script>
 <script src="https://unpkg.com/flowbite@1.5.1/dist/flowbite.js"></script>
+
 </body>
 </html>
