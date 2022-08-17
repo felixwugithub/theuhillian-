@@ -9,6 +9,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Te7aHoudini\LaravelTrix\LaravelTrix;
+use Tonysm\RichTextLaravel\Models\Traits\HasRichText;
 
 class ArticleController extends Controller
 {
@@ -56,6 +57,7 @@ class ArticleController extends Controller
             'updated_at' => Carbon::now(),
             'content' => $request['content']
         ]);
+
 
         $article->save();
 
