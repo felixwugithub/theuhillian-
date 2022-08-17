@@ -1,9 +1,10 @@
 @extends('layout')
 @section('content')
 
-    <div class="w-1/2 h-full items-center justify-center mx-auto bg-ripeBanana p-5">
+    <div class="w-full h-full items-center justify-center mx-auto bg-ripeBanana p-5">
 
-    <form action="{{route('articlePDFUpload')}}" enctype="multipart/form-data" method="post">
+
+        <form action="{{route('articlePDFUpload')}}" enctype="multipart/form-data" method="post">
         @csrf
         @method('POST')
 
@@ -31,11 +32,13 @@
         <br>
 
         <div>
-            @trix(\App\Article::class, 'content', ['disk' => 'articleRichTextAttachments'])
 
-        @error('content')
-        <p>{{$message}}</p>
-        @enderror
+            <input id="x" type="hidden" name="content">
+            <trix-editor class="trix-editor" input="x"></trix-editor>
+
+            @error('content')
+            <p>{{$message}}</p>
+            @enderror
         </div>
 
         <br>

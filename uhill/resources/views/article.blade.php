@@ -35,12 +35,11 @@
         <h1 class="text-6xl font-sf">
         {{$article->title}}
         </h1>
-
-        {{$article->trixRichText}}
-
         <br>
 
-
+        <div class="trix-editor">
+      {!! $article->content !!}
+        </div>
 {{--        @if(isset($article->articlepdf))--}}
 
 {{--    <iframe class="w-full h-full overflow-hidden" src="/storage/articlePDFs/{{$article->articlepdf->pdf}}">Bruh</iframe>--}}
