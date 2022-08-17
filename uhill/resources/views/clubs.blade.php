@@ -49,7 +49,11 @@
        @csrf
             @method('POST')
                 <label for="search"> Search for: </label>
-                <input placeholder="leave blank for all" class="placeholder-blue-400 bg-blue-50 no-border rounded text-sm focus:ring-blue-600 absolute right-3 md:relative md:right-0" type="text" id="search" name="search" value="{{$clubSearch}}">
+                <input placeholder="leave blank for all" class="placeholder-blue-400 bg-blue-50 no-border rounded text-sm focus:ring-blue-600 absolute right-3 md:relative md:right-0" type="text" id="search" name="search"
+
+                       @if(isset($clubSearch))
+                       value="{{$clubSearch}}"
+                    @endif>
             </div>
             <br>
             <div class="pt-2 text-center justify-start ml-2">
