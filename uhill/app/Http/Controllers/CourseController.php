@@ -28,6 +28,8 @@ class CourseController extends Controller
     }
 
 
+
+
     public function search(Request $request){
 
         $no_results = false;
