@@ -22,15 +22,17 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
 
     <title>The Uhillian</title>
+
     @vite('resources/css/app.css')
+    @livewireStyles
 
 
-    <script src="dist/flowbite.js"></script>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script type="text/javascript" src="/js/trix.js"></script>
 
     <x-rich-text-trix-styles></x-rich-text-trix-styles>
 </head>
+
 
 
 <body class="overflow-visible" id="content">
@@ -95,9 +97,7 @@
 
 @yield('content')
 
-
-<script src="dist/flowbite.js"></script>
 <script src="https://unpkg.com/flowbite@1.5.1/dist/flowbite.js"></script>
-
+@livewireScripts
 </body>
 </html>

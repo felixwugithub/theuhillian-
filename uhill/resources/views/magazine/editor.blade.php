@@ -34,9 +34,13 @@
         <div>
 
             <input id="x" type="hidden" name="content">
-            <trix-editor class="trix-editor" input="x"></trix-editor>
+            <trix-editor
 
-
+                Livewire:model.lazy="content"
+                id="content"
+                @trix-attachment-add="console.log($event.attachment)"
+                class="trix-editor" input="x">
+            </trix-editor>
 
             @error('content')
             <p>{{$message}}</p>
