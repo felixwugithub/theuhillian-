@@ -36,7 +36,7 @@ Route::get('/magazine/editor', [\App\Http\Controllers\ArticleController::class, 
 
 Route::get('/clubs', [\App\Http\Controllers\ClubController::class, 'show'])->name('clubs');
 
-Route::post('/filterclubs',[\App\Http\Controllers\ClubController::class, 'filter'])->name('filterClubs');
+Route::any('/filterclubs',[\App\Http\Controllers\ClubController::class, 'filter'])->name('filterClubs');
 
 Route::any('/club/{club_name}', [\App\Http\Controllers\ClubController::class, 'display'])->name('club');
 Route::any('/joinclub/{id}', [\App\Http\Controllers\ClubMemberController::class, 'join'])->name('joinClub');

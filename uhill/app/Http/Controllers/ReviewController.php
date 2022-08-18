@@ -6,8 +6,11 @@ use App\Models\Course;
 
 use App\Models\Review;
 use App\Models\Teacher;
+use App\Notifications\NewReview;
 use Carbon\Carbon;
+use Illuminate\Foundation\Auth\User;
 use Illuminate\Http\Request;
+use Illuminate\Notifications\Notification;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Redirect;
 
@@ -43,6 +46,18 @@ class ReviewController extends Controller
             $data['course_id'] = $id;
 
             $review = auth()->user()->reviews()->create($data);
+
+            $notificationData = [
+                'body' => 'course has received a new review!'
+            ];
+
+            $courseMembers = $course->courseMembers->pluck('user_id');
+            $users = User::findMany($courseMembers);
+            $users->notify(new NewReview($notificationData));
+
+
+
+
 
 
             $this->updateCourseRatings($id);

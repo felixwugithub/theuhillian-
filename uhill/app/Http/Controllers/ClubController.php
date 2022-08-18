@@ -10,17 +10,19 @@ class ClubController extends Controller
     public function show(): \Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View|\Illuminate\Contracts\Foundation\Application
     {
         return view('clubs', [
-            'clubs' => Club::all()
+            'clubs' => Club::paginate(9),
+            'paginatePage' => true
         ]);
     }
 
     public function filter(Request $request): \Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View|\Illuminate\Contracts\Foundation\Application
     {
         $search = $request['search'];
-        $clubs = Club::query()->where('name', 'LIKE', '%'.$search.'%')->orWhere('description', 'LIKE', '%'.$search.'%')->get();
+        $clubs = Club::query()->where('name', 'LIKE', '%'.$search.'%')->orWhere('description', 'LIKE', '%'.$search.'%')->paginate(9);
         return view('clubs', [
             'clubs' => $clubs,
-            'clubSearch' => $search
+            'clubSearch' => $search,
+            'paginatePage' => true
         ]);
     }
 
