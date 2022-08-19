@@ -88,6 +88,8 @@ Route::get('/course/{id}', function ($id){
     }
 })->name('courseListing');
 
+Route::get('/course-review/{id}/{review_id}', [\App\Http\Controllers\CourseController::class, 'scrollToReview'])->name('courseListingReview');
+
 Route::any('/reviewEdit/{review_id}', [ReviewController::class, 'update'])->name('reviewUpdate');
 Route::any('/reviewDelete/{review_id}', [ReviewController::class, 'destroy'])->name('reviewDelete');
 

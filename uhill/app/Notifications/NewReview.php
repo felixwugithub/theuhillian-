@@ -30,7 +30,7 @@ class NewReview extends Notification
      */
     public function via($notifiable)
     {
-        return ['mail'];
+        return ['database'];
     }
 
     /**
@@ -56,7 +56,10 @@ class NewReview extends Notification
     public function toArray($notifiable)
     {
         return [
-            'body' => $this->newReviewData->body
+            'course_id' =>$this->newReviewData['course_id'],
+            'review_id' =>$this->newReviewData['review_id'],
+            'body' => $this->newReviewData['body'],
+            'reviewer_id' => $this->newReviewData['reviewer_id']
         ];
     }
 }
