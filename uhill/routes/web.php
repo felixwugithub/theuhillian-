@@ -90,6 +90,9 @@ Route::get('/course/{id}', function ($id){
 
 Route::get('/course-review/{id}/{review_id}', [\App\Http\Controllers\CourseController::class, 'scrollToReview'])->name('courseListingReview');
 
+Route::get('/course-review-read/{id}/{review_id}/{notification_id}', [\App\Http\Controllers\CourseController::class, 'reviewRead'])->name('reviewRead');
+Route::get('/markallasread', [UserController::class, 'markAllAsRead']);
+
 Route::any('/reviewEdit/{review_id}', [ReviewController::class, 'update'])->name('reviewUpdate');
 Route::any('/reviewDelete/{review_id}', [ReviewController::class, 'destroy'])->name('reviewDelete');
 

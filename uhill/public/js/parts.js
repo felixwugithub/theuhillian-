@@ -56,3 +56,11 @@ function showFormAndScroll(section, sectionIndex){
     showForm(section);
     scrollToBottomWithSection(sectionIndex);
 }
+
+function showHideDiv(div){
+    if(document.getElementById(div).style.display === ""){
+        document.getElementById(div).style.display = "none";
+    }else{
+        document.getElementById(div).style.display = "";
+    }
+}

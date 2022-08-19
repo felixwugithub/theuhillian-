@@ -56,6 +56,7 @@ class NewReview extends Notification
     public function toArray($notifiable)
     {
         return [
+            'id' => $this->id,
             'course_id' =>$this->newReviewData['course_id'],
             'review_id' =>$this->newReviewData['review_id'],
             'body' => $this->newReviewData['body'],
