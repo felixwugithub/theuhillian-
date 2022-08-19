@@ -8,6 +8,7 @@ use App\Models\CourseMember;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Redirect;
 use Illuminate\Validation\Rule;
 use mysql_xdevapi\Collection;
 use PhpParser\Node\Expr\Cast\Object_;
@@ -84,11 +85,32 @@ class UserController extends Controller
         $user = auth()->user();
         $courses =  $user->course_members->pluck('course_id');
         $clubs = $user->club_members->pluck('club_id');
+
+        $unread_data = $user->unreadNotifications->pluck('data');
+        $unread_course_ids = [];
+        foreach ($unread_data as $unread){
+            $unread_course_ids[] = $unread['course_id'];
+        }
+
+
+
         return view('dashboard',[
             'courses' => Course::findMany($courses),
             'clubs' => Club::findMany($clubs),
-            'user' => User::find(\auth()->id())
+            'user' => User::find(\auth()->id()),
+            'unread_course_ids' => $unread_course_ids
         ]);
 
+    }
+
+    public function markAllAsRead(){
+        if (Auth::check()){
+            foreach(auth()->user()->unreadNotifications as $notification){
+                $notification->markAsRead();
+            }
+            return \redirect('/dashboard');
+        }else{
+            return "bruh";
+        }
     }
 }
