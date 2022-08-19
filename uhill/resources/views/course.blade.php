@@ -4,7 +4,9 @@
 
 
     <!-- Tab links -->
-    @if(session()->get('returnScrollComment') !== null)
+    @if(session()->get('reviewIndex') !== null && session()->get('simple'))
+        <body onload="showFormAndScroll('reviews', {{ session()->get("reviewIndex") }})">
+    @elseif(session()->get('returnScrollComment') !== null)
         <body onload="showFormAndScroll('comments', {{ session()->get("scroll") }})">
         <div class="bg-pink-500 text-white text-center"><button onclick="scrollToBottomWithSection({{ session()->get("scroll") }})"> Operation successful. Click to go back to the comment. </button></div>
 

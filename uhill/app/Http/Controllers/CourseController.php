@@ -3,9 +3,12 @@
 namespace App\Http\Controllers;
 
 use App\Models\Course;
+use App\Models\Review;
 use App\Models\Teacher;
 use Illuminate\Http\Request;
+use Illuminate\Notifications\Notification;
 use Illuminate\Pagination\LengthAwarePaginator;
+use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Session;
 
 
@@ -27,6 +30,20 @@ class CourseController extends Controller
         ]);
     }
 
+    public function scrollToReview($id, $review_id){
+        if(\Illuminate\Support\Facades\Auth::check()){
+            return Redirect::route('courseListing', $id)->with([
+                'reviewIndex' => 'review'.$review_id,
+                'simple' => true
+            ]);
+        }
+        else{
+            return view('unauthorized',[
+                'authMessage' => 'Course reviews and comments are only accessible by authorized users.'
+            ]);
+        }
+
+    }
 
 
 

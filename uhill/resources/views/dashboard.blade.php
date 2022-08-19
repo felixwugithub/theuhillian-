@@ -2,12 +2,24 @@
 
 @section('content')
 
+    <div>
+        <h1>Notifications:</h1>
+
+        @foreach($user->unreadNotifications as $notification)
+
+            <div class="m-5 p-5 bg-green-50">
+            <a href="{{route('courseListingReview', ['id' => $notification->data['course_id'], 'review_id' => $notification->data['review_id']])}}">{{$notification->data['body']}}</a>
+            </div>
+        @endforeach
+
+
+    </div>
+
 
     <div class="flex flex-wrap align-content-center flex justify-center">
     @foreach($courses as $course)
 
-
-
+        
         <div class="rounded m-4 max-w-sm box-shadow relative h-56 w-75 container bg-subject-{{$course['subject']}} gradient-courses">
             <div>
                 <div class="py-3 items-start top-0 flex container justify-center text-center bg-gradient-to-tl from-hotPink-100 via-felixSalmon to-felixSalmon">

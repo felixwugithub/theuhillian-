@@ -86,7 +86,8 @@ class UserController extends Controller
         $clubs = $user->club_members->pluck('club_id');
         return view('dashboard',[
             'courses' => Course::findMany($courses),
-            'clubs' => Club::findMany($clubs)
+            'clubs' => Club::findMany($clubs),
+            'user' => User::find(\auth()->id())
         ]);
 
     }
