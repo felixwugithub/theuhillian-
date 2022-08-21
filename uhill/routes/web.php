@@ -35,6 +35,7 @@ Route::any('/upload/article',[\App\Http\Controllers\ArticleController::class, 's
 Route::get('/magazine/editor', [\App\Http\Controllers\ArticleController::class, 'create'])->name('articleEditor');
 
 Route::get('/clubs', [\App\Http\Controllers\ClubController::class, 'show'])->name('clubs');
+Route::post('/club-post-store/{club_id}' , [\App\Http\Controllers\ClubPostController::class, 'store'])->name('club-post-store');
 
 Route::any('/filterclubs',[\App\Http\Controllers\ClubController::class, 'filter'])->name('filterClubs');
 

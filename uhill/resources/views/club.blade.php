@@ -37,7 +37,7 @@
     -->
 
 
-        <div id="club-mast-head" class="justify-center text-center items-center pb-3">
+        <div id="club-mast-head" class="justify-center text-center items-center py-3">
             <h1 class="text-6xl font-readex">{{strtoupper($club->name)}}</h1>
             <div class="container mx-auto pt-3">
 
@@ -81,8 +81,58 @@
 
             <div id="myTabContent">
                 <div class="hidden p-4 bg-gray-50 rounded-lg dark:bg-gray-800" id="profile" role="tabpanel" aria-labelledby="profile-tab">
-                    Posts
+
+
+                        <div>
+                    @if(auth()->check())
+                        @if(auth()->user()->admin == 1)
+                            <div class="flex mx-auto">
+                            <button class="justify-center mx-auto flex-wrap items-center text-center text-sm p-2 rounded-xl bg-blue-50 hover:bg-white" onclick="showHideDiv('club-post-form')"> New Post
+                                @error('caption')
+                                <div>
+                                <p class="text-red-800 m-auto">{{$message}}</p>
+                                @enderror
+
+                                @error('images')
+                                <p class="text-red-800 m-auto" >{{$message}}</p>
+                                @enderror
+                                </div>
+                            </button>
+                            </div>
+                            <form id="club-post-form" action="{{route('club-post-store',['club_id' => $club->id])}}" method="post" enctype="multipart/form-data" style="display: none">
+                                @csrf
+                                @method('POST')
+                                <div class="mb-6">
+                                    <label for="caption" class="block mb-2 text-gray-900 dark:text-gray-300">Caption</label>
+                                    <input type="text" id="caption" name="caption" class="block p-4 w-full text-gray-900 bg-gray-50 rounded-lg border border-gray-300 sm:text-md focus:ring-blue-100 focus:border-blue-100 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-200 dark:focus:border-blue-500">
+
+
+                                    <label class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300" for="images">Upload Images</label>
+                                    <input class="block w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 cursor-pointer dark:text-gray-400 focus:outline-none dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400" id="images" name="images[]" type="file" multiple=true>
+
+
+                                    <button type="submit" class="text-blue-800 mx-auto mt-3 justify-center flex bg-blue-50 hover:bg-yellow-200 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"> Post! </button>
+
+
+                                </div>
+                            </form>
+                        @endif
+                    @endif
+
+                    @foreach($club->club_posts->sortByDesc('created_at') as $post)
+                            <hr class="mt-10">
+                        <div>
+                            <h1>{{$post->caption}}</h1>
+                            @foreach($post->club_post_pictures as $image_object)
+                                <img src="/storage/clubPostImages/{{$image_object->image}}" alt="image">
+                            @endforeach
+
+                        </div>
+                    @endforeach
+
                 </div>
+
+
                 <div class="hidden p-4 bg-gray-50 rounded-lg dark:bg-gray-800" id="dashboard" role="tabpanel" aria-labelledby="dashboard-tab">
                     Articles
                 </div>
@@ -113,6 +163,7 @@
         @endif
     </div>
 
+    <script src="/js/parts.js"> </script>
 @endsection
 
 
