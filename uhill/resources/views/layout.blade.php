@@ -39,27 +39,27 @@
 
 <nav class="relative max-w-screen-xl w-full container md:px-2 md:py-5 md:sticky top-5 md:top-0 bg-white overflow-hidden h-20 md:h-auto z-50">
 
-    <div class="max-w-screen-xl w-full mx-auto pl-5 flex items-center md:justify-between my-0">
+    <div class="max-w-screen-xl w-full mx-auto pl-5 flex items-center md:justify-between my-0 ">
 
         <div class="flex-nowrap">
             <div class="float-left md:pt-0 items-center ">
                 <a href="/"><img src="/images/uhillLogoBnW.jpeg" class="h-10 w-10 inline-flex md:mt-0 " alt="Logo">
                 <div class="float-right">
-                    <h1 class="font-comfortaa hover:text-hotPink text-4xl md:ml-2 mt-1 hidden md:block">The Uhillian</h1>
+                    <h1 class="font-comfortaa hover:text-hotPink text-3xl md:ml-2 mt-1 hidden md:block">The Uhillian</h1>
                 </div>
                 </a>
             </div>
         </div>
 
 
-        <div class="relative lg:flex lg:items-center grid place-items-center float pr-14 md:pr-auto">
+        <div class="relative lg:flex lg:items-center grid float pr-14 md:pr-auto ">
             <a href="/magazine" class="hover:text-yellow-500  text-lg font-slim md:px-8">Magazine</a>
             <a href="/clubs" class="hover:text-blue-400  text-lg font-slim md:px-8">Clubs</a>
             <a href="/" class="hover:text-hotPink text-lg  font-slim md:px-8">Courses</a>
             <a href="/teachers" class="hover:text-hotPink  text-lg font-slim md:px-8">Teachers</a>
         </div>
 
-        <div class=" md:flex items-center float-end right-0">
+        <div class=" sm:float-right  md:flex float-end right-0">
         @auth
                 <a class="font-slim pr-5 hover:text-hotPink" href="/dashboard">Dashboard</a>
                 <a class="font-slim pr-5 hover:text-hotPink" href="/profile/{{auth()->user()->id}}">Welcome, {{auth()->user()->username}}!</a>

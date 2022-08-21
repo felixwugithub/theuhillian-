@@ -39,8 +39,8 @@
 
 
     <div class="flex font-sf items-center justify-center mx-auto pt-5">
-        <h1 class="md:mt-4 pb-5 ml-7 text-notReallyBlack text-5xl md:text-5xl tracking-tight ">
-            Clubs at University Hill Secondary
+        <h1 class="md:mt-4 pb-5 ml-7 text-center text-notReallyBlack text-5xl md:text-5xl tracking-tight ">
+            Clubs <span class="hidden sm-block">at University Hill Secondary</span>
         </h1>
     </div>
 
@@ -57,7 +57,7 @@
                     @endif>
             </div>
             <br>
-            <div class="pt-2 text-center justify-start ml-2">
+            <div class="pt-2 text-center justify-start ml-2 -mt-2">
                 <button type="submit" class="bg-blue-300 text-white font-slim rounded hover:bg-blue-800 px-1 special">Filter</button>
             </div>
 
@@ -66,7 +66,7 @@
 
     <div class="flex flex-wrap align-content-center flex justify-center">
         @foreach ($clubs as $club)
-            <div class="w-full bg-blue-50 h-96 m-3 rounded-full justify-center pt-10 container text-center md:w-[22rem]">
+            <div class="w-full bg-blue-50 h-96 m-3 rounded-full box-shadow justify-center pt-10 container text-center md:w-[22rem]">
                 <div class="w-48 justify-center mx-auto">
                   <a href="{{route('club', ['club_name' => str_replace(' ', '_',$club->name)])}}" class="text-center mx-auto">{{$club->name}}</a>
                 </div>

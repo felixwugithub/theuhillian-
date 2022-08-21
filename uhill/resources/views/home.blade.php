@@ -5,8 +5,8 @@
 
 
     <div class="flex font-sf items-center justify-center mx-auto pt-5">
-    <h1 class="md:mt-4 pb-5 ml-7 text-black text-5xl md:text-5xl tracking-tight">
-    Courses at University Hill Secondary
+    <h1 class="md:mt-4 pb-5 ml-7 text-black text-center text-5xl md:text-5xl tracking-tight">
+        Courses <span class="hidden sm:block">at University Hill Secondary</span>
     </h1>
 </div>
 
