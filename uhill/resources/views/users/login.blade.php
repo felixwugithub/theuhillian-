@@ -7,13 +7,13 @@
         <form method="POST" action="/users/authenticate">
     @csrf
     <lable for="email" class="block mt-5 font-slim">Email</lable>
-    <input class="mt-5 input1 rounded-full" type="email" name="email" value="{{old('email')}}">
+    <input class="mt-5 input1 rounded-full focus:ring-hotPink focus:border-hotPink" type="email" name="email" value="{{old('email')}}">
     @error('email')
     <p class="text-xs text-hotPink">{{$message}}</p>
     @enderror
 
     <lable for="password" class="mt-5 block font-slim">Password</lable>
-    <input  class="mt-5 input1 rounded-full" type="password" name="password">
+    <input  class="mt-5 input1 rounded-full focus:border-hotPink focus:ring-hotPink" type="password" name="password">
     @error('password')
     <p class="text-xs text-hotPink">{{$message}}</p>
          @enderror
