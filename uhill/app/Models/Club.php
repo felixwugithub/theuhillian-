@@ -21,5 +21,10 @@ class Club extends Model
         return $this->club_members->contains('user_id', $user->id);
     }
 
+    public function club_posts(): \Illuminate\Database\Eloquent\Relations\HasMany
+    {
+        return $this->hasMany(ClubPost::class);
+    }
+
 
 }
