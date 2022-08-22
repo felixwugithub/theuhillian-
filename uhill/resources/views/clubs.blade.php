@@ -71,6 +71,12 @@
                 <div class="w-48 justify-center mx-auto">
                   <a href="{{route('club', ['club_name' => str_replace(' ', '_',$club->name)])}}" class="text-center mx-auto">{{$club->name}}</a>
                 </div>
+
+                @if(isset($club->club_cover_image))<div class="my-auto flex justify-center items-center container">
+                    <img class="w-48 overflow-hidden h-48" src="{{'storage/clubCoverImages/'.$club->club_cover_image->image}}" alt="image">
+
+                </div>@endif
+
             </div>
         @endforeach
 
