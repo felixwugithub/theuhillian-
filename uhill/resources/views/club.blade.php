@@ -120,13 +120,15 @@
                     @endif
 
                     @foreach($club->club_posts->sortByDesc('created_at') as $post)
-                            <hr class="mt-10">
+                            <hr class="my-5">
                         <div>
-                            <h1>{{$post->caption}}</h1>
-                            @foreach($post->club_post_pictures as $image_object)
-                                <img src="/storage/clubPostImages/{{$image_object->image}}" alt="image">
-                            @endforeach
-
+                            <h1 class="text-xl max-w-96 max-h-96 overflow-hidden">{{$post->caption}}</h1>
+                            <p class="text-xs text-gray-600">{{$post->created_at}}</p>
+                            @if(isset($post->club_post_pictures))
+                                @foreach($post->club_post_pictures as $image_object)
+                                    <img class="mx-auto"  src="/storage/clubPostImages/{{$image_object->image}}" alt="image">
+                                @endforeach
+                            @endif
                         </div>
                     @endforeach
 

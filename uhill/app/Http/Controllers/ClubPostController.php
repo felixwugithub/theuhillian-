@@ -14,7 +14,7 @@ class ClubPostController extends Controller
 
         if(Auth::check()){
         $data = $this->validate($request, [
-            'images' => 'required',
+            'images' => 'nullable',
             'images.*' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048',
             'caption' => 'required'
         ]);

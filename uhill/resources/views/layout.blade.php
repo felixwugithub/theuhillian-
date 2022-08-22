@@ -41,7 +41,46 @@
 
 <body class="overflow-visible" id="content">
 
-<nav class="relative max-w-screen-xl w-full container md:px-2 md:py-5 md:sticky top-5 md:top-0 bg-white overflow-hidden h-20 md:h-auto z-50">
+<nav class="relative max-w-screen-xl w-full container md:px-2 md:py-5 md:sticky top-5 md:top-0 bg-white md:overflow-hidden h-20 md:h-auto z-50">
+
+<div class="md:hidden right-2 top-2 absolute mx-auto">
+
+    <button id="dropdownInformationButton" data-dropdown-toggle="dropdownInformation" class="flex font-slim" type="button"> Menu <svg class="ml-2 w-4 h-4" aria-hidden="true" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg></button>
+
+    <!-- Dropdown menu -->
+    <div id="dropdownInformation" class="hidden z-10 w-44 bg-white rounded divide-y divide-gray-100 shadow dark:bg-gray-700 dark:divide-gray-600">
+        @auth<div class="py-3 px-4 text-sm text-gray-900 dark:text-white">
+
+                <a class="font-slim pr-5 hover:text-hotPink" href="/profile/{{auth()->user()->id}}">Welcome, {{auth()->user()->username}}!</a>
+
+        </div>
+        @endauth
+        <ul class="py-1 text-sm text-gray-700 dark:text-gray-200" aria-labelledby="dropdownInformationButton">
+            <li>
+                <a href="/dashboard" class="block py-2 px-4 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Dashboard</a>
+            </li>
+            <li>
+                <a href="/clubs" class="block py-2 px-4 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Clubs</a>
+            </li>
+            <li>
+                <a href="/" class="block py-2 px-4 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Courses</a>
+            </li>
+            <li>
+                <a href="/magazine" class="block py-2 px-4 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Magazine</a>
+            </li>
+        </ul>
+        <div class="py-1">
+            @if(!auth()->check())
+                <a href="/register" class="font-slim hover:text-hotPink px-5">register</a>
+                <a href="/login" class="font-slim hover:text-hotPink px-5">login</a>
+            @else
+            <a href="/logout" class="block py-2 px-4 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white">Logout</a>
+            @endif
+        </div>
+    </div>
+
+</div>
+
 
     <div class="max-w-screen-xl w-full mx-auto pl-5 flex items-center md:justify-between my-0 ">
 
@@ -56,14 +95,13 @@
         </div>
 
 
-        <div class="relative lg:flex lg:items-center grid float pr-14 md:pr-auto ">
+        <div class="relative lg:flex lg:items-center grid float pr-14 md:pr-auto hidden md:block">
             <a href="/magazine" class="hover:text-yellow-500  text-lg font-slim md:px-8">Magazine</a>
             <a href="/clubs" class="hover:text-blue-400  text-lg font-slim md:px-8">Clubs</a>
             <a href="/" class="hover:text-hotPink text-lg  font-slim md:px-8">Courses</a>
-            <a href="/teachers" class="hover:text-hotPink  text-lg font-slim md:px-8">Teachers</a>
         </div>
 
-        <div class=" sm:float-right  md:flex float-end right-0">
+        <div class=" sm:float-right  md:flex float-end right-0 hidden md:block">
         @auth
                 <a class="font-slim pr-5 hover:text-hotPink" href="/dashboard">Dashboard</a>
                 <a class="font-slim pr-5 hover:text-hotPink" href="/profile/{{auth()->user()->id}}">Welcome, {{auth()->user()->username}}!</a>
@@ -91,7 +129,7 @@
 @auth
     @if(auth()->user()->admin == 1)
 
-        <div class="bg-blue-50 justify-content-around">
+        <div class="bg-blue-50 justify-content-around hidden md:block">
         <a href="/admin/teacher/create">||Create Teacher||</a>
         <a href="/admin/course/create">Create Course</a>
         <a href="/admin/club/create">||Create a Club||</a>

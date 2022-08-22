@@ -108,7 +108,7 @@ Route::get('/login', [UserController::class,'login']);
 
 Route::post('/users', [UserController::class, 'store']);
 
-Route::post('/logout', [UserController::class, 'logout']);
+Route::any('/logout', [UserController::class, 'logout']);
 
 Route::post('/users/authenticate', [UserController::class, 'authenticate']);
 

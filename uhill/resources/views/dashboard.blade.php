@@ -4,11 +4,14 @@
 
 
 
-<div class="container flex-wrap w-full max-w-screen-xl">
+<div class="container flex-wrap w-full max-w-screen-x ">
 
     @if(count($user->unreadNotifications) > 0)
         <p>You have {{count($user->unreadNotifications)}} new notifications</p>
+    @else
+        <p>You have no new notifications.</p>
     @endif
+
     <button class="items-center text-center bg-orange-100 hover:bg-yellow-300" onclick="showHideDiv('notifications')"> Notifications: </button>
     <div id="notifications" class="overflow-scroll max-h-64 w-full max-w-screen-xl m-5">
 

@@ -38,19 +38,20 @@
     -->
 
 
-    <div class="flex font-sf items-center justify-center mx-auto pt-5">
-        <h1 class="md:mt-4 pb-5 ml-7 text-center text-notReallyBlack text-5xl md:text-5xl tracking-tight ">
-            Clubs <span class="hidden sm-block">at University Hill Secondary</span>
+    <div class="flex font-sf items-center justify-center mx-auto pt-5 space-x-2">
+        <h1 class="md:mt-4 pb-5 ml-7 text-center text-notReallyBlack text-5xl ">Clubs</h1>
+        <h1 class="md:mt-4 pb-5 ml-7 text-center text-notReallyBlack text-5xl hidden md:block">at University Hill Secondary
         </h1>
     </div>
 
-    <div class="text-center justify-content-evenly flex">
+    <div class="text-center justify-content-evenly mx-auto">
     <form action="/filterclubs" method="post" enctype="multipart/form-data" class="mx-auto">
-        <div class="md:flex font-slim text-sm items-center">
+        <div class="font-slim text-sm items-center">
        @csrf
             @method('POST')
                 <label for="search"> Search for:</label>
-                <input placeholder="leave blank for all" class="placeholder-blue-400 bg-blue-50 no-border rounded text-sm focus:ring-blue-600 absolute right-3 md:relative md:right-0" type="text" id="search" name="search"
+
+                <input placeholder="leave blank for all" class="placeholder-blue-400 bg-blue-50 no-border rounded text-sm focus:ring-blue-600  mx-auto" type="text" id="search" name="search"
 
                        @if(isset($clubSearch))
                        value="{{$clubSearch}}"

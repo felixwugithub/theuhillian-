@@ -82,6 +82,9 @@ class UserController extends Controller
 
     public function dashboard()
     {
+
+        if(!Auth::check()) return \redirect('/login');
+
         $user = auth()->user();
         $courses =  $user->course_members->pluck('course_id');
         $clubs = $user->club_members->pluck('club_id');

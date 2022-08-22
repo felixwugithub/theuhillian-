@@ -4,12 +4,11 @@
 
 
 
-    <div class="flex font-sf items-center justify-center mx-auto pt-5">
-    <h1 class="md:mt-4 pb-5 ml-7 text-black text-center text-5xl md:text-5xl tracking-tight">
-        Courses <span class="hidden sm:block">at University Hill Secondary</span>
-    </h1>
-</div>
-
+    <div class="flex font-sf items-center justify-center mx-auto pt-5 space-x-2">
+        <h1 class="md:mt-4 pb-5 ml-7 text-center text-notReallyBlack text-5xl ">Courses</h1>
+        <h1 class="md:mt-4 pb-5 ml-7 text-center text-notReallyBlack text-5xl hidden md:block ">at University Hill Secondary
+        </h1>
+    </div>
 
 <div class="md:flex font-slim text-lg  md:justify-center md:mx-auto md:pt-8 md:mb-8">
     <form action="/filter" method="post" \>
@@ -81,7 +80,7 @@
         </div>
             <br>
             <div class="pt-2 text-center justify-start ml-2">
-        <button type="submit" class="bg-hotPink text-xs text-white font-slim rounded hover:bg-pink-500 px-1 special"> Filter</button>
+        <button type="submit" class="bg-hotPink text-xs text-white font-slim rounded hover:bg-pink-500 md:px-1 md:text-sm special p-14 md:py-1 text-xl "> Filter</button>
             </div>
 
         </div>
