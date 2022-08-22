@@ -68,6 +68,9 @@
     <div class="flex flex-wrap align-content-center flex justify-center">
         @foreach ($clubs as $club)
             <div class="w-full bg-blue-50 h-96 m-3 rounded-full box-shadow justify-center pt-10 container text-center md:w-[22rem]">
+                @if(isset($club->club_cover_image))
+                <img src="{{'storage/clubCoverImages/'.$club->club_cover_image->image}}" alt="image">
+                @endif
                 <div class="w-48 justify-center mx-auto">
                   <a href="{{route('club', ['club_name' => str_replace(' ', '_',$club->name)])}}" class="text-center mx-auto">{{$club->name}}</a>
                 </div>

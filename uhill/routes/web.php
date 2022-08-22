@@ -36,6 +36,7 @@ Route::get('/magazine/editor', [\App\Http\Controllers\ArticleController::class, 
 
 Route::get('/clubs', [\App\Http\Controllers\ClubController::class, 'show'])->name('clubs');
 Route::post('/club-post-store/{club_id}' , [\App\Http\Controllers\ClubPostController::class, 'store'])->name('club-post-store');
+Route::post('/club-cover-store/{club_id}', [\App\Http\Controllers\ClubCoverImageController::class, 'store'])->name('club-cover-store');
 
 Route::any('/filterclubs',[\App\Http\Controllers\ClubController::class, 'filter'])->name('filterClubs');
 
@@ -109,6 +110,8 @@ Route::get('/login', [UserController::class,'login']);
 Route::post('/users', [UserController::class, 'store']);
 
 Route::any('/logout', [UserController::class, 'logout']);
+
+
 
 Route::post('/users/authenticate', [UserController::class, 'authenticate']);
 

@@ -39,6 +39,19 @@
 
         <div id="club-mast-head" class="justify-center text-center items-center py-3">
             <h1 class="text-6xl font-readex">{{strtoupper($club->name)}}</h1>
+             @auth()
+                 @if(auth()->user()->admin == 1)
+                    <form action="{{route('club-cover-store', ['club_id' => $club->id])}}" method="post" enctype="multipart/form-data">
+                        @method('POST')
+                        @csrf
+                        <label class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300" for="images">Upload Images</label>
+                        <input class="block  text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 cursor-pointer dark:text-gray-400 focus:outline-none dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400" id="image" name="cover_image" type="file">
+                        <button type="submit"> Update Club Cover Photo</button>
+                    </form>
+                @endif
+            @endauth
+
+
             <div class="container mx-auto pt-3">
 
                 @if(isset($club->president))

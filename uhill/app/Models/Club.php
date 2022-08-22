@@ -26,5 +26,9 @@ class Club extends Model
         return $this->hasMany(ClubPost::class);
     }
 
+    public function club_cover_image(): \Illuminate\Database\Eloquent\Relations\HasOne
+    {
+        return $this->hasOne(ClubCoverImage::class);
+    }
 
 }
