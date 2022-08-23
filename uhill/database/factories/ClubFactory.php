@@ -20,6 +20,7 @@ class ClubFactory extends Factory
             'name' => fake()->unique()->jobTitle,
             'description' => fake()->paragraph,
             'room_number' => fake()->numberBetween(100,999),
+            'meeting_times' => fake()->dayOfWeek,
             'overall' => 0,
             'president' => fake()->name,
             'vice_president' => fake()->name

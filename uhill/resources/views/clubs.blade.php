@@ -67,17 +67,34 @@
 
     <div class="flex flex-wrap align-content-center flex justify-center">
         @foreach ($clubs as $club)
-            <div class="w-full bg-blue-50 h-96 m-3 rounded-full box-shadow justify-center pt-10 container text-center md:w-[22rem]">
-                <div class="w-48 justify-center mx-auto">
-                  <a href="{{route('club', ['club_name' => str_replace(' ', '_',$club->name)])}}" class="text-center mx-auto">{{$club->name}}</a>
-                </div>
+            <a href="{{route('club', ['club_name' => str_replace(' ', '_',$club->name)])}}" class="text-center mx-auto">
+            <div class="w-full h-96 m-3 rounded-3xl hover:rounded-lg box-shadow justify-center pt-10 container text-center md:w-[22rem] bg-gradient-to-br from-blue-300 via-blue-100 to-blue-50">
+                @if(isset($club->club_cover_image))
+                    <div class="m-auto flex justify-center items-center container top-2 relative">
+                         <img class="overflow-hidden h-36 w-full object-cover" src="{{'storage/clubCoverImages/'.$club->club_cover_image->image}}" alt="image">
+                    </div>
+                @endif
 
-                @if(isset($club->club_cover_image))<div class="my-auto flex justify-center items-center container">
-                    <img class="w-48 overflow-hidden h-48" src="{{'storage/clubCoverImages/'.$club->club_cover_image->image}}" alt="image">
+                    <div class="justify-center mt-5 px-3">
+                         <h1 class="font-bold text-2xl">{{$club->name}}</h1>
+                            @if(isset($club->description))
+                                <h2 class="pt-3 font-readex">{{substr($club->description, 0, 75)}}...</h2>
+                            @endif
+                    </div>
 
-                </div>@endif
+
+                    <div class="relative flex mb-5 justify-center justify-content-around space-x-5">
+                        @if(isset($club->room_number))
+                            <h2 class="pt-3 font-slim flex bottom-2 right-0">Room: {{substr($club->room_number, 0, 10)}}</h2>
+                        @endif
+
+                        @if(isset($club->meeting_times))
+                            <h2 class="pt-3 font-slim flex">Day of week: {{substr($club->meeting_times, 0, 20)}}</h2>
+                        @endif
+                    </div>
 
             </div>
+            </a>
         @endforeach
 
     </div>
