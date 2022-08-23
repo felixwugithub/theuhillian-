@@ -41,7 +41,7 @@
 
 <body class="overflow-visible" id="content">
 
-<nav class="relative max-w-screen-xl w-full container md:px-2 md:py-5 md:sticky top-5 md:top-0 bg-white md:overflow-hidden h-20 md:h-auto z-50">
+<nav class="relative w-screen max-w-[4000px] container md:px-2 md:py-5 md:sticky top-5 md:top-0 bg-white md:overflow-hidden h-20 md:h-auto z-50 flex">
 
 <div class="md:hidden right-2 top-2 absolute mx-auto">
 
