@@ -98,7 +98,7 @@
 
 
     @foreach($course->reviews as $review)
-        <div class="bg-felixSalmon m-5 p-5 b-5 rounded-3xl relative container" id="review{{$review->id}}" >
+        <div class="bg-felixSalmon m-5 p-5 b-5 rounded-3xl relative container w-auto" id="review{{$review->id}}" >
             <h1 class="text-4xl font-semibold">"{{$review['title']}}"</h1>
             <div id="reviewBlock{{$review->id}}">
 
