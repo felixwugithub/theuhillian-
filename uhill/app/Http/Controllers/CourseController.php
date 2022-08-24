@@ -33,7 +33,20 @@ class CourseController extends Controller
 
     public function scrollToReview($id, $review_id){
         if(\Illuminate\Support\Facades\Auth::check()){
-            return Redirect::route('courseListing', $id)->with([
+
+            $review = Review::find($review_id);
+            $pageReviews = Review::query()->where('course_id', $id)->orderByDesc('created_at')->get()->toArray();
+            $pos = 0;
+
+            foreach($pageReviews as $reviewCompare){
+                $pos = $pos+1;
+                if ($reviewCompare['id'] === $review->id){
+                    break;
+                }
+            }
+            $pageNum = floor($pos/15)+1;
+
+            return \redirect('/course/'.$id.'?reviews='.$pageNum)->with([
                 'reviewIndex' => 'review'.$review_id,
                 'simple' => true
             ]);
@@ -58,7 +71,20 @@ class CourseController extends Controller
             $userUnreadNotification->markAsRead();
         }
 
-        return Redirect::route('courseListing', $id)->with([
+            $review = Review::find($review_id);
+            $pageReviews = Review::query()->where('course_id', $id)->orderByDesc('created_at')->get()->toArray();
+            $pos = 0;
+
+            foreach($pageReviews as $reviewCompare){
+                $pos = $pos+1;
+                if ($reviewCompare['id'] === $review->id){
+                    break;
+                }
+            }
+            $pageNum = floor($pos/15)+1;
+
+
+        return \redirect('/course/'.$id.'?reviews='.$pageNum)->with([
             'reviewIndex' => 'review'.$review_id,
             'simple' => true
         ]);
