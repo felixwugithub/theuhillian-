@@ -158,7 +158,6 @@
     @if($paginatePage)
         {{$courses->links()}}
     @endif
-
     </div>
 
 

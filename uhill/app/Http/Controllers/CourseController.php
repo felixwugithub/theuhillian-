@@ -61,18 +61,14 @@ class CourseController extends Controller
         return Redirect::route('courseListing', $id)->with([
             'reviewIndex' => 'review'.$review_id,
             'simple' => true
-        ])       ;
+        ]);
 
 
         }        else{
             return view('unauthorized',[
-                                       'authMessage' => 'Course reviews and comments are only accessible by authorized users.'
-            ])     ;
+                'authMessage' => 'Course reviews and comments are only accessible by authorized users.'
+            ])    ;
         }
-
-
-
-
 
     }
 
@@ -134,9 +130,6 @@ class CourseController extends Controller
                     'subject' => $subject
                 ]);
             }
-
-
-
 
 
 
