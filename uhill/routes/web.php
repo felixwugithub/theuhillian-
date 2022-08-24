@@ -82,8 +82,8 @@ Route::get('/course/{id}', function ($id){
 
     if(\Illuminate\Support\Facades\Auth::check()){
         $course = Course::find($id);
-        $reviews = Review::query()->where('course_id', $course->id)->paginate(15, ['*'], 'reviews');
-        $comments = Comment::query()->where('course_id', $course->id)->paginate(15, ['*'], 'comments');
+        $reviews = Review::query()->where('course_id', $course->id)->orderByDesc('created_at')->paginate(15, ['*'], 'reviews');
+        $comments = Comment::query()->where('course_id', $course->id)->orderByDesc('created_at')->paginate(15, ['*'], 'comments');
 
     return view('course', [
         'course' => $course,

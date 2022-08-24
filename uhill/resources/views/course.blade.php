@@ -100,7 +100,7 @@
 
             <div id="reviews" class="tabcontent">
 
-             @foreach($reviews as $review)
+             @foreach($reviews->sortByDesc('created_at') as $review)
                 <div class="bg-felixSalmon m-5 p-5 b-5 rounded-3xl relative container w-auto" id="review{{$review->id}}" >
                     <h1 class="text-4xl font-semibold">"{{$review['title']}}"</h1>
 

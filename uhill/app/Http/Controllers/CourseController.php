@@ -61,7 +61,7 @@ class CourseController extends Controller
         return Redirect::route('courseListing', $id)->with([
             'reviewIndex' => 'review'.$review_id,
             'simple' => true
-        ])       ;
+        ]);
 
 
         }        else{
