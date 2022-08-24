@@ -3,6 +3,8 @@
 @section('content')
 
 
+
+
     <!-- Tab links -->
     @if(session()->get('reviewIndex') !== null && session()->get('simple'))
         <body onload="showFormAndScroll('reviews', {{ session()->get("reviewIndex") }})">
@@ -23,9 +25,10 @@
             @endif
 
     <div id="content">
-    @if(isset($message))
-        <div class="bg-red-500 text-white text-center mt-5 md:pt-0"><h3 class="text-lg">{{$message}}</h3></div>
-    @endif
+
+        @if(isset($message))
+            <div class="bg-red-500 text-white text-center mt-5 md:pt-0"><h3 class="text-lg">{{$message}}</h3></div>
+        @endif
 
 
         <div class="md:flex justify-center pt-5 bg-gradient-to-r from-pinkWhite lg:via-felixSalmon to-felixSalmon lg:to-hotPink">
@@ -92,144 +95,148 @@
         <button class="tablinks" onclick="show(event, 'comments')"> Comments </button>
     </div>
 
-    <div id="reviews" class="tabcontent">
+
+        <div class="infinite-scroll bg-pink-50">
+
+            <div id="reviews" class="tabcontent">
+
+             @foreach($reviews as $review)
+                <div class="bg-felixSalmon m-5 p-5 b-5 rounded-3xl relative container w-auto" id="review{{$review->id}}" >
+                    <h1 class="text-4xl font-semibold">"{{$review['title']}}"</h1>
+
+                    <div id="reviewBlock{{$review->id}}">
+
+                        <a class="text-gray-500" href="../profile/{{$review->user['id']}}">from user <span class="text-lg text-notRealBlack font-sansMid">{{$review->user['username']}}
+
+                                @if($review['created_at'] != $review['updated_at'])
+
+                                    (edited at {{$review['updated_at']}})
+
+                                @else
+
+                                    at {{$review['created_at']}}
+
+                                @endif
+
+
+                                : </span></a>
+
+                        <p class="text-xl font-sans mt-3">{{$review['content']}}</p>
+
+                    </div>
+
+
+
+                    <ul class="hidden text-gray-600 font-medium text-center rounded-lg divide-x divide-white sm:flex mt-6 mb-3">
+                        <li class="w-full text-center">
+                            <h5>Personality: {{$review['personality']}}/10</h5>
+                            <img src="/images/star-ratings/{{$review['personality']}}.png" alt="" class="w-48 h-8 mx-auto hidden md:block">
+                        </li>
+                        <li class="w-full">
+                            <h5>Fairness: {{$review['fairness']}}/10</h5>
+                            <img src="/images/star-ratings/{{$review['fairness']}}.png" alt="" class="w-48 h-8 mx-auto hidden md:block">
+                        <li class="w-full">
+                            <h5>Easiness: {{$review['easiness']}}/10</h5>
+                            <img src="/images/star-ratings/{{$review['easiness']}}.png" alt="" class="w-48 h-8 mx-auto hidden md:block">
+                        </li>
+
+                    </ul>
 
 
 
 
-    @foreach($course->reviews as $review)
-        <div class="bg-felixSalmon m-5 p-5 b-5 rounded-3xl relative container w-auto" id="review{{$review->id}}" >
-            <h1 class="text-4xl font-semibold">"{{$review['title']}}"</h1>
-            <div id="reviewBlock{{$review->id}}">
 
-                <a class="text-gray-500" href="../profile/{{$review->user['id']}}">from user <span class="text-lg text-notRealBlack font-sansMid">{{$review->user['username']}}
+                    @auth
+                        @if($review->user->id == auth()->id())
+                            <button class="items-center text-center" onclick="showFormAndHide('reviewEditForm', 'reviewBlock{{$review->id}}')"> Edit </button>
+                            <form action="{{route('reviewDelete', ['review_id' => $review->id])}}">
+                                <button type="submit">Delete</button>
+                            </form>
 
-                        @if($review['created_at'] != $review['updated_at'])
+                        <div class="hidden" id="reviewEditForm">
+                            <form action="{{route('reviewUpdate', ['review_id' => $review->id])}}">
+                                @csrf
+                                @method('PATCH')
+                                <div>
+                                    <label for="title">Review Title</label>
+                                    <input id="title" type="text" name="title"
+                                           value="{{old('title')}}">
+                                    @error('title')
+                                    <p>{{$message}}</p>
+                                    @enderror
 
-                            (edited at {{$review['updated_at']}})
+                                    <label for="personality">Personality</label>
+                                    <input id="personality" type="number" name="personality"
+                                           value="{{old('personality')}}">
 
-                        @else
+                                    @error('personality')
+                                    <p>{{$message}}</p>
+                                    @enderror
 
-                            at {{$review['created_at']}}
+                                    <label for="fairness">Fairness</label>
+                                    <input id="fairness" type="number" name="fairness"
+                                           value="{{old('fairness')}}">
+
+                                    @error('fairness')
+                                    <p>{{$message}}</p>
+                                    @enderror
+
+                                    <label for="easiness">Easiness</label>
+                                    <input id="easiness" type="number" name="easiness"
+                                           value="{{old('easiness')}}">
+
+                                    @error('easiness')
+                                    <p>{{$message}}</p>
+                                    @enderror
+
+                                    <label for="content">Detailed review</label>
+                                    <input id="content" type="text" name="content"
+                                           value="{{old('content')}}">
+
+                                    @error('content')
+                                    <p>{{$message}}</p>
+                                    @enderror
+                                    <button type="submit">Add Review</button>
+                                </div>
+
+                            </form>
+                        </div>
+
+
 
                         @endif
 
+                    @endauth
 
-                        : </span></a>
 
-                <p class="text-xl font-sans mt-3">{{$review['content']}}</p>
+                 <p>Found helful by {{$review->reviewHelpfuls()->count()}} others</p>
+                    @auth
+                    @if(!$review->reviewHelpfuledBy(auth()->user()))
+                        <form action="{{route('reviewHelpful', ['review' => $review->id, 'reviewIndex' => 'review'.$review->id ] ) }}" method="post" class="mr-1">@csrf
+                            <button type="submit" class="text-hotPink">Helpful</button>
+                        </form>
+                    @else
+                        <form action="{{route('reviewHelpful', ['review' => $review->id, 'reviewIndex' => 'review'.$review->id ])}}" method="post" class="mr-1">
+                            @csrf
+
+                            @method('DELETE')
+                             <button type="submit" class="text-pink-800">Unhelpful</button>
+                         </form>
+                    @endif
+                    @endauth
+                </div>
+
+                    @endforeach
+                 <p class="mx-auto flex justify-center text-2xl font-slim"> see more reviews: </p>
+                 <div class="w-11/12 flex bg-pink-50 justify-center items-center mx-auto text-lg font-slim">
+
+                     {{$reviews->links()}}
+                 </div>
 
             </div>
 
 
-
-
-
-
-
-            <ul class="hidden text-gray-600 font-medium text-center rounded-lg divide-x divide-white sm:flex mt-6 mb-3">
-                <li class="w-full text-center">
-                    <h5>Personality: {{$review['personality']}}/10</h5>
-                    <img src="/images/star-ratings/{{$review['personality']}}.png" alt="" class="w-48 h-8 mx-auto hidden md:block">
-                </li>
-                <li class="w-full">
-                    <h5>Fairness: {{$review['fairness']}}/10</h5>
-                    <img src="/images/star-ratings/{{$review['fairness']}}.png" alt="" class="w-48 h-8 mx-auto hidden md:block">
-                <li class="w-full">
-                    <h5>Easiness: {{$review['easiness']}}/10</h5>
-                    <img src="/images/star-ratings/{{$review['easiness']}}.png" alt="" class="w-48 h-8 mx-auto hidden md:block">
-                </li>
-
-            </ul>
-
-
-
-
-
-            @auth
-                @if($review->user->id == auth()->id())
-                    <button class="items-center text-center" onclick="showFormAndHide('reviewEditForm', 'reviewBlock{{$review->id}}')"> Edit </button>
-                    <form action="{{route('reviewDelete', ['review_id' => $review->id])}}">
-                        <button type="submit">Delete</button>
-                    </form>
-
-                <div class="hidden" id="reviewEditForm">
-                    <form action="{{route('reviewUpdate', ['review_id' => $review->id])}}">
-                        @csrf
-                        @method('PATCH')
-                        <div>
-                            <label for="title">Review Title</label>
-                            <input id="title" type="text" name="title"
-                                   value="{{old('title')}}">
-                            @error('title')
-                            <p>{{$message}}</p>
-                            @enderror
-
-                            <label for="personality">Personality</label>
-                            <input id="personality" type="number" name="personality"
-                                   value="{{old('personality')}}">
-
-                            @error('personality')
-                            <p>{{$message}}</p>
-                            @enderror
-
-                            <label for="fairness">Fairness</label>
-                            <input id="fairness" type="number" name="fairness"
-                                   value="{{old('fairness')}}">
-
-                            @error('fairness')
-                            <p>{{$message}}</p>
-                            @enderror
-
-                            <label for="easiness">Easiness</label>
-                            <input id="easiness" type="number" name="easiness"
-                                   value="{{old('easiness')}}">
-
-                            @error('easiness')
-                            <p>{{$message}}</p>
-                            @enderror
-
-                            <label for="content">Detailed review</label>
-                            <input id="content" type="text" name="content"
-                                   value="{{old('content')}}">
-
-                            @error('content')
-                            <p>{{$message}}</p>
-                            @enderror
-                            <button type="submit">Add Review</button>
-                        </div>
-
-                    </form>
-                </div>
-
-
-
-                @endif
-
-            @endauth
-
-
-         <p>Found helful by {{$review->reviewHelpfuls()->count()}} others</p>
-            @auth
-            @if(!$review->reviewHelpfuledBy(auth()->user()))
-                <form action="{{route('reviewHelpful', ['review' => $review->id, 'reviewIndex' => 'review'.$review->id ] ) }}" method="post" class="mr-1">@csrf
-                    <button type="submit" class="text-hotPink">Helpful</button>
-                </form>
-            @else
-                <form action="{{route('reviewHelpful', ['review' => $review->id, 'reviewIndex' => 'review'.$review->id ])}}" method="post" class="mr-1">
-                    @csrf
-
-                    @method('DELETE')
-                     <button type="submit" class="text-pink-800">Unhelpful</button>
-                 </form>
-            @endif
-            @endauth
         </div>
-
-    @endforeach
-
-    </div>
-
 
     <div id="comments" class="tabcontent bg-felixSalmon justify-center justify-content-center">
         <div class="bg-blue-100 mx-3 w-full flex justify-center mx-auto">
@@ -255,7 +262,10 @@
             </form>
         </div>
 
-        @foreach($course->comments->sortByDesc('created_at') as $comment)
+
+        <div class="scrolling-pagination">
+
+        @foreach($comments->sortByDesc('created_at') as $comment)
 
             @if($comment->user == auth()->user())
         <div class="bg-yellow-50 border-4 border-red-100 rounded-pill rounded-5 b-1 p-5 m-1" id="comment{{$comment->id}}">
@@ -287,14 +297,42 @@
 
         </div>
 
+
         @endforeach
 
+            <div class="justify-center flex mx-auto w-1/2">
+                {{$comments->links()}}
+                <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+                <script src="https://cdnjs.cloudflare.com/ajax/libs/jscroll/2.4.1/jquery.jscroll.min.js"></script>
+                <script type="text/javascript">
+                    $('ul.pagination').hide();
+                    $(function() {
+                        $('.scrolling-pagination').jscroll({
+                            autoTrigger: true,
+                            padding: 0,
+                            nextSelector: '.pagination li.active + li a',
+                            contentSelector: 'div.scrolling-pagination',
+                            callback: function() {
+                                $('ul.pagination').remove();
+                            }
+                        });
+                    });
+                </script>
+            </div>
+
+        </div>
 
     </div>
 
     <script src="/js/parts.js"> </script>
 
+                <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+                <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+                <script src="/js/jquery.jscroll.min.js"></script>
     </div>
+
+
+
 
 @endsection
 

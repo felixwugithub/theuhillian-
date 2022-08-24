@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\ReviewController;
+use App\Models\Comment;
 use App\Models\Course;
 use App\Models\Review;
 use App\Models\Teacher;
@@ -80,8 +81,14 @@ Route::patch('/profile/{id}', [\App\Http\Controllers\ProfileController::class, '
 Route::get('/course/{id}', function ($id){
 
     if(\Illuminate\Support\Facades\Auth::check()){
+        $course = Course::find($id);
+        $reviews = Review::query()->where('course_id', $course->id)->paginate(15, ['*'], 'reviews');
+        $comments = Comment::query()->where('course_id', $course->id)->paginate(15, ['*'], 'comments');
+
     return view('course', [
-        'course' => Course::find($id),
+        'course' => $course,
+        'reviews' => $reviews,
+        'comments' => $comments
     ]);}
     else{
         return view('unauthorized',[
@@ -104,6 +111,7 @@ Route::any('courseCommentUnlike/{id}/{commentIndex}', [\App\Http\Controllers\Com
 
 
 Route::get('/register', [UserController::class, 'create']);
+
 
 Route::get('/login', [UserController::class,'login']);
 

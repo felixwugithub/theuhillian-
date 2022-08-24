@@ -66,13 +66,9 @@ class CourseController extends Controller
 
         }        else{
             return view('unauthorized',[
-                                       'authMessage' => 'Course reviews and comments are only accessible by authorized users.'
-            ])     ;
+                'authMessage' => 'Course reviews and comments are only accessible by authorized users.'
+            ])    ;
         }
-
-
-
-
 
     }
 
@@ -134,9 +130,6 @@ class CourseController extends Controller
                     'subject' => $subject
                 ]);
             }
-
-
-
 
 
 
