@@ -26,7 +26,7 @@ class ReviewHelpfulController extends Controller
             ]
         );
 
-        return Redirect::route('courseListing', $review->course->id)->with([
+        return \redirect('/course-review/'.$review->course->id.'/'.$review->id)->with([
             'reviewIndex' => $reviewIndex
         ]);
     }
@@ -35,7 +35,7 @@ class ReviewHelpfulController extends Controller
 
         $request->user()->reviewHelpfuls()->where('review_id', $review->id)->delete();
 
-        return Redirect::route('courseListing', $review->course->id)->with([
+        return \redirect('/course-review/'.$review->course->id.'/'.$review->id)->with([
             'reviewIndex' => $reviewIndex
         ]);
 

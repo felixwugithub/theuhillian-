@@ -23,25 +23,31 @@ class ReviewController extends Controller
     $this->middleware('auth');
 }
 
-    public function create($id): \Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View|\Illuminate\Contracts\Foundation\Application
-    {
+    public function create($id){
+        if (! Review::where('user_id', auth()->id())->where('course_id', $id)->exists()) {
         return view('reviews.create', [
             'course' => Course::find($id)
-        ]);
+        ]);}
+        else{
+            return \redirect('/course/'.$id)->with([
+                'message' => 'You can only leave one review.'
+            ]);
+        }
     }
 
     public function store($id, Request $request){
 
         $userId = auth()->id();
+        $course = Course::find($id);
 
         if (! Review::where('user_id', $userId)->where('course_id', $id)->exists()) {
-            $course = Course::find($id);
+
             $data = request()->validate([
                 'title' => 'required',
                 'personality' => 'required|integer|between:1,10',
                 'fairness' => 'required|integer|between:1,10',
                 'easiness' => 'required|integer|between:1,10',
-                'content' => 'required',
+                'content' => 'required|min:3|max:511',
                 'course_id' => 'nullable'
             ]);
 
@@ -67,18 +73,11 @@ class ReviewController extends Controller
             $this->updateCourseRatings($id);
             $this->calculateTeacherRatings($course->teacher);
 
-            return Redirect::route('courseListing', $review->course->id)->with([
-                'reviewIndex' => 'review'.$review->id
-            ]);
+            return \redirect('/course-review/'.$id.'/'.$review->id);
 
         } else {
-            return view('course', [
-                'course' => Course::find($id),
-                'message' => 'only 1 review allowed.'
-            ]);
-
+            return \redirect('/course/'.$id);
         }
-
 
     }
 
@@ -86,15 +85,15 @@ class ReviewController extends Controller
 
         $review = Review::find($id);
 
-
         if(Auth::id() == $review->user->id){
 
             $review->delete();
 
-        $this->updateCourseRatings($review->course->id);
-        $this->calculateTeacherRatings($review->course->teacher);
+            $this->updateCourseRatings($review->course->id);
+            $this->calculateTeacherRatings($review->course->teacher);
 
-        return Redirect::route('courseListing', $review->course->id);}
+            return Redirect::route('courseListing', $review->course->id);
+        }
         else{
             return ("Nice try.");
         }
@@ -127,9 +126,7 @@ class ReviewController extends Controller
         $this->updateCourseRatings($review->course->id);
         $this->calculateTeacherRatings($review->course->teacher);
 
-        return Redirect::route('courseListing', $review->course->id)->with([
-            'reviewIndex' => 'review'.$review->id
-        ]);}
+        return \redirect('/course-review/'.$review->course->id.'/'.$review->id);}
         else{
             return "Nice try.";
         }

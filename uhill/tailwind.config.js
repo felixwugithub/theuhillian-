@@ -17,6 +17,7 @@ module.exports = {
       },
     extend: {
           colors:{
+              spicyPink:'#cb4646',
               hotPink:'#ff8282',
               pinkWhite: 'rgba(255,238,238,0.23)',
               hotPink100:'#f8adad',
@@ -26,6 +27,7 @@ module.exports = {
               defaultDarkerBlue: '#748Da6',
               notRealBlack: '#482525',
               felixSalmon: '#fcdfdc',
+              pinkie:'#fff0f0',
 
               rawBanana:'#d9d2be',
               ripeBanana:'#fcf5e4',
@@ -40,6 +42,7 @@ module.exports = {
 
   },
   plugins: [
-      require('flowbite/plugin')
+      require('flowbite/plugin'),
+      require("daisyui")
   ],
 }

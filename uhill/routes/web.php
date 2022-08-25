@@ -81,8 +81,9 @@ Route::patch('/profile/{id}', [\App\Http\Controllers\ProfileController::class, '
 Route::get('/course/{id}', function ($id){
 
     if(\Illuminate\Support\Facades\Auth::check()){
+
         $course = Course::find($id);
-        $reviews = Review::query()->where('course_id', $course->id)->orderByDesc('created_at')->paginate(15, ['*'], 'reviews');
+        $reviews = Review::query()->where('course_id', $course->id)->orderBy('created_at')->paginate(15, ['*'], 'reviews');
         $comments = Comment::query()->where('course_id', $course->id)->orderByDesc('created_at')->paginate(15, ['*'], 'comments');
 
     return view('course', [

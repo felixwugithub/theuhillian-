@@ -50,6 +50,7 @@
         "color-name": "^1.1.4",
         "commander": "^2.20.3",
         "cssesc": "^3.0.0",
+        "daisyui": "^2.24.0",
         "defined": "^1.0.0",
         "detective": "^5.2.1",
         "didyoumean": "^1.2.2",

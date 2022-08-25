@@ -24,10 +24,10 @@
                 <body onload="showForm('reviews')">
             @endif
 
-    <div id="content">
+    <div id="content bg-hotPink">
 
-        @if(isset($message))
-            <div class="bg-red-500 text-white text-center mt-5 md:pt-0"><h3 class="text-lg">{{$message}}</h3></div>
+        @if(session()->get('message') != null)
+            <div class="bg-red-500 text-white text-center mt-5 md:pt-0"><h3 class="text-lg">{{session()->get('message')}}</h3></div>
         @endif
 
 
@@ -42,7 +42,7 @@
 
             <div class="flex md:flex-none md:w-1/2">
 
-                <div class="w-2/3 md:w-1/2 md:rounded-3xl md:mx-5 md:my-auto p-5 md:text-left container relative space-y-5 text-red-900 font-quicksand-regular">
+                <div class="w-2/3 md:w-7/12 md:rounded-3xl md:mx-5 md:my-auto p-5 md:text-left container relative space-y-5 text-red-900 font-quicksand-regular">
 
                     <div class="flex items-center justify-content-around container relative">
                         <h5 class="md:flex font-sf text-xl">Overall: {{number_format($course['overall']+0.5, 2, '.', '')}} /10</h5>
@@ -95,20 +95,18 @@
 
         </div>
 
+                <div class="tab rounded-lg pb-10 w-full text-spicyPink">
+                    <button class="tablinks" onclick="show(event, 'reviews')"> Reviews </button>
+                    <button class="tablinks" onclick="show(event, 'comments')"> Comments </button>
+                </div>
 
 
-    <div class="tab">
-        <button class="tablinks" onclick="show(event, 'reviews')"> Reviews </button>
-        <button class="tablinks" onclick="show(event, 'comments')"> Comments </button>
-    </div>
-
-
-        <div class="infinite-scroll bg-gradient-to-r from-pinkWhite lg:via-pinkWhite to-felixSalmon lg:to-pinkWhite">
+        <div class="infinite-scroll bg-gradient-to-r from-pinkWhite lg:via-pinkWhite to-felixSalmon lg:to-pinkWhite w-full justify-center mx-auto">
 
             <div id="reviews" class="tabcontent">
 
-             @foreach($reviews->sortByDesc('created_at') as $review)
-                <div class="bg-felixSalmon m-5 p-5 b-5 rounded-3xl relative container w-auto" id="review{{$review->id}}" >
+             @foreach($reviews->sortBy('created_at') as $review)
+                <div class="bg-felixSalmon m-5 p-5 b-5 rounded-3xl relative container w-auto mx-auto" id="review{{$review->id}}" >
                     <h1 class="text-4xl font-semibold">"{{$review['title']}}"</h1>
 
                     <div id="reviewBlock{{$review->id}}">
@@ -150,9 +148,6 @@
                     </ul>
 
 
-
-
-
                     @auth
                         @if($review->user->id == auth()->id())
                             <button class="items-center text-center" onclick="showFormAndHide('reviewEditForm', 'reviewBlock{{$review->id}}')"> Edit </button>
@@ -163,48 +158,68 @@
                         <div class="hidden" id="reviewEditForm">
                             <form action="{{route('reviewUpdate', ['review_id' => $review->id])}}">
                                 @csrf
-                                @method('PATCH')
-                                <div>
-                                    <label for="title">Review Title</label>
-                                    <input id="title" type="text" name="title"
-                                           value="{{old('title')}}">
+
+
+                                <div class="relative z-0 my-6 w-full group font-ooga">
+
+                                    <input value="{{$review['title']}}" type="text" name="title" id="title" class="block pt-2.5 pb-1 px-0 w-full text-2xl text-notRealBlack font-readex text-gray-900 bg-transparent border-0 border-b-2 border-hotPink appearance-none dark:text-white dark:border-gray-600 dark:focus:border-hotPink focus:outline-none focus:ring-0 focus:border-spicyPink peer" placeholder=" " required />
+                                    <label for="title" class="peer-focus:font-medium absolute text-lg text-hotPink hotPink-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-100 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-spicyPink peer-focus:dark:text-hotPink peer-placeholder-shown:scale-120 peer-placeholder-shown:translate-y-0 peer-focus:scale-125 peer-focus:-translate-y-6"
+
+                                    >Review Title</label>
+
                                     @error('title')
                                     <p>{{$message}}</p>
                                     @enderror
 
-                                    <label for="personality">Personality</label>
-                                    <input id="personality" type="number" name="personality"
-                                           value="{{old('personality')}}">
-
-                                    @error('personality')
-                                    <p>{{$message}}</p>
-                                    @enderror
-
-                                    <label for="fairness">Fairness</label>
-                                    <input id="fairness" type="number" name="fairness"
-                                           value="{{old('fairness')}}">
-
-                                    @error('fairness')
-                                    <p>{{$message}}</p>
-                                    @enderror
-
-                                    <label for="easiness">Easiness</label>
-                                    <input id="easiness" type="number" name="easiness"
-                                           value="{{old('easiness')}}">
-
-                                    @error('easiness')
-                                    <p>{{$message}}</p>
-                                    @enderror
-
-                                    <label for="content">Detailed review</label>
-                                    <input id="content" type="text" name="content"
-                                           value="{{old('content')}}">
-
-                                    @error('content')
-                                    <p>{{$message}}</p>
-                                    @enderror
-                                    <button type="submit">Add Review</button>
                                 </div>
+
+
+
+                                <div class="w-full flex justify-content-around font-ooga text-spicyPink">
+
+                                    <div class="w-1/3">
+                                        <label for="personality">Personality</label>
+                                        <input id="personality" type="number" name="personality" class="w-14 h-8 rounded-[20%] bg-pinkie border-0 focus:border-5 focus:ring-hotPink focus:border-felixSalmon"
+                                               value="{{$review['personality']}}">
+
+                                        @error('personality')
+                                        <p>{{$message}}</p>
+                                        @enderror
+                                    </div>
+
+                                    <div class="w-1/3">
+                                        <label for="fairness">Fairness</label>
+                                        <input id="fairness" type="number" name="fairness" class="w-14 h-8 rounded-[20%] bg-pinkie border-0 focus:border-5 focus:ring-hotPink focus:border-felixSalmon"
+                                               value="{{$review['fairness']}}">
+
+                                        @error('fairness')
+                                        <p>{{$message}}</p>
+                                        @enderror
+                                    </div>
+
+                                    <div class="w-1/3">
+                                        <label for="easiness">Easiness</label>
+                                        <input id="easiness" type="number" name="easiness" class="w-14 h-8 rounded-[20%] bg-pinkie border-0 focus:border-5 focus:ring-hotPink focus:border-felixSalmon"
+                                               value="{{$review['easiness']}}">
+
+                                        @error('easiness')
+                                        <p>{{$message}}</p>
+                                        @enderror
+                                    </div>
+                                </div>
+
+
+                                <div class="mt-10 w-full">
+
+                                    <label for="content" class="w-full mx-auto text-center font-ooga text-spicyPink text-lg">Write your full review here: </label>
+                                    <textarea id="content" name="content" class="w-full align-top items-start h-64 bg-pinkie border-0 focus:border-5 focus:ring-hotPink focus:border-felixSalmon p-5" value="{{$review['content']}}">{{$review['content']}}</textarea>
+
+                                    @error('content')d
+                                    <p>{{$message}}</p>
+                                    @enderror
+
+                                </div>
+                                <button class="px-3 py-1 bg-spicyPink rounded-md text-white mt-3">Update Review</button>
 
                             </form>
                         </div>
@@ -234,22 +249,29 @@
                 </div>
 
                     @endforeach
-                 <p class="mx-auto flex justify-center text-2xl font-slim"> see more reviews: </p>
-                 <div class="w-11/12 flex bg-pink-50 justify-center items-center mx-auto text-lg font-slim">
+                 <p class="mx-auto flex justify-center text-2xl font-slim"></p>
+                 <div class="w-11/12 flex justify-center items-center mx-auto text-lg font-slim">
 
                      {{$reviews->links()}}
+
                  </div>
+
+                <div class="h-full h-[12rem]">
+
+                </div>
 
             </div>
 
 
         </div>
 
+            <div>
+
     <div id="comments" class="tabcontent bg-felixSalmon justify-center justify-content-center">
-        <div class="bg-blue-100 mx-3 w-full flex justify-center mx-auto">
-        <button class="items-center text-center" onclick="showForm('commentForm')"> Comment </button>
+        <div class=" mx-3 w-full flex justify-center mx-auto pt-3">
+        <button class="items-center text-center border-2 border-hotPink mb-4 rounded-lg text-hotPink" onclick="showForm('commentForm')"> Comment </button>
         </div>
-        <div id="commentForm" class="hiddenForm bg-blue-100 mx-3 w-full flex justify-center mx-auto" style="display: none">
+        <div id="commentForm" class="hiddenForm  mx-3 w-full flex justify-center mx-auto" style="display: none">
             <form action="{{route('courseComment', $course['id'])}}" method="post">
                 @method('HEAD')
                 @csrf
@@ -260,7 +282,7 @@
                     <p>{{$message}}</p>
                     @enderror
                 <div>
-                    <button type="submit" class="text-blue-500">Submit</button>
+                    <button type="submit" class="text-hotPink rounded-lg my-3 px-5 py-2 border-2 border-hotPink hover:bg-spicyPink mx-auto justify-center flex">Submit</button>
                 </div>
                 @else
                     <h1>YOU MUST BE LOGGED IN TO COMMENt</h1>
@@ -329,6 +351,7 @@
 
         </div>
 
+    </div>
     </div>
 
     <script src="/js/parts.js"> </script>
