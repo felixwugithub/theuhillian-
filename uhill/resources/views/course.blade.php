@@ -45,22 +45,22 @@
                 <div class="w-2/3 md:w-1/2 md:rounded-3xl md:mx-5 md:my-auto p-5 md:text-left container relative space-y-5 text-red-900 font-quicksand-regular">
 
                     <div class="flex items-center justify-content-around container relative">
-                        <h5 class="md:flex font-sf text-xl">Overall: {{floor($course['overall']+0.5)}} /10</h5>
+                        <h5 class="md:flex font-sf text-xl">Overall: {{number_format($course['overall']+0.5, 2, '.', '')}} /10</h5>
                         <img src="/images/star-ratings/{{floor($course['overall']+0.5)}}.png" alt="" class="w-36 h-6 right-0 absolute hidden xl:block">
                     </div>
 
                     <div class="flex items-center justify-content-around container relative">
-                        <h5 class="flex text-xl">Personality: {{floor($course['personality']+0.5)}}/10</h5>
+                        <h5 class="flex text-xl">Personality: {{number_format($course['personality']+0.5, 2, '.','')}}/10</h5>
                         <img src="/images/star-ratings/{{floor($course['personality']+0.5)}}.png" alt="" class="w-36 h-6 right-0 absolute hidden xl:block">
                     </div>
 
                     <div class="flex items-center justify-content-around container relative w-full">
-                        <h5 class="flex text-xl">Fairness: {{floor($course['fairness']+0.5)}}/10 </h5>
+                        <h5 class="flex text-xl">Fairness: {{number_format($course['fairness']+0.5,2,'.','')}}/10 </h5>
                         <img src="/images/star-ratings/{{floor($course['fairness']+0.5)}}.png" alt="" class="w-36 h-6 right-0 absolute hidden xl:block">
                     </div>
 
                     <div class="flex items-center justify-content-around container relative">
-                         <h5 class="flex text-xl">Easiness: {{floor($course['easiness']+0.5)}}/10 </h5>
+                         <h5 class="flex text-xl">Easiness: {{number_format($course['easiness']+0.5,2,'.','')}}/10 </h5>
                         <img src="/images/star-ratings/{{floor($course['easiness']+0.5)}}.png" alt="" class="w-36 h-6 right-0 absolute hidden xl:block">
                     </div>
                 </div>
