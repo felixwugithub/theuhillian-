@@ -40,52 +40,59 @@
                 <a class="bg-hotPink text-white  w-56 h-14 m-5 text-3xl items-center py-auto font-sf text-center justify-center mx-auto flex rounded-lg" href="/course/{{$course['id']}}/review"> Give review </a>
             </div>
 
-            <div class="w-full md:w-1/3 md:rounded-3xl md:mx-5 md:my-auto p-5 md:text-left container relative space-y-5 text-red-900 font-quicksand-regular">
-                <div class="flex items-center justify-content-around container relative">
-                    <h5 class="md:flex font-sf text-xl">Overall: {{floor($course['overall']+0.5)}} /10</h5>
-                    <img src="/images/star-ratings/{{floor($course['overall']+0.5)}}.png" alt="" class="w-36 h-6 right-0 absolute hidden xl:block">
-                </div>
+            <div class="flex md:flex-none md:w-1/2">
 
-                <div class="flex items-center justify-content-around container relative">
-                    <h5 class="flex text-xl">Personality: {{floor($course['personality']+0.5)}}/10</h5>
-                    <img src="/images/star-ratings/{{floor($course['personality']+0.5)}}.png" alt="" class="w-36 h-6 right-0 absolute hidden xl:block">
-                </div>
+                <div class="w-2/3 md:w-1/2 md:rounded-3xl md:mx-5 md:my-auto p-5 md:text-left container relative space-y-5 text-red-900 font-quicksand-regular">
 
-                <div class="flex items-center justify-content-around container relative w-full">
-                    <h5 class="flex text-xl">Fairness: {{floor($course['fairness']+0.5)}}/10 </h5>
-                    <img src="/images/star-ratings/{{floor($course['fairness']+0.5)}}.png" alt="" class="w-36 h-6 right-0 absolute hidden xl:block">
-                </div>
-
-                <div class="flex items-center justify-content-around container relative">
-                     <h5 class="flex text-xl">Easiness: {{floor($course['easiness']+0.5)}}/10 </h5>
-                    <img src="/images/star-ratings/{{floor($course['easiness']+0.5)}}.png" alt="" class="w-36 h-6 right-0 absolute hidden xl:block">
-                </div>
-            </div>
-
-            @if(!$course->courseJoined(auth()->user()))
-            <div class="md:m-auto md:mr-5 flex w-full md:w-auto justify-center">
-                <a class="font-readex text-lg" href="{{route('joinCourse', ['id' => $course->id])}}">
-                    <div class="rounded-lg hover:bg-pinkWhite">
-                            <div class="w-36 h-full m-4">
-                             <h1 class="font-sf text-black lg:text-white"> JOIN THIS COURSE </h1>
-                            <p class="text-sm text-gray-500 lg:text-gray-200"> You will receive notifications in your dashboard when someone reviews this course. </p>
-                            </div>
+                    <div class="flex items-center justify-content-around container relative">
+                        <h5 class="md:flex font-sf text-xl">Overall: {{floor($course['overall']+0.5)}} /10</h5>
+                        <img src="/images/star-ratings/{{floor($course['overall']+0.5)}}.png" alt="" class="w-36 h-6 right-0 absolute hidden xl:block">
                     </div>
-                </a>
-            </div>
 
-            @else
-                <div class="md:m-auto md:mr-5 flex w-full md:w-auto justify-center">
-                    <a class="font-readex text-lg" href="{{route('quitCourse', ['id' => $course->id])}}">
+                    <div class="flex items-center justify-content-around container relative">
+                        <h5 class="flex text-xl">Personality: {{floor($course['personality']+0.5)}}/10</h5>
+                        <img src="/images/star-ratings/{{floor($course['personality']+0.5)}}.png" alt="" class="w-36 h-6 right-0 absolute hidden xl:block">
+                    </div>
+
+                    <div class="flex items-center justify-content-around container relative w-full">
+                        <h5 class="flex text-xl">Fairness: {{floor($course['fairness']+0.5)}}/10 </h5>
+                        <img src="/images/star-ratings/{{floor($course['fairness']+0.5)}}.png" alt="" class="w-36 h-6 right-0 absolute hidden xl:block">
+                    </div>
+
+                    <div class="flex items-center justify-content-around container relative">
+                         <h5 class="flex text-xl">Easiness: {{floor($course['easiness']+0.5)}}/10 </h5>
+                        <img src="/images/star-ratings/{{floor($course['easiness']+0.5)}}.png" alt="" class="w-36 h-6 right-0 absolute hidden xl:block">
+                    </div>
+                </div>
+
+                @if(!$course->courseJoined(auth()->user()))
+                <div class="md:m-auto md:mr-5 flex w-5/12 md:w-36 justify-center border-2  border-hotPink m-2 rounded-[12%] md:border-0">
+                    <a class="font-readex  md:text-lg" href="{{route('joinCourse', ['id' => $course->id])}}">
                         <div class="rounded-lg hover:bg-pinkWhite">
-                                <div class="w-36 h-full m-4">
-                                    <h1 class="font-sf text-black lg:text-white"> QUIT THIS COURSE </h1>
-                                    <p class="text-sm text-gray-500 lg:text-gray-200"> You will no longer receive notifications in your dashboard when someone reviews this course.</p>
+                                <div class="w-auto h-full m-4">
+                                 <h1 class="font-sf text-black lg:text-white"> JOIN THIS COURSE </h1>
+                                <p class="text-sm text-gray-500 lg:text-gray-200"> You will receive notifications when someone reviews this course. </p>
                                 </div>
                         </div>
                     </a>
                 </div>
-            @endif
+
+                @else
+                    <div class="md:m-auto md:mr-5 flex w-5/12 md:w-36 justify-center border-2 border-purple-700 m-2 rounded-[12%] md:border-0">
+                        <a class="font-readex md:text-lg" href="{{route('quitCourse', ['id' => $course->id])}}">
+                            <div class="rounded-lg hover:bg-pinkWhite">
+                                    <div class="w-auto h-full m-4">
+                                        <h1 class="font-sf text-black lg:text-white"> QUIT THIS COURSE </h1>
+                                        <p class="text-sm text-gray-500 lg:text-gray-200"> You will no longer receive notifications in your dashboard.</p>
+                                    </div>
+                            </div>
+                        </a>
+                    </div>
+                @endif
+            </div>
+
+
+
         </div>
 
 
@@ -96,7 +103,7 @@
     </div>
 
 
-        <div class="infinite-scroll bg-pink-50">
+        <div class="infinite-scroll bg-gradient-to-r from-pinkWhite lg:via-pinkWhite to-felixSalmon lg:to-pinkWhite">
 
             <div id="reviews" class="tabcontent">
 

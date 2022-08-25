@@ -89,16 +89,16 @@
 
         <div class="flex-nowrap">
             <div class="float-left md:pt-0 items-center ">
-                <a href="/"><img src="/images/uhillLogoBnW.jpeg" class="h-10 w-10 inline-flex md:mt-0 " alt="Logo">
+                <a href="/"><img src="/images/uhillLogoBnW.jpeg" class="h-10 w-10 mx-2 inline-flex md:mt-0 " alt="Logo">
                 <div class="float-right">
-                    <h1 class="font-comfortaa hover:text-hotPink text-3xl md:ml-2 mt-1 hidden md:block">The Uhillian</h1>
+                    <h1 class="font-comfortaa hover:text-hotPink text-3xl md:ml-2 mt-1">The Uhillian</h1>
                 </div>
                 </a>
             </div>
         </div>
 
 
-        <div class="relative lg:flex lg:items-center grid float pr-14 md:pr-auto hidden md:block">
+        <div class="relative lg:flex lg:items-center grid float md:pr-auto ml-2 hidden md:block">
             <a href="/magazine" class="hover:text-yellow-500  text-lg font-slim md:px-8">Magazine</a>
             <a href="/clubs" class="hover:text-blue-400  text-lg font-slim md:px-8">Clubs</a>
             <a href="/" class="hover:text-hotPink text-lg  font-slim md:px-8">Courses</a>
