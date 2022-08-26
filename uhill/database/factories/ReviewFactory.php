@@ -20,8 +20,9 @@ class ReviewFactory extends Factory
             'title' => fake()->sentence,
             'personality' => fake()->numberBetween(1,10),
             'fairness' => fake()->numberBetween(1,10),
-            'easiness' => fake()->numberBetween(1,10),
-            'content' => fake()->paragraph(4, true)
+            'content_coverage' => fake()->numberBetween(1,10),
+            'difficulty' => fake()->numberBetween(1,10),
+            'content' => fake()->paragraph(8, true)
         ];
     }
 }

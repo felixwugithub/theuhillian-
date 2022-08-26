@@ -20,7 +20,8 @@
                  <option value='overall' <?php if (isset($sort_by) && $sort_by=="overall") echo "selected";?>>Overall Rating</option>
                  <option value='personality' <?php if (isset($sort_by) && $sort_by=="personality") echo "selected";?>>Personality</option>
                  <option value='fairness' <?php if (isset($sort_by) && $sort_by=="fairness") echo "selected";?>>Fairness</option>
-                <option value='easiness' <?php if (isset($sort_by) && $sort_by=="easiness") echo "selected";?>>Easiness</option>
+                <option value='content_coverage' <?php if (isset($sort_by) && $sort_by=="content_coverage") echo "selected";?>>Content Coverage</option>
+                <option value='difficulty' <?php if (isset($sort_by) && $sort_by=="difficulty") echo "selected";?>>Difficulty</option>
                 <option value='review_count' <?php if (isset($sort_by) && $sort_by=="review_count") echo "selected";?>>Number of Reviews</option>
             </select>
         </div>

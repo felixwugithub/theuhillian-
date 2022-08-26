@@ -22,7 +22,8 @@ return new class extends Migration
             $table->string('title');
             $table->integer('personality');
             $table->integer('fairness');
-            $table->integer('easiness');
+            $table->integer('content_coverage');
+            $table->integer('difficulty');
             $table->longText('content');
             $table->timestamps();
         });

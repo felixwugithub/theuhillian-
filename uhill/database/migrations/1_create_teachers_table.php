@@ -21,7 +21,8 @@ return new class extends Migration
             $table->integer('overall')->default('5');
             $table->integer('personality')->default('5');
             $table->integer('fairness')->default('5');
-            $table->integer('easiness')->default('5');
+            $table->integer('difficulty')->default('5');
+            $table->integer('content_coverage')->default('5');
             $table->timestamps();
         });
     }

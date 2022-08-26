@@ -45,8 +45,9 @@ class ReviewController extends Controller
             $data = request()->validate([
                 'title' => 'required',
                 'personality' => 'required|integer|between:1,10',
+                'content_coverage' => 'required|integer|between:1,10',
                 'fairness' => 'required|integer|between:1,10',
-                'easiness' => 'required|integer|between:1,10',
+                'difficulty' => 'required|integer|between:1,10',
                 'content' => 'required|min:3|max:511',
                 'course_id' => 'nullable'
             ]);
@@ -110,8 +111,9 @@ class ReviewController extends Controller
             [
                 'title' => 'required',
                 'personality' => 'required|integer|between:1,10',
+                'content_coverage' => 'required|integer|between:1,10',
                 'fairness' => 'required|integer|between:1,10',
-                'easiness' => 'required|integer|between:1,10',
+                'difficulty' => 'required|integer|between:1,10',
                 'content' => 'required',
                 'course_id' => 'nullable',
                 'updated_at' => 'nullable'
@@ -140,14 +142,16 @@ class ReviewController extends Controller
         $course =  Course::find($id);
 
         $personalityAvg = $course->reviews->avg('personality');
+        $content_coverageAvg = $course->reviews->avg('content_coverage');
         $fairnessAvg = $course->reviews->avg('fairness');
-        $easinessAvg = $course->reviews->avg('easiness');
-        $overallAvg = ($personalityAvg + $easinessAvg + $fairnessAvg)/3;
+        $difficultyAvg = $course->reviews->avg('difficulty');
+        $overallAvg = ($personalityAvg + $fairnessAvg + $content_coverageAvg)/3;
 
         $course->update([
             'overall' => $overallAvg,
             'personality' => $personalityAvg,
-            'easiness' => $easinessAvg,
+            'content_coverage' => $content_coverageAvg,
+            'difficulty' => $difficultyAvg,
             'fairness' => $fairnessAvg
         ],
         );
@@ -161,16 +165,18 @@ class ReviewController extends Controller
     public function calculateTeacherRatings($teacher)
     {
 
+            $content_coverageAvg = $teacher->courses->avg('content_coverage');
             $personalityAvg = $teacher->courses->avg('personality');
             $fairnessAvg = $teacher->courses->avg('fairness');
-            $easinessAvg = $teacher->courses->avg('easiness');
+            $difficultyAvg = $teacher->courses->avg('difficulty');
             $overallAvg = $teacher->courses->avg('overall');
 
             $teacher->update([
                 'overall' => $overallAvg,
                 'personality' => $personalityAvg,
-                'easiness' => $easinessAvg,
-                'fairness' => $fairnessAvg
+                'content_coverage' => $content_coverageAvg,
+                'fairness' => $fairnessAvg,
+                'difficulty' => $difficultyAvg
             ]);
 
     }

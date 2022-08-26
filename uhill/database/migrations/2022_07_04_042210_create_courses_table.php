@@ -20,9 +20,10 @@ return new class extends Migration
             $table->string('subject');
             $table->integer('grade')->default('13');
             $table->double('personality')->default('5');
+            $table->double('content_coverage')->default('5');
             $table->double('fairness')->default('5');
-            $table->double('easiness')->default('5');
-            $table->double('overall')->default('1');
+            $table->double('difficulty')->default('5');
+            $table->double('overall')->default('5');
             $table->integer('review_count')->default('0');
             $table->timestamp('date_added');
             $table->longText('description');

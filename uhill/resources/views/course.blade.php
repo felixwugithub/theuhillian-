@@ -31,37 +31,53 @@
         @endif
 
 
-        <div class="md:flex justify-center pt-5 bg-gradient-to-r from-pinkWhite lg:via-felixSalmon to-felixSalmon lg:to-hotPink">
+        <div class="md:flex justify-center pt-5 bg-gradient-to-r from-pinkWhite lg:via-felixSalmon to-felixSalmon lg:to-hotPink items-center">
 
-            <div class="md:w-2/3 md:py-5 md:pl-5 md:px-12 m-5">
-                <h1 class="font-sf text-4xl mb-3">{{$course['course_name']}}</h1>
+            <div class="md:w-5/12 md:py-5 md:px-12 m-5">
+                <h1 class="font-sf text-5xl mb-3">{{$course['course_name']}}</h1>
                 <p>Summary: {{$course['description']}}</p>
                 <a href="../teacher/{{$course->teacher['id']}}">Teacher: {{$course->teacher['name']}}</a>
                 <a class="bg-hotPink text-white  w-56 h-14 m-5 text-3xl items-center py-auto font-sf text-center justify-center mx-auto flex rounded-lg" href="/course/{{$course['id']}}/review"> Give review </a>
+                <p class="mx-auto text-hotPink font-slim">*Difficulty ratings do not affect a course's overall rating.</p>
+            </div>
+
+            <div class="text-center justify-center w-36 h-36 p-3 rounded-2xl border-2 border-hotPink container relative mx-auto">
+                <p class="text-hotPink text-xl  font-ooga">Difficulty:</p>
+                <h1 class="text-7xl font-slim text-spicyPink">{{number_format($course['difficulty'],1,'.','')}}</h1>
+                <h1 class="font-slim text-sm text-hotPink bottom-1 right-2 absolute">/10</h1>
             </div>
 
             <div class="flex md:flex-none md:w-1/2">
 
-                <div class="w-2/3 md:w-7/12 md:rounded-3xl md:mx-5 md:my-auto p-5 md:text-left container relative space-y-5 text-red-900 font-quicksand-regular">
+                <div class="w-2/3 md:w-3/4 md:rounded-3xl md:mx-5 md:my-auto p-5 md:text-left container relative space-y-5 text-red-900 font-quicksand-regular">
 
-                    <div class="flex items-center justify-content-around container relative">
-                        <h5 class="md:flex font-sf text-xl">Overall: {{number_format($course['overall']+0.5, 2, '.', '')}} /10</h5>
-                        <img src="/images/star-ratings/{{floor($course['overall']+0.5)}}.png" alt="" class="w-36 h-6 right-0 absolute hidden xl:block">
+                    <div class="flex items-center justify-content-around  container relative ">
+                        <h5 class="md:flex font-sf text-xl mx-auto">Overall: </h5>
+                        <h5 class="md:flex font-sf text-xl ">{{number_format($course['overall'], 1, '.', '')}} /10</h5>
+                        <p class="md:flex font-sf text-xl md:mx-auto"></p>
+
+                        <img src="/images/star-ratings/{{floor($course['overall']+0.5)}}.png" alt="" class="w-36 h-6 hidden xl:block mx-auto right-0 absolute">
                     </div>
 
                     <div class="flex items-center justify-content-around container relative">
-                        <h5 class="flex text-xl">Personality: {{number_format($course['personality']+0.5, 2, '.','')}}/10</h5>
-                        <img src="/images/star-ratings/{{floor($course['personality']+0.5)}}.png" alt="" class="w-36 h-6 right-0 absolute hidden xl:block">
+                        <h5 class=" text-xl mx-auto">Personality: </h5>
+                        <h5 class=" text-xl "> {{number_format($course['personality'], 1, '.','')}}/10</h5>
+                        <p class="md:flex font-sf text-xl md:mx-auto md:w-12"></p>
+                        <img src="/images/star-ratings/{{floor($course['personality']+0.5)}}.png" alt="" class="w-36 h-6  hidden xl:block mx-auto right-0 absolute">
                     </div>
 
                     <div class="flex items-center justify-content-around container relative w-full">
-                        <h5 class="flex text-xl">Fairness: {{number_format($course['fairness']+0.5,2,'.','')}}/10 </h5>
-                        <img src="/images/star-ratings/{{floor($course['fairness']+0.5)}}.png" alt="" class="w-36 h-6 right-0 absolute hidden xl:block">
+                        <h5 class=" text-xl mx-auto">Fairness:</h5>
+                        <h5 class=" text-xl ">{{number_format($course['fairness'],1,'.','')}}/10 </h5>
+                        <p class="md:flex font-sf text-xl md:mx-auto md:w-5"></p>
+                        <img src="/images/star-ratings/{{floor($course['fairness']+0.5)}}.png" alt="" class="w-36 h-6  hidden xl:block mx-auto right-0 absolute">
                     </div>
 
                     <div class="flex items-center justify-content-around container relative">
-                         <h5 class="flex text-xl">Easiness: {{number_format($course['easiness']+0.5,2,'.','')}}/10 </h5>
-                        <img src="/images/star-ratings/{{floor($course['easiness']+0.5)}}.png" alt="" class="w-36 h-6 right-0 absolute hidden xl:block">
+                         <h5 class=" text-xl mx-auto">Content Coverage: </h5>
+                        <h5 class=" text-xl ">{{number_format($course['content_coverage'],1,'.','')}}/10 </h5>
+                        <p class="md:flex font-sf text-xl md:mx-auto md:w-[7rem]"></p>
+                        <img src="/images/star-ratings/{{floor($course['content_coverage']+0.5)}}.png" alt="" class="w-36 h-6  hidden xl:block mx-auto right-0 absolute">
                     </div>
                 </div>
 
@@ -132,7 +148,7 @@
 
 
 
-                    <ul class="hidden text-gray-600 font-medium text-center rounded-lg divide-x divide-white sm:flex mt-6 mb-3">
+                    <ul class=" text-gray-600 font-medium text-center rounded-lg divide-x divide-white sm:flex mt-6 mb-3">
                         <li class="w-full text-center">
                             <h5>Personality: {{$review['personality']}}/10</h5>
                             <img src="/images/star-ratings/{{$review['personality']}}.png" alt="" class="w-48 h-8 mx-auto hidden md:block">
@@ -141,11 +157,18 @@
                             <h5>Fairness: {{$review['fairness']}}/10</h5>
                             <img src="/images/star-ratings/{{$review['fairness']}}.png" alt="" class="w-48 h-8 mx-auto hidden md:block">
                         <li class="w-full">
-                            <h5>Easiness: {{$review['easiness']}}/10</h5>
-                            <img src="/images/star-ratings/{{$review['easiness']}}.png" alt="" class="w-48 h-8 mx-auto hidden md:block">
+                            <h5>Content Coverage: {{$review['content_coverage']}}/10</h5>
+                            <img src="/images/star-ratings/{{$review['content_coverage']}}.png" alt="" class="w-48 h-8 mx-auto hidden md:block">
                         </li>
 
                     </ul>
+
+
+                    <div class="text-center justify-center w-36 h-15 rounded-2xl m-2 border-2 border-hotPink container xl:top-2 xl:right-2 xl:absolute xl-auto">
+                        <p class="text-hotPink  font-ooga">"Difficulty:</p>
+                        <h1 class="text-4xl font-slim text-spicyPink">{{$review['difficulty']}}</h1>
+                        <h1 class="font-ooga text-hotPink bottom-1 right-2 absolute">/10"</h1>
+                    </div>
 
 
                     @auth
@@ -198,26 +221,39 @@
                                     </div>
 
                                     <div class="w-1/3">
-                                        <label for="easiness">Easiness</label>
-                                        <input id="easiness" type="number" name="easiness" class="w-14 h-8 rounded-[20%] bg-pinkie border-0 focus:border-5 focus:ring-hotPink focus:border-felixSalmon"
-                                               value="{{$review['easiness']}}">
+                                        <label for="content_coverage">Content Coverage</label>
+                                        <input id="content_coverage" type="number" name="content_coverage" class="w-14 h-8 rounded-[20%] bg-pinkie border-0 focus:border-5 focus:ring-hotPink focus:border-felixSalmon"
+                                               value="{{$review['content_coverage']}}">
 
-                                        @error('easiness')
+                                        @error('content_coverage')
                                         <p>{{$message}}</p>
                                         @enderror
                                     </div>
                                 </div>
 
 
-                                <div class="mt-10 w-full">
+                                <div class="font-ooga text-spicyPink">
+                                    <div class="w-1/3 mt-10 justify-center mx-auto">
+                                        <label for="difficulty" class="w-full text-center font-ooga text-spicyPink text-lg">Difficulty</label>
+                                        <p class="font-slim text-sm text-spicyPink">The difficulty rating does not affect a course's overall rating.</p>
+                                        <input id="easiness" type="number" name="difficulty" class="w-14 h-8 rounded-[20%] bg-red-200 border-0 focus:border-5 focus:ring-red-500 focus:border-red-500"
+                                               value="{{$review['difficulty']}}">
+                                        @error('difficulty')
+                                        <p>{{$message}}</p>
+                                        @enderror
+                                    </div>
 
-                                    <label for="content" class="w-full mx-auto text-center font-ooga text-spicyPink text-lg">Write your full review here: </label>
-                                    <textarea id="content" name="content" class="w-full align-top items-start h-64 bg-pinkie border-0 focus:border-5 focus:ring-hotPink focus:border-felixSalmon p-5" value="{{$review['content']}}">{{$review['content']}}</textarea>
 
-                                    @error('content')d
-                                    <p>{{$message}}</p>
-                                    @enderror
+                                    <div class="mt-10 w-full">
 
+                                        <label for="content" class="w-full mx-auto text-center font-ooga text-spicyPink text-lg">Write your full review here: </label>
+                                        <textarea id="content" name="content" class="w-full align-top items-start h-64 bg-pinkie border-0 focus:border-5 focus:ring-hotPink focus:border-felixSalmon p-5">{{$review['content']}}</textarea>
+
+                                        @error('content')
+                                        <p>{{$message}}</p>
+                                        @enderror
+
+                                    </div>
                                 </div>
                                 <button class="px-3 py-1 bg-spicyPink rounded-md text-white mt-3">Update Review</button>
 
