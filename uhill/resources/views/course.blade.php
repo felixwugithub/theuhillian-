@@ -255,7 +255,7 @@
 
                                     </div>
                                 </div>
-                                <button class="px-3 py-1 bg-spicyPink rounded-md text-white mt-3">Update Review</button>
+                                <button class="px-3 py-1 bg-spicyPink rounded-md text-white mt-3">Finished!</button>
 
                             </form>
                         </div>
