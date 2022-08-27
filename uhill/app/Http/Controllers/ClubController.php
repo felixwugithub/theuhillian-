@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Club;
+use App\Models\ClubPost;
 use Illuminate\Http\Request;
 
 class ClubController extends Controller
@@ -31,11 +32,54 @@ class ClubController extends Controller
     {
 
         $club = Club::query()->where('name', str_replace('_', ' ', $club_name))->first();
+        $club_posts = ClubPost::query()->where('club_id', $club->id)->orderByDesc('created_at')->paginate(1, ['*'], 'posts');
 
         return view('club',[
-            'club' => $club
+            'club' => $club,
+            'club_posts' => $club_posts
         ]);
     }
+
+    public function getClubPosts($club_name, Request $request){
+
+        $club = Club::query()->where('name', str_replace('_', ' ', $club_name))->first();
+        $club_slug = str_replace('_', ' ', $club_name);
+        $results = ClubPost::query()->where('club_id', $club->id)->orderByDesc('created_at')->paginate(1, ['*'], 'posts');
+        $club_posts = '';
+        if ($request->ajax()) {
+            foreach ($results as $result) {
+
+                $club_posts.='<div class="w-full mx-auto text-center justify-center text-xl font-ooga">
+                                <hr class="my-5">
+                                <div>'
+                                .' <h5 class="bg-blue-50">'.
+                                        $result->caption.'
+                                    </h5>
+                                </div>
+                               </div>';
+
+                if (isset($result->club_post_pictures)){
+                    foreach($result->club_post_pictures as $picture){
+                        $club_posts.='
+                        <img src="/storage/clubPostImages/'.$picture->image.'">';
+                    }
+                }
+
+                $club_posts.='
+                    <p class="text-gray-500 font-slim text-sm">'. $result->created_at . '</p>';
+
+            }
+            return $club_posts;
+        }
+        return view('club',[
+            'club' => $club,
+            'club_slug' => $club_slug
+        ]);
+    }
+
+
+
+
 
     public function create(){
         if(auth()->user()->admin == 1){
