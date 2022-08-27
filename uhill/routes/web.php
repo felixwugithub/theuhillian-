@@ -41,7 +41,8 @@ Route::post('/club-cover-store/{club_id}', [\App\Http\Controllers\ClubCoverImage
 
 Route::any('/filterclubs',[\App\Http\Controllers\ClubController::class, 'filter'])->name('filterClubs');
 
-Route::any('/club/{club_name}', [\App\Http\Controllers\ClubController::class, 'display'])->name('club');
+Route::any('/club/{club_name}', [\App\Http\Controllers\ClubController::class, 'getClubPosts'])->name('club');
+
 Route::any('/joinclub/{id}', [\App\Http\Controllers\ClubMemberController::class, 'join'])->name('joinClub');
 Route::any('/quitclub/{id}', [\App\Http\Controllers\ClubMemberController::class, 'quit'])->name('quitClub');
 
@@ -78,25 +79,9 @@ Route::get('/profile/{id}', [\App\Http\Controllers\ProfileController::class, 'sh
 Route::get('/profile/{id}/edit', [\App\Http\Controllers\ProfileController::class, 'edit']);
 Route::patch('/profile/{id}', [\App\Http\Controllers\ProfileController::class, 'update'])->name('profile');
 
-Route::get('/course/{id}', function ($id){
 
-    if(\Illuminate\Support\Facades\Auth::check()){
 
-        $course = Course::find($id);
-        $reviews = Review::query()->where('course_id', $course->id)->orderBy('created_at')->paginate(15, ['*'], 'reviews');
-        $comments = Comment::query()->where('course_id', $course->id)->orderByDesc('created_at')->paginate(15, ['*'], 'comments');
-
-    return view('course', [
-        'course' => $course,
-        'reviews' => $reviews,
-        'comments' => $comments
-    ]);}
-    else{
-        return view('unauthorized',[
-            'authMessage' => 'Course reviews and comments are only accessible by authorized users.'
-        ]);
-    }
-})->name('courseListing');
+Route::get('/course/{id}', [\App\Http\Controllers\CourseController::class, 'display'])->name('courseListing');
 
 Route::get('/course-review/{id}/{review_id}', [\App\Http\Controllers\CourseController::class, 'scrollToReview'])->name('courseListingReview');
 

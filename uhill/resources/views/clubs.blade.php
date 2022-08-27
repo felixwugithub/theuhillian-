@@ -68,10 +68,10 @@
     <div class="flex flex-wrap align-content-center flex justify-center">
         @foreach ($clubs as $club)
             <a href="{{route('club', ['club_name' => str_replace(' ', '_',$club->name)])}}" class="text-center mx-auto">
-            <div class="w-full h-96 m-3 rounded-3xl hover:rounded-lg box-shadow justify-center pt-10 container text-center md:w-[22rem] bg-gradient-to-br from-blue-300 via-blue-100 to-blue-50">
+            <div class="w-full h-96 m-3 rounded-3xl hover:rounded-lg box-shadow justify-center pt-10 container relative text-center md:w-[22rem] bg-gradient-to-br from-blue-300 via-blue-100 to-blue-50 items-center">
                 @if(isset($club->club_cover_image))
                     <div class="m-auto flex justify-center items-center container top-2 relative">
-                         <img class="overflow-hidden h-36 w-full object-cover" src="{{'storage/clubCoverImages/'.$club->club_cover_image->image}}" alt="image">
+                         <img class="overflow-hidden w-full h-[122px] object-cover" src="{{'storage/clubCoverImages/'.$club->club_cover_image->image}}" alt="image">
                     </div>
                 @endif
 
@@ -83,13 +83,13 @@
                     </div>
 
 
-                    <div class="relative flex mb-5 justify-center justify-content-around space-x-5">
+                    <div class="absolute bottom-0 cen text-center mx-auto flex mb-5 justify-center items-center items-center justify-content-around space-x-5 left-1/2 transform -translate-x-1/2">
                         @if(isset($club->room_number))
-                            <h2 class="pt-3 font-slim flex bottom-2 right-0">Room: {{substr($club->room_number, 0, 10)}}</h2>
+                            <h2 class="pt-3 font-slim ">Room: <span class="font-readex">{{substr($club->room_number, 0, 10)}}</span></h2>
                         @endif
 
                         @if(isset($club->meeting_times))
-                            <h2 class="pt-3 font-slim flex">Day of week: {{substr($club->meeting_times, 0, 20)}}</h2>
+                            <h2 class="pt-3 font-slim ">Day of week: <span class="font-readex">{{substr($club->meeting_times, 0, 20)}}</span></h2>
                         @endif
                     </div>
 

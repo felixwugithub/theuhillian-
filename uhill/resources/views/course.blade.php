@@ -37,7 +37,13 @@
                 <h1 class="font-sf text-5xl mb-3">{{$course['course_name']}}</h1>
                 <p>Summary: {{$course['description']}}</p>
                 <a href="../teacher/{{$course->teacher['id']}}">Teacher: {{$course->teacher['name']}}</a>
-                <a class="bg-hotPink text-white  w-56 h-14 m-5 text-3xl items-center py-auto font-sf text-center justify-center mx-auto flex rounded-lg box-shadow" href="/course/{{$course['id']}}/review"> Give review </a>
+
+                @auth()
+                <a class="bg-hotPink text-white  w-56 h-14 m-5 text-3xl items-center py-auto font-sf text-center justify-center mx-auto flex rounded-lg" href="/course/{{$course['id']}}/review"> Give review </a>
+                @else
+                    <a class="bg-hotPink text-white  w-56 h-14 m-5 text-3xl items-center py-auto font-sf text-center justify-center mx-auto flex rounded-lg hover:bg-yellow-200" href="/register"> Give Review </a>
+                @endauth
+
                 <p class="mx-auto text-hotPink font-slim">*Difficulty ratings do not affect a course's overall rating.</p>
             </div>
 
@@ -81,6 +87,7 @@
                     </div>
                 </div>
 
+                @auth()
                 @if(!$course->courseJoined(auth()->user()))
                 <div class="md:m-auto md:mr-5 flex w-5/12 md:w-36 justify-center border-2  border-hotPink m-2 rounded-[12%] md:border-0">
                     <a class="font-readex  md:text-lg" href="{{route('joinCourse', ['id' => $course->id])}}">
@@ -107,6 +114,7 @@
                         </a>
                     </div>
                 @endif
+                @endauth
             </div>
 
 
@@ -148,9 +156,6 @@
                                 @endif
 
 
-                                : </span></a>
--->
-
 
                             <div class="h-0.5 bg-black w-80 m-auto mt-3 drop-shadow-xl rounded-2 "></div>
                         <p class="m-4 text-l font-sans mt-3">{{$review['content']}}</p>
@@ -176,9 +181,9 @@
 
 
                     <div class="text-center justify-center w-36 h-15 rounded-2xl m-2 border-2 border-hotPink container xl:top-2 xl:right-2 xl:absolute xl-auto">
-                        <p class="text-hotPink  font-ooga">"Difficulty:</p>
+                        <p class="text-hotPink  font-ooga">" Difficulty:</p>
                         <h1 class="text-4xl font-slim text-spicyPink">{{$review['difficulty']}}</h1>
-                        <h1 class="font-ooga text-hotPink bottom-1 right-2 absolute">/10"</h1>
+                        <h1 class="font-ooga text-hotPink bottom-1 right-2 xl:absolute">/10 "</h1>
                     </div>
 
 
@@ -295,7 +300,9 @@
                     @endauth
                 </div>
 
-                    @endforeach
+                    @end
+                    
+                    
                  <p class="mx-auto flex justify-center text-2xl font-slim"></p>
                  <div class="w-11/12 flex justify-center items-center mx-auto text-lg font-slim">
 
@@ -341,68 +348,99 @@
 
         <div class="scrolling-pagination">
 
-        @foreach($comments->sortByDesc('created_at') as $comment)
+{{--        @foreach($comments->sortByDesc('created_at') as $comment)--}}
 
-            @if($comment->user == auth()->user())
-        <div class="bg-yellow-50 border-4 border-red-100 rounded-pill rounded-5 b-1 p-5 m-1" id="comment{{$comment->id}}">
-            @else
+{{--            @if($comment->user == auth()->user())--}}
+{{--        <div class="bg-yellow-50 border-4 border-red-100 rounded-pill rounded-5 b-1 p-5 m-1" id="comment{{$comment->id}}">--}}
+{{--            @else--}}
 
-                <div class="bg-white rounded-pill m-1 b-3 p-5" id="comment{{$comment->id}}">
-                    @endif
+{{--                <div class="bg-white rounded-pill m-1 b-3 p-5" id="comment{{$comment->id}}">--}}
+{{--                    @endif--}}
 
-                    <a href="/profile/{{$comment->user->id}}"><p class="text-sm">{{$comment->user->username}}:</p></a>
-            <p class="text-xl" >{{$comment['content']}}</p>
-            <p class="text-sm">{{$comment->created_at}}</p>
-
-
-            @if(!$comment->commentLikedBy(auth()->user()))
-                <form action="{{route('courseCommentLike', ['id' => $comment->id, 'commentIndex' => 'comment'.$comment->id ] ) }}">
-                    <button type="submit" >like</button>
-                </form>
-
-            @else
-
-                <form action="{{route('courseCommentUnlike', ['id' => $comment->id, 'commentIndex' => 'comment'.$comment->id] ) }}">
-                    <button type="submit" >Unlike</button>
-
-                </form>
-
-            @endif
-            <p>Liked by {{$comment->commentLikes()->count()}}</p>
+{{--                    <a href="/profile/{{$comment->user->id}}"><p class="text-sm">{{$comment->user->username}}:</p></a>--}}
+{{--            <p class="text-xl" >{{$comment['content']}}</p>--}}
+{{--            <p class="text-sm">{{$comment->created_at}}</p>--}}
 
 
-        </div>
+{{--            @if(!$comment->commentLikedBy(auth()->user()))--}}
+{{--                <form action="{{route('courseCommentLike', ['id' => $comment->id, 'commentIndex' => 'comment'.$comment->id ] ) }}">--}}
+{{--                    <button type="submit" >like</button>--}}
+{{--                </form>--}}
+
+{{--            @else--}}
+
+{{--                <form action="{{route('courseCommentUnlike', ['id' => $comment->id, 'commentIndex' => 'comment'.$comment->id] ) }}">--}}
+{{--                    <button type="submit" >Unlike</button>--}}
+
+{{--                </form>--}}
+
+{{--            @endif--}}
+{{--            <p>Liked by {{$comment->commentLikes()->count()}}</p>--}}
 
 
-        @endforeach
+{{--        </div>--}}
 
-            <div class="justify-center flex mx-auto w-1/2">
-                {{$comments->links()}}
-                <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-                <script src="https://cdnjs.cloudflare.com/ajax/libs/jscroll/2.4.1/jquery.jscroll.min.js"></script>
-                <script type="text/javascript">
-                    $('ul.pagination').hide();
-                    $(function() {
-                        $('.scrolling-pagination').jscroll({
-                            autoTrigger: true,
-                            padding: 0,
-                            nextSelector: '.pagination li.active + li a',
-                            contentSelector: 'div.scrolling-pagination',
-                            callback: function() {
-                                $('ul.pagination').remove();
-                            }
-                        });
-                    });
-                </script>
+
+{{--        @endforeach--}}
+
+{{--          --}}
+
+            <div class="container mt-5">
+                <div id="data-wrapper">
+                    <!-- Results -->
+                </div>
+                <!-- Data Loader -->
+                <div class="auto-load text-center">
+                    <svg version="1.1" id="L9" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+                         x="0px" y="0px" height="60" viewBox="0 0 100 100" enable-background="new 0 0 0 0" xml:space="preserve">
+                <path fill="#000"
+                      d="M73,50c0-12.7-10.3-23-23-23S27,37.3,27,50 M30.9,50c0-10.5,8.5-19.1,19.1-19.1S69.1,39.5,69.1,50">
+                    <animateTransform attributeName="transform" attributeType="XML" type="rotate" dur="1s"
+                                      from="0 50 50" to="360 50 50" repeatCount="indefinite" />
+                </path>
+            </svg>
+                </div>
             </div>
 
+            <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+            <script>
+                var ENDPOINT = "{{ url('/') }}";
+                var page = 1;
+                infinteLoadMore(page);
+                $(window).scroll(function () {
+                    if ($(window).scrollTop() + $(window).height() >= $(document).height()) {
+                        page++;
+                        infinteLoadMore(page);
+                    }
+                });
+                function infinteLoadMore(page) {
+                    $.ajax({
+                        url: ENDPOINT + "/course/{{$course->id}}?comments=" + page,
+                        datatype: "html",
+                        type: "get",
+                        beforeSend: function () {
+                            $('.auto-load').show();
+                        }
+                    })
+                        .done(function (response) {
+                            if (response.length == 0) {
+                                $('.auto-load').html("You've reached the end of comments.");
+                                return;
+                            }
+                            $('.auto-load').hide();
+                            $("#data-wrapper").append(response);
+                        })
+                        .fail(function (jqXHR, ajaxOptions, thrownError) {
+                            console.log('Server error occured');
+                        });
+                }
+            </script>
+
         </div>
 
     </div>
     </div>
-
-    <script src="/js/parts.js"> </script>
-
+                <script src="/js/parts.js"> </script>
                 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
                 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
                 <script src="/js/jquery.jscroll.min.js"></script>
