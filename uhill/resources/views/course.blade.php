@@ -37,11 +37,13 @@
                 <h1 class="font-sf text-5xl mb-3">{{$course['course_name']}}</h1>
                 <p>Summary: {{$course['description']}}</p>
                 <a href="../teacher/{{$course->teacher['id']}}">Teacher: {{$course->teacher['name']}}</a>
+
                 @auth()
                 <a class="bg-hotPink text-white  w-56 h-14 m-5 text-3xl items-center py-auto font-sf text-center justify-center mx-auto flex rounded-lg" href="/course/{{$course['id']}}/review"> Give review </a>
                 @else
                     <a class="bg-hotPink text-white  w-56 h-14 m-5 text-3xl items-center py-auto font-sf text-center justify-center mx-auto flex rounded-lg hover:bg-yellow-200" href="/register"> Give Review </a>
                 @endauth
+
                 <p class="mx-auto text-hotPink font-slim">*Difficulty ratings do not affect a course's overall rating.</p>
             </div>
 
@@ -92,7 +94,8 @@
                         <div class="rounded-lg hover:bg-pinkWhite">
                                 <div class="w-auto h-full m-4">
                                  <h1 class="font-sf text-black lg:text-white"> JOIN THIS COURSE </h1>
-                                <p class="text-sm text-gray-500 lg:text-gray-200"> You will receive notifications when someone reviews this course. </p>
+                                    <hr class="border-1 border-black lg:border-white lg:w-20">
+                                <p class="text-sm text-gray-500 lg:text-gray-50 lg:mt-1"> You will receive notifications when someone reviews this course. </p>
                                 </div>
                         </div>
                     </a>
@@ -104,7 +107,8 @@
                             <div class="rounded-lg hover:bg-pinkWhite">
                                     <div class="w-auto h-full m-4">
                                         <h1 class="font-sf text-black lg:text-white"> QUIT THIS COURSE </h1>
-                                        <p class="text-sm text-gray-500 lg:text-gray-200"> You will no longer receive notifications in your dashboard.</p>
+                                        <hr class="border-1 border-black lg:border-white lg:w-20">
+                                        <p class="text-sm mt-1 text-gray-500 lg:text-gray-50"> You will no longer receive notifications in your dashboard.</p>
                                     </div>
                             </div>
                         </a>
@@ -129,10 +133,16 @@
 
              @foreach($reviews->sortBy('created_at') as $review)
                 <div class="bg-felixSalmon m-5 p-5 b-5 rounded-3xl relative container w-auto mx-auto" id="review{{$review->id}}" >
-                    <h1 class="text-4xl font-semibold">"{{$review['title']}}"</h1>
+                    <!-- <svg class="h-0.7 w-80 m-auto box-shadow mb-3"><rect class="w-80 h-1 rounded-3 m-auto "></rect></svg>
+                    -->
+                    <h1 class="text-3xl text-center uppercase font-din">{{$review['title']}}</h1>
 
-                    <div id="reviewBlock{{$review->id}}">
+                    <div id="reviewBlock{{$review->id}}" class="text-center">
+                    <a class="font-didact hover:text-hotPink" href="../profile/{{$review->user['id']}}"> By {{$review->user['username']}}</a>
+                    </div>
 
+                        <div id="reviewBlock{{$review->id}}">
+                        <!--
                         <a class="text-gray-500" href="../profile/{{$review->user['id']}}">from user <span class="text-lg text-notRealBlack font-sansMid">{{$review->user['username']}}
 
                                 @if($review['created_at'] != $review['updated_at'])
@@ -146,9 +156,9 @@
                                 @endif
 
 
-                                : </span></a>
 
-                        <p class="text-xl font-sans mt-3">{{$review['content']}}</p>
+                            <div class="h-0.5 bg-black w-80 m-auto mt-3 drop-shadow-xl rounded-2 "></div>
+                        <p class="m-4 text-l font-sans mt-3">{{$review['content']}}</p>
 
                     </div>
 
@@ -290,7 +300,9 @@
                     @endauth
                 </div>
 
-                    @endforeach
+                    @end
+                    
+                    
                  <p class="mx-auto flex justify-center text-2xl font-slim"></p>
                  <div class="w-11/12 flex justify-center items-center mx-auto text-lg font-slim">
 

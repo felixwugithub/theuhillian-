@@ -16,6 +16,20 @@
     font-weight:300;
 }
 
+.font-din{
+    font-family: 'Roboto Condensed', sans-serif;
+    font-weight:500;
+}
+
+.font-din-slim{
+    font-family: 'Roboto Condensed' , sans-serif;
+    font-weight:300;
+}
+
+.font-didact{
+    font-family: 'Didact Gothic', sans-serif;
+}
+
 .font-readex {
     font-family: 'Work Sans', sans-serif;
 }
