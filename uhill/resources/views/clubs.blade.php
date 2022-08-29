@@ -68,7 +68,7 @@
     <div class="flex flex-wrap align-content-center flex justify-center">
         @foreach ($clubs as $club)
             <a href="{{route('club', ['club_name' => str_replace(' ', '_',$club->name)])}}" class="text-center mx-auto">
-            <div class="w-full h-96 m-3 rounded-3xl hover:rounded-lg box-shadow justify-center pt-10 container relative text-center md:w-[22rem] bg-gradient-to-br from-blue-300 via-blue-100 to-blue-50 items-center">
+            <div class="w-full h-96 m-3 rounded-3xl box-shadow hover:shadow-2xl  justify-center pt-10 container relative text-center md:w-[22rem] bg-blue-50  items-center">
                 @if(isset($club->club_cover_image))
                     <div class="m-auto flex justify-center items-center container top-2 relative">
                          <img class="overflow-hidden w-full h-[122px] object-cover" src="{{'storage/clubCoverImages/'.$club->club_cover_image->image}}" alt="image">

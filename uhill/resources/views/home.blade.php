@@ -99,7 +99,7 @@
 @foreach ($courses as $course)
 
 
-    <div class="rounded m-4 max-w-sm box-shadow relative h-56 w-75 container bg-subject-{{$course['subject']}} gradient-courses">
+    <div class="rounded m-4 max-w-sm box-shadow relative h-56 w-75 container bg-subject-{{$course['subject']}} gradient-courses hover:shadow-xl">
         <div>
             <div class="py-3 items-start top-0 flex container justify-center text-center bg-gradient-to-tl from-hotPink-100 via-felixSalmon to-felixSalmon">
                 <div class="container w-75 justify-center text-center">

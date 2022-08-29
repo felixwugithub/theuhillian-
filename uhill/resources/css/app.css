@@ -105,9 +105,15 @@
 
 }
 .gradient-courses{
-    background: rgb(252,223,220);
-    background: linear-gradient(135deg, rgba(252,223,220,1) 0%, rgba(252,223,220,1) 35%, rgba(252,223,220,1) 70%, rgba(248,173,173,1) 140%);
+    background: rgb(250,230,227);
+    background: linear-gradient(135deg, rgba(250,230,227,1) 0%, rgba(250,230,227,1) 35%, rgba(250,230,227,1) 70%, rgba(248,173,173,1) 160%);
 }
+
+.gradient-clubs{
+    background:#9CB4CC;
+    background:
+}
+
 /* Style the tab */
 .tab {
     justify-content: center;
@@ -197,7 +203,11 @@
 
 
 .box-shadow{
-    box-shadow: 0 3px 5px rgb(0 0 0/0.08);
+    box-shadow: 4px 4px 8px rgb(0 0 0/0.06);
+}
+
+.box-shadow-hover{
+    box-shadow: 0 0px 5px rgb(0 0 0/30);
 }
 
 .gray {
