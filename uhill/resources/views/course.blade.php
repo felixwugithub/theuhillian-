@@ -163,7 +163,7 @@
 
                     <ul class=" text-gray-600 font-medium text-center rounded-lg divide-x divide-white sm:flex mt-6 mb-3">
                         <li class="w-full text-center">
-                            <h5>Personality: {{$review['personality']}}/10</h5>
+                            <h5 class="font-quicksand-regular">Personality: {{$review['personality']}}/10</h5>
                             <img src="/images/star-ratings/{{$review['personality']}}.png" alt="" class="w-48 h-8 mx-auto hidden md:block">
                         </li>
                         <li class="w-full">

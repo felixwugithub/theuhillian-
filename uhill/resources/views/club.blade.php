@@ -2,7 +2,7 @@
 
 @section('content')
 
-    <div class="container w-full">
+    <div class="container w-full  m-auto">
 
     <!--
 
@@ -73,7 +73,7 @@
 
         </div>
 
-                                <div class="mx-auto mt-5 flex justify-center bg-blue-50 hover:bg-blue-500 hover:text-white w-36 rounded-md shadow">
+                                <div class="mx-auto mt-5 flex justify-center bg-blue-50 hover:bg-defaultDarkerBlue hover:text-white w-36 rounded-md hover:shadow-lg">
                                     @if(auth()->check())
                                         @if(!$club->clubJoined(auth()->user()))
                                             <a href="{{route('joinClub', ['id' => $club->id])}}"> Join this club </a>
