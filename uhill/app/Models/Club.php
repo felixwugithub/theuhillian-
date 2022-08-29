@@ -31,4 +31,10 @@ class Club extends Model
         return $this->hasOne(ClubCoverImage::class);
     }
 
+    public function articles(): \Illuminate\Database\Eloquent\Relations\HasMany
+    {
+        return $this->hasMany(Article::class);
+
+    }
+
 }

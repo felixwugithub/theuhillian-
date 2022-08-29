@@ -19,6 +19,7 @@ return new class extends Migration
             $table->foreignId('user_id')->nullable()->constrained()->cascadeOnDelete();
             $table->foreignId('club_id')->nullable()->constrained()->cascadeOnDelete();
             $table->boolean('published')->default(false);
+            $table->date('published_at')->default(now());
             $table->string('author');
             $table->string('title')->unique();
 

@@ -19,8 +19,8 @@ class ArticleController extends Controller
     {
 
 
-        $articles = Article::query()
-            ->orderBy('id', 'DESC')
+        $articles = Article::query()->where('published', true)
+            ->orderBy('created_at', 'DESC')
             ->paginate(10);
 
         return view('magazine',[
@@ -67,8 +67,6 @@ class ArticleController extends Controller
 
         $article->save();
 
-
-
         if($request->hasFile('pdf')){
             $file = $request->file('pdf');
             $name = pathinfo($file, PATHINFO_FILENAME);
@@ -82,14 +80,64 @@ class ArticleController extends Controller
         }
 
 
-        return redirect('/magazine');
+        return redirect('/club-magazine-manager/'.$article->club->id);
 
     }
 
+    public function update($article_id, Request $request){
+
+        $formfields = $this->validate($request, [
+            'title' => 'required',
+            'author' => 'required',
+            'content' => 'nullable',
+            'pdf.*' => 'mimes:pdf|max:6969|nullable',
+        ]);
+
+        $article = Article::find($article_id);
+
+        $article->update([
+            'title' => $formfields['title'],
+            'user_id' => \auth()->id(),
+            'author' => $formfields['author'],
+            'updated_at' => Carbon::now(),
+            'content' => Purify::clean($request['content'])
+        ]);
+
+        $article->save();
+
+        if($request->hasFile('pdf')){
+            $file = $request->file('pdf');
+            $name = pathinfo($file, PATHINFO_FILENAME);
+            $name = $name.'_'.time().'.'.'pdf';
+            $path = $file->storeAs('public/articlePDFs', $name);
+
+            if(isset($article->articlePDF)){
+                $article->articlePDF->update([
+                    'pdf' => $name
+            ]);}else{
+                ArticlePDF::create([
+                    'article_id' => $article->id,
+                    'pdf' => $name
+                ]);
+            }
+        }
+
+        if($request['removePDF'] === 'removePDFtrue'){
+            $article->articlePDF->delete();
+        }
+
+        return redirect('/club-magazine-manager/'.$article->club->id);
+
+    }
+
+
+
     public function manager($id){
         $club = Club::find($id);
+        $articles = Article::query()->where('club_id', $id)->get();
         return view('magazine.manager', [
-            'club' => $club
+            'club' => $club,
+            'articles' => $articles
         ]);
     }
 
@@ -100,13 +148,22 @@ class ArticleController extends Controller
         ]);
     }
 
-    public function edit($id){
+    public function edit($id, $article_id){
         $club = Club::find($id);
         return view('magazine.editor', [
             'club' => $club,
-            'article' => Article::find($id)
+            'article' => Article::find($article_id)
         ]);
     }
 
+    public function publish($article_id){
 
+        $article = Article::find($article_id);
+        if(!$article->published){
+        $article->update([
+            'published' => true,
+            'published_at' => Carbon::now()
+        ]);}
+        return redirect('/magazine');
+    }
 }
