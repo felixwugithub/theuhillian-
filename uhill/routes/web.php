@@ -8,6 +8,7 @@ use App\Models\Teacher;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
+use Illuminate\Support\Facades\Storage;
 
 
 /*
@@ -123,4 +124,17 @@ Route::any('/course/{id}/quit', [\App\Http\Controllers\CourseMemberController::c
 Route::any('/dashboard', [UserController::class, 'dashboard'])->name('dashboard');
 
 
+
+Route::post('/attachments', function () {
+    request()->validate([
+        'attachment' => ['required', 'file'],
+    ]);
+
+    $name = time().'_'. request()->file('attachment')->getClientOriginalName().request()->file('attachment')->getExtension();
+    request()->file('attachment')->storeAs('public/articleRichTextAttachments', $name);
+
+    return [
+        'image_url' => '/storage/articleRichTextAttachments/'.$name
+    ];
+})->middleware(['auth'])->name('attachments.store');
 

@@ -35,12 +35,29 @@
 
             <input id="x" type="hidden" name="content">
             <trix-editor
-
-                Livewire:model.lazy="content"
                 id="content"
-                @trix-attachment-add="console.log($event.attachment)"
-                class="trix-editor" input="x">
+                class="trix-editor" input="x"
+                x-data="{
+                            upload(event) {
+                            const data = new FormData();
+                            data.append('attachment', event.attachment.file);
+                            window.axios.post('/attachments', data, {
+                                onUploadProgress(progressEvent) {
+                                    event.attachment.setUploadProgress(
+                                        progressEvent.loaded / progressEvent.total * 100
+                                    );
+                                },
+                            }).then(({ data }) => {
+                                event.attachment.setAttributes({
+                                    url: data.image_url,
+                                });
+                            });
+                        }
+                    }
+                        "
+                x-on:trix-attachment-add="upload">
             </trix-editor>
+
 
             @error('content')
             <p>{{$message}}</p>

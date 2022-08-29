@@ -2,9 +2,7 @@
 
 @section('content')
 
-    <h1>{{$club->club_members->count()}}</h1>
-
-    <div class="container">
+    <div class="container w-full">
 
     <!--
 
@@ -37,24 +35,25 @@
         note: when using a variable that is nullable, check that it is set before using it.
 
     -->
+<div class="w-1/12 hidden md:block right-0 absolute">
+        @auth()
+            @if(auth()->user()->admin == 1)
+                <form action="{{route('club-cover-store', ['club_id' => $club->id])}}" method="post" enctype="multipart/form-data">
+                    @method('POST')
+                    @csrf
+                    <label class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300" for="images">Upload Images</label>
+                    <input class="block  text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 cursor-pointer dark:text-gray-400 focus:outline-none dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400" id="image" name="cover_image" type="file">
+                    <button type="submit"> Update Club Cover Photo</button>
+                </form>
+            @endif
+        @endauth
+
+</div>
 
 
-        <div id="club-mast-head" class="justify-center text-center items-center py-3">
-            <h1 class="text-6xl font-readex">{{strtoupper($club->name)}}</h1>
-             @auth()
-                 @if(auth()->user()->admin == 1)
-                    <form action="{{route('club-cover-store', ['club_id' => $club->id])}}" method="post" enctype="multipart/form-data">
-                        @method('POST')
-                        @csrf
-                        <label class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300" for="images">Upload Images</label>
-                        <input class="block  text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 cursor-pointer dark:text-gray-400 focus:outline-none dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400" id="image" name="cover_image" type="file">
-                        <button type="submit"> Update Club Cover Photo</button>
-                    </form>
-                @endif
-            @endauth
-
-
-            <div class="container mx-auto pt-3">
+        <div class="container mx-auto pt-5 justify-center flex pb-5">
+            <div class="text-center">
+                <h1 class="text-3xl md:text-6xl font-readex mx-auto text-center w-full">{{strtoupper($club->name)}}</h1>
 
                 @if(isset($club->president))
                     <p class="font-quicksand-regular">President: {{$club->president}}</p>
@@ -63,19 +62,37 @@
                 @if(isset($club->vice_president))
                     <p class="font-quicksand-regular">Vice President: {{$club->vice_president}}</p>
                 @endif
-
             </div>
         </div>
+                    @if(isset($club->club_cover_image->image))
+                        <div class="bg-cover w-full h-96" style="background-image: url('/storage/clubCoverImages/{{$club->club_cover_image->image}}')">
+                    @else
+                        <div class="bg-cover w-full">
+                    @endif
 
-        <div class="pt-3">
-            <div id="club-description" class="container md:w-1/2 mx-auto py-7 px-14 rounded-xl bg-blue-50">
-                <p>{{$club->description}}</p>
-            </div>
+
         </div>
 
+                                <div class="mx-auto mt-5 flex justify-center bg-blue-50 hover:bg-blue-500 hover:text-white w-36 rounded-md shadow">
+                                    @if(auth()->check())
+                                        @if(!$club->clubJoined(auth()->user()))
+                                            <a href="{{route('joinClub', ['id' => $club->id])}}"> Join this club </a>
+                                        @else
+                                            <a href="{{route('quitClub', ['id' => $club->id])}}"> Quit this club </a>
+                                        @endif
 
+                                    @else
+                                        <p class="mt-10">Login to follow this club for events, news, and updates.</p>
+                                    @endif
+                                </div>
 
-        <div class="mx-auto container md:w-7/12 mt-10">
+        <div class="mx-auto container md:w-7/12 mt-3">
+
+            <div class="w-full">
+                <div id="club-description" class="container mx-auto py-7 px-14 rounded-xl bg-blue-50">
+                    <p>{{$club->description}}</p>
+                </div>
+            </div>
 
             <div class="mb-4 border-b border-gray-200 dark:border-gray-700">
                 <ul class="flex flex-wrap -mb-px text-sm font-medium text-center justify-content-around" id="myTab" data-tabs-toggle="#myTabContent" role="tablist">
@@ -128,7 +145,6 @@
 
                                     <button type="submit" class="text-blue-800 mx-auto mt-3 justify-center flex bg-blue-50 hover:bg-yellow-200 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"> Post! </button>
 
-
                                 </div>
                             </form>
                         @endif
@@ -151,7 +167,7 @@
 {{--                            --}}
 
 
-                        <div class="container mt-5">
+                        <div class="container mt-5 p-2">
                             <div id="data-wrapper">
                                 <!-- Results -->
                             </div>
@@ -222,18 +238,7 @@
     </div>
 
 
-    <div>
-        @if(auth()->check())
-            @if(!$club->clubJoined(auth()->user()))
-                <a href="{{route('joinClub', ['id' => $club->id])}}"> Join this club </a>
-            @else
-                <a href="{{route('quitClub', ['id' => $club->id])}}"> Quit this club </a>
-            @endif
 
-        @else
-            <p class="mt-10">Login to follow this club for events, news, and updates.</p>
-        @endif
-    </div>
 
     <script src="/js/parts.js"> </script>
 @endsection

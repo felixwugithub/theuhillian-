@@ -141,26 +141,23 @@
                     <a class="font-didact hover:text-hotPink" href="../profile/{{$review->user['id']}}"> By {{$review->user['username']}}</a>
                     </div>
 
-                        <div id="reviewBlock{{$review->id}}">
-                        <!--
-                        <a class="text-gray-500" href="../profile/{{$review->user['id']}}">from user <span class="text-lg text-notRealBlack font-sansMid">{{$review->user['username']}}
 
-                                @if($review['created_at'] != $review['updated_at'])
+                    <a class="text-gray-500" href="../profile/{{$review->user['id']}}">from user <span class="text-lg text-notRealBlack font-sansMid">{{$review->user['username']}}
 
-                                    (edited at {{$review['updated_at']}})
+                            @if($review['created_at'] != $review['updated_at'])
 
-                                @else
+                                (edited at {{$review['updated_at']}})
 
-                                    at {{$review['created_at']}}
+                            @else
 
-                                @endif
+                                at {{$review['created_at']}}
 
+                            @endif
 
 
-                            <div class="h-0.5 bg-black w-80 m-auto mt-3 drop-shadow-xl rounded-2 "></div>
                         <p class="m-4 text-l font-sans mt-3">{{$review['content']}}</p>
 
-                    </div>
+
 
 
 
@@ -300,9 +297,9 @@
                     @endauth
                 </div>
 
-                    @end
-                    
-                    
+                    @endforeach
+
+
                  <p class="mx-auto flex justify-center text-2xl font-slim"></p>
                  <div class="w-11/12 flex justify-center items-center mx-auto text-lg font-slim">
 
@@ -384,6 +381,9 @@
 {{--        @endforeach--}}
 
 {{--          --}}
+
+
+
 
             <div class="container mt-5">
                 <div id="data-wrapper">
