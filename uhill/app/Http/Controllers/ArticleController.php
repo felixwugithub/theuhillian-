@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Article;
 use App\Models\ArticlePDF;
+use App\Models\Club;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -43,18 +44,20 @@ class ArticleController extends Controller
         ]);
     }
 
-    public function store(Request $request){
+    public function store($id, Request $request){
 
         $formfields = $this->validate($request, [
             'title' => 'required',
             'author' => 'required',
             'content' => 'nullable',
-            'pdf.*' => 'mimes:pdf|max:100000|nullable',
+            'pdf.*' => 'mimes:pdf|max:6969|nullable',
 
         ]);
 
         $article = Article::create([
             'title' => $formfields['title'],
+            'club_id' => $id,
+            'user_id' => \auth()->id(),
             'author' => $formfields['author'],
             'created_at' => Carbon::now(),
             'updated_at' => Carbon::now(),
@@ -69,7 +72,7 @@ class ArticleController extends Controller
         if($request->hasFile('pdf')){
             $file = $request->file('pdf');
             $name = pathinfo($file, PATHINFO_FILENAME);
-            $name = $name.'_'.time().'.'.$file->extension();
+            $name = $name.'_'.time().'.'.'pdf';
             $path = $file->storeAs('public/articlePDFs', $name);
 
             ArticlePDF::create([
@@ -81,17 +84,28 @@ class ArticleController extends Controller
 
         return redirect('/magazine');
 
+    }
 
+    public function manager($id){
+        $club = Club::find($id);
+        return view('magazine.manager', [
+            'club' => $club
+        ]);
+    }
 
+    public function editor($id){
+        $club = Club::find($id);
+        return view('magazine.editor', [
+            'club' => $club
+        ]);
+    }
 
-
-
-
-
-
-
-
-
+    public function edit($id){
+        $club = Club::find($id);
+        return view('magazine.editor', [
+            'club' => $club,
+            'article' => Article::find($id)
+        ]);
     }
 
 

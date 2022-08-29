@@ -222,7 +222,15 @@
 
 
                 <div class="hidden p-4 bg-gray-50 rounded-lg dark:bg-gray-800" id="dashboard" role="tabpanel" aria-labelledby="dashboard-tab">
-                    Articles
+                    @if(auth()->check())
+                        @if(auth()->user()->admin == 1)
+                            <a href="/club-magazine-manager/{{$club->id}}" class="flex mx-auto w-full justify-center">
+                                <div class="w-1/3 rounded-md text-blue-900 bg-blue-50 text-center hover:bg-blue-500 hover:text-white">
+                                    Manage Articles
+                                </div>
+                            </a>
+                        @endif
+                    @endif
                 </div>
                 <div class="hidden p-4 bg-gray-50 rounded-lg dark:bg-gray-800" id="settings" role="tabpanel" aria-labelledby="settings-tab">
                     Events

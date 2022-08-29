@@ -18,6 +18,7 @@ return new class extends Migration
             $table->timestamps();
             $table->foreignId('user_id')->nullable()->constrained()->cascadeOnDelete();
             $table->foreignId('club_id')->nullable()->constrained()->cascadeOnDelete();
+            $table->boolean('published')->default(false);
             $table->string('author');
             $table->string('title')->unique();
 

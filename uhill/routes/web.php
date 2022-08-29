@@ -138,3 +138,9 @@ Route::post('/attachments', function () {
     ];
 })->middleware(['auth'])->name('attachments.store');
 
+
+Route::get('/club-magazine-manager/{id}', [\App\Http\Controllers\ArticleController::class, 'manager'])->middleware(['auth'])->name('club-magazine-manager');
+Route::get('/club-magazine-editor/{id}', [\App\Http\Controllers\ArticleController::class, 'editor'])->middleware(['auth'])->name('club-magazine-editor');
+Route::get('/club-magazine-editor/{id}/{article_id}', [\App\Http\Controllers\ArticleController::class, 'edit'])->middleware(['auth'])->name('club-magazine-edit');
+Route::post('/club-magazine-store/{id}', [\App\Http\Controllers\ArticleController::class, 'store'])->middleware(['auth'])->name('club-magazine-store');
+

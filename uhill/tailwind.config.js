@@ -30,6 +30,7 @@ module.exports = {
               pinkie:'#fff0f0',
 
               rawBanana:'#d9d2be',
+              peeledBanana:'#fffbed',
               ripeBanana:'#fcf5e4',
               babyBanana:'#f8f7a9',
               rottenBanana:'#d3b626',
