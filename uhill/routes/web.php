@@ -143,4 +143,6 @@ Route::get('/club-magazine-manager/{id}', [\App\Http\Controllers\ArticleControll
 Route::get('/club-magazine-editor/{id}', [\App\Http\Controllers\ArticleController::class, 'editor'])->middleware(['auth'])->name('club-magazine-editor');
 Route::get('/club-magazine-editor/{id}/{article_id}', [\App\Http\Controllers\ArticleController::class, 'edit'])->middleware(['auth'])->name('club-magazine-edit');
 Route::post('/club-magazine-store/{id}', [\App\Http\Controllers\ArticleController::class, 'store'])->middleware(['auth'])->name('club-magazine-store');
+Route::post('/club-magazine-update/{article_id}', [\App\Http\Controllers\ArticleController::class, 'update'])->middleware(['auth'])->name('club-magazine-update');
+Route::get('/club-magazine-publish/{article_id}', [\App\Http\Controllers\ArticleController::class, 'publish'])->middleware(['auth'])->name('club-magazine-publish');
 

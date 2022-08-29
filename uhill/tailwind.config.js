@@ -24,6 +24,7 @@ module.exports = {
               defaultPink: '#e0a7c4',
               defaultPurple: '#bcaac2',
               defaultMidBlue: '#9CB4CC',
+              barelyThereBlue: '#f4f9fc',
               defaultDarkerBlue: '#748Da6',
               notRealBlack: '#482525',
               felixSalmon: '#fcdfdc',
@@ -36,6 +37,8 @@ module.exports = {
               rottenBanana:'#d3b626',
               deadBanana: 'rgba(255,234,189,0.42)',
               notReallyBlack: '#2e2f0b'
+
+
 
 
           }
