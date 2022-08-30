@@ -287,7 +287,7 @@
                             <button type="submit" class="text-hotPink">Helpful</button>
                         </form>
                     @else
-                        <form action="{{route('reviewHelpful', ['review' => $review->id, 'reviewIndex' => 'review'.$review->id ])}}" method="post" class="mr-1">
+                        <form action="{{route('reviewHelpfulDestroy', ['review' => $review->id, 'reviewIndex' => 'review'.$review->id ])}}" method="post" class="mr-1">
                             @csrf
 
                             @method('DELETE')

@@ -115,7 +115,7 @@ Route::get('/course/{id}/review', [ReviewController::class, 'create']);
 Route::post('/course/{id}', [ReviewController::class, 'store']);
 
 Route::post('/course/reviewHelpful/{review}/{reviewIndex}', [\App\Http\Controllers\ReviewHelpfulController::class, 'store'])->name('reviewHelpful');
-Route::delete('/course/reviewHelpful/{review}/{reviewIndex}', [\App\Http\Controllers\ReviewHelpfulController::class, 'destroy'])->name('reviewHelpful');
+Route::delete('/course/reviewHelpfulDestroy/{review}/{reviewIndex}', [\App\Http\Controllers\ReviewHelpfulController::class, 'destroy'])->name('reviewHelpfulDestroy');
 
 Route::any('/course/{id}/join', [\App\Http\Controllers\CourseMemberController::class, 'join'])->name('joinCourse');
 Route::any('/course/{id}/quit', [\App\Http\Controllers\CourseMemberController::class, 'quit'])->name('quitCourse');
