@@ -166,4 +166,19 @@ class ArticleController extends Controller
         ]);}
         return redirect('/magazine');
     }
+
+    public function fetch($id, Request $request){
+        $club = Club::find($id);
+        $results = Article::query()->where('club_id', $club->id)->where('published', true)->orderByDesc('published_at')->paginate(1, ['*'], 'articles');
+        $club_articles = '';
+
+        if ($request->ajax()) {
+            foreach ($results as $result) {
+
+                $club_articles.='<div class="mx-auto my-5 p-5 w-11/12 bg-blue-50 h-96"><p class="h-5 text-3x;">'.$result->title.'</p></div>';
+            }
+            return $club_articles;
+        }
+
+    }
 }
