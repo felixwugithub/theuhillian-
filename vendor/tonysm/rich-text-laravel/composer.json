@@ -1,0 +1,59 @@
+{
+    "name": "tonysm/rich-text-laravel",
+    "description": "Integrates Trix content with Laravel",
+    "keywords": [
+        "tonysm",
+        "laravel",
+        "rich-text-laravel"
+    ],
+    "homepage": "https://github.com/tonysm/rich-text-laravel",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Tony Messias",
+            "email": "tonysm@hey.com",
+            "role": "Developer"
+        }
+    ],
+    "require": {
+        "php": "^8.0|^8.1",
+        "illuminate/contracts": "^8.47|^9.0",
+        "spatie/laravel-package-tools": "^1.9.2",
+        "tonysm/globalid-laravel": "^1.1.0"
+    },
+    "require-dev": {
+        "nunomaduro/collision": "^5.3|^6.0",
+        "orchestra/testbench": "^6.24",
+        "phpunit/phpunit": "^9.5",
+        "spatie/laravel-ray": "^1.29",
+        "vimeo/psalm": "^4.8"
+    },
+    "autoload": {
+        "psr-4": {
+            "Tonysm\\RichTextLaravel\\": "src",
+            "Tonysm\\RichTextLaravel\\Database\\Factories\\": "database/factories"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Tonysm\\RichTextLaravel\\Tests\\": "tests"
+        }
+    },
+    "scripts": {
+        "psalm": "vendor/bin/psalm",
+        "test": "./vendor/bin/testbench package:test --parallel --no-coverage",
+        "test-coverage": "vendor/bin/phpunit --coverage-html coverage"
+    },
+    "config": {
+        "sort-packages": true
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Tonysm\\RichTextLaravel\\RichTextLaravelServiceProvider"
+            ]
+        }
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true
+}
