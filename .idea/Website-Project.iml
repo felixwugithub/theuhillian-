@@ -117,6 +117,14 @@
       <excludeFolder url="file://$MODULE_DIR$/uhill/vendor/phpunit/phpunit" />
       <excludeFolder url="file://$MODULE_DIR$/uhill/vendor/phpunit/php-code-coverage" />
       <excludeFolder url="file://$MODULE_DIR$/uhill/vendor/nikic/php-parser" />
+      <excludeFolder url="file://$MODULE_DIR$/uhill/vendor/ezyang/htmlpurifier" />
+      <excludeFolder url="file://$MODULE_DIR$/uhill/vendor/laravel/ui" />
+      <excludeFolder url="file://$MODULE_DIR$/uhill/vendor/nunomaduro/termwind" />
+      <excludeFolder url="file://$MODULE_DIR$/uhill/vendor/livewire/livewire" />
+      <excludeFolder url="file://$MODULE_DIR$/uhill/vendor/stevebauman/purify" />
+      <excludeFolder url="file://$MODULE_DIR$/uhill/vendor/tonysm/rich-text-laravel" />
+      <excludeFolder url="file://$MODULE_DIR$/uhill/vendor/tonysm/globalid-laravel" />
+      <excludeFolder url="file://$MODULE_DIR$/uhill/vendor/spatie/laravel-package-tools" />
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />

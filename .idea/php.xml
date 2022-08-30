@@ -111,6 +111,14 @@
       <path value="$PROJECT_DIR$/uhill/vendor/phpunit/phpunit" />
       <path value="$PROJECT_DIR$/uhill/vendor/phpunit/php-code-coverage" />
       <path value="$PROJECT_DIR$/uhill/vendor/nikic/php-parser" />
+      <path value="$PROJECT_DIR$/uhill/vendor/ezyang/htmlpurifier" />
+      <path value="$PROJECT_DIR$/uhill/vendor/laravel/ui" />
+      <path value="$PROJECT_DIR$/uhill/vendor/nunomaduro/termwind" />
+      <path value="$PROJECT_DIR$/uhill/vendor/livewire/livewire" />
+      <path value="$PROJECT_DIR$/uhill/vendor/stevebauman/purify" />
+      <path value="$PROJECT_DIR$/uhill/vendor/tonysm/rich-text-laravel" />
+      <path value="$PROJECT_DIR$/uhill/vendor/tonysm/globalid-laravel" />
+      <path value="$PROJECT_DIR$/uhill/vendor/spatie/laravel-package-tools" />
     </include_path>
   </component>
   <component name="PhpProjectSharedConfiguration" php_language_level="8.0">
