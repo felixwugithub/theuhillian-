@@ -49,25 +49,25 @@ class ClubController extends Controller
         if ($request->ajax()) {
             foreach ($results as $result) {
 
-                $club_posts.='<div class="w-full mx-auto text-center justify-center text-xl font-ooga">
-                                <hr class="my-5">
+                $club_posts.='<div class="w-full mx-auto text-center justify-center text-xl font-ooga h-auto bg-blue-50 p-3">
+                                <hr class="mt-2">
                                 <div>'
-                                .' <h5 class="bg-blue-50">'.
+                                .' <h5>'.
                                         $result->caption.'
                                     </h5>
                                 </div>
-                               </div>';
+                              ';
 
-                if (isset($result->club_post_pictures)){
+                if(isset($result->club_post_pictures)){
                     foreach($result->club_post_pictures as $picture){
-                        $club_posts.='
-                        <img src="/storage/clubPostImages/'.$picture->image.'">';
+                        $club_posts.= '<img src="/storage/clubPostImages/'.$picture->image. '" alt="Post Picture" class="w-11/12 h-auto mx-auto">
+                        <br>';
                     }
                 }
 
                 $club_posts.='
-                    <p class="text-gray-500 font-slim text-sm">'. $result->created_at . '</p>';
-
+                    <p class="text-gray-500 font-slim text-sm">'. $result->created_at . '</p>
+                    </div><br>';
             }
             return $club_posts;
         }
