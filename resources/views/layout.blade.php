@@ -22,7 +22,16 @@
 
     <link rel="stylesheet" type="text/css" href="/css/trix.css">
     <link rel="stylesheet" type="text/css" href="/css/app.css">
-    <link rel="stylesheet" type="text/css" href="/build/assets/app.9d7e20a7.css">
+
+    <!-- if production -->
+
+
+    <?php
+    $file = json_decode(file_get_contents(base_path().'/public/build/manifest.json'), true);
+    ?>
+
+    <link rel="stylesheet" href="/build/{{$file['resources/css/app.css']['file']}}" />
+    <script type="module" src="/build/{{ $file['resources/js/app.js']['file'] }}"></script>
 
 
     <meta charset="UTF-8">
@@ -41,7 +50,6 @@
     <script src="/js/jquery.jscroll.min.js"></script>
     <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
-    <script src="/build/assets/app.2e608410.js"></script>
 
     <x-rich-text-trix-styles></x-rich-text-trix-styles>
 
@@ -99,6 +107,8 @@
                 <a href="/"><img src="/images/uhillLogoBnW.jpeg" class="h-10 w-10 mx-2 inline-flex md:mt-0 " alt="Logo">
                 <div class="float-right">
                     <h1 class="font-comfortaa hover:text-hotPink text-3xl md:ml-2 mt-1">The Uhillian</h1>
+
+
                 </div>
                 </a>
             </div>
