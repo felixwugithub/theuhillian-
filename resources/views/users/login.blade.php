@@ -2,7 +2,7 @@
 
 @section('content')
 
-    <div class="flex flex-col justify-center items-center h-1/3 ">
+    <div class="flex flex-col justify-center items-center h-5/12">
     <div class="w-96 mt-6 px-10 py-10 bg-felixSalmon rounded-lg justify-center shadow-md overflow-hidden">
         <form method="POST" action="/users/authenticate">
     @csrf

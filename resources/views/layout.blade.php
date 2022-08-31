@@ -22,6 +22,9 @@
 
     <link rel="stylesheet" type="text/css" href="/css/trix.css">
     <link rel="stylesheet" type="text/css" href="/css/app.css">
+    <link rel="stylesheet" type="text/css" href="/build/assets/app.9d7e20a7.css">
+
+
     <meta charset="UTF-8">
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
@@ -38,6 +41,7 @@
     <script src="/js/jquery.jscroll.min.js"></script>
     <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script src="/build/assets/app.2e608410.js"></script>
 
     <x-rich-text-trix-styles></x-rich-text-trix-styles>
 
