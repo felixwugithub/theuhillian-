@@ -21,7 +21,6 @@
 
 
     <link rel="stylesheet" type="text/css" href="/css/trix.css">
-
     <meta charset="UTF-8">
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
@@ -31,8 +30,7 @@
 
 
     @livewireStyles
-    <link rel="stylesheet" href="https://unpkg.com/flowbite@1.5.1/dist/flowbite.min.css" />
-
+    @vite('resources/css/app.css')
 
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script type="text/javascript" src="/js/trix.js"></script>
@@ -43,7 +41,6 @@
 
     <x-rich-text-trix-styles></x-rich-text-trix-styles>
 
-    @vite('resources/css/app.css')
 </head>
 
 
