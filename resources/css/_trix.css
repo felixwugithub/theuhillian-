@@ -1,3 +1,10 @@
+@import './_trix.css';
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
 /** These are specific for the tag that will be added to the rich text content */
 .trix-content .attachment-gallery > .attachment,
 .trix-content .attachment-gallery > rich-text-attachment {

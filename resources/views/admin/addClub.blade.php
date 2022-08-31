@@ -5,7 +5,7 @@
     <input id="name" type="text" name="name"
            value="{{old('name')}}">
     @error('name')
-    <p>{{$message}}</p>
+    <p> {{ $message }} </p>
     @enderror
 
     <label for="description">Club Description</label>
