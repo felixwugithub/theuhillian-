@@ -1,4 +1,3 @@
-import 'vite/modulepreload-polyfill'
 
 import { defineConfig } from 'vite';
 
