@@ -31,10 +31,5 @@ import './libs/trix';
  * or customize the JavaScript scaffolding to fit your unique needs.
  */
 
-const app = new Vue({
-    el: '#app',
-    components: { App }
-});
-
 
 
