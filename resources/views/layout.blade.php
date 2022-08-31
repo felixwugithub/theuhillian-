@@ -2,6 +2,7 @@
 <html lang="en">
 <head>
 
+    @vite('resources/css/app.css')
     {{--Fonts--}}
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -27,7 +28,7 @@
 
     <title>The Uhillian</title>
 
-    @vite('resources/css/app.css')
+
     @livewireStyles
 
 
@@ -38,8 +39,9 @@
     <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
 
-
     <x-rich-text-trix-styles></x-rich-text-trix-styles>
+
+ 
 </head>
 
 
