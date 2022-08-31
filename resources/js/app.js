@@ -1,7 +1,4 @@
 
-import Vue from 'vue';
-
-import App from './vue/app';
 
 /**
  * First we will load all of this project's JavaScript dependencies which
