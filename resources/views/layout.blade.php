@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 
-    @vite('resources/css/app.css')
+
     {{--Fonts--}}
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -41,7 +41,8 @@
 
     <x-rich-text-trix-styles></x-rich-text-trix-styles>
 
- 
+
+    @vite('resources/css/app.css')
 </head>
 
 
