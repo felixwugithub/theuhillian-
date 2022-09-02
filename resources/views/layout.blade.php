@@ -17,6 +17,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Work+Sans&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Roboto+Condensed:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,700&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Didact+Gothic&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap" rel="stylesheet">
 
 
 
@@ -30,8 +31,8 @@
     $file = json_decode(file_get_contents(base_path().'/public/build/manifest.json'), true);
     ?>
 
-    <link rel="stylesheet" href="/build/{{$file['resources/css/app.css']['file']}}" />
-    <script type="module" src="/build/{{ $file['resources/js/app.js']['file'] }}"></script>
+{{--    <link rel="stylesheet" href="/build/{{$file['resources/css/app.css']['file']}}" />--}}
+{{--    <script type="module" src="/build/{{ $file['resources/js/app.js']['file'] }}"></script>--}}
 
 
     <meta charset="UTF-8">
@@ -43,6 +44,8 @@
 
 
     @livewireStyles
+
+    @vite('resources/css/app.css')
 
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script type="text/javascript" src="/js/trix.js"></script>

@@ -30,10 +30,15 @@ class Article extends Model
         return $this->hasOne(ArticlePDF::class);
     }
 
-    public function club(){
+    public function club(): \Illuminate\Database\Eloquent\Relations\BelongsTo
+    {
         return $this->belongsTo(Club::class);
     }
 
+    public function cover(): \Illuminate\Database\Eloquent\Relations\HasOne
+    {
+        return $this->hasOne(ArticleCoverImage::class);
+    }
     /**
      * @return \Illuminate\Database\Eloquent\Relations\HasOne
      */

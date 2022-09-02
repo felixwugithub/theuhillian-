@@ -1,6 +1,6 @@
 @extends('layout')
 @section('content')
-    <div class="container w-full bg-rawBanana p-3">
+
     <!--
 
          You can access the following variables/functions/classes by surrounding them with double curly brackets,
@@ -31,22 +31,29 @@
 
     -->
 
-
-
-    @foreach($articles as $article)
-
-            <a href="{{route('article', ['title' => str_replace(' ', '_', $article->title)])}}">
-    <div class="p-5 b-5 m-5 container w-auto bg-ripeBanana">
-        <p>
-            {{$article->title}}
-        </p>
-    </div>
-            </a>
-    @endforeach
-
-        <div class="w-full md:w-1/2 justify-center items-center text-center">
-    {{$articles->links()}}
+    <div class="container w-full mx-auto justify-center">
+        <div class="w-full px-10 mb-10 md:pt-3 px-24 md:h-48 bg-rawBanana static">
+            <h1 class="font-modern text-4xl md:text-7xl xl:text-9xl left-7 absolute">Digital Magazine</h1>
         </div>
 
+
+        @foreach($articles as $article)
+
+                <a href="{{route('article', ['title' => str_replace(' ', '_', $article->title)])}}">
+        <div class="p-5 b-5 m-5 container w-auto bg-ripeBanana">
+            <p>
+                {{$article->title}}
+            </p>
+        </div>
+                </a>
+        @endforeach
+
+            <div class="w-full md:w-1/2 justify-center items-center text-center">
+        {{$articles->links()}}
+            </div>
+
     </div>
+
+
+
 @endsection

@@ -8,9 +8,13 @@
     font-family: 'Quicksand', sans-serif;
     font-weight: 400;
 }
+
 .font-quicksand-regular{
     font-family: 'Quicksand',sans-serif;
     font-weight:500;
+}
+.font-modern {
+    font-family: 'Montserrat', sans-serif;
 }
 .font-slim {
     font-family: 'Josefin Sans', sans-serif;

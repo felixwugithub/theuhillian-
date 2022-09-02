@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\ReviewController;
+use App\Models\Article;
 use App\Models\Comment;
 use App\Models\Course;
 use App\Models\Review;
@@ -147,3 +148,5 @@ Route::post('/club-magazine-update/{article_id}', [\App\Http\Controllers\Article
 Route::get('/club-magazine-publish/{article_id}', [\App\Http\Controllers\ArticleController::class, 'publish'])->middleware(['auth'])->name('club-magazine-publish');
 Route::get('/club-articles-fetch/{id}', [\App\Http\Controllers\ArticleController::class, 'fetch']);
 
+Route::get('/club-events-fetch/{id}', [\App\Http\Controllers\ClubEventController::class, 'fetch']);
+Route::post('/club-event-store/{club_id}', [\App\Http\Controllers\ClubEventController::class, 'store'])->name('club-event-store');
