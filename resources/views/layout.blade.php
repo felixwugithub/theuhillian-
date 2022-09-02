@@ -31,8 +31,8 @@
     $file = json_decode(file_get_contents(base_path().'/public/build/manifest.json'), true);
     ?>
 
-{{--    <link rel="stylesheet" href="/build/{{$file['resources/css/app.css']['file']}}" />--}}
-{{--    <script type="module" src="/build/{{ $file['resources/js/app.js']['file'] }}"></script>--}}
+    <link rel="stylesheet" href="/build/{{$file['resources/css/app.css']['file']}}" />
+    <script type="module" src="/build/{{ $file['resources/js/app.js']['file'] }}"></script>
 
 
     <meta charset="UTF-8">
