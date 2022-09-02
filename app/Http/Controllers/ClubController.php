@@ -47,27 +47,9 @@ class ClubController extends Controller
         $results = ClubPost::query()->where('club_id', $club->id)->orderByDesc('created_at')->paginate(1, ['*'], 'posts');
         $club_posts = '';
         if ($request->ajax()) {
-            foreach ($results as $result) {
+            foreach ($results as $post) {
 
-                $club_posts.='<div class="w-full mx-auto text-center justify-center text-xl font-ooga h-auto bg-blue-50 p-3">
-                                <hr class="mt-2">
-                                <div>'
-                                .' <h5>'.
-                                        $result->caption.'
-                                    </h5>
-                                </div>
-                              ';
-
-                if(isset($result->club_post_pictures)){
-                    foreach($result->club_post_pictures as $picture){
-                        $club_posts.= '<img src="/storage/clubPostImages/'.$picture->image. '" alt="Post Picture" class="w-11/12 h-auto mx-auto">
-                        <br>';
-                    }
-                }
-
-                $club_posts.='
-                    <p class="text-gray-500 font-slim text-sm">'. $result->created_at . '</p>
-                    </div><br>';
+                $club_posts.= view('club-components.post', compact('post'))->render();
             }
             return $club_posts;
         }

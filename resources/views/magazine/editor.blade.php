@@ -82,9 +82,12 @@
                                 });
                             });
                         }
+
+
                     }
-                        "
-                x-on:trix-attachment-add="upload">
+                    "
+                x-on:trix-attachment-add="upload"
+
             </trix-editor>
 
 
