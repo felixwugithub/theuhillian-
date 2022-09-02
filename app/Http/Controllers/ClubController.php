@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Club;
 use App\Models\ClubPost;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Redirect;
 
 class ClubController extends Controller
 {
@@ -84,5 +85,35 @@ class ClubController extends Controller
         else{
             return "lol git gud";
         }
+    }
+
+    public function update($id, Request $request){
+        if(auth()->user()->admin == 1){
+            $club = Club::find($id);
+
+            $data = $request->validate([
+                'name' => 'required|max:128|min:5|string|unique:clubs,name,'. $club->id,
+                'description' => 'nullable|max:512|string',
+                'room_number' => 'nullable|string|max:30|string',
+                'meeting_times' => 'nullable|string|max:36',
+                'url' => 'nullable|max:150',
+                'president' => 'nullable|max:30|string',
+                'vice_president' => 'nullable|max:30|string'
+            ]);
+
+            $club->update($data);
+            return back()->with([
+                'updated' => true
+            ]);
+
+        }
+    }
+
+    public function manager($id){
+        $club = Club::find($id);
+
+        return view('club-manager', [
+            'club' => $club
+        ]);
     }
 }

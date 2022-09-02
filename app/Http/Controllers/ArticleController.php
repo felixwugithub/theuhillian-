@@ -3,12 +3,14 @@
 namespace App\Http\Controllers;
 
 use App\Models\Article;
+use App\Models\ArticleCoverImage;
 use App\Models\ArticlePDF;
 use App\Models\Club;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Storage;
 use Stevebauman\Purify\Facades\Purify;
 use Te7aHoudini\LaravelTrix\LaravelTrix;
 use Tonysm\RichTextLaravel\Models\Traits\HasRichText;
@@ -79,6 +81,22 @@ class ArticleController extends Controller
             ]);
         }
 
+        if($request->hasFile('cover')){
+            $file = $request->file('cover');
+            $name = pathinfo($file, PATHINFO_FILENAME);
+            $name = $name.'_'.time().$file->getExtension();
+            $path = $file->storeAs('public/articleCovers', $name);
+
+            if(isset($article->articleCover)){
+                $article->articleCover->update([
+                    'image' => $name
+                ]);}else{
+                ArticleCoverImage::create([
+                    'article_id' => $article->id,
+                    'image' => $name
+                ]);
+            }
+        }
 
         return redirect('/club-magazine-manager/'.$article->club->id);
 
@@ -91,6 +109,7 @@ class ArticleController extends Controller
             'author' => 'required',
             'content' => 'nullable',
             'pdf.*' => 'mimes:pdf|max:6969|nullable',
+            'cover' => 'nullable|image'
         ]);
 
         $article = Article::find($article_id);
@@ -112,6 +131,7 @@ class ArticleController extends Controller
             $path = $file->storeAs('public/articlePDFs', $name);
 
             if(isset($article->articlePDF)){
+                unlink(storage_path('app/public/articlePDFs/'.$article->articlePDF->pdf));
                 $article->articlePDF->update([
                     'pdf' => $name
             ]);}else{
@@ -122,17 +142,41 @@ class ArticleController extends Controller
             }
         }
 
+        if($request->hasFile('cover')){
+            $file = $request->file('cover');
+            $name = pathinfo($file, PATHINFO_FILENAME);
+            $name = $name.'_'.time().'.'.$file->getClientOriginalExtension();
+            $path = $file->storeAs('public/articleCovers', $name);
+
+            if(isset($article->articleCover)){
+               unlink(storage_path('app/public/articleCovers/'.$article->cover->image));
+                $article->cover->update([
+                    'image' => $name
+                ]);}else{
+                $article->cover()->create([
+                    'article_id' => $article->id,
+                    'image' => $name
+                ]);
+            }
+        }
+
         if($request['removePDF'] === 'removePDFtrue'){
+            unlink(storage_path('app/public/articlePDFs/'.$article->articlePDF->pdf));
             $article->articlePDF->delete();
         }
 
-        return redirect('/club-magazine-manager/'.$article->club->id);
+        if($request['removeCover'] === 'removeCovertrue'){
 
+            unlink(storage_path('app/public/articleCovers/'.$article->cover->image));
+            $article->cover->delete();
+        }
+
+        return redirect('/club-magazine-editor/'.$article->club->id.'/'.$article->id);
     }
 
 
-
-    public function manager($id){
+    public function magazine_manager($id): \Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View|\Illuminate\Contracts\Foundation\Application
+    {
         $club = Club::find($id);
         $articles = Article::query()->where('club_id', $id)->get();
         return view('magazine.manager', [
@@ -141,7 +185,8 @@ class ArticleController extends Controller
         ]);
     }
 
-    public function editor($id){
+    public function editor($id): \Illuminate\Routing\Redirector|\Illuminate\Contracts\Foundation\Application|\Illuminate\Http\RedirectResponse
+    {
         $club = Club::find($id);
         $article = $club->articles()->create([
             'title' => 'Untitled'.uniqid(),

@@ -39,6 +39,7 @@ class Article extends Model
     {
         return $this->hasOne(ArticleCoverImage::class);
     }
+
     /**
      * @return \Illuminate\Database\Eloquent\Relations\HasOne
      */

@@ -18,7 +18,7 @@ return new class extends Migration
             $table->timestamps();
             $table->string('name')->default('Club Event');
             $table->longText('description')->nullable();
-            $table->foreignId('club_id');
+            $table->foreignId('club_id')->constrained()->cascadeOnDelete();
             $table->index('club_id');
 
             $table->string('location');

@@ -1,7 +1,16 @@
 @extends('layout')
 @section('content')
 
+    <div class="bg-blue-50">
+
+
     <div class="w-full h-full items-center justify-center mx-auto bg-blue-50 p-5">
+
+        <a href="{{route('club-magazine-manager', ['id' => $club->id])}}">
+        <div class="p-3 w-24 h-12 bg-rawBanana font-slim">
+            < Back
+        </div>
+        </a>
 
 <div class="w-3/4 justify-center mx-auto">
         <form
@@ -97,37 +106,86 @@
         </div>
 
         <br>
-        <div class="font-ooga flex space-x-5 items-center">
 
-            @if(isset($article->articlePDF->pdf))
-                <p>Current PDF: </p>
-                <iframe class="w-14 h-10" src="/storage/articlePDFs/{{$article->articlePDF->pdf}}" frameborder="0"></iframe>
-                <label for="pdf">Replace PDF:   </label>
-                <input type="file" name="pdf" id="pdf">
-                @error('pdf')
-                <p>{{$message}}</p>
-                @enderror
+            <div class="space-y-3 items-center">
 
-                <input type="checkbox" id="removePDF" name="removePDF" value="removePDFtrue">
-                <label for="removePDF"> Remove PDF</label><br>
+                <div class="font-ooga flex space-x-5 items-center justify-between">
 
-            @else
-                <label for="pdf">You can also upload a PDF version of your article here:   </label>
-                <input type="file" name="pdf" id="pdf">
-                @error('pdf')
-                <p>{{$message}}</p>
-                @enderror
-            @endif
-        </div>
+
+                    @if(isset($article->articlePDF->pdf))
+
+                        <div>
+                            <p>Current PDF: </p>
+                             <iframe class="w-14 h-10" src="/storage/articlePDFs/{{$article->articlePDF->pdf}}" frameborder="0"></iframe>
+                        </div>
+
+                        <div class="w-1/3">
+                        <label for="pdf">Replace PDF:   </label>
+                        <input type="file" name="pdf" id="pdf">
+                        @error('pdf')
+                        <p>{{$message}}</p>
+                        @enderror
+                        </div>
+
+                        <div class="flex space-x-1">
+                            <label for="removePDF"> Remove PDF</label><br>
+                             <input type="checkbox" id="removePDF" name="removePDF" value="removePDFtrue">
+
+                         </div>
+
+                    @else
+                        <label for="pdf">You can also upload a PDF version of your article here:   </label>
+                        <input type="file" name="pdf" id="pdf">
+                        @error('pdf')
+                        <p>{{$message}}</p>
+                        @enderror
+                    @endif
+
+                </div>
+
+                    <div class="font-ooga flex space-x-5 items-center justify-between">
+
+                        @if(isset($article->cover->image))
+                            <div>
+                                 <p>Current Cover Image: </p>
+                                 <iframe class="w-14 h-10" src="/storage/articleCovers/{{$article->cover->image}}" frameborder="0"></iframe>
+                            </div>
+
+                            <div class="w-1/3">
+                                 <label for="cover">Replace Image:   </label>
+                                 <input type="file" name="cover" id="cover">
+                             </div>
+                            @error('cover')
+                            <p>{{$message}}</p>
+                            @enderror
+
+                            <div class="flex space-x-1">
+                                <label for="removeCover"> Remove Cover Image</label><br>
+                                <input type="checkbox" id="removeCover" name="removeCover" value="removeCovertrue">
+
+                            </div>
+
+                        @else
+                            <label for="pdf">Upload Cover Image:   </label>
+                            <input type="file" name="cover" id="cover">
+                            @error('cover')
+                            <p>{{$message}}</p>
+                            @enderror
+                        @endif
+                    </div>
+            </div>
         <br>
 
-        <button class="bg-ripeBanana p-5 text-lg text-yellow-900 font-ooga hover:border-2 hover:border-yellow-300">Save Article</button>
+        <button type="submit" class="bg-ripeBanana p-5 text-lg text-yellow-900 font-ooga hover:border-2 hover:border-yellow-300">Save Article</button>
 
-    </form>
+        </form>
 
 
 
-</div>
+        </div>
+
     </div>
 
+
+    </div>
 @endsection

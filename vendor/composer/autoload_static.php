@@ -576,7 +576,7 @@ class ComposerStaticInit37ce25fc7d7578a628d417abf48cfd95
         'App\\Http\\Middleware\\TrustProxies' => __DIR__ . '/../..' . '/app/Http/Middleware/TrustProxies.php',
         'App\\Http\\Middleware\\VerifyCsrfToken' => __DIR__ . '/../..' . '/app/Http/Middleware/VerifyCsrfToken.php',
         'App\\Models\\Article' => __DIR__ . '/../..' . '/app/Models/Article.php',
-        'App\\Models\\ArticleCoverImage' => __DIR__ . '/../..',
+        'App\\Models\\ArticleCoverImage' => __DIR__ . '/../..' . '/app/Models/ArticleCoverImage.php',
         'App\\Models\\ArticlePDF' => __DIR__ . '/../..' . '/app/Models/ArticlePDF.php',
         'App\\Models\\Club' => __DIR__ . '/../..' . '/app/Models/Club.php',
         'App\\Models\\ClubCoverImage' => __DIR__ . '/../..' . '/app/Models/ClubCoverImage.php',

@@ -31,8 +31,8 @@
     $file = json_decode(file_get_contents(base_path().'/public/build/manifest.json'), true);
     ?>
 
-    <link rel="stylesheet" href="/build/{{$file['resources/css/app.css']['file']}}" />
-    <script type="module" src="/build/{{ $file['resources/js/app.js']['file'] }}"></script>
+{{--    <link rel="stylesheet" href="/build/{{$file['resources/css/app.css']['file']}}" />--}}
+{{--    <script type="module" src="/build/{{ $file['resources/js/app.js']['file'] }}"></script>--}}
 
 
     <meta charset="UTF-8">
@@ -45,7 +45,7 @@
 
     @livewireStyles
 
-{{--    @vite('resources/css/app.css')--}}
+    @vite('resources/css/app.css')
 
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script type="text/javascript" src="/js/trix.js"></script>
@@ -62,9 +62,9 @@
 
 <body class="overflow-visible" id="content">
 
-<nav class="relative w-screen max-w-[4000px] container md:px-2 md:py-5 md:sticky top-5 md:top-0 bg-white md:overflow-hidden h-20 md:h-auto z-50 flex">
+<nav class="relative w-screen max-w-[4000px] container md:px-2 md:py-5 md:sticky top-5 md:top-0 bg-white md:overflow-hidden h-20 md:h-auto z-50 flex ">
 
-<div class="md:hidden right-2 top-2 absolute mx-auto">
+<div class="md:hidden right-5 top-[2rem] absolute mx-auto">
 
     <button id="dropdownInformationButton" data-dropdown-toggle="dropdownInformation" class="flex font-slim" type="button"> Menu <svg class="ml-2 w-4 h-4" aria-hidden="true" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg></button>
 
