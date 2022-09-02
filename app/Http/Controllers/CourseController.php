@@ -38,7 +38,8 @@ class CourseController extends Controller
         $body = '';
         if ($request->ajax()) {
             foreach ($comments as $comment) {
-                $body.='<div id="'.'comment'.$comment->id.'"><div class="bg-white justify-center flex m-4 p-10 rounded-3xl container relative text-left justify-between items-center"><a href="/profile/'.$comment->user->id.'" class="text-hotPink">'.$comment->user->username.':</a><div class="container w-2/3 ml-2"><p class="text-notRealBlack font-slim text-lg text-center">'.$comment->content.'</p></div>
+
+                $body.='<div class="mx-auto px-2" id="'.'comment'.$comment->id.'"><div class="bg-white mx-auto justify-center  m-4 p-5 rounded-3xl container relative text-left justify-between items-center"><a href="/profile/'.$comment->user->id.'" class="text-hotPink">'.$comment->user->username.':</a><div class="container text-left w-11/12"><p class="text-notRealBlack font-slim text-lg my-2">'.$comment->content.'</p></div>
                 <p class="text-sm text-gray-500 font-ooga absolute bottom-1 left-4 md:relative">'.$comment->created_at.'</p></div></div>';
 
             }

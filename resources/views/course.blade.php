@@ -35,7 +35,7 @@
 
             <div class="md:w-5/12 md:py-5 md:px-12 m-5">
                 <h1 class="font-sf text-5xl mb-3">{{$course['course_name']}}</h1>
-                <p>Summary: {{$course['description']}}</p>
+                <p class="font-sansMid">{{$course['description']}}</p>
                 <a href="../teacher/{{$course->teacher['id']}}">Teacher: {{$course->teacher['name']}}</a>
 
                 @auth()
@@ -43,29 +43,30 @@
                 @else
                     <a class="bg-hotPink text-white  w-56 h-14 m-5 text-3xl items-center py-auto font-sf text-center justify-center mx-auto flex rounded-lg hover:bg-yellow-200" href="/register"> Give Review </a>
                 @endauth
-
-                <p class="mx-auto text-hotPink font-slim">*Difficulty ratings do not affect a course's overall rating.</p>
             </div>
 
-            <div class="text-center justify-center w-36 h-36 p-3 rounded-2xl border-2 border-hotPink container relative mx-auto">
-                <p class="text-hotPink text-xl  font-ooga">Difficulty:</p>
-                <h1 class="text-7xl font-slim text-spicyPink">{{number_format($course['difficulty'],1,'.','')}}</h1>
-                <h1 class="font-slim text-sm text-hotPink bottom-1 right-2 absolute">/10</h1>
-            </div>
+            <div class="space-y-3">
+                <div class="text-center justify-center w-36 h-36 p-3 rounded-2xl border-2 border-hotPink container relative mx-auto">
+                    <p class="text-hotPink text-xl  font-ooga">Difficulty:</p>
+                    <h1 class="text-7xl font-slim text-spicyPink">{{number_format($course['difficulty'],1,'.','')}}</h1>
+                    <h1 class="font-slim text-sm text-hotPink bottom-1 right-2 absolute">/10</h1>
+                </div>
 
+                <p class="mx-auto text-hotPink font-slim w-2/3 text-xs"> *Difficulty ratings do not affect a course's overall rating.</p>
+
+            </div>
             <div class="flex md:flex-none md:w-1/2">
 
-                <div class="w-2/3 md:w-3/4 md:rounded-3xl md:mx-5 md:my-auto p-5 md:text-left container relative space-y-5 text-red-900 font-quicksand-regular">
+                <div class="w-2/3 md:w-3/4 text-lg md:rounded-3xl md:mx-5 md:my-auto p-5 md:text-left container relative space-y-5 text-red-900 font-quicksand-regular">
 
-                    <div class="flex items-center justify-content-around  container relative ">
+                    <div class="flex items-center justify-content-around  container relative w-full">
                         <h5 class="md:flex font-sf text-xl mx-auto">Overall: </h5>
                         <h5 class="md:flex font-sf text-xl ">{{number_format($course['overall'], 1, '.', '')}} /10</h5>
                         <p class="md:flex font-sf text-xl md:mx-auto"></p>
-
                         <img src="/images/star-ratings/{{floor($course['overall']+0.5)}}.png" alt="" class="w-36 h-6 hidden xl:block mx-auto right-0 absolute">
                     </div>
 
-                    <div class="flex items-center justify-content-around container relative">
+                    <div class="flex items-center justify-content-around container relative w-full">
                         <h5 class=" text-xl mx-auto">Personality: </h5>
                         <h5 class=" text-xl "> {{number_format($course['personality'], 1, '.','')}}/10</h5>
                         <p class="md:flex font-sf text-xl md:mx-auto md:w-12"></p>
@@ -79,7 +80,7 @@
                         <img src="/images/star-ratings/{{floor($course['fairness']+0.5)}}.png" alt="" class="w-36 h-6  hidden xl:block mx-auto right-0 absolute">
                     </div>
 
-                    <div class="flex items-center justify-content-around container relative">
+                    <div class="flex items-center justify-content-around container relative w-full">
                          <h5 class=" text-xl mx-auto">Content Coverage: </h5>
                         <h5 class=" text-xl ">{{number_format($course['content_coverage'],1,'.','')}}/10 </h5>
                         <p class="md:flex font-sf text-xl md:mx-auto md:w-[7rem]"></p>
@@ -89,7 +90,7 @@
 
                 @auth()
                 @if(!$course->courseJoined(auth()->user()))
-                <div class="md:m-auto md:mr-5 flex w-5/12 md:w-36 justify-center border-2  border-hotPink m-2 rounded-[12%] md:border-0">
+                <div class="md:m-auto md:mr-5 flex w-5/12 md:w-36 justify-center m-2 rounded-[12%] md:border-0 bg-white bg-opacity-30">
                     <a class="font-readex  md:text-lg" href="{{route('joinCourse', ['id' => $course->id])}}">
                         <div class="rounded-lg hover:bg-pinkWhite">
                                 <div class="w-auto h-full m-4">
@@ -102,7 +103,7 @@
                 </div>
 
                 @else
-                    <div class="md:m-auto md:mr-5 flex w-5/12 md:w-36 justify-center border-2 border-purple-700 m-2 rounded-[12%] md:border-0">
+                    <div class="md:m-auto md:mr-5 flex w-5/12 md:w-36 justify-center bg-opacity-50 bg-pink-50 m-2 rounded-[12%] md:border-0">
                         <a class="font-readex md:text-lg" href="{{route('quitCourse', ['id' => $course->id])}}">
                             <div class="rounded-lg hover:bg-pinkWhite">
                                     <div class="w-auto h-full m-4">
@@ -121,7 +122,7 @@
 
         </div>
 
-                <div class="tab rounded-lg pb-10 w-full text-spicyPink">
+                <div class="tab pt-3 pb-10 w-full text-spicyPink">
                     <button class="tablinks" onclick="show(event, 'reviews')"> Reviews </button>
                     <button class="tablinks" onclick="show(event, 'comments')"> Comments </button>
                 </div>
@@ -132,38 +133,24 @@
             <div id="reviews" class="tabcontent">
 
              @foreach($reviews->sortBy('created_at') as $review)
-                <div class="bg-felixSalmon m-5 p-5 b-5 rounded-3xl relative container w-auto mx-auto" id="review{{$review->id}}" >
+                <div class="bg-felixSalmon m-5 p-5 b-5 relative container w-auto mx-auto" id="review{{$review->id}}" >
                     <!-- <svg class="h-0.7 w-80 m-auto box-shadow mb-3"><rect class="w-80 h-1 rounded-3 m-auto "></rect></svg>
                     -->
-                    <h1 class="text-3xl text-center uppercase font-din">{{$review['title']}}</h1>
+                    <h1 class="text-3xl text-center md:text-center font-quicksand-regular">{{$review['title']}}</h1>
 
                     <div id="reviewBlock{{$review->id}}" class="text-center">
-                    <a class="font-didact hover:text-hotPink" href="../profile/{{$review->user['id']}}"> By {{$review->user['username']}}</a>
+                    <a class="font-didact hover:text-hotPink" href="../profile/{{$review->user['id']}}"> from <span class="text-xl text-hotPink"> {{$review->user['username']}} </span> </a>
                     </div>
 
-
-                    <a class="text-gray-500" href="../profile/{{$review->user['id']}}">from user <span class="text-lg text-notRealBlack font-sansMid">{{$review->user['username']}}
-
-                            @if($review['created_at'] != $review['updated_at'])
-
-                                (edited at {{$review['updated_at']}})
-
-                            @else
-
-                                at {{$review['created_at']}}
-
-                            @endif
 
 
                         <p class="m-4 text-l font-sans mt-3">{{$review['content']}}</p>
 
 
 
-
-
                     <ul class=" text-gray-600 font-medium text-center rounded-lg divide-x divide-white sm:flex mt-6 mb-3">
                         <li class="w-full text-center">
-                            <h5 class="font-quicksand-regular">Personality: {{$review['personality']}}/10</h5>
+                            <h5>Personality: {{$review['personality']}}/10</h5>
                             <img src="/images/star-ratings/{{$review['personality']}}.png" alt="" class="w-48 h-8 mx-auto hidden md:block">
                         </li>
                         <li class="w-full">
@@ -177,19 +164,26 @@
                     </ul>
 
 
-                    <div class="text-center justify-center w-36 h-15 rounded-2xl m-2 border-2 border-hotPink container xl:top-2 xl:right-2 xl:absolute xl-auto">
+                    <div class="w-full flex justify-center">
+
+                    <div class=" text-center justify-center w-36 h-15 rounded-2xl m-2 border-2 border-hotPink container xl:top-2 xl:right-2 xl:absolute xl-auto">
                         <p class="text-hotPink  font-ooga">" Difficulty:</p>
                         <h1 class="text-4xl font-slim text-spicyPink">{{$review['difficulty']}}</h1>
                         <h1 class="font-ooga text-hotPink bottom-1 right-2 xl:absolute">/10 "</h1>
                     </div>
 
+                    </div>
+
 
                     @auth
                         @if($review->user->id == auth()->id())
-                            <button class="items-center text-center" onclick="showFormAndHide('reviewEditForm', 'reviewBlock{{$review->id}}')"> Edit </button>
+
+                            <div class="flex w-full text-center mx-auto space-x-6 justify-center">
+                            <button class="items-center text-center text-hotPink" onclick="showFormAndHide('reviewEditForm', 'reviewBlock{{$review->id}}')"> Edit </button>
                             <form action="{{route('reviewDelete', ['review_id' => $review->id])}}">
-                                <button type="submit">Delete</button>
+                                <button class="text-hotPink" type="submit">Delete</button>
                             </form>
+                            </div>
 
                         <div class="hidden" id="reviewEditForm">
                             <form action="{{route('reviewUpdate', ['review_id' => $review->id])}}">
@@ -198,7 +192,7 @@
 
                                 <div class="relative z-0 my-6 w-full group font-ooga">
 
-                                    <input value="{{$review['title']}}" type="text" name="title" id="title" class="block pt-2.5 pb-1 px-0 w-full text-2xl text-notRealBlack font-readex text-gray-900 bg-transparent border-0 border-b-2 border-hotPink appearance-none dark:text-white dark:border-gray-600 dark:focus:border-hotPink focus:outline-none focus:ring-0 focus:border-spicyPink peer" placeholder=" " required />
+                                    <input value="{{$review['title']}}" type="text" name="title" id="title" class="block pt-2.5 pb-1 px-0 w-full text-2xl text-notRealBlack font-readex text-gray-900 bg-transparent border-0 border-b-2 border-hotPink appearance-none dark:text-white dark:border-gray-600 dark:focus:border-hotPink focus:outline-none focus:ring-0 focus:border-spicyPink peer" placeholder=" " required/>
                                     <label for="title" class="peer-focus:font-medium absolute text-lg text-hotPink hotPink-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-100 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-spicyPink peer-focus:dark:text-hotPink peer-placeholder-shown:scale-120 peer-placeholder-shown:translate-y-0 peer-focus:scale-125 peer-focus:-translate-y-6"
 
                                     >Review Title</label>
@@ -206,9 +200,7 @@
                                     @error('title')
                                     <p>{{$message}}</p>
                                     @enderror
-
                                 </div>
-
 
 
                                 <div class="w-full flex justify-content-around font-ooga text-spicyPink">
@@ -216,7 +208,7 @@
                                     <div class="w-1/3">
                                         <label for="personality">Personality</label>
                                         <input id="personality" type="number" name="personality" class="w-14 h-8 rounded-[20%] bg-pinkie border-0 focus:border-5 focus:ring-hotPink focus:border-felixSalmon"
-                                               value="{{$review['personality']}}">
+                                               value="{{$review['personality']}}" min="1" max="10" required>
 
                                         @error('personality')
                                         <p>{{$message}}</p>
@@ -226,7 +218,7 @@
                                     <div class="w-1/3">
                                         <label for="fairness">Fairness</label>
                                         <input id="fairness" type="number" name="fairness" class="w-14 h-8 rounded-[20%] bg-pinkie border-0 focus:border-5 focus:ring-hotPink focus:border-felixSalmon"
-                                               value="{{$review['fairness']}}">
+                                               value="{{$review['fairness']}}" min="1" max="10" required>
 
                                         @error('fairness')
                                         <p>{{$message}}</p>
@@ -236,7 +228,7 @@
                                     <div class="w-1/3">
                                         <label for="content_coverage">Content Coverage</label>
                                         <input id="content_coverage" type="number" name="content_coverage" class="w-14 h-8 rounded-[20%] bg-pinkie border-0 focus:border-5 focus:ring-hotPink focus:border-felixSalmon"
-                                               value="{{$review['content_coverage']}}">
+                                               value="{{$review['content_coverage']}}" min="1" max="10" required>
 
                                         @error('content_coverage')
                                         <p>{{$message}}</p>
@@ -250,7 +242,7 @@
                                         <label for="difficulty" class="w-full text-center font-ooga text-spicyPink text-lg">Difficulty</label>
                                         <p class="font-slim text-sm text-spicyPink">The difficulty rating does not affect a course's overall rating.</p>
                                         <input id="easiness" type="number" name="difficulty" class="w-14 h-8 rounded-[20%] bg-red-200 border-0 focus:border-5 focus:ring-red-500 focus:border-red-500"
-                                               value="{{$review['difficulty']}}">
+                                               value="{{$review['difficulty']}}" min="1" max="10" required>
                                         @error('difficulty')
                                         <p>{{$message}}</p>
                                         @enderror
@@ -260,7 +252,7 @@
                                     <div class="mt-10 w-full">
 
                                         <label for="content" class="w-full mx-auto text-center font-ooga text-spicyPink text-lg">Write your full review here: </label>
-                                        <textarea id="content" name="content" class="w-full align-top items-start h-64 bg-pinkie border-0 focus:border-5 focus:ring-hotPink focus:border-felixSalmon p-5">{{$review['content']}}</textarea>
+                                        <textarea id="content" name="content" class="w-full align-top items-start h-64 bg-pinkie border-0 focus:border-5 focus:ring-hotPink focus:border-felixSalmon p-5" minlength="10" maxlength="2000">{{$review['content']}}</textarea>
 
                                         @error('content')
                                         <p>{{$message}}</p>
@@ -268,8 +260,9 @@
 
                                     </div>
                                 </div>
-                                <button class="px-3 py-1 bg-spicyPink rounded-md text-white mt-3">Finished!</button>
-
+                                <div class="flex justify-center">
+                                <button type="submit" class="px-3 py-1 bg-spicyPink rounded-md text-center mx-auto text-white mt-3">Finished!</button>
+                                </div>
                             </form>
                         </div>
 
@@ -280,21 +273,40 @@
                     @endauth
 
 
-                 <p>Found helful by {{$review->reviewHelpfuls()->count()}} others</p>
-                    @auth
-                    @if(!$review->reviewHelpfuledBy(auth()->user()))
-                        <form action="{{route('reviewHelpful', ['review' => $review->id, 'reviewIndex' => 'review'.$review->id ] ) }}" method="post" class="mr-1">@csrf
-                            <button type="submit" class="text-hotPink">Helpful</button>
-                        </form>
-                    @else
-                        <form action="{{route('reviewHelpfulDestroy', ['review' => $review->id, 'reviewIndex' => 'review'.$review->id ])}}" method="post" class="mr-1">
-                            @csrf
+                    <div class="flex justify-around">
+                        @auth
+                        @if(!$review->reviewHelpfuledBy(auth()->user()))
+                            <form action="{{route('reviewHelpful', ['review' => $review->id, 'reviewIndex' => 'review'.$review->id ] ) }}" method="post" class="mr-1 flex space-x-4">@csrf
+                                <p>Found helful by {{$review->reviewHelpfuls()->count()}} others</p>
+                                <button type="submit" class="text-hotPink">Helpful</button>
+                            </form>
+                        @else
+                            <form action="{{route('reviewHelpfulDestroy', ['review' => $review->id, 'reviewIndex' => 'review'.$review->id ])}}" method="post" class="mr-1 flex space-x-4">
+                                @csrf
+                                @method('DELETE')
+                                <p>Found helful by {{$review->reviewHelpfuls()->count()}} others</p>
+                                 <button type="submit" class="text-pink-800">Unhelpful</button>
+                             </form>
+                        @endif
+                        @endauth
 
-                            @method('DELETE')
-                             <button type="submit" class="text-pink-800">Unhelpful</button>
-                         </form>
+                    </div>
+
+                    <div class="text-xs text-gray-500 font-comfortaa text-center mt-3">
+
+                    @if($review['created_at'] != $review['updated_at'])
+
+                        <p> (edited at {{$review['updated_at']}})</p>
+
+                    @else
+
+                        <p> {{$review['created_at']}}</p>
+
                     @endif
-                    @endauth
+
+                    </div>
+
+
                 </div>
 
                     @endforeach
@@ -320,7 +332,7 @@
 
     <div id="comments" class="tabcontent bg-felixSalmon justify-center justify-content-center">
         <div class=" mx-3 w-full flex justify-center mx-auto pt-3">
-        <button class="items-center text-center border-2 border-hotPink mb-4 rounded-lg text-hotPink" onclick="showForm('commentForm')"> Comment </button>
+        <button class="items-center text-center border-2 border-hotPink mb-4 rounded-3xl text-hotPink p-3" onclick="showForm('commentForm')"> Comment </button>
         </div>
         <div id="commentForm" class="hiddenForm  mx-3 w-full flex justify-center mx-auto" style="display: none">
             <form action="{{route('courseComment', $course['id'])}}" method="post">
@@ -381,7 +393,6 @@
 {{--        @endforeach--}}
 
 {{--          --}}
-
 
 
 

@@ -48,7 +48,7 @@ class ReviewController extends Controller
                 'content_coverage' => 'required|integer|between:1,10',
                 'fairness' => 'required|integer|between:1,10',
                 'difficulty' => 'required|integer|between:1,10',
-                'content' => 'required|min:3|max:511',
+                'content' => 'required|min:3|max:2048',
                 'course_id' => 'nullable'
             ]);
 

@@ -15,7 +15,7 @@ return new class extends Migration
     {
         Schema::create('article_p_d_f_s', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('article_id');
+            $table->foreignId('article_id')->constrained()->cascadeOnDelete();
             $table->string('pdf');
             $table->timestamps();
             $table->index('article_id');

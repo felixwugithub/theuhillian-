@@ -13,11 +13,10 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('article_images', function (Blueprint $table) {
+        Schema::create('article_cover_images', function (Blueprint $table) {
             $table->id();
             $table->timestamps();
-
-            $table->foreignId('article_id');
+            $table->foreignId('article_id')->constrained()->cascadeOnDelete();
             $table->index('article_id');
             $table->string('image');
         });
@@ -30,6 +29,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('article_images');
+        Schema::dropIfExists('article_cover_images');
     }
 };

@@ -39,21 +39,6 @@
     <div class="container w-full  m-auto">
 
 
-        <div class="w-1/12 hidden md:block right-0 absolute">
-                @auth()
-                    @if(auth()->user()->admin == 1)
-                        <form action="{{route('club-cover-store', ['club_id' => $club->id])}}" method="post" enctype="multipart/form-data">
-                            @method('POST')
-                            @csrf
-                            <label class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300" for="images">Upload Images</label>
-                            <input class="block  text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 cursor-pointer dark:text-gray-400 focus:outline-none dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400" id="image" name="cover_image" type="file">
-                            <button type="submit"> Update Club Cover Photo</button>
-                        </form>
-                    @endif
-                @endauth
-
-        </div>
-
 
         <div class="container mx-auto pt-5 justify-center flex pb-5">
             <div class="text-center">
@@ -92,14 +77,9 @@
 
         <div class="mx-auto container md:w-7/12 mt-3">
 
-            <div class="w-full">
-                <div id="club-description" class="container mx-auto py-7 px-14 rounded-xl bg-blue-50">
-                    <p>{{$club->description}}</p>
-                </div>
-            </div>
 
             <div class="mb-4 border-b border-gray-200 dark:border-gray-700">
-                <ul class="flex flex-wrap -mb-px text-sm font-medium text-center justify-content-around" id="myTab" data-tabs-toggle="#myTabContent" role="tablist">
+                <ul class="flex flex-wrap -mb-px text-sm font-medium text-center justify-content-around justify-center mx-auto" id="myTab" data-tabs-toggle="#myTabContent" role="tablist">
                     <li class="mr-2" role="presentation">
                         <button class="inline-block p-4 rounded-t-lg border-b-2 text-blue-500" id="profile-tab" data-tabs-target="#profile" type="button" role="tab" aria-controls="profile" aria-selected="true">Blog</button>
                     </li>
@@ -313,7 +293,48 @@
 
 
                 <div class="hidden p-4 bg-gray-50 rounded-lg dark:bg-gray-800" id="contacts" role="tabpanel" aria-labelledby="contacts-tab">
-                    Info
+                    @if(auth()->check())
+                        @if(auth()->user()->admin == 1)
+                            <a href="/club-manager/{{$club->id}}" class="flex mx-auto w-full justify-center">
+                                <div class="w-1/3 rounded-md text-blue-900 bg-blue-50 text-center hover:bg-blue-500 hover:text-white">
+                                    Manage Club Info
+                                </div>
+                            </a>
+                        @endif
+                    @endif
+
+                    <div class="m-3 p-5 mx-auto space-y-3">
+                        <div>
+                            <div class="mt-3">
+                             <h1 class="text-3xl font-bold">{{$club->name}}</h1>
+                             <h1 class="font-slim text-xl">{{$club->description}}</h1>
+                            </div>
+
+                            <div class="my-5 font-modern">
+                            @if(isset($club->president))
+                            <h1>President: {{$club->president}}</h1>
+                            @endif
+
+                            @if(isset($club->vice_president))
+                            <h1>Vice President: {{$club->vice_president}}</h1>
+                            @endif
+                            </div>
+
+                            <div class="flex justify-between font-modern">
+                                <h1 class="w-5/12">Room: {{$club->room_number}}</h1>
+                                <h1 class="w-5/12">Time: {{$club->meeting_times}}</h1>
+                            </div>
+
+
+                        </div>
+
+                        <div class="hover:bg-blue-50">
+                        <a class="text-blue-700 text-center w-full" href="{{$club->url}}">URL:  {{$club->url}}</a>
+                        </div>
+
+                        <h1>Member Count: {{count($club->club_members)}} </h1>
+
+                    </div>
                 </div>
 
         </div>

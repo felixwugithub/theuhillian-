@@ -29,6 +29,7 @@ module.exports = {
               defaultMidBlue: '#9CB4CC',
               barelyThereBlue: '#f4f9fc',
               defaultDarkerBlue: '#748Da6',
+              veryDarkBlue: '#20313c',
               notRealBlack: '#482525',
               felixSalmon: '#fcdfdc',
               pinkie:'#fff0f0',

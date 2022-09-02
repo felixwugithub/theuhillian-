@@ -36,39 +36,47 @@
         note: when using a variable that is nullable, check that it is set before using it.
 
     -->
+<div class="mx-auto justify-center px-auto items-center" style="background-image: url('/backgrounds/uhill.jpg');background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: cover;">
 
 
-    <div class="flex font-sf items-center justify-center mx-auto pt-5 space-x-2">
-        <h1 class="md:mt-4 pb-5 ml-7 text-center text-notReallyBlack text-5xl ">Clubs</h1>
-        <h1 class="md:mt-4 pb-5 ml-7 text-center text-notReallyBlack text-5xl hidden md:block">at University Hill Secondary
-        </h1>
+    <div class="bg-blue-300 bg-opacity-50 backdrop-blur-sm mt-12 items-center">
+        <div class="flex font-sf items-center justify-center mx-auto pt-5 space-x-2">
+            <h1 class="md:mt-4 pb-5 ml-4 md:ml-7 text-center text-notReallyBlack text-5xl ">Clubs</h1>
+            <h1 class="md:mt-4 pb-5 ml-7 text-center text-notReallyBlack text-5xl hidden md:block">at University Hill Secondary
+            </h1>
+        </div>
+
+        <div class="text-center justify-content-evenly mx-auto">
+        <form action="/filterclubs" method="post" enctype="multipart/form-data" class="mx-auto">
+            <div class="font-slim text-sm items-center">
+           @csrf
+                @method('POST')
+                    <label for="search"> Search for:</label>
+
+                    <input placeholder="leave blank for all" class="placeholder-blue-400 bg-blue-50 no-border rounded text-sm focus:ring-blue-600  mx-auto" type="text" id="search" name="search"
+
+                           @if(isset($clubSearch))
+                           value="{{$clubSearch}}"
+                        @endif>
+                </div>
+                <br>
+                <div class="pt-2 text-center justify-start ml-2 -mt-2">
+                    <button type="submit" class="bg-blue-300 text-white font-slim rounded hover:bg-blue-800 px-1 special mb-5">Filter</button>
+                </div>
+
+        </form>
+        </div>
     </div>
 
-    <div class="text-center justify-content-evenly mx-auto">
-    <form action="/filterclubs" method="post" enctype="multipart/form-data" class="mx-auto">
-        <div class="font-slim text-sm items-center">
-       @csrf
-            @method('POST')
-                <label for="search"> Search for:</label>
 
-                <input placeholder="leave blank for all" class="placeholder-blue-400 bg-blue-50 no-border rounded text-sm focus:ring-blue-600  mx-auto" type="text" id="search" name="search"
 
-                       @if(isset($clubSearch))
-                       value="{{$clubSearch}}"
-                    @endif>
-            </div>
-            <br>
-            <div class="pt-2 text-center justify-start ml-2 -mt-2">
-                <button type="submit" class="bg-blue-300 text-white font-slim rounded hover:bg-blue-800 px-1 special">Filter</button>
-            </div>
-
-    </form>
-    </div>
-
-    <div class="flex flex-wrap align-content-center flex justify-center">
+    <div class="flex-wrap flex">
         @foreach ($clubs as $club)
             <a href="{{route('club', ['club_name' => str_replace(' ', '_',$club->name)])}}" class="text-center mx-auto">
-            <div class="w-full h-96 m-3 rounded-3xl box-shadow hover:shadow-2xl  justify-center pt-10 container relative text-center md:w-[22rem] bg-blue-50  items-center">
+            <div class="text-veryDarkBlue w-11/12 h-96 m-3 rounded-3xl box-shadow hover:shadow-2xl  justify-center pt-10 container relative text-center md:w-[22rem] bg-blue-50 bg-opacity-50 backdrop-blur-md rounded drop-shadow-xl items-center">
                 @if(isset($club->club_cover_image))
                     <div class="m-auto flex justify-center items-center container top-2 relative">
                          <img class="overflow-hidden w-full h-[122px] object-cover" src="{{'storage/clubCoverImages/'.$club->club_cover_image->image}}" alt="image">
@@ -99,7 +107,7 @@
 
     </div>
 
-    <div class="flex font-sansMid items-center justify-center mx-auto mb-10">
+    <div class="flex font-sansMid items-center justify-center mx-auto m-24 bg-white bg-opacity-25 backdrop-blur-xl rounded drop-shadow-xl items-center">
         @if(isset($paginatePage))
             {{$clubs->links()}}
         @endif
@@ -107,6 +115,7 @@
     </div>
 
 
+</div>
 @endsection
 
 

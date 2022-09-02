@@ -17,7 +17,7 @@ return new class extends Migration
             $table->id();
             $table->timestamps();
             $table->string('image');
-            $table->foreignId('club_post_id');
+            $table->foreignId('club_post_id')->constrained()->cascadeOnDelete();
             $table->index('club_post_id');
         });
     }

@@ -30,7 +30,7 @@
             <div class="w-1/3">
                 <label for="personality">Personality</label>
                 <input id="personality" type="number" name="personality" class="w-16 h-8 rounded-[20%] bg-pinkie border-0 focus:border-5 focus:ring-hotPink focus:border-felixSalmon"
-                       value="{{old('personality')}}" placeholder="/10">
+                       value="{{old('personality')}}" placeholder="/10" min="1" max="10" required>
 
                 @error('personality')
                 <p>{{$message}}</p>
@@ -40,7 +40,7 @@
             <div class="w-1/3">
                 <label for="fairness">Fairness</label>
                 <input id="fairness" type="number" name="fairness" class="w-16 h-8 rounded-[20%] bg-pinkie border-0 focus:border-5 focus:ring-hotPink focus:border-felixSalmon"
-                       value="{{old('fairness')}}" placeholder="/10">
+                       value="{{old('fairness')}}" placeholder="/10" min="1" max="10" required>
 
 
                 @error('fairness')
@@ -51,7 +51,7 @@
             <div class="w-1/3">
             <label for="content_coverage">Content Coverage</label>
             <input id="content_coverage" type="number" name="content_coverage" class="w-16 h-8 rounded-[20%] bg-pinkie border-0 focus:border-5 focus:ring-hotPink focus:border-felixSalmon"
-                   value="{{old('content_coverage')}}" placeholder="/10">
+                   value="{{old('content_coverage')}}" placeholder="/10" min="1" max="10" required>
 
 
             @error('content_coverage')
@@ -67,7 +67,7 @@
                 <label for="difficulty" class="w-full text-center font-ooga text-spicyPink text-lg">Difficulty</label>
                 <p class="font-slim text-sm text-spicyPink">The difficulty rating does not affect a course's overall rating.</p>
                 <input id="easiness" type="number" name="difficulty" class="w-16 h-8 rounded-[20%] bg-red-200 border-0 focus:border-5 focus:ring-red-500 focus:border-red-500"
-                       value="{{old('difficulty')}}" placeholder="/10">
+                       value="{{old('difficulty')}}" placeholder="/10" min="1" max="10" required>
 
                 @error('difficulty')
                 <p>{{$message}}</p>
@@ -78,7 +78,7 @@
             <div class="mt-10 w-full">
 
                 <label for="content" class="w-full mx-auto text-center font-ooga text-spicyPink text-lg">Write your full review here: </label>
-                <textarea id="content" name="content" class="w-full align-top items-start h-64 bg-pinkie border-0 focus:border-5 focus:ring-hotPink focus:border-felixSalmon p-5"></textarea>
+                <textarea id="content" name="content" class="w-full align-top items-start h-64 bg-pinkie border-0 focus:border-5 focus:ring-hotPink focus:border-felixSalmon p-5" maxlength="2000" minlength="10" required></textarea>
 
                 @error('content')
                 <p>{{$message}}</p>
