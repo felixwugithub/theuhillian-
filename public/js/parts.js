@@ -47,7 +47,7 @@ function getOffset(el) {
 
 function scrollToBottomWithSection(sectionIndex){
     setTimeout(function(){
-        window.scrollTo(0, getOffset(sectionIndex).top-200);
+        window.scrollTo(0, getOffset(sectionIndex).top);
     },0);
 }
 

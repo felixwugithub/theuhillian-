@@ -18,9 +18,10 @@ return new class extends Migration
             $table->id();
             $table->string('course_name');
             $table->integer('grade')->default('13');
-            $table->longText('description');
+            $table->longText('description')->nullable();
             $table->string('subject');
             $table->timestamps();
+            $table->string('code')->nullable();
 
         });
     }

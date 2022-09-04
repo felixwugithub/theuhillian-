@@ -10,7 +10,7 @@
         </h1>
     </div>
 
-<div class="md:flex font-slim text-lg  md:justify-center md:mx-auto md:pt-8 md:mb-8">
+<div class="md:flex font-slim text-lg  md:justify-center md:mx-auto md:pt-8 md:mb-3">
     <form action="/filter" method="post" \>
         <div class="md:flex font-slim text-sm items-center  mx-auto md:pt-8 md:mb-8 pt-2 px-6 left">
      @csrf
@@ -90,6 +90,10 @@
 
 </div>
 
+    <div class="flex justify-center mx-auto text-center items-center font-ooga text-sm mt-5">
+        <p>Can't find your course? Request to <a class="text-hotPink hover:border-2" href="/course-request">add a course</a> to our catalogue.</p>
+    </div>
+
 
 @if($no_results)
     <p class="flex font-sansMid text-xs items-center justify-center mx-auto pt-8">No Results. Check out these courses.</p>
@@ -99,7 +103,7 @@
 @foreach ($courses as $course)
 
 
-    <div class="rounded m-4 max-w-sm box-shadow relative h-56 w-75 container bg-subject-{{$course['subject']}} gradient-courses hover:shadow-xl">
+    <div onclick="window.location.href = '/course/{{$course->id}}';" class="rounded m-4 max-w-sm box-shadow relative h-56 w-75 container bg-subject-{{$course['subject']}} gradient-courses hover:shadow-xl">
         <div>
             <div class="py-3 items-start top-0 flex container justify-center text-center bg-gradient-to-tl from-hotPink-100 via-felixSalmon to-felixSalmon">
                 <div class="container w-75 justify-center text-center">

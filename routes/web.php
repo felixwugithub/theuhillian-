@@ -65,10 +65,14 @@ Route::get('/admin/club/create', [\App\Http\Controllers\ClubController::class, '
 Route::post('/admin/teacher/store', [\App\Http\Controllers\TeacherController::class, 'store']);
 Route::any('/teacher/{id}/assigncourse', [\App\Http\Controllers\TeacherController::class, 'assignCourse']);
 Route::post('/teacher/{id}/store', [\App\Http\Controllers\TeacherController::class, 'storeCourse']);
-
+Route::post('/admin/course-quick-add/{id}', [\App\Http\Controllers\CourseRequestController::class, 'quickAdd']);
 
 Route::post('/admin/course/store', [\App\Http\Controllers\Course_Template_Controller::class, 'store']);
 Route::post('/admin/club/store', [\App\Http\Controllers\ClubController::class, 'store']);
+Route::get('/admin/course-requests', [\App\Http\Controllers\CourseRequestController::class,'display']);
+Route::get('/admin/course-request-review/{id}', [\App\Http\Controllers\CourseRequestController::class,'review']);
+
+
 
 
 Route::get('/teacher/{id}', function ($id){
@@ -84,8 +88,10 @@ Route::patch('/profile/{id}', [\App\Http\Controllers\ProfileController::class, '
 
 
 Route::get('/course/{id}', [\App\Http\Controllers\CourseController::class, 'display'])->name('courseListing');
-
 Route::get('/course-review/{id}/{review_id}', [\App\Http\Controllers\CourseController::class, 'scrollToReview'])->name('courseListingReview');
+Route::get('/course-request', [\App\Http\Controllers\CourseRequestController::class, 'create']);
+Route::post('/course-request-store', [\App\Http\Controllers\CourseRequestController::class, 'store']);
+
 
 Route::get('/course-review-read/{id}/{review_id}/{notification_id}', [\App\Http\Controllers\CourseController::class, 'reviewRead'])->name('reviewRead');
 Route::get('/markallasread', [UserController::class, 'markAllAsRead']);

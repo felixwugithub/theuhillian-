@@ -49,6 +49,7 @@ return array(
     'App\\Models\\CommentLike' => $baseDir . '/app/Models/CommentLike.php',
     'App\\Models\\Course' => $baseDir . '/app/Models/Course.php',
     'App\\Models\\CourseMember' => $baseDir . '/app/Models/CourseMember.php',
+    'App\\Models\\CourseRequest' => $baseDir . '/app/Models/CourseRequest.php',
     'App\\Models\\CourseTemplate' => $baseDir . '/app/Models/CourseTemplate.php',
     'App\\Models\\Profile' => $baseDir . '/app/Models/Profile.php',
     'App\\Models\\Review' => $baseDir . '/app/Models/Review.php',

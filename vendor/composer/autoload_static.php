@@ -588,6 +588,7 @@ class ComposerStaticInit37ce25fc7d7578a628d417abf48cfd95
         'App\\Models\\CommentLike' => __DIR__ . '/../..' . '/app/Models/CommentLike.php',
         'App\\Models\\Course' => __DIR__ . '/../..' . '/app/Models/Course.php',
         'App\\Models\\CourseMember' => __DIR__ . '/../..' . '/app/Models/CourseMember.php',
+        'App\\Models\\CourseRequest' => __DIR__ . '/../..' . '/app/Models/CourseRequest.php',
         'App\\Models\\CourseTemplate' => __DIR__ . '/../..' . '/app/Models/CourseTemplate.php',
         'App\\Models\\Profile' => __DIR__ . '/../..' . '/app/Models/Profile.php',
         'App\\Models\\Review' => __DIR__ . '/../..' . '/app/Models/Review.php',

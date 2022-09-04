@@ -15,10 +15,10 @@ return new class extends Migration
     {
         Schema::create('profiles', function (Blueprint $table) {
             $table->id();
-            $table->integer('grade')->default(0);
-            $table->string('name')->default(NULL)->nullable();
-            $table->text('description')->default(NULL)->nullable();
-            $table->string('url')->default(NULL)->nullable();
+            $table->integer('grade')->default(8);
+            $table->string('name')->nullable();
+            $table->text('description')->nullable();
+            $table->string('url')->nullable();
             $table->foreignId('user_id')->constrained()->cascadeOnDelete();
             $table->timestamps();
             $table->index('user_id');

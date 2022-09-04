@@ -6,6 +6,7 @@ use App\Models\Article;
 use App\Models\Club;
 use App\Models\Comment;
 use App\Models\Course;
+use App\Models\CourseRequest;
 use App\Models\Profile;
 use App\Models\Review;
 use App\Models\Teacher;
@@ -57,6 +58,10 @@ class DatabaseSeeder extends Seeder
                     ]);
                     Comment::factory(random_int(0,5))->create([
                         'course_id' => $course->id,
+                        'user_id' => $user->id
+                    ]);
+
+                    CourseRequest::factory()->create([
                         'user_id' => $user->id
                     ]);
                 }
