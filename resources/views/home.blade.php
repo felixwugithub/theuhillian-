@@ -3,6 +3,8 @@
 @section('content')
 
 
+    <div class="bg-white">
+
 
     <div class="flex font-sf items-center justify-center mx-auto pt-5 space-x-2">
         <h1 class="md:mt-4 pb-5 ml-7 text-center text-notReallyBlack text-5xl ">Courses</h1>
@@ -76,7 +78,7 @@
         <div class="pt-2 justify-start ml-2">
 
         <label for="search"> Search for: </label>
-        <input placeholder="leave blank for all" class="placeholder-pink-400 bg-felixSalmon no-border rounded text-sm focus:ring-hotPink absolute right-3 md:relative md:right-0" type="text" id="search" name="search" value="{{session('search')}}">
+        <input placeholder="leave blank for all" class="placeholder-hotPink bg-felixSalmon no-border rounded text-sm focus:ring-hotPink absolute right-3 md:relative md:right-0" type="text" id="search" name="search" value="{{session('search')}}">
 
         </div>
             <br>
@@ -166,6 +168,7 @@
     </div>
 
 
+    </div>
 @endsection
 
 

@@ -61,7 +61,7 @@
 
 
 
-<body class="overflow-visible bg-white" id="content">
+<body class="overflow-visible bg-white text-notRealBlack" id="content">
 
 <nav class="relative w-screen max-w-[4000px] container md:px-2 md:py-5 md:sticky top-5 md:top-0 bg-white md:overflow-hidden h-20 md:h-auto z-50 flex ">
 
@@ -162,7 +162,9 @@
     @endif
 @endauth
 
+<div class="bg-white">
 @yield('content')
+</div>
 
 <script src="https://unpkg.com/flowbite@1.5.1/dist/flowbite.js"></script>
 
