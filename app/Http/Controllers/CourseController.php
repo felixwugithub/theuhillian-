@@ -53,32 +53,36 @@ class CourseController extends Controller
     }
 
     public function scrollToReview($id, $review_id){
-        if(\Illuminate\Support\Facades\Auth::check()){
-
+        if(\Illuminate\Support\Facades\Auth::check()) {
 
             $review = Review::find($review_id);
-            $pageReviews = Review::query()->where('course_id', $id)->orderBy('created_at')->get()->toArray();
-            $pos = 0;
 
-            foreach($pageReviews as $reviewCompare){
+            if (isset($review)) {
 
-                if ($reviewCompare['id'] === $review->id){
-                    break;
+                $pageReviews = Review::query()->where('course_id', $id)->orderBy('created_at')->get()->toArray();
+                $pos = 0;
+
+                foreach ($pageReviews as $reviewCompare) {
+
+                    if ($reviewCompare['id'] === $review->id) {
+                        break;
+                    }
+                    $pos = $pos + 1;
                 }
-                $pos = $pos+1;
-            }
-            $pageNum = floor($pos/10)+1;
+                $pageNum = floor($pos / 10) + 1;
 
-            return \redirect('/course/'.$id.'?reviews='.$pageNum)->with([
-                'reviewIndex' => 'review'.$review_id,
-                'simple' => true
-            ]);
-        }
-        else{
-            return view('unauthorized',[
-                'authMessage' => 'Course reviews and comments are only accessible by authorized users.'
-            ]);
-        }
+                return \redirect('/course/' . $id . '?reviews=' . $pageNum)->with([
+                    'reviewIndex' => 'review' . $review_id,
+                    'simple' => true
+                ]);}
+            else{
+                return "this review is no longer viewable.";
+            }
+            } else {
+                return view('unauthorized', [
+                    'authMessage' => 'Course reviews and comments are only accessible by authorized users.'
+                ]);
+            }
 
     }
 
@@ -95,6 +99,9 @@ class CourseController extends Controller
         }
 
             $review = Review::find($review_id);
+
+        if(isset($review)){
+
             $pageReviews = Review::query()->where('course_id', $id)->orderBy('created_at')->get()->toArray();
             $pos = 0;
 
@@ -107,13 +114,15 @@ class CourseController extends Controller
             $pageNum = floor($pos/10)+1;
 
 
-        return \redirect('/course/'.$id.'?reviews='.$pageNum)->with([
-            'reviewIndex' => 'review'.$review_id,
-            'simple' => true
-        ]);
+            return \redirect('/course/'.$id.'?reviews='.$pageNum)->with([
+                'reviewIndex' => 'review'.$review_id,
+                'simple' => true
+            ]);
+        }else{
+            return "This review is no longer available.";
+        }
 
-
-        }        else{
+        }else{
             return view('unauthorized',[
                 'authMessage' => 'Course reviews and comments are only accessible by authorized users.'
             ])    ;

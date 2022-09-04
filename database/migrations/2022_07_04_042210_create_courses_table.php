@@ -25,11 +25,12 @@ return new class extends Migration
             $table->double('difficulty')->default('5');
             $table->double('overall')->default('5');
             $table->integer('review_count')->default('0');
-            $table->timestamp('date_added');
-            $table->longText('description');
+            $table->timestamp('date_added')->nullable();
+            $table->longText('description')->nullable();
             $table->timestamp('created_at');
             $table->timestamp('updated_at');
             $table->index('teacher_id');
+            $table->string('code')->nullable();
 
         });
     }

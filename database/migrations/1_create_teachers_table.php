@@ -16,8 +16,8 @@ return new class extends Migration
         Schema::create('teachers', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->string('subject');
-            $table->longText('bio');
+            $table->string('real_name');
+
             $table->integer('overall')->default('5');
             $table->integer('personality')->default('5');
             $table->integer('fairness')->default('5');

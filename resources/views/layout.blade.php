@@ -36,6 +36,7 @@
 
 
     <meta charset="UTF-8">
+    <meta name="color-scheme" content="light only">
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
@@ -69,14 +70,14 @@
     <button id="dropdownInformationButton" data-dropdown-toggle="dropdownInformation" class="flex font-slim" type="button"> Menu <svg class="ml-2 w-4 h-4" aria-hidden="true" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg></button>
 
     <!-- Dropdown menu -->
-    <div id="dropdownInformation" class="hidden z-10 w-44 bg-white rounded divide-y divide-gray-100 shadow dark:bg-gray-700 dark:divide-gray-600">
+    <div id="dropdownInformation" class="hidden z-10 w-56 bg-white rounded divide-y divide-gray-100 shadow dark:bg-gray-700 dark:divide-gray-600">
         @auth<div class="py-3 px-4 text-sm text-gray-900 dark:text-white">
 
-                <a class="font-slim pr-5 hover:text-hotPink" href="/profile/{{auth()->user()->id}}">Welcome, {{auth()->user()->username}}!</a>
+                <a class="font-slim pr-5 hover:text-hotPink" href="/profile/{{auth()->user()->id}}">Welcome, <span class="font-comfortaa text-hotPink text-lg"> {{auth()->user()->username}}</span>!</a>
 
         </div>
         @endauth
-        <ul class="py-1 text-sm text-gray-700 dark:text-gray-200" aria-labelledby="dropdownInformationButton">
+        <ul class="py-1 text-sm text-gray-700 dark:text-gray-200 font-ooga" aria-labelledby="dropdownInformationButton">
             <li>
                 <a href="/dashboard" class="block py-2 px-4 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Dashboard</a>
             </li>
@@ -95,7 +96,7 @@
                 <a href="/register" class="font-slim hover:text-hotPink px-5">register</a>
                 <a href="/login" class="font-slim hover:text-hotPink px-5">login</a>
             @else
-            <a href="/logout" class="block py-2 px-4 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white">Logout</a>
+            <a href="/logout" class="block py-2 px-4 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white font-slim">Logout</a>
             @endif
         </div>
     </div>
@@ -156,6 +157,7 @@
         <a href="/admin/teacher/create">||Create Teacher||</a>
         <a href="/admin/course/create">Create Course</a>
         <a href="/admin/club/create">||Create a Club||</a>
+            <a href="/admin/course-requests">||View Course Requests||</a>
         </div>
     @endif
 @endauth

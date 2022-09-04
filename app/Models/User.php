@@ -74,4 +74,12 @@ class User extends Authenticatable
     {
         return $this->hasMany(ClubMember::class);
     }
+
+    public function course_requests(){
+        return $this->hasMany(CourseRequest::class);
+    }
+
+    public function canRequest(User $user){
+        return $user->course_requests()->today()->count() < 1;
+    }
 }

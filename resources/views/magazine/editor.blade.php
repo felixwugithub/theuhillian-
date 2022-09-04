@@ -4,15 +4,24 @@
     <div class="bg-blue-50">
 
 
-    <div class="w-full h-full items-center justify-center mx-auto bg-blue-50 p-5">
 
+        <div class="pt-10 pl-14 hover:font-ooga hover:text-spicyPink">
         <a href="{{route('club-magazine-manager', ['id' => $club->id])}}">
-        <div class="p-3 w-24 h-12 bg-rawBanana font-slim">
-            < Back
-        </div>
-        </a>
+            <div class="p-3 w-24 h-12ml-12 font-slim">
+                < Back
+            </div>
 
-<div class="w-3/4 justify-center mx-auto">
+            <div class="block md:hidden text-2xs gray-400 font-ooga text-center flex mx-auto">
+                <p>We Recommend Using A Laptop For This Editor</p>
+            </div>
+        </a>
+        </div>
+
+
+        <div class="w-full h-full items-center justify-center mx-auto bg-blue-50 p-5">
+
+
+        <div class="w-3/4 justify-center mx-auto">
         <form
             @if(isset($article))
 
@@ -134,7 +143,7 @@
                          </div>
 
                     @else
-                        <label for="pdf">You can also upload a PDF version of your article here:   </label>
+                        <label for="pdf" class="text-2xs">Original PDf (optional):   </label>
                         <input type="file" name="pdf" id="pdf">
                         @error('pdf')
                         <p>{{$message}}</p>
@@ -166,8 +175,8 @@
                             </div>
 
                         @else
-                            <label for="pdf">Upload Cover Image:   </label>
-                            <input type="file" name="cover" id="cover">
+                            <label for="pdf" class="text-2xs">Cover Image (optional):   </label>
+                            <input type="file" name="cover" id="cover" >
                             @error('cover')
                             <p>{{$message}}</p>
                             @enderror

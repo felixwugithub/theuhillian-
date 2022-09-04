@@ -25,9 +25,8 @@ class TeacherController extends Controller
         if(Auth::check() && auth()->user()->admin == 1){
 
         $formFields = $request->validate([
-            'name' => ['required', 'min:3'],
-            'bio' => ['string'],
-            'subject' => ['required', 'min:3']
+            'name' => ['required', 'min:2', 'max:32'],
+            'real_name' => ['required', 'min:2', 'max:32'],
         ]);
 
         $teacher = Teacher::create($formFields);

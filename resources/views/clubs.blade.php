@@ -36,13 +36,10 @@
         note: when using a variable that is nullable, check that it is set before using it.
 
     -->
-<div class="mx-auto justify-center px-auto items-center" style="background-image: url('/backgrounds/uhill.jpg');background-position: center;
-  background-repeat: no-repeat;
-  background-attachment: fixed;
-  background-size: cover;">
+<div class="mx-auto justify-center px-auto items-center">
 
 
-    <div class="bg-blue-300 bg-opacity-50 backdrop-blur-sm mt-12 items-center">
+    <div class=" mt-12 items-center">
         <div class="flex font-sf items-center justify-center mx-auto pt-5 space-x-2">
             <h1 class="md:mt-4 pb-5 ml-4 md:ml-7 text-center text-notReallyBlack text-5xl ">Clubs</h1>
             <h1 class="md:mt-4 pb-5 ml-7 text-center text-notReallyBlack text-5xl hidden md:block">at University Hill Secondary
@@ -76,7 +73,7 @@
     <div class="flex-wrap flex">
         @foreach ($clubs as $club)
             <a href="{{route('club', ['club_name' => str_replace(' ', '_',$club->name)])}}" class="text-center mx-auto">
-            <div class="text-veryDarkBlue w-11/12 h-96 m-3 rounded-3xl box-shadow hover:shadow-2xl  justify-center pt-10 container relative text-center md:w-[22rem] bg-blue-50 bg-opacity-50 backdrop-blur-md rounded drop-shadow-xl items-center">
+            <div class="text-veryDarkBlue w-11/12 h-96 m-3 rounded-3xl box-shadow hover:shadow-2xl  justify-center pt-10 container relative text-center md:w-[22rem] bg-blue-50 bg-opacity-50 rounded drop-shadow-xl items-center">
                 @if(isset($club->club_cover_image))
                     <div class="m-auto flex justify-center items-center container top-2 relative">
                          <img class="overflow-hidden w-full h-[122px] object-cover" src="{{'storage/clubCoverImages/'.$club->club_cover_image->image}}" alt="image">
@@ -107,7 +104,7 @@
 
     </div>
 
-    <div class="flex font-sansMid items-center justify-center mx-auto m-24 bg-white bg-opacity-25 backdrop-blur-xl rounded drop-shadow-xl items-center">
+    <div class="flex font-sansMid items-center justify-center mx-auto m-24 rounded drop-shadow-xl items-center">
         @if(isset($paginatePage))
             {{$clubs->links()}}
         @endif

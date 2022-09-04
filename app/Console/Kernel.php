@@ -42,16 +42,19 @@ class Kernel extends ConsoleKernel
 
     private function calculateRatings()
     {
-        foreach (Course::all() as $course){
+        foreach (Course::query()->where('review_count', '>', 0) as $course){
+
             $personalityAvg = $course->reviews->avg('personality');
+            $content_coverageAvg = $course->reviews->avg('content_coverage');
             $fairnessAvg = $course->reviews->avg('fairness');
-            $easinessAvg = $course->reviews->avg('easiness');
-            $overallAvg = ($personalityAvg + $easinessAvg + $fairnessAvg)/3;
+            $difficultyAvg = $course->reviews->avg('difficulty');
+            $overallAvg = ($personalityAvg + $fairnessAvg + $content_coverageAvg)/3;
 
             $course->update([
                 'overall' => $overallAvg,
                 'personality' => $personalityAvg,
-                'easiness' => $easinessAvg,
+                'content_coverage' => $content_coverageAvg,
+                'difficulty' => $difficultyAvg,
                 'fairness' => $fairnessAvg
             ],
             );
@@ -60,25 +63,32 @@ class Kernel extends ConsoleKernel
                     'review_count' => count($course->reviews)
                 ]
             );
+
         }
+
+        return 1;
     }
 
     private function calculateTeacherRatings()
     {
         foreach (Teacher::all() as $teacher){
 
+            $content_coverageAvg = $teacher->courses->avg('content_coverage');
             $personalityAvg = $teacher->courses->avg('personality');
             $fairnessAvg = $teacher->courses->avg('fairness');
-            $easinessAvg = $teacher->courses->avg('easiness');
+            $difficultyAvg = $teacher->courses->avg('difficulty');
             $overallAvg = $teacher->courses->avg('overall');
 
             $teacher->update([
                 'overall' => $overallAvg,
                 'personality' => $personalityAvg,
-                'easiness' => $easinessAvg,
-                'fairness' => $fairnessAvg
+                'content_coverage' => $content_coverageAvg,
+                'fairness' => $fairnessAvg,
+                'difficulty' => $difficultyAvg
             ]);
 
         }
+
+        return 1;
     }
 }
