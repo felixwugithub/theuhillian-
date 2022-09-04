@@ -124,7 +124,7 @@
                 <h2 class="font-quicksand-slim text-center "> {{$course->teacher->name}}</h2>
 
 
-                <div class="absolute bottom-0 justify-center items-center text-center pl-24">
+                <div class="absolute bottom-[5px] justify-center items-center text-center pl-[6rem] text-xs">
                 @if(isset($sort_by))
                     @if($sort_by !== 'overall' && $sort_by !== 'review_count')
                         <p class="text-hotPink ">{{$sort_by}}: {{floor($course[$sort_by] + 0.5)}} / 10</p>

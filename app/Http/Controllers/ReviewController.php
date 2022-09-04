@@ -90,8 +90,18 @@ class ReviewController extends Controller
 
             $review->delete();
 
-            $this->updateCourseRatings($review->course->id);
-            $this->calculateTeacherRatings($review->course->teacher);
+            if ($review->course->review_count == 0) {
+                $this->updateCourseRatings($review->course->id);
+                $this->calculateTeacherRatings($review->course->teacher);
+            }else{
+                $review->course->update([
+                    'overall' => 5,
+                    'personality' => 5,
+                    'difficulty' => 5,
+                    'content_coverage' => 5,
+                    'fairness' => 5
+                ]);
+            }
 
             return Redirect::route('courseListing', $review->course->id);
         }
