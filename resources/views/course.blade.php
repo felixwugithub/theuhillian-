@@ -2,26 +2,28 @@
 
 @section('content')
 
+    <div class="bg-white">
+
 
 
 
     <!-- Tab links -->
     @if(session()->get('reviewIndex') !== null && session()->get('simple'))
-        <body onload="showFormAndScroll('reviews', {{ session()->get("reviewIndex") }})">
+        <body class="overflow-visible bg-white text-notRealBlack" onload="showFormAndScroll('reviews', {{ session()->get("reviewIndex") }})">
     @elseif(session()->get('returnScrollComment') !== null)
-        <body onload="showFormAndScroll('comments', {{ session()->get("scroll") }})">
-        <div class="bg-pink-500 text-white text-center"><button onclick="scrollToBottomWithSection({{ session()->get("scroll") }})"> Operation successful. Click to go back to the comment. </button></div>
+        <body class="overflow-visible bg-white text-notRealBlack" onload="showFormAndScroll('comments', {{ session()->get("scroll") }})">
+        <div  class="bg-pink-500 text-white text-center"><button onclick="scrollToBottomWithSection({{ session()->get("scroll") }})"> Operation successful. Click to go back to the comment. </button></div>
 
         @elseif(session()->get('commented') !== null)
             <div class="bg-yellow-500 text-white text-center"><p>Commenting was Successful</p></div>
-            <body onload="showForm('comments')">
+            <body class="overflow-visible bg-white text-notRealBlack" onload="showForm('comments')">
 
             @elseif(session()->get('reviewIndex') !== null)
 
-                <body onload="showFormAndScroll('reviews', {{ session()->get("reviewIndex") }})">
+            <body class="overflow-visible bg-white text-notRealBlack" onload="showFormAndScroll('reviews', {{ session()->get("reviewIndex") }})">
                 <div class="bg-pink-500 text-white text-center"><button onclick="scrollToBottomWithSection({{ session()->get("reviewIndex") }})"> Operation successful. Click to go back to the review. </button></div>
                 @else
-                <body onload="showForm('reviews')">
+                <body class="overflow-visible bg-white text-notRealBlack" onload="showForm('reviews')">
             @endif
 
     <div id="content bg-hotPink">
@@ -459,7 +461,7 @@
 
 
 
-
+    </div>
 @endsection
 
 

@@ -36,7 +36,7 @@
         note: when using a variable that is nullable, check that it is set before using it.
 
     -->
-<div class="mx-auto justify-center px-auto items-center">
+<div class="mx-auto justify-center px-auto items-center bg-white">
 
 
     <div class=" mt-12 items-center">
