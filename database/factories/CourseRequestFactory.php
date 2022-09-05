@@ -20,7 +20,7 @@ class CourseRequestFactory extends Factory
         return [
             'name' => fake()->jobTitle,
             'code' => fake()->postcode,
-            'description' => fake()->paragraph(),
+            'description' => fake()->sentence,
             'teacher_name' => fake()->name,
             'room_number' => fake()->country,
             'grade' => random_int(8,12),

@@ -52,9 +52,8 @@ class ClubEventController extends Controller
         $club_events = '';
 
         if ($request->ajax()) {
-            foreach ($results as $result) {
-
-                $club_events.='<div class="mx-auto my-5 p-5 w-11/12 bg-blue-50 h-96"><p class="h-5 text-3x;">'.$result->title.'</p></div>';
+            foreach ($results as $event) {
+                $club_events.= view('club-components.event', compact('event'))->render();
             }
             return $club_events;
         }

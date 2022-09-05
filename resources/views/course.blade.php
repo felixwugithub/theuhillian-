@@ -15,7 +15,7 @@
         <div  class="bg-pink-500 text-white text-center"><button onclick="scrollToBottomWithSection({{ session()->get("scroll") }})"> Operation successful. Click to go back to the comment. </button></div>
 
         @elseif(session()->get('commented') !== null)
-            <div class="bg-yellow-500 text-white text-center"><p>Commenting was Successful</p></div>
+
             <body class="overflow-visible bg-white text-notRealBlack" onload="showForm('comments')">
 
             @elseif(session()->get('reviewIndex') !== null)

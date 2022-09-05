@@ -2,6 +2,7 @@
 
 namespace Database\Factories;
 
+use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
@@ -19,6 +20,8 @@ class ArticleFactory extends Factory
         return [
             'author' => fake()->name,
             'title' => fake()->unique()->text,
+            'published' => true,
+            'published_at' => Carbon::now()
         ];
     }
 }

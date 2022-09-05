@@ -31,21 +31,33 @@
         note: when using a variable that is nullable, check that it is set before using it.
 
     -->
-    <div class="container max-w-screen-xl w-11/12 h-[188rem] bg-rawBanana">
-        <h1 class="text-6xl font-sf">
-        {{$article->title}}
-        </h1>
-        <br>
-
-        <div class="m-10">
-        <div class="trix-editor">
-            {!! $content !!}
-        </div>
-        </div>
+    <div class="container max-w-[4000px] lg:w-[85%] w-full p-10 mx-auto  bg-paper">
 
         @if(isset($article->articlepdf))
-             <iframe class="w-full h-full overflow-hidden" id="articlePDF" src="/storage/articlePDFs/{{$article->articlepdf->pdf}}">Bruh</iframe>
+            <a class="w-full h-full overflow-hidden underline text-sm text-gray-500 font-slim py-10" id="articlePDF" href="/storage/articlePDFs/{{$article->articlepdf->pdf}}">View Original PDF</a>
         @endif
+
+        <h1 class="text-3xl md:text-5xl font-sf">
+        {{$article->title}}
+        </h1>
+
+        <div class="pt-3">
+            <h1 class="text-xl font-readex mt-3">
+                {{$article->author}}
+            </h1>
+        </div>
+
+        @if(isset($article->cover->image))
+            <img class="my-5" src="/storage/articleCovers/{{$article->cover->image}}" alt="">
+        @endif
+
+
+
+        <div class="trix-editor ">
+            {!! $content !!}
+        </div>
+
+
 
     </div>
 @endsection

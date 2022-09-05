@@ -22,12 +22,11 @@ class ArticleController extends Controller
 
 
         $articles = Article::query()->where('published', true)
-            ->orderBy('created_at', 'DESC')
+            ->orderByDesc('published_at')
             ->paginate(10);
 
         return view('magazine',[
             'articles' => $articles,
-
         ]);
     }
 

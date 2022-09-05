@@ -3,6 +3,7 @@
 namespace Database\Seeders;
 
 use App\Models\Article;
+use App\Models\ArticleCoverImage;
 use App\Models\Club;
 use App\Models\Comment;
 use App\Models\Course;
@@ -36,8 +37,17 @@ class DatabaseSeeder extends Seeder
 
         for ($x = 0; $x <= 35; $x++) {
 
-            Article::factory()->create();
-            Club::factory()->create();
+            $club = Club::factory()->create();
+            $article = Article::factory()->create([
+                'club_id' => $club->id
+            ]);
+
+            ArticleCoverImage::factory()->create([
+                'article_id' => $article->id
+            ]);
+
+
+
             $teacher = Teacher::factory()->create();
 
             for ($y = 0; $y <= 5; $y++){

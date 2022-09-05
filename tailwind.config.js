@@ -34,6 +34,7 @@ module.exports = {
               felixSalmon: '#fcdfdc',
               pinkie:'#fff0f0',
 
+              paper:'#fef7ea',
               rawBanana:'#d9d2be',
               peeledBanana:'#fffbed',
               ripeBanana:'#fcf5e4',

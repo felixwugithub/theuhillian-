@@ -62,7 +62,7 @@
                         </div>
 
 
-                                <div class="mx-auto mt-5 flex justify-center bg-blue-50 hover:bg-defaultDarkerBlue hover:text-white w-36 rounded-md hover:shadow-lg">
+                                <div class="mx-auto mt-5 flex justify-center bg-blue-50 hover:bg-defaultDarkerBlue hover:text-white rounded-md hover:shadow-lg p-5 w-44 w-auto">
                                     @if(auth()->check())
                                         @if(!$club->clubJoined(auth()->user()))
                                             <a href="{{route('joinClub', ['id' => $club->id])}}"> Join this club </a>
@@ -71,7 +71,7 @@
                                         @endif
 
                                     @else
-                                        <p class="mt-10">Login to follow this club for events, news, and updates.</p>
+                                        <a href="/login" class="text-xs text-center rounded-2xl">Login to follow this club for events, news, and updates.</a>
                                     @endif
                                 </div>
 
@@ -183,7 +183,6 @@
                             @endif
 
                             <div id="data-wrapper2">
-                                <div class="h-1"></div>
                                 <!-- Results -->
                             </div>
                             <!-- Data Loader -->
@@ -273,7 +272,7 @@
                     @endif
 
                         <div id="data-wrapper3">
-                            <div class="h-1"></div>
+                            <div class="h-5 mb-10"></div>
                             <!-- Results -->
                         </div>
                         <!-- Data Loader -->
