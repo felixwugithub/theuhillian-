@@ -6,11 +6,18 @@
     <div class="bg-white">
 
 
+
     <div class="flex font-sf items-center justify-center mx-auto pt-5 space-x-2">
         <h1 class="md:mt-4 pb-5 ml-7 text-center text-notReallyBlack text-5xl ">Courses</h1>
         <h1 class="md:mt-4 pb-5 ml-7 text-center text-notReallyBlack text-5xl hidden md:block ">at University Hill Secondary
         </h1>
     </div>
+
+        @if(session()->get('request_success'))
+            <div class="bg-pinkie">
+                <p class="text-spicyPink text-lg font-comfortaa px-3 py-0.5 text-center m-5 rounded-xl">your course request will be reviewed by an admin soon.</p>
+            </div>
+        @endif
 
 <div class="md:flex font-slim text-lg  md:justify-center md:mx-auto md:pt-8 md:mb-3">
     <form action="/filter" method="post" \>

@@ -41,7 +41,7 @@ class CourseRequestController extends Controller
                 ]);
 
                 return redirect('/')->with([
-                    'request-success' => true
+                    'request_success' => true
                 ]);
 
             }else{
