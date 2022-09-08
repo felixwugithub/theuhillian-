@@ -3,6 +3,7 @@
 namespace Database\Seeders;
 
 use App\Models\Article;
+use App\Models\ArticleComment;
 use App\Models\ArticleCoverImage;
 use App\Models\Club;
 use App\Models\Comment;
@@ -45,7 +46,6 @@ class DatabaseSeeder extends Seeder
             ArticleCoverImage::factory()->create([
                 'article_id' => $article->id
             ]);
-
 
 
             $teacher = Teacher::factory()->create();

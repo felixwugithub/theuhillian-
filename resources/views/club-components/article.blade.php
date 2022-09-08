@@ -1,12 +1,19 @@
+
+
+
 <div class="justify-aroundw-full lg:h-96 my-5">
     <a href="/magazine/article/{{str_replace(' ', '_', $article->title)}}">
         <div class="justify-around bg-blue-50 rounded-xl p-5 border-t-1 border-b-1 border-notRealBlack lg:w-full md:h-full flex-none md:flex mx-auto">
 
-            <div class="content-between lg:w-7/12 pr-5 container relative pb-10 lg:pb-0">
-
+            <div class="content-between lg:w-7/12 pr-5 container relative pb-10 lg:pb-0 space-y-5 md:space-y-1">
                 <div>
                     <h1 class="font-paper-thin text-2xl">{{substr($article->title, 0, 128)}}</h1>
                     <p class="font-didact text-lg">{{$article->author}}</p>
+                </div>
+
+                <div class="flex space-x-3 bottom-6 absolute">
+                    <img src="/images/icons/like.png" class="w-5 h-5" alt="">
+                    <p class="text-gray-700 text-sm font-comfortaa"> {{$article->likers()->count()}} </p>
                 </div>
 
 
@@ -23,5 +30,12 @@
             @endif
 
         </div>
+
+
     </a>
+
+
+
 </div>
+
+

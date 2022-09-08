@@ -17,6 +17,11 @@ use Illuminate\Support\Facades\Session;
 class CourseController extends Controller
 {
 
+
+    public function __construct(){
+
+    }
+
     public function show($sort_by, $order){
 
         if($order == 'asc'){

@@ -39,7 +39,7 @@
 
         <h1 class="font-paper text-5xl lg:text-7xl mt-3 md:mt-2 text-center">Uhill's Digital Magazine</h1>
 
-        <div class="w-full lg:w-48 h-44 text-sm overflow-hidden container scale-75 bg-paper" >
+        <div class="w-full lg:w-48 lg:h-44 text-sm overflow-hidden container scale-75 bg-paper" >
             <a class="weatherwidget-io" href="https://forecast7.com/en/49d28n123d12/vancouver/" data-label_1="VANCOUVER" data-label_2="WEATHER" data-font="Times New Roman" data-icons="Climacons Animated" data-mode="Current" data-days="3" data-theme="beige" data-basecolor="#fef7ea" data-accent="rgba(61, 60, 45, 0.03)" data-textcolor="#392727" data-highcolor="" data-lowcolor="" data-suncolor="" data-mooncolor="" data-cloudcolor="" data-cloudfill="" data-raincolor="" data-snowcolor="" >VANCOUVER WEATHER</a>
             <script>
                 !function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src='https://weatherwidget.io/js/widget.min.js';fjs.parentNode.insertBefore(js,fjs);}}(document,'script','weatherwidget-io-js');
@@ -47,10 +47,9 @@
         </div>
     </div>
 
-
     <div class="bg-paper justify-center mx-auto w-full place-content-center">
         <div class="w-11/12 bg-black h-[1px] mb-1 mx-auto"></div>
-        <div class="w-11/12 bg-black h-[1px] mb-3 lg:mb-5 mx-auto"></div>
+        <div class="w-11/12 bg-black h-[1px]  lg:mb-5 mx-auto"></div>
     </div>
 
     <div class="container w-full max-w-[4000px] bg-paper justify-center">
@@ -60,7 +59,7 @@
                 <a href="/magazine/article/{{str_replace(' ', '_', $article->title)}}">
                     <div class="justify-around bg-paper border-t-1 border-b-1 border-notRealBlack lg:w-[75%] md:h-64 flex-none md:flex mx-auto">
 
-                        <div class="content-between lg:w-7/12 pr-5 container relative pb-10 lg:pb-0">
+                        <div class="content-between lg:w-7/12 pr-5 container relative pb-5 lg:pb-0">
 
                            <div>
                                <h1 class="font-paper-thin text-3xl">{{substr($article->title, 0, 128)}}</h1>
@@ -72,6 +71,11 @@
                                 <p class="text-sm text-gray-500 font-comfortaa">
                                     {{$article->published_at}}
                                 </p>
+                            </div>
+
+                            <div class="flex space-x-3 bottom-6 absolute">
+                                <img src="/images/icons/like.png" class="w-5 h-5" alt="">
+                                <p class="text-gray-700 text-sm font-comfortaa"> {{$article->likers()->count()}} </p>
                             </div>
 
                         </div>

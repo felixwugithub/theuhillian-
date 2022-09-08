@@ -23,22 +23,18 @@ class UserController extends Controller
     public function store(Request $request){
         $formFields = $request->validate([
             'username' => 'required|string|regex:/\w*$/|max:255|unique:users,username',
-            'email' =>'required|email|max:255|regex:/(.*)@learn.vsb.bc\.ca/i|unique:users,email',
-            'password' =>['required', 'confirmed', 'min:6'],
+            'email' =>'required|email|max:255|unique:users,email',
+            'password' =>['required', 'confirmed', 'min:6', 'max:36'],
 
         ]);
+
+//        regex:/(.*)@learn.vsb.bc\.ca/i
 
         $formFields['password'] = bcrypt($formFields['password']);
 
         $user = User::create($formFields);
         auth()->login($user);
 
-        auth()->user()->profile()->create([
-            'name' => '_',
-            'description' => '_',
-            'url' => 'https://example.com',
-            'grade' => 0
-        ]);
 
         return redirect('/')->with('message', 'User created and logged in.');
 

@@ -5,7 +5,7 @@
         'type' => 'project',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
-        'reference' => '0f46fc94867004464af65270e770be3358d96acf',
+        'reference' => '35deac8fe9f0ca441a1e275dcc3cc0945218ac77',
         'name' => 'laravel/laravel',
         'dev' => true,
     ),
@@ -379,7 +379,7 @@
             'type' => 'project',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),
-            'reference' => '0f46fc94867004464af65270e770be3358d96acf',
+            'reference' => '35deac8fe9f0ca441a1e275dcc3cc0945218ac77',
             'dev_requirement' => false,
         ),
         'laravel/sail' => array(
@@ -559,6 +559,24 @@
             'reference' => '10065367baccf13b6e30f5e9246fa4f63a79eb1d',
             'dev_requirement' => false,
         ),
+        'overtrue/laravel-follow' => array(
+            'pretty_version' => '5.0.1',
+            'version' => '5.0.1.0',
+            'type' => 'library',
+            'install_path' => __DIR__ . '/../overtrue/laravel-follow',
+            'aliases' => array(),
+            'reference' => 'c91aa488b1282c184fdec620e7e9740565d34e09',
+            'dev_requirement' => false,
+        ),
+        'overtrue/laravel-like' => array(
+            'pretty_version' => '5.0.2',
+            'version' => '5.0.2.0',
+            'type' => 'library',
+            'install_path' => __DIR__ . '/../overtrue/laravel-like',
+            'aliases' => array(),
+            'reference' => '9f51196b5f2cf86df57a388193117ffd227412f0',
+            'dev_requirement' => false,
+        ),
         'phar-io/manifest' => array(
             'pretty_version' => '2.0.3',
             'version' => '2.0.3.0',
@@ -576,6 +594,18 @@
             'aliases' => array(),
             'reference' => '4f7fd7836c6f332bb2933569e566a0d6c4cbed74',
             'dev_requirement' => true,
+        ),
+        'php-http/async-client-implementation' => array(
+            'dev_requirement' => false,
+            'provided' => array(
+                0 => '*',
+            ),
+        ),
+        'php-http/client-implementation' => array(
+            'dev_requirement' => false,
+            'provided' => array(
+                0 => '*',
+            ),
         ),
         'phpoption/phpoption' => array(
             'pretty_version' => '1.9.0',
@@ -1055,6 +1085,30 @@
             'reference' => '39696bff2c2970b3779a5cac7bf9f0b88fc2b709',
             'dev_requirement' => false,
         ),
+        'symfony/http-client' => array(
+            'pretty_version' => 'v6.1.4',
+            'version' => '6.1.4.0',
+            'type' => 'library',
+            'install_path' => __DIR__ . '/../symfony/http-client',
+            'aliases' => array(),
+            'reference' => '06dc27cbdcee26d6796c226db5266a0d58359739',
+            'dev_requirement' => false,
+        ),
+        'symfony/http-client-contracts' => array(
+            'pretty_version' => 'v3.1.1',
+            'version' => '3.1.1.0',
+            'type' => 'library',
+            'install_path' => __DIR__ . '/../symfony/http-client-contracts',
+            'aliases' => array(),
+            'reference' => 'fd038f08c623ab5d22b26e9ba35afe8c79071800',
+            'dev_requirement' => false,
+        ),
+        'symfony/http-client-implementation' => array(
+            'dev_requirement' => false,
+            'provided' => array(
+                0 => '3.0',
+            ),
+        ),
         'symfony/http-foundation' => array(
             'pretty_version' => 'v6.1.4',
             'version' => '6.1.4.0',
@@ -1080,6 +1134,15 @@
             'install_path' => __DIR__ . '/../symfony/mailer',
             'aliases' => array(),
             'reference' => '55a7cb8f8518d35e2a039daaec6e1ee20509510e',
+            'dev_requirement' => false,
+        ),
+        'symfony/mailgun-mailer' => array(
+            'pretty_version' => 'v6.1.0',
+            'version' => '6.1.0.0',
+            'type' => 'symfony-mailer-bridge',
+            'install_path' => __DIR__ . '/../symfony/mailgun-mailer',
+            'aliases' => array(),
+            'reference' => '44d3c15049d84f5165917a6190f06adbe64d71dd',
             'dev_requirement' => false,
         ),
         'symfony/mime' => array(

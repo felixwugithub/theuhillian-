@@ -227,4 +227,13 @@ class ArticleController extends Controller
         }
 
     }
+
+    public function like($id){
+        $article = Article::find($id);
+        $response = auth()->user()->toggleLike($article);
+
+        return back()->with([
+            'liked-article' => true
+        ]);
+    }
 }

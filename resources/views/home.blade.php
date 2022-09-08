@@ -104,7 +104,7 @@
     </div>
 
 
-@if($no_results)
+@if($courses->count() == 0)
     <p class="flex font-sansMid text-xs items-center justify-center mx-auto pt-8">No Results. Check out these courses.</p>
 @endif
 

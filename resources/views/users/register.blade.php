@@ -8,7 +8,7 @@
 <form method="POST" action="/users">
     @csrf
 
-    <label for="name" class="block mt-5 font-slim">Username</label>
+    <label for="username" class="block mt-5 font-slim">Username</label>
     <input class="mt-5 input1 rounded-full h-7" type="text" name="username" value="{{old('username')}}">
     @error('username')
     <p class="text-xs text-hotPink">{{$message}}</p>

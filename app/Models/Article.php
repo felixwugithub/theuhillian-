@@ -2,12 +2,14 @@
 
 namespace App\Models;
 
+use App\Http\Controllers\ArticleCommentController;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
 use Stevebauman\Purify\Casts\PurifyHtmlOnGet;
 use Tonysm\RichTextLaravel\Models\RichText;
 use Tonysm\RichTextLaravel\Models\Traits\HasRichText;
+use Overtrue\LaravelLike\Traits\Likeable;
 
 
 class Article extends Model
@@ -15,6 +17,7 @@ class Article extends Model
 
     use HasRichText;
     use HasFactory;
+    use Likeable;
 
     protected $guarded = [];
 
@@ -38,6 +41,11 @@ class Article extends Model
     public function cover(): \Illuminate\Database\Eloquent\Relations\HasOne
     {
         return $this->hasOne(ArticleCoverImage::class);
+    }
+
+    public function comments(): \Illuminate\Database\Eloquent\Relations\HasMany
+    {
+        return $this->hasMany(ArticleComment::class);
     }
 
     /**

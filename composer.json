@@ -6,13 +6,17 @@
     "license": "MIT",
     "require": {
         "php": "^8.0.2",
-        "guzzlehttp/guzzle": "^7.2",
+        "guzzlehttp/guzzle": "^7.5",
         "laravel/framework": "^9.19",
         "laravel/sanctum": "^2.14.1",
         "laravel/tinker": "^2.7",
         "laravel/ui": "^3.4",
         "livewire/livewire": "^2.10",
+        "overtrue/laravel-follow": "^5.0",
+        "overtrue/laravel-like": "^5.0",
         "stevebauman/purify": "^5.0",
+        "symfony/http-client": "^6.1",
+        "symfony/mailgun-mailer": "^6.1",
         "tonysm/rich-text-laravel": "^1.6"
     },
     "require-dev": {
