@@ -103,11 +103,11 @@
 
                     <div class="absolute bottom-0 cen text-center mx-auto flex mb-5 justify-center items-center items-center justify-content-around space-x-5 left-1/2 transform -translate-x-1/2">
                         @if(isset($club->room_number))
-                            <h2 class="pt-3 font-slim ">Room: <span class="font-readex">{{substr($club->room_number, 0, 10)}}</span></h2>
+                            <h2 class="pt-3 font-slim ">Room: <span class="font-readex">{{substr($club->room_number, 0, 5)}}</span></h2>
                         @endif
 
                         @if(isset($club->meeting_times))
-                            <h2 class="pt-3 font-slim ">Day of week: <span class="font-readex">{{substr($club->meeting_times, 0, 20)}}</span></h2>
+                            <h2 class="pt-3 font-slim ">Day of week: <span class="font-readex">{{substr($club->meeting_times, 0, 9)}}</span></h2>
                         @endif
                     </div>
 
