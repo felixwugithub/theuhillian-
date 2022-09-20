@@ -25,7 +25,9 @@ class User extends Authenticatable implements MustVerifyEmail
         'name',
         'email',
         'password',
-        'admin'
+        'admin',
+        'banned_until',
+        'banned'
     ];
 
     /**
@@ -83,14 +85,28 @@ class User extends Authenticatable implements MustVerifyEmail
         return $this->hasMany(CourseRequest::class);
     }
 
-    public function canRequest(User $user): bool
+    public function club_requests(): \Illuminate\Database\Eloquent\Relations\HasMany
+    {
+        return $this->hasMany(ClubRequest::class);
+    }
+
+    public function canRequestCourse(User $user): bool
     {
         return $user->course_requests()->today()->count() < 1;
+    }
+
+    public function canRequestClub(User $user): bool
+    {
+        return $user->club_requests()->today()->count() < 1;
     }
 
     public function article_comments(): \Illuminate\Database\Eloquent\Relations\HasMany
     {
         return $this->hasMany(ArticleComment::class);
+    }
+
+    public function review_reports(){
+        return $this->hasMany(ReviewReport::class);
     }
 
 }

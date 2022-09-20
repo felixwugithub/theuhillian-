@@ -7,9 +7,11 @@
     <div class="w-full md:w-7/12 bg-felixSalmon rounded-3xl h-auto m-5 p-5 justify-center mx-auto">
 
     <h2 class="text-4xl font-ooga text-spicyPink text-center mx-auto justify-center">You are reviewing {{$course['course_name']}}</h2>
+        <a href="/review-guidelines" class="flex hover:underline text-hotPink font-comfortaa text-sm text-center justify-center mx-auto w-full">Please review our guidelines before posting!</a>
 
     <form action="/course/{{$course['id']}}" method="POST">
         @csrf
+
 
 
         <div class="relative z-0 my-6 w-full group font-ooga">
@@ -75,7 +77,9 @@
             </div>
 
 
+
             <div class="mt-10 w-full">
+
 
                 <label for="content" class="w-full mx-auto text-center font-ooga text-spicyPink text-lg">Write your full review here: </label>
                 <textarea id="content" name="content" class="w-full align-top items-start h-64 bg-pinkie border-0 focus:border-5 focus:ring-hotPink focus:border-felixSalmon p-5" maxlength="2000" minlength="10" required></textarea>
