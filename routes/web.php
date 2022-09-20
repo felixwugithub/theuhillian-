@@ -1,6 +1,8 @@
 <?php
 
+use App\Http\Controllers\ClubCoverImageController;
 use App\Http\Controllers\ReviewController;
+use App\Http\Controllers\ReviewReportController;
 use App\Models\Article;
 use App\Models\Comment;
 use App\Models\Course;
@@ -40,6 +42,29 @@ Route::get('/home', function () {
     return redirect('/');
 })->middleware(['verified']);
 
+Route::get('/read-notification/{id}', function($id){
+    $userUnreadNotification = auth()->user()
+        ->unreadNotifications
+        ->where('id', $id)
+        ->first();
+
+    $userUnreadNotification->markAsRead();
+
+    return back();
+});
+
+Route::get('/report-review/{id}', [ReviewReportController::class, 'create'])->middleware(['verified']);
+Route::get('/review-report-store/{id}', [ReviewReportController::class, 'store'])->middleware(['verified']);
+Route::get('/admin/view-review-reports', [ReviewReportController::class, 'view'])->middleware(['verified']);
+
+Route::get('/admin/reject-review-report/{id}',[ReviewReportController::class, 'reject'])->middleware(['verified']);
+
+Route::get('/admin/review-report-warn/{id}',[ReviewReportController::class, 'warn'])->middleware(['verified']);
+Route::get('/admin/review-report-ban/{id}',[ReviewReportController::class, 'ban'])->middleware(['verified']);
+
+
+
+
 Route::get('/magazine', [\App\Http\Controllers\ArticleController::class,'show']);
 Route::get('/magazine/article/{title}', [\App\Http\Controllers\ArticleController::class,'display'])->name('article');
 Route::any('/upload/article',[\App\Http\Controllers\ArticleController::class, 'store'])->middleware(['verified'])->name('articlePDFUpload');
@@ -52,7 +77,7 @@ Route::get('/like-article-comment/{id}', [\App\Http\Controllers\ArticleCommentCo
 
 Route::get('/clubs', [\App\Http\Controllers\ClubController::class, 'show'])->name('clubs');
 Route::post('/club-post-store/{club_id}' , [\App\Http\Controllers\ClubPostController::class, 'store'])->middleware(['verified'])->name('club-post-store');
-Route::post('/club-cover-store/{club_id}', [\App\Http\Controllers\ClubCoverImageController::class, 'store'])->middleware(['verified'])->name('club-cover-store');
+Route::post('/club-cover-store/{club_id}', [ClubCoverImageController::class, 'store'])->middleware(['verified'])->name('club-cover-store');
 
 Route::any('/filterclubs',[\App\Http\Controllers\ClubController::class, 'filter'])->name('filterClubs');
 
@@ -64,6 +89,7 @@ Route::any('/quitclub/{id}', [\App\Http\Controllers\ClubMemberController::class,
 Route::any('/filter', [\App\Http\Controllers\CourseController::class, 'search'])->name('search');
 Route::get('/courses/{sort_by}/{order}', [\App\Http\Controllers\CourseController::class, 'show']);
 Route::get('/teachers', function () {
+
     return view('teachers', [
         'teachers' => Teacher::all()
     ]);
@@ -103,6 +129,9 @@ Route::get('/course-review/{id}/{review_id}', [\App\Http\Controllers\CourseContr
 Route::get('/course-request', [\App\Http\Controllers\CourseRequestController::class, 'create'])->middleware(['verified']);
 Route::post('/course-request-store', [\App\Http\Controllers\CourseRequestController::class, 'store'])->middleware(['verified']);
 
+Route::get('/club-request', [\App\Http\Controllers\ClubRequestController::class, 'create'])->middleware(['verified']);
+Route::post('/club-request-store', [\App\Http\Controllers\ClubRequestController::class, 'store'])->middleware(['verified']);
+
 
 Route::get('/course-review-read/{id}/{review_id}/{notification_id}', [\App\Http\Controllers\CourseController::class, 'reviewRead'])->middleware(['verified'])->name('reviewRead');
 Route::get('/markallasread', [UserController::class, 'markAllAsRead'])->middleware(['verified']);
@@ -122,6 +151,14 @@ Route::get('/login', [UserController::class,'login']);
 Route::post('/users', [UserController::class, 'store']);
 
 Route::any('/logout', [UserController::class, 'logout']);
+
+Route::get('/about-info-protection', function (){
+    return view('privacy');
+});
+
+Route::get('/review-guidelines', function (){
+    return view('review-guide');
+});
 
 
 

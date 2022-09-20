@@ -76,13 +76,33 @@
                     <div class="p-2 bg-pinkie font-ooga rounded-lg">
                         @if($notification->type == 'App\Notifications\NewReview')
                             <a href="{{route('reviewRead', ['id' => $notification->data['course_id'], 'review_id' => $notification->data['review_id'], 'notification_id' => $notification->data['id']])}}">{{$notification->data['body']}}</a>
+                        @elseif($notification->type == 'App\Notifications\Warning')
+                            <p class="text-xl">
+                                {{$notification->data['body']}}
+                            </p>
+                             <p class="text-sm text-gray-500">
+                                {{$notification->data['context_title']}} ---
+                                {{$notification->data['context_content']}}
+                            </p>
+                            <a href="/read-notification/{{$notification->data['id']}}">Understood</a>
                         @endif
                     </div>
                 @else
                     <div class="p-2 bg-slate-200 font-slim rounded-2xl">
                         @if($notification->type == 'App\Notifications\NewReview')
                             <a href="{{route('courseListingReview', ['id' => $notification->data['course_id'], 'review_id' => $notification->data['review_id']])}}">{{$notification->data['body']}}</a>
+
+                        @elseif($notification->type == 'App\Notifications\Warning')
+                            <p class="text-xl">
+                                {{$notification->data['body']}}
+                            </p>
+                            <p class="text-sm text-gray-500">
+                                {{$notification->data['context_title']}} ---
+                                {{$notification->data['context_content']}}
+                            </p>
+
                         @endif
+
                     </div>
                 @endif
                 </div>
@@ -103,9 +123,6 @@
     @foreach($courses as $course)
         <div onclick="window.location.href = '/course/{{$course->id}}';" class="rounded m-4 max-w-sm box-shadow relative h-56 w-75 container bg-subject-{{$course['subject']}} gradient-courses">
 
-            @if(in_array($course->id, $unread_course_ids))
-                <img class="w-3 h-3 flex absolute top-3 right-3" src="images/icons/red-dot.svg" alt="new activity">
-            @endif
             <div>
                 <div class="py-3 items-start top-0 flex container justify-center text-center bg-gradient-to-tl from-hotPink-100 via-felixSalmon to-felixSalmon">
                     <div class="container w-75 justify-center text-center">

@@ -80,10 +80,7 @@ class UserController extends Controller
         $clubs = $user->club_members->pluck('club_id');
 
         $unread_data = $user->unreadNotifications->pluck('data');
-        $unread_course_ids = [];
-        foreach ($unread_data as $unread){
-            $unread_course_ids[] = $unread['course_id'];
-        }
+
 
 
 
@@ -91,7 +88,6 @@ class UserController extends Controller
             'courses' => Course::findMany($courses),
             'clubs' => Club::findMany($clubs),
             'user' => User::find(\auth()->id()),
-            'unread_course_ids' => $unread_course_ids
         ]);
 
     }

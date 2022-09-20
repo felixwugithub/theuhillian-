@@ -162,6 +162,7 @@
         <a href="/admin/course/create">Create Course</a>
         <a href="/admin/club/create">||Create a Club||</a>
             <a href="/admin/course-requests">||View Course Requests||</a>
+            <a href="/admin/view-review-reports">||View Review Reports||</a>
         </div>
     @endif
 @endauth

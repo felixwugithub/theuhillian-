@@ -47,16 +47,18 @@ class ProfileController extends Controller
     public function update(){
 
         if(Auth::check()){
-            $data = \request()->validate(
-                [
-                    'name' => ['nullable', 'min:3'],
-                    'grade' => 'required|integer|between:8,12',
-                    'description' => ['required', 'min:3'],
-                    'url' => 'url'
-                ]
-            );
-            Auth::user()->profile->update($data);
-            return redirect()->route('profile', ['id' => Auth::id()]);
+            if(Auth::id() == $profile->user->id) {
+                $data = \request()->validate(
+                    [
+                        'name' => ['nullable', 'min:3'],
+                        'grade' => 'required|integer|between:8,12',
+                        'description' => ['required', 'min:3'],
+                        'url' => 'url'
+                    ]
+                );
+                Auth::user()->profile->update($data);
+                return redirect()->route('profile', ['id' => Auth::id()]);
+            }
         }
     }
 }

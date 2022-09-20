@@ -6,6 +6,7 @@ use App\Models\Club;
 use App\Models\ClubEvent;
 use Illuminate\Contracts\Validation\Validator;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Redirect;
 
 class ClubEventController extends Controller
@@ -13,36 +14,37 @@ class ClubEventController extends Controller
 
     public function store($club_id, Request $request){
 
+        if(Auth::check() && \auth()->user()->admin == 1) {
 
-        $club = Club::find($club_id);
+            $club = Club::find($club_id);
 
 
-        $validator = \Illuminate\Support\Facades\Validator::make($request->all(), [
-            'name' => 'required',
-            'description' => 'required',
-            'location' => 'required',
-            'start_time' => 'required|date_format:"Y-m-d\TH:i"|after:1 hours',
-            'end_time' => 'nullable|date_format:"Y-m-d\TH:i"|after:5 hours',
-            'url' => 'nullable'
-        ]);
-
-        if($validator->fails()) {
-            return Redirect::back()->withErrors($validator)->with([
-                'openEvents' => true,
-                'scrollDown' => true
-            ]);
-        }else{
-            $club->events()->create($validator->valid(),[
-                'club_id' => $club_id
+            $validator = \Illuminate\Support\Facades\Validator::make($request->all(), [
+                'name' => 'required',
+                'description' => 'required',
+                'location' => 'required',
+                'start_time' => 'required|date_format:"Y-m-d\TH:i"|after:1 hours',
+                'end_time' => 'nullable|date_format:"Y-m-d\TH:i"|after:5 hours',
+                'url' => 'nullable'
             ]);
 
-            return Redirect::back()->with([
-                'openEvents' => true,
-                'scrollDown' => true
-            ]);
+            if ($validator->fails()) {
+                return Redirect::back()->withErrors($validator)->with([
+                    'openEvents' => true,
+                    'scrollDown' => true
+                ]);
+            } else {
+                $club->events()->create($validator->valid(), [
+                    'club_id' => $club_id
+                ]);
+
+                return Redirect::back()->with([
+                    'openEvents' => true,
+                    'scrollDown' => true
+                ]);
+            }
+
         }
-
-
 
     }
 

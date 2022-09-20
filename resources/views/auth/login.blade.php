@@ -50,19 +50,17 @@
                             </div>
                         </div>
 
+                        @if (session('error'))
+                            <div class="rounded-2xl p-5 bg-spicyPink text-white text-lg font-sansMid">
+                                {{ session('error') }}
+                            </div>
+                        @endif
+
                         <div class="row mb-0">
                             <div>
                                 <button type="submit" class="block bg-hotPink text-white font-slim rounded hover:bg-pink-500 mt-5 p-0.5">
                                     {{ __('Login') }}
                                 </button>
-
-                                <div class="mt-5">
-                                @if (Route::has('password.request'))
-                                    <a class="font-slim mt-3 pt-3 text-gray-300 hover:text-spicyPink" href="{{ route('password.request') }}">
-                                        {{ __('Forgot Your Password?') }}
-                                    </a>
-                                @endif
-                                </div>
                             </div>
                         </div>
                     </form>

@@ -69,6 +69,19 @@
     </div>
 
 
+    @if(session()->get('request_success'))
+        <div class="bg-blue-50">
+            <p class="text-blue-700 text-lg font-comfortaa px-3 py-0.5 text-center m-5 rounded-xl">your club request will be reviewed by an admin soon.</p>
+        </div>
+    @endif
+
+
+
+    <div class="flex justify-center mx-auto text-center items-center font-ooga text-sm mt-5">
+        <p>Did you start a club? Request to <a class="text-blue-500 hover:border-2" href="/club-request">add your club</a> to our catalogue.</p>
+    </div>
+
+
 
     <div class="flex-wrap flex">
         @foreach ($clubs as $club)

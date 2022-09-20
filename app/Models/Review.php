@@ -29,4 +29,10 @@ class Review extends Model
     public function reviewHelpfuledBy(User $user){
         return $this->reviewHelpfuls->contains('user_id', $user->id);
     }
+
+    public function reports(){
+        return $this->hasMany(ReviewReport::class);
+    }
+
+
 }

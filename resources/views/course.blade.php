@@ -135,7 +135,17 @@
             <div id="reviews" class="tabcontent">
 
              @foreach($reviews->sortBy('created_at') as $review)
+
                 <div class="bg-felixSalmon m-5 p-5 b-5 relative container w-auto mx-auto" id="review{{$review->id}}" >
+
+                    @auth
+                          @if(!auth()->user()->review_reports->pluck('review_id')->contains($review->id))
+                        <a class="text-xs text-spicyPink font-comfortaa" href="/report-review/{{$review->id}}"> Report </a>
+                        @else
+                            <p class="text-xs text-red-500 font-comfortaa" >reported</p>
+                          @endif
+                    @endauth
+
                     <!-- <svg class="h-0.7 w-80 m-auto box-shadow mb-3"><rect class="w-80 h-1 rounded-3 m-auto "></rect></svg>
                     -->
                     <h1 class="text-3xl text-center md:text-center font-quicksand-regular">{{$review['title']}}</h1>

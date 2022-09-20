@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Club;
 use App\Models\ClubPost;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Redirect;
 
 class ClubController extends Controller
@@ -110,10 +111,11 @@ class ClubController extends Controller
     }
 
     public function manager($id){
+        if (Auth::check() && \auth()->user()->admin == 1){
         $club = Club::find($id);
 
         return view('club-manager', [
             'club' => $club
-        ]);
+        ]);}
     }
 }

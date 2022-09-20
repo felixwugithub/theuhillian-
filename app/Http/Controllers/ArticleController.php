@@ -47,6 +47,8 @@ class ArticleController extends Controller
 
     public function store($id, Request $request){
 
+        if (Auth::check() && auth()->user()->admin == 1){
+
         $formfields = $this->validate($request, [
             'title' => 'required',
             'author' => 'required',
@@ -97,11 +99,12 @@ class ArticleController extends Controller
             }
         }
 
-        return redirect('/club-magazine-manager/'.$article->club->id);
+        return redirect('/club-magazine-manager/'.$article->club->id);}
 
     }
 
     public function update($article_id, Request $request){
+        if (Auth::check() && \auth()->user()->admin == 1){
 
         $formfields = $this->validate($request, [
             'title' => 'required',
@@ -170,40 +173,45 @@ class ArticleController extends Controller
             $article->cover->delete();
         }
 
-        return redirect('/club-magazine-editor/'.$article->club->id.'/'.$article->id);
+        return redirect('/club-magazine-editor/'.$article->club->id.'/'.$article->id);}
+
     }
 
 
     public function magazine_manager($id): \Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View|\Illuminate\Contracts\Foundation\Application
     {
+        if (Auth::check() && \auth()->user()->admin == 1){
         $club = Club::find($id);
         $articles = Article::query()->where('club_id', $id)->get();
         return view('magazine.manager', [
             'club' => $club,
             'articles' => $articles
-        ]);
+        ]);}
     }
 
     public function editor($id): \Illuminate\Routing\Redirector|\Illuminate\Contracts\Foundation\Application|\Illuminate\Http\RedirectResponse
     {
+        if (Auth::check() && \auth()->user()->admin == 1){
         $club = Club::find($id);
         $article = $club->articles()->create([
             'title' => 'Untitled'.uniqid(),
             'author' => 'Unknown'
         ]);
 
-        return redirect('/club-magazine-editor/'.$club->id.'/'.$article->id);
+        return redirect('/club-magazine-editor/'.$club->id.'/'.$article->id);}
     }
 
     public function edit($id, $article_id){
+        if (Auth::check() && \auth()->user()->admin == 1){
         $club = Club::find($id);
         return view('magazine.editor', [
             'club' => $club,
             'article' => Article::find($article_id)
-        ]);
+        ]);}
     }
 
     public function publish($article_id){
+        if (Auth::check() && \auth()->user()->admin == 1){
 
         $article = Article::find($article_id);
         if(!$article->published){
@@ -211,7 +219,7 @@ class ArticleController extends Controller
             'published' => true,
             'published_at' => Carbon::now()
         ]);}
-        return redirect('/magazine');
+        return redirect('/magazine');}
     }
 
     public function fetch($id, Request $request){

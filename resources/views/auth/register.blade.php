@@ -21,7 +21,9 @@
                                     <span class="invalid-feedback text-xs text-hotPink" role="alert">
                                         <strong>{{ $message }}</strong>
                                     </span>
+
                                 @enderror
+                                <label for="password" class="block mt-5 font-slim text-sm text-gray-700">You cannot change your username. Do not use your real name or put any personal information here.</label>
                             </div>
                         </div>
 
@@ -36,11 +38,17 @@
                                         <strong>{{ $message }}</strong>
                                     </span>
                                 @enderror
+
+                                <div>
+                                <label for="password" class="block mt-5 font-slim text-sm text-gray-700">You must use a valid school email.</label>
+                                <a href="/about-info-protection" class="text-hotPink text-sm font-slim hover:underline">learn why</a>
+                                </div>
                             </div>
                         </div>
 
                         <div class="row mb-3">
                             <label for="password" class="block mt-5 font-slim">{{ __('Password') }}</label>
+
 
                             <div>
                                 <input id="password" type="password" class="mt-5 focus:ring-hotPink focus:border-hotPink input1 rounded-full h-7 form-control @error('password') is-invalid @enderror" name="password" required autocomplete="new-password">
@@ -50,11 +58,17 @@
                                         <strong>{{ $message }}</strong>
                                     </span>
                                 @enderror
+
+                                <label for="password" class="block mt-5 font-slim text-sm text-gray-700">please pick a secure password and remember it. We do not allow password resets.</label>
+                                <a href="/about-info-protection" class="text-hotPink text-sm font-slim hover:underline">learn why</a>
                             </div>
                         </div>
 
                         <div class="row mb-3">
                             <label for="password-confirm" class="block mt-5 font-slim">{{ __('Confirm Password') }}</label>
+
+
+
 
                             <div class="col-md-6">
                                 <input id="password-confirm" type="password" class="form-control mt-5 input1 rounded-full focus:ring-hotPink focus:border-hotPink" name="password_confirmation" required autocomplete="new-password">
