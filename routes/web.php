@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\ClubCoverImageController;
 use App\Http\Controllers\ReviewController;
 use App\Http\Controllers\ReviewReportController;
 use App\Models\Article;
@@ -76,7 +77,7 @@ Route::get('/like-article-comment/{id}', [\App\Http\Controllers\ArticleCommentCo
 
 Route::get('/clubs', [\App\Http\Controllers\ClubController::class, 'show'])->name('clubs');
 Route::post('/club-post-store/{club_id}' , [\App\Http\Controllers\ClubPostController::class, 'store'])->middleware(['verified'])->name('club-post-store');
-Route::post('/club-cover-store/{club_id}', [\App\Http\Controllers\ClubCoverImageController::class, 'store'])->middleware(['verified'])->name('club-cover-store');
+Route::post('/club-cover-store/{club_id}', [ClubCoverImageController::class, 'store'])->middleware(['verified'])->name('club-cover-store');
 
 Route::any('/filterclubs',[\App\Http\Controllers\ClubController::class, 'filter'])->name('filterClubs');
 
@@ -88,6 +89,7 @@ Route::any('/quitclub/{id}', [\App\Http\Controllers\ClubMemberController::class,
 Route::any('/filter', [\App\Http\Controllers\CourseController::class, 'search'])->name('search');
 Route::get('/courses/{sort_by}/{order}', [\App\Http\Controllers\CourseController::class, 'show']);
 Route::get('/teachers', function () {
+
     return view('teachers', [
         'teachers' => Teacher::all()
     ]);

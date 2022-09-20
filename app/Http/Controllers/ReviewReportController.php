@@ -56,9 +56,13 @@ class ReviewReportController extends Controller
     }
 
     public function view(){
+
+
+        if (Auth::check()&&\auth()->user()->admin == 1){
         return view('admin.review-reports',[
             'reports' => ReviewReport::query()->where('closed', false)->paginate(20)
-        ]);
+        ]);}
+
     }
 
     public function reject($id){

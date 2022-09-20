@@ -12,43 +12,47 @@ class ClubPostController extends Controller
 {
     public function store(Request $request, $club_id){
 
+
+
         if(Auth::check()){
-        $data = $this->validate($request, [
-            'images' => 'nullable',
-            'images.*' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048',
-            'caption' => 'required'
-        ]);
 
-        $club_post = ClubPost::create([
-            'caption' => $data['caption'],
-            'club_id' => $club_id,
-            'user_id' => Auth::id()
-        ]);
-
-        if($request->hasfile('images'))
-        {
-            foreach($request->file('images') as $image) {
-                $newImageName = uniqid().'-'.time(). '.' .$image->extension();
-                $image->storeAs('public/clubPostImages', $newImageName);
-
-               $cpi =  ClubPostPicture::create([
-                    'image' => $newImageName,
-                    'club_post_id' => $club_post->id
+            if (Auth::check() && \auth()->user()->admin == 1) {
+                $data = $this->validate($request, [
+                    'images' => 'nullable',
+                    'images.*' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+                    'caption' => 'required'
                 ]);
-            }
 
-            if($club_post->save()&& $cpi->save()){
-                return back();
-            }else{
-                return "posting failed.";
-            }
-        }
+                $club_post = ClubPost::create([
+                    'caption' => $data['caption'],
+                    'club_id' => $club_id,
+                    'user_id' => Auth::id()
+                ]);
 
-        if($club_post->save()){
-            return back();
-        }else{
-            return "posting failed.";
-        }
+                if ($request->hasfile('images')) {
+                    foreach ($request->file('images') as $image) {
+                        $newImageName = uniqid() . '-' . time() . '.' . $image->extension();
+                        $image->storeAs('public/clubPostImages', $newImageName);
+
+                        $cpi = ClubPostPicture::create([
+                            'image' => $newImageName,
+                            'club_post_id' => $club_post->id
+                        ]);
+                    }
+
+                    if ($club_post->save() && $cpi->save()) {
+                        return back();
+                    } else {
+                        return "posting failed.";
+                    }
+                }
+
+                if ($club_post->save()) {
+                    return back();
+                } else {
+                    return "posting failed.";
+                }
+            }
 
     }
     }
