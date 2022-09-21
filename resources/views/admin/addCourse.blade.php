@@ -54,6 +54,7 @@
                <option value="science">Science (Grade 10 and under)</option>
                <option value="skills">Skills</option>
                <option value="statistics">Statistics</option>
+               <option value="socials">Socials Political History Geo</option>
                <option value="theatre">Theatre</option>
            </select>
 

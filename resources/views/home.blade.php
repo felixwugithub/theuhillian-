@@ -76,6 +76,7 @@
                     <option value="PE" <?php if (isset($subject) && $subject=="PE") echo "selected";?>>PE/Active Living</option>
                     <option value="physics" <?php if (isset($subject) && $subject=="physics") echo "selected";?>>Physics</option>
                     <option value="science" <?php if (isset($subject) && $subject=="science") echo "selected";?>>Science (Grade 10 and under)</option>
+                    <option value="socials" <?php if (isset($subject) && $subject=="socials") echo "selected";?>>Social/Political Sciences | History/Geography</option>
                     <option value="skills" <?php if (isset($subject) && $subject=="skills") echo "selected";?>>Skills</option>
                     <option value="statistics" <?php if (isset($subject) && $subject=="statistics") echo "selected";?>>Statistics</option>
                     <option value="theatre" <?php if (isset($subject) && $subject=="theatre") echo "selected";?>>Theatre</option>
