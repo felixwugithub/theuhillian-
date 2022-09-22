@@ -25,7 +25,7 @@
      @csrf
         <div class="pt-2 justify-start ml-2">
              <label for="sort_by"> Sort By: </label>
-            <select name="sort_by" id="sort_by" class="bg-felixSalmon  rounded no-border text-sm focus:ring-hotPink absolute right-3 md:relative md:right-0">
+            <select name="sort_by" id="sort_by" class="bg-felixSalmon  rounded no-border text-sm focus:ring-hotPink absolute right-3 md:relative md:right-0 w-36">
                  <option value='overall' <?php if (isset($sort_by) && $sort_by=="overall") echo "selected";?>>Overall Rating</option>
                  <option value='personality' <?php if (isset($sort_by) && $sort_by=="personality") echo "selected";?>>Personality</option>
                  <option value='fairness' <?php if (isset($sort_by) && $sort_by=="fairness") echo "selected";?>>Fairness</option>
@@ -38,7 +38,7 @@
             <br>
         <div class="pt-2 justify-start ml-2">
         <label for="order"> Order by: </label>
-             <select name="order" id="order" class="bg-felixSalmon rounded no-border text-sm focus:ring-hotPink absolute right-3 md:relative md:right-0">
+             <select name="order" id="order" class="bg-felixSalmon rounded no-border text-sm focus:ring-hotPink absolute right-3 md:relative md:right-0 w-36">
                  <option value='desc' <?php if (isset($order) && $order=="desc") echo "selected";?>> High to Low</option>
                  <option value='asc' <?php if (isset($order) && $order=="asc") echo "selected";?>> Low to High</option>
              </select>
@@ -47,7 +47,7 @@
             <br>
         <div class="pt-2 justify-start ml-2">
           <label for="grade" class="text-sm"> Grade: </label>
-             <select name="grade" id="grade" class="bg-felixSalmon rounded no-border text-sm focus:ring-hotPink absolute right-3 md:relative md:right-0">
+             <select name="grade" id="grade" class="bg-felixSalmon rounded no-border text-sm focus:ring-hotPink absolute right-3 md:relative md:right-0 w-36">
                  <option value=13 <?php if (isset($grade) && $grade==13) echo "selected";?>> Any </option>
                  <option value=8 <?php if (isset($grade) && $grade==8) echo "selected";?>> 8 </option>
                  <option value=9 <?php if (isset($grade) && $grade==9) echo "selected";?>> 9 </option>
@@ -59,7 +59,7 @@
             <br>
             <div class="pt-2 justify-start ml-2">
                 <label for="subject" class="text-sm"> Subject: </label>
-                <select name="subject" id="subject" class="bg-felixSalmon rounded no-border text-sm focus:ring-hotPink absolute right-3 md:relative md:right-0">
+                <select name="subject" id="subject" class="bg-felixSalmon rounded no-border text-sm focus:ring-hotPink absolute right-3 md:relative md:right-0 w-36">
                     <option value="all" <?php if (isset($subject) && $subject=="all") echo "selected";?> >All</option>
                     <option value="art" <?php if (isset($subject) && $subject=="art") echo "selected";?> >Visual Arts 2D/3D/Yearbook</option>
                     <option value="biology" <?php if (isset($subject) && $subject=="biology") echo "selected";?>>Biology</option>
