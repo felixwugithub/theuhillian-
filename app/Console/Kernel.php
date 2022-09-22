@@ -66,6 +66,18 @@ class Kernel extends ConsoleKernel
 
         }
 
+        foreach (Course::query()->where('review_count', '=', 0) as $course){
+
+            $course->update(
+                [
+                    'review_count' => 0
+                ]
+            );
+
+        }
+
+
+
         return 1;
     }
 
