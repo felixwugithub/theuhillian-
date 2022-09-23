@@ -16,7 +16,7 @@
                     @endif
 
                     {{ __('Before proceeding, please check your email for a verification link. Your account may be terminated if you do not verify your email within 24 hours.') }}
-                        
+
                         <p class="text-hotPink font-slim text-lg">Please check your <span class="text-xl text-spicyPink font-ooga">JUNK FOLDER</span>.</p>
                     <form class="d-inline" method="POST" action="{{ route('verification.resend') }}">
                         @csrf
