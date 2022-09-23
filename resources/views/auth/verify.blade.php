@@ -11,11 +11,13 @@
                     @if (session('resent'))
                         <div class="alert alert-success" role="alert">
                             {{ __('A fresh verification link has been sent to your email address.') }}
+
                         </div>
                     @endif
 
                     {{ __('Before proceeding, please check your email for a verification link. Your account may be terminated if you do not verify your email within 24 hours.') }}
-                    {{ __('If you did not receive the email') }},
+                        
+                        <p class="text-hotPink font-slim text-lg">Please check your <span class="text-xl text-spicyPink font-ooga">JUNK FOLDER</span>.</p>
                     <form class="d-inline" method="POST" action="{{ route('verification.resend') }}">
                         @csrf
                         <button type="submit" class="block bg-hotPink text-white font-slim rounded hover:bg-pink-500 mt-5 p-1">{{ __('click here to request another.') }}</button>
