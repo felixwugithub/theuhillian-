@@ -47,7 +47,6 @@ class ProfileController extends Controller
     public function update(){
 
         if(Auth::check()){
-            if(Auth::id() == $profile->user->id) {
                 $data = \request()->validate(
                     [
                         'name' => ['nullable', 'min:3'],
@@ -58,7 +57,6 @@ class ProfileController extends Controller
                 );
                 Auth::user()->profile->update($data);
                 return redirect()->route('profile', ['id' => Auth::id()]);
-            }
         }
     }
 }
