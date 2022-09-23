@@ -55,6 +55,9 @@ class ReviewController extends Controller
             $data['course_id'] = $id;
 
             $review = auth()->user()->reviews()->create($data);
+            $review->course->update([
+                'review_count' => count($course->reviews)
+            ]);
 
             $notificationData = [
                 'body' => $course->course_name.' received a new review from '.Auth::user()->username,
@@ -90,7 +93,7 @@ class ReviewController extends Controller
 
             $review->delete();
 
-            if ($review->course->review_count == 0) {
+            if (!$review->course->review_count == 0) {
                 $this->updateCourseRatings($review->course->id);
                 $this->calculateTeacherRatings($review->course->teacher);
             }else{
@@ -99,7 +102,8 @@ class ReviewController extends Controller
                     'personality' => 5,
                     'difficulty' => 5,
                     'content_coverage' => 5,
-                    'fairness' => 5
+                    'fairness' => 5,
+                    'review_count' => count($review->course->reviews)
                 ]);
             }
 

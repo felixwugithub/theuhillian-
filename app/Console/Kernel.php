@@ -42,41 +42,47 @@ class Kernel extends ConsoleKernel
 
     private function calculateRatings()
     {
-        foreach (Course::query()->where('review_count', '>', 0) as $course){
-
-            $personalityAvg = $course->reviews->avg('personality');
-            $content_coverageAvg = $course->reviews->avg('content_coverage');
-            $fairnessAvg = $course->reviews->avg('fairness');
-            $difficultyAvg = $course->reviews->avg('difficulty');
-            $overallAvg = ($personalityAvg + $fairnessAvg + $content_coverageAvg)/3;
-
-            $course->update([
-                'overall' => $overallAvg,
-                'personality' => $personalityAvg,
-                'content_coverage' => $content_coverageAvg,
-                'difficulty' => $difficultyAvg,
-                'fairness' => $fairnessAvg
-            ],
-            );
+        foreach (Course::all() as $course){
             $course->update(
                 [
                     'review_count' => count($course->reviews)
                 ]
             );
 
+            if($course->review_count > 0){
+
+                $personalityAvg = $course->reviews->avg('personality');
+                $content_coverageAvg = $course->reviews->avg('content_coverage');
+                $fairnessAvg = $course->reviews->avg('fairness');
+                $difficultyAvg = $course->reviews->avg('difficulty');
+                $overallAvg = ($personalityAvg + $fairnessAvg + $content_coverageAvg)/3;
+
+                $course->update([
+                    'overall' => $overallAvg,
+                    'personality' => $personalityAvg,
+                    'content_coverage' => $content_coverageAvg,
+                    'difficulty' => $difficultyAvg,
+                    'fairness' => $fairnessAvg
+                ],
+                );
+                $course->update(
+                    [
+                        'review_count' => count($course->reviews)
+                    ]
+                );
+
+            }else{
+                $course->update([
+                    'overall' => 5,
+                    'personality' => 5,
+                    'difficulty' => 5,
+                    'content_coverage' => 5,
+                    'fairness' => 5,
+                    'review_count' => count($course->reviews)
+                ]);
+            }
+
         }
-
-        foreach (Course::query()->where('review_count', '=', 0) as $course){
-
-            $course->update(
-                [
-                    'review_count' => 0
-                ]
-            );
-
-        }
-
-
 
         return 1;
     }

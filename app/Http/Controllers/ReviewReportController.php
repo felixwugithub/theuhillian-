@@ -73,6 +73,8 @@ class ReviewReportController extends Controller
                     'closed' => true
                 ]);
 
+                $this->updateRating($report->review->course);
+                
                 return back()->with([
                     'message' => 'report rejected'
                 ]);
@@ -107,6 +109,8 @@ class ReviewReportController extends Controller
                 $report->update([
                     'closed' => true
                 ]);
+
+                $this->updateRating($report->review->course);
 
                 return back()->with([
                     'message' => 'review deleted, user warned'
@@ -146,6 +150,8 @@ class ReviewReportController extends Controller
                     'closed' => true
                 ]);
 
+                $this->updateRating($report->review->course);
+
                 return back()->with([
                     'message' => 'review deleted, user banned'
                 ]);
@@ -155,6 +161,49 @@ class ReviewReportController extends Controller
             }
         }else{
             return "bruh";
+        }
+    }
+
+
+    private function updateRating($course){
+
+        $course->update(
+            [
+                'review_count' => count($course->reviews)
+            ]
+        );
+
+        if($course->review_count > 0){
+
+            $personalityAvg = $course->reviews->avg('personality');
+            $content_coverageAvg = $course->reviews->avg('content_coverage');
+            $fairnessAvg = $course->reviews->avg('fairness');
+            $difficultyAvg = $course->reviews->avg('difficulty');
+            $overallAvg = ($personalityAvg + $fairnessAvg + $content_coverageAvg)/3;
+
+            $course->update([
+                'overall' => $overallAvg,
+                'personality' => $personalityAvg,
+                'content_coverage' => $content_coverageAvg,
+                'difficulty' => $difficultyAvg,
+                'fairness' => $fairnessAvg
+            ],
+            );
+            $course->update(
+                [
+                    'review_count' => count($course->reviews)
+                ]
+            );
+
+        }else{
+            $course->update([
+                'overall' => 5,
+                'personality' => 5,
+                'difficulty' => 5,
+                'content_coverage' => 5,
+                'fairness' => 5,
+                'review_count' => count($course->reviews)
+            ]);
         }
     }
 
