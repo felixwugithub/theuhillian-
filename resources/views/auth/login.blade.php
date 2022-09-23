@@ -64,6 +64,8 @@
                             </div>
                         </div>
                     </form>
+
+                    <a class="mt-5 text-center text-xs font-slim text-hotPink hover:underline" href="/register"> Don't have an account? Click here to register.</a>
                 </div>
             </div>
         </div>

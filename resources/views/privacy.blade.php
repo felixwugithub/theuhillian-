@@ -16,7 +16,7 @@
 
                 Other users can see your username, but NOT your email.
             </p>
-            <p class="text-spicyPink font-ooga text-xl">Building this website took unimaginable efforts, and the last thing we want is to betray our your trust.</p>
+            <p class="text-spicyPink font-ooga text-xl">Building this website took unimaginable efforts, and the last thing we want is to betray your trust.</p>
         </div>
     </div>
 
@@ -27,9 +27,9 @@
 
             <p class="text-spicyPink font-slim text-lg">
                 The organization that your student email belongs to might be able to access your inbox. If they do, they can then exploit conventional password reset emails to gain access to
-                any account that you've'registered with your student email.
+                any account that you've registered with your student email.
 
-                In our case, <span class="font-ooga text-red-900"> if we allowed password-resets, the school may be able to find out all your comments on theuhillian.com.</span>
+                <span class="font-ooga text-red-900"> If we allowed password-resets, the school may be able to log into your account on theuhillian.com even if you never told them your password.</span>
             </p>
 
             <p class="text-spicyPink font-slim text-lg">

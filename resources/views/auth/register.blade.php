@@ -40,8 +40,8 @@
                                 @enderror
 
                                 <div>
-                                <label for="password" class="block mt-5 font-slim text-sm text-gray-700">You must use a valid school email.</label>
-                                <a href="/about-info-protection" class="text-hotPink text-sm font-slim hover:underline">learn why</a>
+                                <label for="password" class="block mt-5 font-slim text-sm text-gray-700 container relative w-full items-center">You must use a student email.<a href="/about-info-protection" class="text-hotPink text-xs font-slim hover:underline right-4 absolute">Why?</a></label>
+
                                 </div>
                             </div>
                         </div>
@@ -59,8 +59,8 @@
                                     </span>
                                 @enderror
 
-                                <label for="password" class="block mt-5 font-slim text-sm text-gray-700">please pick a secure password and remember it. We do not allow password resets.</label>
-                                <a href="/about-info-protection" class="text-hotPink text-sm font-slim hover:underline">learn why</a>
+                                <label for="password" class="block mt-5 font-slim text-sm text-gray-700 w-full container relative items-center">Pick a <span class="font-comfortaa text-xs text-spicyPink">unique</span> password and write it down. You cannot change/reset it. <a href="/about-info-protection" class="text-hotPink text-xs right-4 absolute font-slim hover:underline"> Why?</a> </label>
+
                             </div>
                         </div>
 

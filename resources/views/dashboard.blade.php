@@ -2,6 +2,7 @@
 
 @section('content')
 
+
     <aside class="fixed right-0 top-0 p-5 z-50 mt-24 text-2xs md:text-sm bg-slate-100 bg-opacity-40 font-comfortaa rounded-l-lg text-hotPink">
 
         <div>
@@ -198,6 +199,9 @@
     <script src="/js/parts.js"> </script>
 
 </div>
+
+
+
 @endsection
 
 
