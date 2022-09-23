@@ -36,25 +36,4 @@ class Course extends Model
         return $this->course_members->contains('user_id', $user->id);
     }
 
-    public function updateAllRatings(){
-        foreach (Course::all() as $course){
-            $personalityAvg = $course->reviews->avg('personality');
-            $fairnessAvg = $course->reviews->avg('fairness');
-            $easinessAvg = $course->reviews->avg('easiness');
-            $overallAvg = ($personalityAvg + $easinessAvg + $fairnessAvg)/3;
-
-            $course->update([
-                'overall' => $overallAvg,
-                'personality' => $personalityAvg,
-                'easiness' => $easinessAvg,
-                'fairness' => $fairnessAvg
-            ],
-            );
-            $course->update(
-                [
-                    'review_count' => count($course->reviews)
-                ]
-            );
-        }
-    }
 }

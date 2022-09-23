@@ -153,27 +153,48 @@ class ReviewController extends Controller
 
 
     public function updateCourseRatings(int $id){
-        $course =  Course::find($id);
 
-        $personalityAvg = $course->reviews->avg('personality');
-        $content_coverageAvg = $course->reviews->avg('content_coverage');
-        $fairnessAvg = $course->reviews->avg('fairness');
-        $difficultyAvg = $course->reviews->avg('difficulty');
-        $overallAvg = ($personalityAvg + $fairnessAvg + $content_coverageAvg)/3;
-
-        $course->update([
-            'overall' => $overallAvg,
-            'personality' => $personalityAvg,
-            'content_coverage' => $content_coverageAvg,
-            'difficulty' => $difficultyAvg,
-            'fairness' => $fairnessAvg
-        ],
-        );
+        $course = Course::find($id);
         $course->update(
             [
                 'review_count' => count($course->reviews)
             ]
         );
+
+        if($course->review_count > 0){
+
+            $personalityAvg = $course->reviews->avg('personality');
+            $content_coverageAvg = $course->reviews->avg('content_coverage');
+            $fairnessAvg = $course->reviews->avg('fairness');
+            $difficultyAvg = $course->reviews->avg('difficulty');
+            $overallAvg = ($personalityAvg + $fairnessAvg + $content_coverageAvg)/3;
+
+            $course->update([
+                'overall' => $overallAvg,
+                'personality' => $personalityAvg,
+                'content_coverage' => $content_coverageAvg,
+                'difficulty' => $difficultyAvg,
+                'fairness' => $fairnessAvg
+            ],
+            );
+            $course->update(
+                [
+                    'review_count' => count($course->reviews)
+                ]
+            );
+
+        }else{
+            $course->update([
+                'overall' => 5,
+                'personality' => 5,
+                'difficulty' => 5,
+                'content_coverage' => 5,
+                'fairness' => 5,
+                'review_count' => count($course->reviews)
+            ]);
+        }
+
+
     }
 
     public function calculateTeacherRatings($teacher)
