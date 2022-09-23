@@ -47,11 +47,13 @@
                <option value="engineering">Engineering</option>
                <option value="english">English</option>
                <option value="foods">Foods</option>
-               <option value="languages">Second Languages</option>
+
                <option value="math">Math</option>
+               <option value="music">Music</option>
                <option value="PE">PE/Active Living</option>
                <option value="physics">Physics</option>
                <option value="science">Science (Grade 10 and under)</option>
+               <option value="languages">Second Languages</option>
                <option value="skills">Skills</option>
                <option value="statistics">Statistics</option>
                <option value="socials">Socials Political History Geo</option>
