@@ -37,8 +37,9 @@
 
             <div class="md:w-5/12 md:py-5 md:px-12 m-5">
                 <h1 class="font-sf text-5xl mb-3">{{$course['course_name']}}</h1>
+                <a class="text-2xl my-2 font-comfortaa text-hotPink" href="../teacher/{{$course->teacher['id']}}">Teacher: {{$course->teacher['name']}}</a>
                 <p class="font-sansMid">{{$course['description']}}</p>
-                <a class="text-2xl font-comfortaa text-hotPink" href="../teacher/{{$course->teacher['id']}}">Teacher: {{$course->teacher['name']}}</a>
+
 
                 @auth()
                 <a class="bg-hotPink text-white  w-56 h-14 m-5 text-3xl items-center py-auto font-sf text-center justify-center mx-auto flex rounded-lg" href="/course/{{$course['id']}}/review"> Give review </a>
