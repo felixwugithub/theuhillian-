@@ -37,6 +37,7 @@
         <h2 class="text-2xl font-comfortaa text-red-800 underline"> Important Rules</h2>
         <h3 class="text-xl font-ooga text-red-800">Be nice be respectful</h3>
         <p class="text-md font-slim text-red-800">This should go without saying. Insults, hate speech, excessive profanity, NSFW topics have no place here. Depending on severity, a user can be warned or banned.
+            Please do not take cheap shots at the teachers (do not make fun of their appearance, accent, clothing, etc.). Base your reviews on how they teach.
         </p>
 
         <h3 class="text-xl font-ooga text-red-800">No personal information</h3>

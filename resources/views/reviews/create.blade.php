@@ -7,7 +7,7 @@
     <div class="w-full md:w-7/12 bg-felixSalmon rounded-3xl h-auto m-5 p-5 justify-center mx-auto">
 
     <h2 class="text-4xl font-ooga text-spicyPink text-center mx-auto justify-center">You are reviewing {{$course['course_name']}}</h2>
-        <a href="/review-guidelines" class="flex hover:underline text-hotPink font-comfortaa text-sm text-center justify-center mx-auto w-full">Please review our guidelines before posting!</a>
+        <a href="/review-guidelines" class="flex hover:text-red-800 underline animate-pulse text-hotPink font-comfortaa text-sm text-center justify-center mx-auto w-full">Please review our guidelines before posting!</a>
 
     <form action="/course/{{$course['id']}}" method="POST">
         @csrf
