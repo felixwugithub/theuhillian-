@@ -36,7 +36,7 @@ Route::get('/', function () {
         'paginatePage' => true,
         'no_results' => false
     ]);
-});
+})->middleware(['verified']);;
 
 Route::get('/home', function () {
     return redirect('/');
@@ -65,7 +65,7 @@ Route::get('/admin/review-report-ban/{id}',[ReviewReportController::class, 'ban'
 
 
 
-Route::get('/magazine', [\App\Http\Controllers\ArticleController::class,'show']);
+Route::get('/magazine', [\App\Http\Controllers\ArticleController::class,'show'])->middleware(['verified']);;
 Route::get('/magazine/article/{title}', [\App\Http\Controllers\ArticleController::class,'display'])->name('article');
 Route::any('/upload/article',[\App\Http\Controllers\ArticleController::class, 'store'])->middleware(['verified'])->name('articlePDFUpload');
 Route::get('/magazine/editor', [\App\Http\Controllers\ArticleController::class, 'create'])->middleware(['verified'])->name('articleEditor');
@@ -75,25 +75,25 @@ Route::get('/article-comments/{id}', [\App\Http\Controllers\ArticleCommentContro
 Route::get('/like-article-comment/{id}', [\App\Http\Controllers\ArticleCommentController::class, 'like'])->middleware(['verified'])->name('like-article-comment');
 
 
-Route::get('/clubs', [\App\Http\Controllers\ClubController::class, 'show'])->name('clubs');
+Route::get('/clubs', [\App\Http\Controllers\ClubController::class, 'show'])->name('clubs')->middleware(['verified']);;
 Route::post('/club-post-store/{club_id}' , [\App\Http\Controllers\ClubPostController::class, 'store'])->middleware(['verified'])->name('club-post-store');
 Route::post('/club-cover-store/{club_id}', [ClubCoverImageController::class, 'store'])->middleware(['verified'])->name('club-cover-store');
 
 Route::any('/filterclubs',[\App\Http\Controllers\ClubController::class, 'filter'])->name('filterClubs');
 
-Route::any('/club/{club_name}', [\App\Http\Controllers\ClubController::class, 'getClubPosts'])->name('club');
+Route::any('/club/{club_name}', [\App\Http\Controllers\ClubController::class, 'getClubPosts'])->middleware(['verified'])->name('club');
 
 Route::any('/joinclub/{id}', [\App\Http\Controllers\ClubMemberController::class, 'join'])->middleware(['verified'])->name('joinClub');
 Route::any('/quitclub/{id}', [\App\Http\Controllers\ClubMemberController::class, 'quit'])->middleware(['verified'])->name('quitClub');
 
 Route::any('/filter', [\App\Http\Controllers\CourseController::class, 'search'])->name('search');
-Route::get('/courses/{sort_by}/{order}', [\App\Http\Controllers\CourseController::class, 'show']);
+Route::get('/courses/{sort_by}/{order}', [\App\Http\Controllers\CourseController::class, 'show'])->middleware(['verified']);;
 Route::get('/teachers', function () {
 
     return view('teachers', [
         'teachers' => Teacher::all()
     ]);
-});
+})->middleware(['verified']);;
 
 Route::get('/admin/teacher/create', [\App\Http\Controllers\TeacherController::class, 'create'])->middleware(['verified']);
 Route::get('/admin/course/create', [\App\Http\Controllers\Course_Template_Controller::class, 'create'])->middleware(['verified']);
@@ -116,15 +116,15 @@ Route::get('/teacher/{id}', function ($id){
     return view('teacher',[
         'teacher' => Teacher::find($id),
     ]);
-});
+})->middleware(['verified']);;
 
-Route::get('/profile/{id}', [\App\Http\Controllers\ProfileController::class, 'show']);
+Route::get('/profile/{id}', [\App\Http\Controllers\ProfileController::class, 'show'])->middleware(['verified']);;
 Route::get('/profile/{id}/edit', [\App\Http\Controllers\ProfileController::class, 'edit'])->middleware(['verified']);
 Route::patch('/profile/{id}', [\App\Http\Controllers\ProfileController::class, 'update'])->name('profile')->middleware(['verified']);
 
 
 
-Route::get('/course/{id}', [\App\Http\Controllers\CourseController::class, 'display'])->name('courseListing');
+Route::get('/course/{id}', [\App\Http\Controllers\CourseController::class, 'display'])->name('courseListing')->middleware(['verified']);;
 Route::get('/course-review/{id}/{review_id}', [\App\Http\Controllers\CourseController::class, 'scrollToReview'])->name('courseListingReview');
 Route::get('/course-request', [\App\Http\Controllers\CourseRequestController::class, 'create'])->middleware(['verified']);
 Route::post('/course-request-store', [\App\Http\Controllers\CourseRequestController::class, 'store'])->middleware(['verified']);
