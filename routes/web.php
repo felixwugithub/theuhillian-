@@ -36,11 +36,11 @@ Route::get('/', function () {
         'paginatePage' => true,
         'no_results' => false
     ]);
-})->middleware(['verified']);;
+});
 
 Route::get('/home', function () {
     return redirect('/');
-})->middleware(['verified']);
+});
 
 Route::get('/read-notification/{id}', function($id){
     $userUnreadNotification = auth()->user()
@@ -124,7 +124,7 @@ Route::patch('/profile/{id}', [\App\Http\Controllers\ProfileController::class, '
 
 
 
-Route::get('/course/{id}', [\App\Http\Controllers\CourseController::class, 'display'])->name('courseListing')->middleware(['verified']);;
+Route::get('/course/{id}', [\App\Http\Controllers\CourseController::class, 'display'])->name('courseListing');
 Route::get('/course-review/{id}/{review_id}', [\App\Http\Controllers\CourseController::class, 'scrollToReview'])->name('courseListingReview');
 Route::get('/course-request', [\App\Http\Controllers\CourseRequestController::class, 'create'])->middleware(['verified']);
 Route::post('/course-request-store', [\App\Http\Controllers\CourseRequestController::class, 'store'])->middleware(['verified']);
