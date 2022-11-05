@@ -75,13 +75,13 @@ Route::get('/article-comments/{id}', [\App\Http\Controllers\ArticleCommentContro
 Route::get('/like-article-comment/{id}', [\App\Http\Controllers\ArticleCommentController::class, 'like'])->middleware(['verified'])->name('like-article-comment');
 
 
-Route::get('/clubs', [\App\Http\Controllers\ClubController::class, 'show'])->name('clubs')->middleware(['verified']);;
+Route::get('/clubs', [\App\Http\Controllers\ClubController::class, 'show'])->name('clubs');
 Route::post('/club-post-store/{club_id}' , [\App\Http\Controllers\ClubPostController::class, 'store'])->middleware(['verified'])->name('club-post-store');
 Route::post('/club-cover-store/{club_id}', [ClubCoverImageController::class, 'store'])->middleware(['verified'])->name('club-cover-store');
 
 Route::any('/filterclubs',[\App\Http\Controllers\ClubController::class, 'filter'])->name('filterClubs');
 
-Route::any('/club/{club_name}', [\App\Http\Controllers\ClubController::class, 'getClubPosts'])->middleware(['verified'])->name('club');
+Route::any('/club/{club_name}', [\App\Http\Controllers\ClubController::class, 'getClubPosts'])->name('club');
 
 Route::any('/joinclub/{id}', [\App\Http\Controllers\ClubMemberController::class, 'join'])->middleware(['verified'])->name('joinClub');
 Route::any('/quitclub/{id}', [\App\Http\Controllers\ClubMemberController::class, 'quit'])->middleware(['verified'])->name('quitClub');
