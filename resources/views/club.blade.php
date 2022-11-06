@@ -54,7 +54,7 @@
             </div>
         </div>
                     @if(isset($club->club_cover_image->image))
-                        <div class="bg-cover w-auto h-96" style="background-image: url('/storage/clubCoverImages/{{$club->club_cover_image->image}}')">
+                        <div class="bg-cover w-auto h-max" style="background-image: url('/storage/clubCoverImages/{{$club->club_cover_image->image}}')">
                     @else
                         <div class="bg-cover w-full">
                     @endif
