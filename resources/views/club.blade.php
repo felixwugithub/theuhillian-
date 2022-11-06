@@ -54,7 +54,7 @@
             </div>
         </div>
                     @if(isset($club->club_cover_image->image))
-                        <div class="bg-cover w-full h-full" style="background-image: url('/storage/clubCoverImages/{{$club->club_cover_image->image}}')">
+                        <div class="bg-cover w-full" style="background-image: url('/storage/clubCoverImages/{{$club->club_cover_image->image}}')">
                     @else
                         <div class="bg-cover w-full">
                     @endif
@@ -62,7 +62,8 @@
                         </div>
 
 
-                                <div class="mx-auto mt-5 flex justify-center bg-blue-50 hover:bg-defaultDarkerBlue hover:text-white rounded-md hover:shadow-lg p-5 w-44 w-auto">
+                                <div class="mx-auto mt-5 flex justify-center bg-blue-50 hover:bg-defaultDarkerBlue hover:text-white rounded-md hover:shadow-lg p-5 w-20 w-auto">
+                                    <div>
                                     @if(auth()->check())
                                         @if(!$club->clubJoined(auth()->user()))
                                             <a href="{{route('joinClub', ['id' => $club->id])}}"> Join this club </a>
@@ -73,6 +74,7 @@
                                     @else
                                         <a href="/login" class="text-xs text-center rounded-2xl">Login to follow this club for events, news, and updates.</a>
                                     @endif
+                                    </div>
                                 </div>
 
         <div class="mx-auto container md:w-7/12 mt-3">
