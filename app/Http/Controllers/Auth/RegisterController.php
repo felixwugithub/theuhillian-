@@ -51,10 +51,12 @@ class RegisterController extends Controller
     {
         return Validator::make($data, [
             'username' => ['required', 'string', 'max:48'],
-            'email' => ['required', 'string', 'email', 'max:255', 'unique:users', 'regex:/(.*)@learn.vsb.bc\.ca/i'],
+            'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
             'password' => ['required', 'string', 'min:6', 'confirmed', 'max:255'],
         ]);
     }
+
+//'regex:/(.*)@learn.vsb.bc\.ca/i'
 
     /**
      * Create a new user instance after a valid registration.

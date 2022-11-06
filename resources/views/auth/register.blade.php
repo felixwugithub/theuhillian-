@@ -40,7 +40,7 @@
                                 @enderror
 
                                 <div>
-                                <label for="password" class="block mt-5 font-slim text-sm text-gray-700 container relative w-full items-center">You must use a student email.<a href="/about-info-protection" class="text-hotPink text-xs font-slim hover:underline right-4 absolute">Why?</a></label>
+                                <label for="password" class="block mt-5 font-slim text-sm text-gray-700 container relative w-full items-center">Personal email is ok (This is temporary, normally we only accept student emails)<a href="/about-info-protection" class="text-hotPink text-xs font-slim hover:underline right-4 absolute">Why?</a></label>
 
                                 </div>
                             </div>
