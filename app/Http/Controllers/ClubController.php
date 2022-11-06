@@ -13,7 +13,7 @@ class ClubController extends Controller
     public function show(): \Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View|\Illuminate\Contracts\Foundation\Application
     {
         return view('clubs', [
-            'clubs' => Club::query()->orderBy('updated_at')->paginate(9),
+            'clubs' => Club::all()->orderBy('updated_at')->paginate(9),
             'paginatePage' => true
         ]);
     }
