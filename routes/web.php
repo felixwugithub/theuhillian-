@@ -32,7 +32,7 @@ Auth::routes(['verify' => true]);
 Route::get('/', function () {
 
     return view('home', [
-        'courses' => Course::query()->sortByDesc('overall')->paginate(12),
+        'courses' => Course::query()->orderByDesc('overall')->paginate(12),
         'paginatePage' => true,
         'no_results' => false
     ]);
