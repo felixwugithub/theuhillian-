@@ -65,7 +65,7 @@ Route::get('/admin/review-report-ban/{id}',[ReviewReportController::class, 'ban'
 
 
 
-Route::get('/magazine', [\App\Http\Controllers\ArticleController::class,'show'])->middleware(['verified']);;
+Route::get('/magazine', [\App\Http\Controllers\ArticleController::class,'show']);
 Route::get('/magazine/article/{title}', [\App\Http\Controllers\ArticleController::class,'display'])->name('article');
 Route::any('/upload/article',[\App\Http\Controllers\ArticleController::class, 'store'])->middleware(['verified'])->name('articlePDFUpload');
 Route::get('/magazine/editor', [\App\Http\Controllers\ArticleController::class, 'create'])->middleware(['verified'])->name('articleEditor');
