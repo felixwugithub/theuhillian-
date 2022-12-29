@@ -29,7 +29,7 @@ use Illuminate\Support\Facades\Storage;
 Auth::routes(['verify' => true]);
 
 
-Route::get('/', function () {
+Route::get('/courses', function () {
 
     return view('home', [
         'courses' => Course::query()->orderByDesc('overall')->paginate(12),
@@ -38,8 +38,13 @@ Route::get('/', function () {
     ]);
 });
 
+
+Route::get('/', function () {
+    return redirect('/clubs');
+});
+
 Route::get('/home', function () {
-    return redirect('/');
+    return redirect('/clubs');
 });
 
 Route::get('/read-notification/{id}', function($id){
