@@ -37,7 +37,7 @@
 
             <div class="md:w-5/12 md:py-5 md:px-12 m-5">
                 <h1 class="font-sf text-5xl mb-3">{{$course['course_name']}}</h1>
-                <a class="text-2xl my-2 font-comfortaa text-hotPink" href="../teacher/{{$course->teacher['id']}}">Teacher: {{$course->teacher['name']}}</a>
+
                 <p class="font-sansMid">{{$course['description']}}</p>
 
 

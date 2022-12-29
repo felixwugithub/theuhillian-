@@ -131,11 +131,6 @@
                 <img class="h-8 w-8 flex absolute bottom-0 right-5" src="/images/subject-images/{{$course['subject']}}.png" alt="">
 
 
-                <h2 class="font-quicksand-slim text-center "> {{$course->teacher->name}}</h2>
-
-
-
-
 
                 <p class="font-slim">{{substr($course['description'],0,64)}}...</p>
 
