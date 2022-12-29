@@ -126,7 +126,7 @@
         <div class="relative lg:flex lg:items-center grid float md:pr-auto ml-2 hidden md:block">
             <a href="/magazine" class="hover:text-yellow-500  text-lg font-slim md:px-8">Magazine</a>
             <a href="/clubs" class="hover:text-blue-400  text-lg font-slim md:px-8">Clubs</a>
-            <a href="/" class="hover:text-hotPink text-lg  font-slim md:px-8">Courses</a>
+            <a href="/courses" class="hover:text-hotPink text-lg  font-slim md:px-8">Courses</a>
         </div>
 
         <div class=" sm:float-right  md:flex float-end right-0 hidden md:block">
