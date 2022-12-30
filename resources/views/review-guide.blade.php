@@ -12,15 +12,11 @@
         </p>
 
         <h2 class="text-2xl font-comfortaa text-red-800 underline"> The Four Scores</h2>
-        <h3 class="text-xl font-ooga text-red-800">Personality</h3>
-        <p class="text-md font-slim text-red-800">This relates to the teacher's style. There are no objectively "desirable" traits (a funny teacher is not necessarily
-            better than a serious teacher, if, for instance, their chemistry jokes don't help students learn the material). It's up to you to decide whether this teacher's
-            personality/style/vibe makes the course better.
-        </p>
+        <h3 class="text-xl font-ooga text-red-800">Workload</h3>
+        <p class="text-md font-slim text-red-800">How much homework, how many tests, wtc. The more workload, the lower this core.
 
-        <h3 class="text-xl font-ooga text-red-800">Fairness</h3>
-        <p class="text-md font-slim text-red-800">Pretty straightforward. Treating all students equally is fairness. Giving a reasonable amount of homework is fairness. Marking assignments
-        rationally is fairness. Giving heads-ups before tests is fairness. Taking constructive criticism is fairness.
+        <h3 class="text-xl font-ooga text-red-800">Fun</h3>
+        <p class="text-md font-slim text-red-800">Pretty straightforward. How fun the course is.
         </p>
 
         <h3 class="text-xl font-ooga text-red-800">Content Coverage</h3>

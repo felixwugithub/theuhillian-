@@ -70,14 +70,14 @@
                     </div>
 
                     <div class="flex items-center justify-content-around container relative w-full">
-                        <h5 class=" text-xl mx-auto">Personality: </h5>
+                        <h5 class=" text-xl mx-auto">Workload: </h5>
                         <h5 class=" text-xl "> {{number_format($course['personality'], 1, '.','')}}/10</h5>
                         <p class="md:flex font-sf text-xl md:mx-auto md:w-12"></p>
                         <img src="/images/star-ratings/{{floor($course['personality']+0.5)}}.png" alt="" class="w-36 h-6  hidden xl:block mx-auto right-0 absolute">
                     </div>
 
                     <div class="flex items-center justify-content-around container relative w-full">
-                        <h5 class=" text-xl mx-auto">Fairness:</h5>
+                        <h5 class=" text-xl mx-auto">Fun:</h5>
                         <h5 class=" text-xl ">{{number_format($course['fairness'],1,'.','')}}/10 </h5>
                         <p class="md:flex font-sf text-xl md:mx-auto md:w-5"></p>
                         <img src="/images/star-ratings/{{floor($course['fairness']+0.5)}}.png" alt="" class="w-36 h-6  hidden xl:block mx-auto right-0 absolute">
@@ -163,11 +163,11 @@
 
                     <ul class=" text-gray-600 font-medium text-center rounded-lg divide-x divide-white sm:flex mt-6 mb-3">
                         <li class="w-full text-center">
-                            <h5>Personality: {{$review['personality']}}/10</h5>
+                            <h5>Workload: {{$review['personality']}}/10</h5>
                             <img src="/images/star-ratings/{{$review['personality']}}.png" alt="" class="w-48 h-8 mx-auto hidden md:block">
                         </li>
                         <li class="w-full">
-                            <h5>Fairness: {{$review['fairness']}}/10</h5>
+                            <h5>Fun: {{$review['fairness']}}/10</h5>
                             <img src="/images/star-ratings/{{$review['fairness']}}.png" alt="" class="w-48 h-8 mx-auto hidden md:block">
                         <li class="w-full">
                             <h5>Content Coverage: {{$review['content_coverage']}}/10</h5>
@@ -219,7 +219,7 @@
                                 <div class="w-full flex justify-content-around font-ooga text-spicyPink">
 
                                     <div class="w-1/3">
-                                        <label for="personality">Personality</label>
+                                        <label for="personality">Workload</label>
                                         <input id="personality" type="number" name="personality" class="w-14 h-8 rounded-[20%] bg-pinkie border-0 focus:border-5 focus:ring-hotPink focus:border-felixSalmon"
                                                value="{{$review['personality']}}" min="1" max="10" required>
 
@@ -229,7 +229,7 @@
                                     </div>
 
                                     <div class="w-1/3">
-                                        <label for="fairness">Fairness</label>
+                                        <label for="fairness">Fun</label>
                                         <input id="fairness" type="number" name="fairness" class="w-14 h-8 rounded-[20%] bg-pinkie border-0 focus:border-5 focus:ring-hotPink focus:border-felixSalmon"
                                                value="{{$review['fairness']}}" min="1" max="10" required>
 

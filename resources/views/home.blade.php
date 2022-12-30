@@ -27,8 +27,8 @@
              <label for="sort_by"> Sort By: </label>
             <select name="sort_by" id="sort_by" class="bg-felixSalmon  rounded no-border text-sm focus:ring-hotPink absolute right-3 md:relative md:right-0 w-36">
                  <option value='overall' <?php if (isset($sort_by) && $sort_by=="overall") echo "selected";?>>Overall Rating</option>
-                 <option value='personality' <?php if (isset($sort_by) && $sort_by=="personality") echo "selected";?>>Personality</option>
-                 <option value='fairness' <?php if (isset($sort_by) && $sort_by=="fairness") echo "selected";?>>Fairness</option>
+                 <option value='personality' <?php if (isset($sort_by) && $sort_by=="personality") echo "selected";?>>Workload</option>
+                 <option value='fairness' <?php if (isset($sort_by) && $sort_by=="fairness") echo "selected";?>>Fun</option>
                 <option value='content_coverage' <?php if (isset($sort_by) && $sort_by=="content_coverage") echo "selected";?>>Content Coverage</option>
                 <option value='difficulty' <?php if (isset($sort_by) && $sort_by=="difficulty") echo "selected";?>>Difficulty</option>
                 <option value='review_count' <?php if (isset($sort_by) && $sort_by=="review_count") echo "selected";?>>Number of Reviews</option>
@@ -145,13 +145,7 @@
             </div>
 
             <div class="absolute bottom-7 justify-center items-center text-center text-xs w-full">
-                @if(isset($sort_by))
-                    @if($sort_by !== 'overall' && $sort_by !== 'review_count')
-                        <p class="text-hotPink">{{$sort_by}}: {{floor($course[$sort_by] + 0.5)}} / 10</p>
-                    @elseif($sort_by == 'review_count')
-                        <p class="text-hotPink">Number of reviews: {{floor($course[$sort_by] + 0.5)}}</p>
-                    @endif
-                @endif
+           
             </div>
         </div>
     </div>
