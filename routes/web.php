@@ -40,11 +40,11 @@ Route::get('/courses', function () {
 
 
 Route::get('/', function () {
-    return redirect('/clubs');
+    return redirect('/courses');
 });
 
 Route::get('/home', function () {
-    return redirect('/clubs');
+    return redirect('/courses');
 });
 
 Route::get('/read-notification/{id}', function($id){

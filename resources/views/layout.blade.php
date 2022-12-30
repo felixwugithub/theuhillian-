@@ -86,7 +86,7 @@
                 <a href="/dashboard" class="block py-2 px-4 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Dashboard</a>
             </li>
             <li>
-                <a href="/" class="block py-2 px-4 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Clubs</a>
+                <a href="/clubs" class="block py-2 px-4 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Clubs</a>
             </li>
             <li>
                 <a href="/courses" class="block py-2 px-4 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Courses</a>
@@ -112,7 +112,7 @@
 
         <div class="flex-nowrap">
             <div class="float-left md:pt-0 items-center ">
-                <a href="/"><img src="/images/uhillLogoBnW.jpeg" class="h-10 w-10 mx-2 inline-flex md:mt-0 " alt="Logo">
+                <a href="/clubs"><img src="/images/uhillLogoBnW.jpeg" class="h-10 w-10 mx-2 inline-flex md:mt-0 " alt="Logo">
                 <div class="float-right">
                     <h1 class="font-comfortaa hover:text-hotPink text-3xl md:ml-2 mt-1">The Uhillian</h1>
 

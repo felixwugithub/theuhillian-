@@ -145,7 +145,7 @@
             </div>
 
             <div class="absolute bottom-7 justify-center items-center text-center text-xs w-full">
-           
+
             </div>
         </div>
     </div>
